@@ -1,0 +1,47 @@
+<!--
+ - Created by krizia on 10/24/17.
+ Modal to select Template, add additional comments, review email, and send
+ -->
+
+<apex:component id="SendCaseEmailModal" >
+  <!--  <apex:attribute name="GrievanceNote" type="Case" assignTo="{!CaseNumber}" description="Case Record"/> -->
+
+    <!-- Button To Open Modal -->
+  <!--
+    <button class="slds-button slds-button--neutral compact-button" style="height:70px;" id="sendEmail">Send Email from Grievance Note</button>
+
+  <apex:outputLabel value="HELLO, this is Krizia " /> -->
+
+
+    <!-- Modal Toggle Script -->
+    <script>
+    j$ = jQuery.noConflict();
+    j$(document).ready(function() {
+        /*console.log('{!URLFOR($Resource.LightningDesignSystem_2_4_4)}');
+        j$.aljsInit({
+            assetsLocation: '{!URLFOR($Resource.LightningDesignSystem_2_4_4)}',
+            scoped: true,
+            scopingClass: 'slds-scope',
+        })
+        j$('.needs-date-picker').datepicker({
+            numYearsBefore: 100,
+            numYearsAfter: 0,
+            format: 'MM/DD/YYYY'
+        });*/
+    })
+
+    //Modal Open
+    j$('#sendEmail').click(function(e){
+       e.preventDefault();
+      j$('#backdrop').addClass('slds-backdrop--open');
+      j$('#modal').addClass('slds-fade-in-open');
+    });
+
+    //Modal Close
+    j$('#closeModal').click(function(e){
+       e.preventDefault();
+      j$('#modal').removeClass('slds-fade-in-open');
+      j$('#backdrop').removeClass('slds-backdrop--open');
+    });
+    </script>
+</apex:component>

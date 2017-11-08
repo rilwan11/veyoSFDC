@@ -1,0 +1,46 @@
+<apex:page id="veyoCallCenterCaseSubmission" controller="veyoCallCenterCaseSubmissionController" showHeader="true" sideBar="false">
+    <apex:form >
+        <apex:pageMessages />
+        <br />
+        <br />
+        <apex:pageBlock title="Call Center Submission Page">
+            <apex:pageBlockSection id="pbCaseCreation">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Account" />
+                    <apex:outputPanel >
+                        <apex:inputField value="{!m_case.AccountId}" id="AccountId">
+                            <apex:actionSupport event="onchange"
+                                                rerender="pbCaseCreation"
+                                                status="loadAcctCaseTypes" />
+                        </apex:inputField>
+                        <apex:actionStatus startText="loading allowable Incident Types..." id="loadIncidenTypes" />
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem id="pbsiIncidentType">
+                    <apex:outputLabel value="Incident Type" />
+                    <apex:selectList value="{!caseType}" multiselect="false" size="1" id="caseTypeSL">
+                        <apex:selectOptions value="{!CaseSubmissionTypes}" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:inputField value="{!m_case.Member_Name__c}" />
+                <apex:inputField value="{!m_case.Category__c}" />
+                <apex:inputField value="{!m_case.Member_ID__c}" />
+                <apex:inputField value="{!m_case.Subcategory__c}" />
+                <apex:inputField value="{!m_case.Priority}" />
+                <apex:inputField value="{!m_case.Trip_Date__c}" />
+                <apex:inputField value="{!m_case.Service_Mode__c}" />
+                <apex:inputField value="{!m_case.Complainant_Name__c}" />
+                <apex:inputField value="{!m_case.Member_Phone_Number__c}" />
+                <apex:inputField value="{!m_case.Provider_Name__c}" />
+                <apex:inputField value="{!m_case.ContactId}" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1">
+                <apex:inputField value="{!m_case.Description}" style="width:500px;height:200px;"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+                <apex:outputLabel for="btnCreateCase" value="" />
+                <apex:commandButton id="btnCreateCase" value="Save" action="{!save}"   />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,54 @@
+<!--
+ - Created by krizia on 11/3/17.
+ -->
+
+<apex:page id="CaseConfiguredPicklistsPage" standardController="Case" extensions="CaseConfiguredPicklistsController" showHeader="false" sideBar="false">
+
+
+    <apex:form id="ConfigurablePicklists">
+    <!--    <apex:commandButton value="Update Details" action="{!updatePicklists}" rerender="ConfigurablePicklists" /> -->
+        <apex:pageBlock >
+            <!-- Button to save picklist selections and rerender this page & the service console (alert('Grievance Updated!'); window.top.location.href = '/{!Case.Id}'; )-->
+   <!-- ********** LOOK INTO OVERRIDING SAVE BUTTON AT TOP OF DETAIL PAGE INSTEAD in order to save everything at one time -->
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Update Selected Details" status="updatingPicklists" action="{!updatePicklists}" onComplete="window.top.location='/console';"/>
+                <apex:actionStatus startText="saving..." stopText="" id="updatingPicklists" />
+            </apex:pageBlockButtons>
+
+            <apex:pageBlockSection >
+                <apex:selectList value="{!caseCategory}" multiselect="false" size="1" id="catOptions" label="Category" >
+                    <apex:selectOptions value="{!categoryOptions}" />
+                </apex:selectList>
+                <apex:selectList value="{!caseServiceMode}" multiselect="false" size="1" id="smOptions" label="Service Mode">
+                    <apex:selectOptions value="{!serviceModeOptions}" />
+                </apex:selectList>
+                <apex:selectList value="{!caseSubcategory}" multiselect="false" size="1" id="subcatOptions" label="Subcategory"  >
+                    <apex:selectOptions value="{!subcategoryOptions}"  />
+                </apex:selectList>
+
+
+  <!--          <apex:pageBlockSectionItem id="blockSection1">
+                <apex:selectOptions value="{!caseCategory}" id="status">
+                    <apex:actionSupport event="onchange" action="{!setCaseCategory}" rerender="blockSection1"  />
+                </apex:selectOptions>
+            </apex:pageBlockSectionItem> -->
+            </apex:pageBlockSection>
+            <!--
+
+        <apex:pageBlockSection>
+                <apex:pageBlockSectionItem id="CATnew">
+                    <apex:outputPanel title="CAT" >
+                        <apex:selectOptions value="{!caseCategory}" id="cat">
+                            <apex:actionSupport event="onchange" rerender="pbCaseCreation" status="loadAcctCaseTypes" />
+                        </apex:selectOptions>
+                        <apex:actionStatus startText="loading allowable Incident Types..." id="loadIncidenTypes" />
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+
+            <apex:outputLabel title="HELLO" />
+-->
+        </apex:pageBlock>
+    </apex:form>
+
+</apex:page>

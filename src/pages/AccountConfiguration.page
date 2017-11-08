@@ -1,0 +1,87 @@
+<!--
+ - Created by krizia on 11/1/17.
+ -->
+
+<apex:page id="AccountConfiguration" standardController="Account" showHeader="false" sidebar="false" extensions="AccountConfigurationController" >
+
+    <head>
+        <title>Account Configuration Table</title>
+        <apex:slds />
+    </head>
+
+    <apex:outputpanel id="showmsg">
+        <apex:pageMessages />
+    </apex:outputpanel>
+
+
+    <body>
+        <apex:pageBlock >
+            <apex:form id="theForm"><div class="slds">
+                <apex:pageBlockSection id="General" title="General Account Info">
+                    <apex:outputText value="{!Account.Id}" />
+                    <apex:inputField value="{!Account.Call_Center_Can_Create__c}" />
+                    <apex:inputField value="{!Account.Name}"/>
+                    <apex:inputField value="{!Account.OwnerId}"/>
+                </apex:pageBlockSection>
+
+                <apex:pageBlockSection id="Emails" title="Select the Emails that are sent automatically">
+                    <apex:inputText value="{!Account.Default_Account_Email_Address__c}" />
+                    <apex:pageBlockSectionItem />
+                    <apex:inputField value="{!Account.Email_Template_1__c}"/>
+                    <apex:inputField value="{!Account.Email_Recipient_1__c}"/>
+                    <apex:inputField value="{!Account.Email_Template_2__c}"/>
+                    <apex:inputField value="{!Account.Email_Recipient_2__c}"/>
+                    <apex:inputField value="{!Account.Email_Template_3__c}"/>
+                    <apex:inputField value="{!Account.Email_Recipient_3__c}"/>
+                    <apex:inputField value="{!Account.Email_Template_4__c}"/>
+                    <apex:inputField value="{!Account.Email_Recipient_4__c}"/>
+                    <apex:inputField value="{!Account.Email_Template_5__c}"/>
+                    <apex:inputField value="{!Account.Email_Recipient_5__c}"/>
+                </apex:pageBlockSection>
+
+                <apex:pageBLockSection id="Categories" title="Select Categories and Subcategories">
+                    <apex:outputText value="Categories" />
+                    <apex:PageBlockSectionItem />
+                    <apex:inputCheckbox value="{!Account.Complaint_Category__c}" />
+                    <apex:inputCheckbox value="{!Account.Letter_of_Inquiry_Category__c}" />
+                    <apex:inputCheckbox value="{!Account.Quality_of_Care_Concern_Category__c}" />
+                    <apex:PageBlockSectionItem />
+                    <apex:outputText value="Subcategories" />
+                    <apex:PageBlockSectionItem />
+                    <apex:inputCheckbox value="{!Account.Agent_Issue_Subcategory__c}" />
+                    <apex:inputCheckbox value="{!Account.Driver_Issue_Subcategory__c}" />
+                    <apex:inputCheckbox value="{!Account.Early_Arrival_Subcategory__c}" />
+                    <apex:inputCheckbox value="{!Account.Late_Pickup_Subcategory__c}" />
+                    <apex:inputCheckbox value="{!Account.Missed_Pickup_Subcategory__c}" />
+                    <apex:inputCheckbox value="{!Account.Damage_Injury_Subcategory__c}" />
+                    <apex:inputCheckbox value="{!Account.Safety_Concern_Subcategory__c}" />
+                    <apex:inputCheckbox value="{!Account.Scheduling_Error_Subcategory__c}" />
+                    <apex:inputCheckbox value="{!Account.Technical_Issue_Subcategory__c}" />
+                    <apex:inputCheckbox value="{!Account.Vehicle_Issue_Subcategory__c}" />
+                    <apex:inputCheckbox value="{!Account.Missed_Pickup_A_Leg_Subcategory__c}" />
+                    <apex:inputCheckbox value="{!Account.Missed_Pickup_B_Leg_Subcategory__c}" />
+                    <apex:inputCheckbox value="{!Account.Late_Pickup_A_Leg_Subcategory__c}" />
+                    <apex:inputCheckbox value="{!Account.Late_Pickup_B_Leg_Subcategory__c}" />
+                </apex:pageBLockSection>
+
+                <apex:pageBlockSection id="ServiceType" title="Select available Service Modes">
+                    <apex:inputCheckbox value="{!Account.Ambulatory_Service_Mode__c}" />
+                    <apex:inputCheckbox value="{!Account.Wheelchair_Service_Mode__c}" />
+                    <apex:inputCheckbox value="{!Account.Bariatric_Wheelchair_Service_Mode__c}" />
+                    <apex:inputCheckbox value="{!Account.BLS_Service_Mode__c}" />
+                    <apex:inputCheckbox value="{!Account.ALS_Service_Mode__c}" />
+                    <apex:inputCheckbox value="{!Account.Public_Transportation_Service_Mode__c}" />
+                    <apex:inputCheckbox value="{!Account.Mileage_Reimbursement_Service_Mode__c}" />
+                </apex:pageBlockSection>
+
+                <apex:pageBlockSection id="Priority" title="Determine how many days in the future a Priority level sets a GN Due Date in whole days (integer value)">
+                    <apex:inputText value="{!Account.General_Priority_Days__c}" />
+                    <apex:inputText value="{!Account.Expedited_Priority_Days__c}" />
+                </apex:pageBlockSection>
+
+                <apex:commandButton value="Save Account Configurations" action="{!save}" />
+            </div></apex:form>
+        </apex:pageBlock>
+    </body>
+
+</apex:page>

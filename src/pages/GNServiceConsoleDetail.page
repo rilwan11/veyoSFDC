@@ -1,0 +1,168 @@
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" standardController="Case" >
+
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" /> -->
+
+    <!-- First get JQuery -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
+    <!-- Then get JQuery UI -->
+    <!-- <script src="https://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> -->
+    <apex:includeScript value="/soap/ajax/26.0/connection.js"/>
+    <apex:includeScript value="/js/functions.js"/>
+    <apex:includeScript value="/support/console/36.0/integration.js"/>
+    <apex:includeScript value="//code.jquery.com/jquery-2.1.1.min.js"/>
+    <apex:includeScript value="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"/>
+    <apex:includeScript value="/support/console/36.0/integration.js"/>
+    <apex:stylesheet value="//cdn.datatables.net/1.10.0/css/jquery.dataTables.css"/>
+
+
+    <head>
+        <title>Grievance Note: {!Case.CaseNumber}</title>
+        <apex:slds />
+
+    </head>
+
+
+
+    <body>
+
+    <div class="slds-scope">
+        <div class="slds-tabs--scoped">
+
+              <apex:form >
+                    <!-- REQUIRED SLDS WRAPPER -->
+                    <div class="slds">
+
+                        <!-- MASTHEAD -->
+                        <!-- / MASTHEAD -->
+                        <!-- PAGE HEADER -->
+                        <div class="slds-page-header" role="banner">
+
+                            <!-- PAGE HEADER TOP ROW -->
+                            <div class="slds-grid">
+
+                                <!-- PAGE HEADER / ROW 1 / COLUMN 1 -->
+                                <div class="slds-col slds-size--1-of-4">
+
+                                    <!-- HEADING AREA -->
+                                    <!-- MEDIA OBJECT = FIGURE + BODY -->
+                                    <div class="slds-media">
+
+                                    </div>
+                                    <!-- / MEDIA OBJECT -->
+                                    <!-- HEADING AREA -->
+                                </div>
+                                <div class="slds-col slds-size--2-of-4">
+                                    <apex:outputPanel id="gnDetails">
+                                        <table class="slds-table">
+                                            <tr>
+                                                <th class="slds-size--1-of-4 slds-text-heading--label slds-text-align_right">Grievance Number</th>
+                                                <td class="slds-size--1-of-4 slds-text-body--regular">{!Case.CaseNumber}</td>
+                                                <th class="slds-size--1-of-4 slds-text-heading--label slds-text-align_right">Date Created</th>
+                                                <td class="slds-size--1-of-4">
+                                                    <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                                        <apex:param value="{!Case.CreatedDate}" />
+                                                    </apex:outputText>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="slds-size--1-of-4 slds-text-heading--label slds-text-align_right">Case Owner</th>
+                                                <td class="slds-size--1-of-4 slds-text-body--regular">{!Case.Owner.Name}</td>
+                                                <th class="slds-size--1-of-4 slds-text-heading--label slds-text-align_right">Account</th>
+                                                <td class="slds-size--1-of-4 slds-text-body--regular">${!Case.Account}</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="slds-size--1-of-4 slds-text-heading--label slds-text-align_right">GN Status</th>
+                                                <td class="slds-size--1-of-4 slds-text-body--regular">{!Case.Status}</td>
+                                            </tr>
+                                        </table>
+                                    </apex:outputPanel>
+                                </div>
+
+                                <!-- PAGE HEADER / ROW 1 / COLUMN 2 -->
+                                <div class="slds-button-group slds-size--1-of-4" role="group" style="margin-left:20px;" >
+                                    <!-- <button class="slds-button slds-button--neutral compact-button" style="height:70px;" onClick="openModal(); return false;"> -->
+                                    <!--<apex:commandLink value="Project Info" id="projectDetailsButton" onclick="return false;"/>-->
+                                    <!-- <apex:commandLink value="Patient Details" onclick="return false;"/> -->
+
+                                    <!--Project Info-->
+                                    <!-- </button> -->
+                                    <c:SendCaseEmailModal > </c:SendCaseEmailModal>
+                                    <!--New Appt (Field)-->
+                                </div>
+
+                            </div>
+                            <!-- / PAGE HEADER TOP ROW -->
+                            <!-- / PAGE HEADER DETAIL ROW -->
+                        </div>
+                        <!-- / PAGE HEADER -->
+
+                    </div>
+                </apex:form>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        var j$ = jQuery.noConflict();
+            j$(document).ready(function(){
+                applyTabFunctionality();
+                testSetTabTitle();
+        });
+
+          function openModal() {
+            var j$ = jQuery.noConflict();
+            var iframe_url = '{!URLFOR("/apex/SendCaseEmailModal")}';
+            var iframe_url = iframe_url.concat('&id={!Case.Id}');
+            console.log(iframe_url);
+            var child_domain = iframe_url.substring(0, iframe_url.indexOf('/', 9));
+            //var parent_domain = window.location.protocol + '//' + window.location.host;
+            var j$modalDialog = j$('<div id="casepopup" style="overflow: hidden;"></div>')
+            .html('<iframe id="iframeContentId" src="' + iframe_url + '" frameborder="0" height="100%" width="100%" marginheight="0" marginwidth="0" scrolling="yes" />')
+            .dialog({
+            	autoOpen: false,
+                title: 'Outbound Email',
+            	resizable: true,
+            	width: 1200,
+            	height: 800,
+            	autoResize: true,
+            	modal: true,
+            	draggable: true
+            });
+
+            j$modalDialog.dialog('open');
+          }
+
+        function applyTabFunctionality() {
+            j$('li.slds-tabs--scoped__item').click(function() {
+                var currentTab = j$(this); //Active Tab
+                var otherTabs = j$("li.slds-tabs--scoped__item").not(this); //Inactive Tabs
+
+                var currentPageId = j$(this).find('a').attr('aria-controls');
+                var currentPage = j$('#'+currentPageId);
+                var otherPages = j$("div.slds-tabs--scoped__content").not(currentPage); //Inactive Pages
+
+                if(!currentTab.hasClass('slds-active')) { //This code runs when an inactive tab is clicked
+                    otherTabs.removeClass("slds-active");
+                    currentTab.addClass("slds-active");
+                    currentPage.toggleClass('slds-hide slds-show');
+                    otherPages.removeClass('slds-show').addClass('slds-hide');
+                }
+            });
+        }
+        function testSetTabTitle() {
+            //Set the current tab's title
+                sforce.console.setTabTitle('{!Case.Id}');
+        }
+        function openCaseSubtab(url) {
+            // Check if user is in the Console, otherwise open as a regular URL
+            if (sforce.console.isInConsole()) {
+                sforce.console.getEnclosingPrimaryTabId(function(result){
+                    sforce.console.openSubtab(result.id, url, true, '', null);
+                });
+            } else {
+                window.open(url);
+            }
+        }
+      </script>
+    </body>
+</apex:page>
