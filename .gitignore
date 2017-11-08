@@ -8,9 +8,6 @@ config/.lightning
 config/.local_store
 config/.session
 config/.settings
-src/package.xml
-src/package-lock.json
-.idea
 
 
 # Build files #
@@ -18,3 +15,6 @@ src/package-lock.json
 [bB]uild
 [bB]uilder-[lL]ocal
 node_modules
+
+
+.idea/workspace.xml
