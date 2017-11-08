@@ -6,9 +6,49 @@
     <head>
         <title>Grievance Note</title>
         <apex:slds />
+        <script src="//code.jquery.com/jquery-1.11.3.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     </head>
 
     <apex:pageMessages />
+
+    <script>
+        function emailsModal(){
+
+            requireCssFile('/resource/jQuery/jquery-ui/jquery-ui.min.css');
+
+            function requireCssFile(filename) {
+            var fileref = document.createElement('link');
+            fileref.setAttribute('rel', 'stylesheet');
+            fileref.setAttribute('type', 'text/css');
+            fileref.setAttribute('href', filename);
+            document.getElementsByTagName('head')[0].appendChild(fileref);
+            }
+
+
+            var j$ = jQuery.noConflict();
+
+            var iframe_url = '{!URLFOR("/apex/SendCaseEmail")}'+'isdtp=vw&id='+'{!Case.Id}';
+
+            var j$modalDialog = j$('<div></div>')
+            .html('<iframe id="iframeContentId" src="' + iframe_url + '" frameborder="0" height="100%" width="100%" marginheight="0" marginwidth="0" scrolling="yes" />')
+            .dialog({
+            autoOpen: true,
+            title: 'Send Grievance Note Email',
+            resizable: false,
+            width: 800,
+            height: 500,
+            autoResize: true,
+            modal: true,
+            draggable: false,
+            buttons: {
+            "Cancel": function() {
+            j$(this).dialog("close");
+            }
+            }
+            }).prev(".ui-dialog-titlebar").css("background","#C0BE71");
+        }
+    </script>
 
     <apex:form id="ConfigurablePicklists" title="Grievance Detail: {!Case.CaseNumber}">
         <apex:pageBlock title="Member Contact Details">
@@ -20,18 +60,8 @@
                 <apex:actionStatus startText="saving..." stopText="" id="updatingPicklists" />
                 <apex:commandButton action="{!cancel}" immediate="true" value="Cancel"/>
                 <apex:commandButton action="{!URLFOR($Action.Case.Email_Modal, Id)}" immediate="true" value="Send Emails" />
-                <apex:commandButton value="Clay's Button" id="buttoncb"/> <!-- work on this part -->
-                <apex:outputPanel>
-                    <script type="text/javascript">
+                <apex:commandButton value="Clay's Button" id="buttoncb" onclick="javascript: emailsModal()" onComplete="return null;"/> <!-- work on this part -->
 
-                        $( '.buttoncb' ).hide();
-
-                        console.log ('in function');
-                        window.open('{!URLFOR($Action.Case.Email_Modal, Id)}');
-                        disablelink();
-
-                    </script>
-                </apex:outputPanel>
            <!--     <apex:commandButton action="{!save}" value="Save Grievance" /> -->
             </apex:pageBlockButtons>
 

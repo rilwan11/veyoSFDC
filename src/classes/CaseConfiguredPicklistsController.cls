@@ -215,6 +215,16 @@ public with sharing class CaseConfiguredPicklistsController {
 
 
     /**
+     * Krizia: replacement for onclick javascript configuration button
+     */
+    public void openEmailModal() {
+        ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Unable to save, please enter Follow Up Comments to move into Follow Up Requested.');
+        ApexPages.addMessage(errorMessage);
+        System.debug(errorMessage);
+    } //public void openEmailModal()
+
+
+    /**
      * Krizia: button - update the Case with the selected Category, Subcategory, and Service Mode as well as normal fields
      */
     public void updatePicklists() {
