@@ -9,6 +9,7 @@ config/.local_store
 config/.session
 config/.settings
 src/package.xml
+src/package-lock.json
 
 
 # Build files #
