@@ -33,6 +33,5 @@
     "vinyl": "^2.0.1",
     "yargs": "^7.0.2"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
