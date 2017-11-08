@@ -1,0 +1,18 @@
+# Illuminated Cloud files #
+*.iml
+
+# Config Files #
+config/.debug
+config/.describe
+config/.lightning
+config/.local_store
+config/.session
+config/.settings
+src/package.xml
+
+
+# Build files #
+###############
+[bB]uild
+[bB]uilder-[lL]ocal
+node_modules
