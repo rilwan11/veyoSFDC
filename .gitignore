@@ -10,7 +10,7 @@ config/.session
 config/.settings
 src/package.xml
 src/package-lock.json
-.idea/workspace.xml
+.idea
 
 
 # Build files #
