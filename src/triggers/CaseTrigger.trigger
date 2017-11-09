@@ -26,13 +26,11 @@ trigger CaseTrigger on Case (before insert, before update, before delete, after 
             if (Trigger.isInsert) {
                 System.debug('CaseTrigger::: after insert');
                 CaseTriggerHandler.insertCaseAgingHistory(Trigger.new, Trigger.oldMap);
-            //    CaseEmail.sendSubmittedCaseToSubmitter(Trigger.new);
                 CaseTriggerHandler.sendAutomaticEmailsOnInsert(Trigger.new);
             }
             else if (Trigger.isUpdate) {
                 System.debug('CaseTrigger::: after update');
                 CaseTriggerHandler.insertCaseAgingHistory(Trigger.new, Trigger.oldMap);
-            //    CaseEmail.sendSummaryUponClose(Trigger.new);
                 CaseTriggerHandler.sendAutomaticEmails(Trigger.new, Trigger.oldMap);
             }
             else {

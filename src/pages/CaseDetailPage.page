@@ -66,7 +66,7 @@
             </apex:pageBlockButtons>
 
 
-            <apex:pageBlockSection>
+            <apex:pageBlockSection >
                 <apex:outputField value="{!gn.CreatedById}" />
                 <apex:outputField value="{!gn.CaseNumber}" />
                 <apex:inputText value="{!gn.Member_Name__c}" />
@@ -107,7 +107,7 @@
 
 
         <apex:pageBlock title="Member Client Comments">
-            <apex:pageBlockSection>
+            <apex:pageBlockSection >
                 <apex:inputTextArea value="{!gn.Description}" />
                 <apex:outputField value="{!gn.Priority}" />
             </apex:pageBlockSection>
@@ -115,7 +115,7 @@
 
 
         <apex:pageBlock title="Service Details">
-            <apex:pageBlockSection>
+            <apex:pageBlockSection >
                 <apex:inputField value="{!gn.Provider_Name__c}" />
                 <apex:inputField value="{!gn.Trip_Date__c}" />
                 <apex:inputText value="{!gn.Agent_Name__c}" />
@@ -128,7 +128,7 @@
 
 
         <apex:pageBlock title="Investigator Details">
-            <apex:pageBlockSection>
+            <apex:pageBlockSection >
                 <apex:inputText value="{!gn.Employee_Name__c}" />
                 <apex:inputField value="{!gn.Date_of_Investigation__c}" />
                 <apex:inputTextArea value="{!gn.Investigator_Comments__c}" />
@@ -137,7 +137,7 @@
 
 
         <apex:pageBlock title="Action Taken">
-            <apex:pageBlockSection>
+            <apex:pageBlockSection >
                 <apex:inputCheckbox value="{!gn.Substantiated__c}" />
                 <apex:inputTextArea value="{!gn.Action_Taken__c}" />
             </apex:pageBlockSection>
@@ -145,37 +145,37 @@
 
 
         <apex:pageBlock title="Case Details">
-            <apex:pageBlockSection>
+            <apex:pageBlockSection >
                 <apex:inputField value="{!gn.Complaint_Origin__c}" />
                 <apex:inputText value="{!gn.Trip_Number__c}" />
                 <apex:inputText value="{!gn.Origin_Name__c}" />
-                <apex:inputTextArea value="{!gn.If_Null_Why__c}" />
+                <apex:inputTextArea value="{!gn.If_null_why__c}" />
                 <apex:inputText value="{!gn.Additional_Origin_Name__c}" />
                 <apex:inputTextArea value="{!gn.Grievance_Detail__c}" />
-                <apex:pageBlockSectionItem></apex:pageBlockSectionItem>
-                <apex:pageBlockSectionItem></apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
                 <apex:inputCheckbox value="{!gn.Trip_Fraud__c}" />
                 <apex:inputTextArea value="{!gn.Call_Recordings__c}" />
                 <apex:inputText value="{!gn.Fraud_Trip_Number__c}" />
                 <apex:inputTextArea value="{!gn.Field_Notes__c}" />
                 <apex:inputTextArea value="{!gn.Fraud_Trip_Number_Additional__c}" />
-                <apex:pageBlockSectionItem></apex:pageBlockSectionItem>
-                <apex:pageBlockSectionItem></apex:pageBlockSectionItem>
-                <apex:pageBlockSectionItem></apex:pageBlockSectionItem>
-                <apex:inputField value="{!gn.Date_When_Reached_Out_To_Provider__c}" />
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                <apex:inputField value="{!gn.Date_When_Reached_Out_to_Provider__c}" />
                 <apex:inputTextArea value="{!gn.Blank_Field_1__c}" />
-                <apex:pageBlockSectionItem></apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
                 <apex:inputTextArea value="{!gn.Blank_Field_2__c}" />
-                <apex:pageBlockSectionItem></apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
                 <apex:inputTextArea value="{!gn.Blank_Field_3__c}" />
-                <apex:pageBlockSectionItem></apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
                 <apex:inputTextArea value="{!gn.Blank_Field_4__c}" />
             </apex:pageBlockSection>
         </apex:pageBlock>
 
 
         <apex:pageBlock title="System Information" >
-            <apex:pageBlockSection>
+            <apex:pageBlockSection >
                 <apex:inputField value="{!gn.OwnerId}" />
                 <apex:outputField value="{!gn.LastmodifiedById}" />
             </apex:pageBlockSection>
@@ -183,15 +183,15 @@
 
 
         <apex:pageBlock title="Additional Information" >
-            <apex:pageBlockSection>
+            <apex:pageBlockSection >
                 <apex:inputField value="{!gn.ContactId}" />
                 <apex:outputField value="{!gn.Age_in_Days__c}" />
                 <apex:outputField value="{!gn.ContactEmail}" />
-                <apex:outputField value="{!gn.Case_Age_In_Business_Hours__c}" />
+                <apex:outputField value="{!gn.Case_Age_in_Business_Hours__c}" />
                 <apex:inputField value="{!gn.Origin}" />
-                <apex:outputField value="{!gn.Time_With_Support__c}" />
+                <apex:outputField value="{!gn.Time_with_Support__c}" />
                 <apex:outputField value="{!gn.ContactPhone}" />
-                <apex:outputField value="{!gn.Time_With_Customer__c}" />
+                <apex:outputField value="{!gn.Time_with_Customer__c}" />
                 <apex:inputText value="{!gn.Subject}" />
                 <apex:outputField value="{!gn.Follow_Up_Period__c}" />
                 <apex:inputField value="{!gn.Type}" />
@@ -199,9 +199,9 @@
                 <apex:inputField value="{!gn.Reason}" />
                 <apex:outputField value="{!gn.Follow_Up_Age__c}" />
                 <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
-                <apex:outputField value="{!gn.Follow_Up_Time_With_Support__c}" />
-                <apex:pageBlockSectionItem></apex:pageBlockSectionItem>
-                <apex:outputField value="{!gn.Follow_Up_Time_With_Customer__c}" />
+                <apex:outputField value="{!gn.Follow_Up_Time_with_Support__c}" />
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                <apex:outputField value="{!gn.Follow_Up_Time_with_Customer__c}" />
             </apex:pageBlockSection>
         </apex:pageBlock>
     </apex:form>

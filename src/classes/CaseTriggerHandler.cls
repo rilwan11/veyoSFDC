@@ -260,12 +260,13 @@ public with sharing class CaseTriggerHandler {
      *
      */
     public static void sendAutomaticEmails(List<Case> newCases, Map<Id, Case> oldCasesMap) {
-        System.debug('CaseTriggerHandler::: sendAutomaticEmails:: ');
+        System.debug('CaseTriggerHandler::: sendAutomaticEmails:: newCases: ' + string.valueOf(newCases));
         //Map Accounts in order to access their Grievance Email Configurations
         Map<Id, Account> accountMap = getAccountMap(newCases);
 
 
         for (Case c : newCases) {
+            System.debug('FOR LOOP' + string.valueOf(c.CaseNumber) + string.valueOF(c.Status));
             //Check first to see if the Status is one of the available Automatic Mailing ones and it hasn't already fired
             if (c.Status == 'Resolved' && oldCasesMap.get(c.Id).Status != 'Resolved') {
                 System.debug('CaseTriggerHandler::: sendAutomaticEmails:: in Resolved');

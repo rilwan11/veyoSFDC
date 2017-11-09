@@ -48,10 +48,18 @@ public with sharing class CaseConfiguredPicklistsController {
      */
     public CaseConfiguredPicklistsController(ApexPages.StandardController stdController) {
         sc = stdController;
-        Id recordId = ApexPages.CurrentPage().getParameters().get('Id');
+        Id recordId;
+        List<Case> grievances = new List<Case>();
+        gn = new Case();
+        a = new Account();
+
+        if (ApexPages.CurrentPage().getParameters().get('Id') != null) {
+            recordId = ApexPages.CurrentPage().getParameters().get('Id');
+
         //String recordNumber = ApexPages.CurrentPage().getParameters().get('CaseNumber');
         System.debug('SendCaseEmailController::: recordId: ' + string.valueOf(recordId));
-        gn = [SELECT Id, CaseNumber, AccountId, ContactId, Status, Category__c, Subcategory__c, Service_Mode__c,
+
+        grievances = [SELECT Id, CaseNumber, AccountId, ContactId, Status, Category__c, Subcategory__c, Service_Mode__c,
                 CreatedById, Member_Name__c, Date_of_Report__c, Member_ID__c, Due_Date__c, Member_Phone_Number__c,
                 Complainant_Name__c, CreatedDate, Created__c, Type, Contact_Type__c, Progress_Date__c, User_Account__c,
                 Resolved__c, Follow_Up_Requested__c, Open_Email_Response__c, Follow_Up_Completed__c, Follow_Up_Comments__c,
@@ -66,14 +74,31 @@ public with sharing class CaseConfiguredPicklistsController {
                 FROM Case
                 WHERE Id =: recordId //CaseNumber =: recordNumber
                 LIMIT 1];
-        a = [SELECT Id, Complaint_Category__c, Quality_of_Care_Concern_Category__c, Letter_of_Inquiry_Category__c,
-                Agent_Issue_Subcategory__c, Driver_Issue_Subcategory__c, Early_Arrival_Subcategory__c, Late_Pickup_Subcategory__c, Damage_Injury_Subcategory__c, Missed_Pickup_Subcategory__c,
-                Safety_Concern_Subcategory__c, Scheduling_Error_Subcategory__c, Technical_Issue_Subcategory__c, Vehicle_Issue_Subcategory__c, Missed_Pickup_A_Leg_Subcategory__c, Missed_Pickup_B_Leg_Subcategory__c,
-                Late_Pickup_A_Leg_Subcategory__c, Late_Pickup_B_Leg_Subcategory__c,
-                Wheelchair_Service_Mode__c, Bariatric_Wheelchair_Service_Mode__c, BLS_Service_Mode__c, ALS_Service_Mode__c, Ambulatory_Service_Mode__c, Public_Transportation_Service_Mode__c, Mileage_Reimbursement_Service_Mode__c
+        }
+
+        if (grievances.size() > 0) {
+            gn = grievances[0];
+        }
+        else {
+            gn = new Case();
+        }
+
+        List<Account> accList = new List<Account>();
+        accList = [SELECT Id, Complaint_Category__c, Quality_of_Care_Concern_Category__c, Letter_of_Inquiry_Category__c,
+                        Agent_Issue_Subcategory__c, Driver_Issue_Subcategory__c, Early_Arrival_Subcategory__c, Late_Pickup_Subcategory__c, Damage_Injury_Subcategory__c, Missed_Pickup_Subcategory__c,
+                        Safety_Concern_Subcategory__c, Scheduling_Error_Subcategory__c, Technical_Issue_Subcategory__c, Vehicle_Issue_Subcategory__c, Missed_Pickup_A_Leg_Subcategory__c, Missed_Pickup_B_Leg_Subcategory__c,
+                        Late_Pickup_A_Leg_Subcategory__c, Late_Pickup_B_Leg_Subcategory__c,
+                        Wheelchair_Service_Mode__c, Bariatric_Wheelchair_Service_Mode__c, BLS_Service_Mode__c, ALS_Service_Mode__c, Ambulatory_Service_Mode__c, Public_Transportation_Service_Mode__c, Mileage_Reimbursement_Service_Mode__c
                 FROM Account
-                WHERE Id =: gn.AccountId
-                LIMIT 1];
+                WHERE Id = :gn.AccountId
+                LIMIT 1
+        ];
+        if (accList.size() > 0) {
+            a = accList[0];
+        }
+        else {
+            a = new Account();
+        }
 
         System.debug('CaseConfiguredPicklistsController::: constructor:: gn: ' + string.valueOf(gn));
 
@@ -243,9 +268,6 @@ public with sharing class CaseConfiguredPicklistsController {
         }
 
 
-        //Save normal fields
-        PageReference detailPage = sc.save();
-
         //Update the three values available in this picklist page
         gn.Category__c = caseCategory;
         gn.Subcategory__c = caseSubcategory;
@@ -255,48 +277,5 @@ public with sharing class CaseConfiguredPicklistsController {
 
         update gn;
 
-
-   //     PageReference pr = new PageReference(Apexpages.currentPage().getUrl());
-   //     pr.setRedirect(true);
-   //     return pr;
     } //public void updatePicklists()
-
-
-    /**
-     * Krizia: override save button - DOESN'T WORK
-     *
-     * @return
-     */
-/*    public PageReference save() {
-        System.debug('CaseConfiguredPicklistsController::: save:: Follow Up Requested and no Follow Up Comments ' + string.valueOf(gn.Status));
-        try {
-            //Update the three values available in this picklist page
-            gn.Category__c = caseCategory;
-            gn.Subcategory__c = caseSubcategory;
-            gn.Service_Mode__c = caseServiceMode;
-            update gn;
-
-            //Check to be sure that Follow Up Comments entered when trying to change Status to Follow Up Requested
-            if (gn.Status == 'Follow Up Requested') {
-                if (gn.Follow_Up_Comments__c == '' || gn.Follow_Up_Comments__c == null) {
-                    System.debug('CaseConfiguredPicklistsController::: save:: Follow Up Requested and no Follow Up Comments');
-                    ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Unable to save, please enter Follow Up Comments to move into Follow Up Requested.');
-                    ApexPages.addMessage(errorMessage);
-                    System.debug(errorMessage);
-                    return null;
-                }
-                System.debug('CaseConfiguredPicklistsController::: save:: Follow Up Requested with Follow Up Comments');
-            }
-
-            //      update gn;
-            PageReference pr = new PageReference(Apexpages.currentPage().getUrl());
-            pr.setRedirect(true);
-            return pr;
-        }
-        catch (Exception ex) {
-            ApexPages.addMessages(ex);
-            System.debug(ex);
-            return null;
-        }
-    } */
 }
