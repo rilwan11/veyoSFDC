@@ -15,6 +15,7 @@ public with sharing class SendCaseEmailController {
     public String input { get; set; }
     public String directEmail { get; set; }
     public boolean disabledEmail { get; set; }
+    public boolean disabledButton { get; set; }
 
 
 
@@ -42,6 +43,8 @@ public with sharing class SendCaseEmailController {
         System.currentPageReference().getParameters().put('directEmail', '');
         disabledEmail = false;
 
+        disabledButton = true;
+
         //Make sure the Grievance has a Contact in order to set it as the targetObjectId when sending emails
         if (gn.ContactId == null) {
             ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Please make sure there is a Contact on this Grievance. You cannot send emails without it. ');
@@ -52,12 +55,19 @@ public with sharing class SendCaseEmailController {
 
 
     /**
-     * Krizia: select an Email Template and then make Additional Text available or not
+     * Krizia: select an Email Template and then make Additional Text and Email available or not
      */
     public void templateSelection() {
         System.debug('SendCaseEmailController::: templateSelection :: ' + string.valueOf(emailTemplateSelection));
+        //Reset the additional email
+        System.currentPageReference().getParameters().put('directEmail', '');
 
-        if (emailTemplateSelection == 'KHB - Test Incoming Email') {
+        if (emailTemplateSelection == '--None--' || emailTemplateSelection == null) {
+            ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'You did not select a Template. Please select an Email Template. ');
+            ApexPages.addMessage(errorMessage);
+            System.debug(errorMessage);
+        }
+        else if (emailTemplateSelection == 'KHB - Test Incoming Email') {
             disabledAdditional = false;
             disabledEmail = false;
             ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.WARNING, 'You selected an Email Template that accepts Additional Email Text. Please add your comments in the text box below and Preview your entire Email before Sending. ');
@@ -65,6 +75,7 @@ public with sharing class SendCaseEmailController {
             System.debug(errorMessage);
         }
         else if (emailTemplateSelection == 'Grievance Investigation - Driver Statement' || emailTemplateSelection == 'Grievance Investigation - Trip Log'){
+            additionalText = null;
             disabledAdditional = true;
             disabledEmail = false;
             ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.WARNING, 'You selected an Email Template that requires an Email Address. Please add the Email Address in the text box below and Preview your entire Email before Sending. ');
@@ -72,7 +83,8 @@ public with sharing class SendCaseEmailController {
             System.debug(errorMessage);
         }
         else {
-            System.currentPageReference().getParameters().put('additionalText','');
+            directEmail = null;
+            additionalText = null;
             disabledAdditional = true;
             disabledEmail = true;
             ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.INFO, 'You selected an Email Template that does not allow for Additional Email Text. Please send as is. ');
@@ -88,19 +100,25 @@ public with sharing class SendCaseEmailController {
      */
     public void renderEmail() {
         gn.Additional_Email_Text__c = additionalText;
-        System.debug('SendCaseEmailController::: renderEmail:: additionalText ' + string.valueOf(additionalText));
+        System.debug('SendCaseEmailController::: renderEmail:: additionalText: ' + string.valueOf(additionalText) + ' TEMPLATE: ' + string.valueOf(emailTemplateSelection) + ' additionalEmail: ' + string.valueOf(directEmail));
         update gn;
 
-        //Ensure the additional email is
-        if (directEmail != '' && isUserEmailValid(directEmail) == false) {
-                ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Unable to send email. Please check that the additional email is correct and try again.');
+        //Ensure the additional email is in good form
+        if (directEmail != null) {
+            if (directEmail != '' && isUserEmailValid(directEmail) == false) {
+                ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Incorrect email address format. Please check that the additional email is correct and try again.');
                 ApexPages.addMessage(errorMessage);
                 System.debug(errorMessage);
+
+                //Make sure they cannot send while the email address is incorrect
+                disabledButton = true;
+
                 return;
+            }
         }
 
         //Falsify sending of email in order to see previewed body
-        if (emailTemplateSelection != null) {
+        try {
             Id templateId = [SELECT Id FROM EmailTemplate WHERE Name = :emailTemplateSelection LIMIT 1].Id;
 
             Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
@@ -114,8 +132,10 @@ public with sharing class SendCaseEmailController {
             Database.rollback(sp);
             System.debug('SendCaseEmailController::: renderEmail:: ' + string.valueOf(email));
             emailOutput = email.getPlainTextBody();
+
+            disabledButton = false;
         }
-        else {
+        catch (exception ex) {
             ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'You did not select an Email Template. Please select an Email Template, then try again. ');
             ApexPages.addMessage(errorMessage);
             System.debug(errorMessage);
@@ -162,14 +182,15 @@ public with sharing class SendCaseEmailController {
             //CaseEmail.sendMCCFLGNCreated1(caseList);
         }
         else if (emailTemplateSelection == 'Grievance Investigation - Driver Statement') { //**** Need the Driver's email
-            if (isUserEmailValid(directEmail) == true) {
-                toRecipients.add(directEmail);
-            }
-            else {
-                ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Unable to send email. Please check that the additional email is correct and try again.');
-                ApexPages.addMessage(errorMessage);
-                System.debug(errorMessage);
-                return;
+            if (directEmail != '') {
+                if (isUserEmailValid(directEmail) == true) {
+                    toRecipients.add(directEmail);
+                } else {
+                    ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Unable to send email. Please check that the additional email is correct and try again.');
+                    ApexPages.addMessage(errorMessage);
+                    System.debug(errorMessage);
+                    return;
+                }
             }
 
             System.debug('RECIPIENTS: ' + toRecipients);
@@ -179,14 +200,15 @@ public with sharing class SendCaseEmailController {
             //CaseEmail.sendDriverStatement(caseList);
         }
         else if (emailTemplateSelection == 'Grievance Investigation - Trip Log') { //**** Need to know the email of who the Trip Log is requested from
-            if (isUserEmailValid(directEmail) == true) {
-                toRecipients.add(directEmail);
-            }
-            else {
-                ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Unable to send email. Please check that the additional email is correct and try again.');
-                ApexPages.addMessage(errorMessage);
-                System.debug(errorMessage);
-                return;
+            if (directEmail != '') {
+                if (isUserEmailValid(directEmail) == true) {
+                    toRecipients.add(directEmail);
+                } else {
+                    ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Unable to send email. Please check that the additional email is correct and try again.');
+                    ApexPages.addMessage(errorMessage);
+                    System.debug(errorMessage);
+                    return;
+                }
             }
 
             Contact c = [SELECT Id, Email FROM Contact WHERE Id =: gn.ContactId LIMIT 1];
@@ -197,22 +219,24 @@ public with sharing class SendCaseEmailController {
         }
         else if (emailTemplateSelection == 'HCA/HCIC: Grievance Resolved - 1') {
             System.debug('OWNER: ' + string.valueOf(gn.OwnerId));
-            User u = [SELECT Id, Email FROM User WHERE Id =: gn.OwnerId];
-            toRecipients.add(u.Email);
-            targetObjectId = u.Id;
+            Contact c = [SELECT Id, Email FROM Contact WHERE Id =: gn.ContactId LIMIT 1];
+            targetObjectId = c.Id;
+            toRecipients.add(c.Email);
             success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
             //CaseEmail.sendResolved1(caseList);
         }
         else if (emailTemplateSelection == 'MCCVA: Grievance Resolved - 2') { //**** Need to know the small group this sends to
             toRecipients.add('k@ikrizia.com');
             toRecipients.add('krizia.buck@revcult.com');
-          // targetObjectId =
+            Contact c = [SELECT Id, Email FROM Contact WHERE Id =: gn.ContactId LIMIT 1];
+            targetObjectId = c.Id;
             success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
             //CaseEmail.sendResolved2(caseList);
         }
         else if (emailTemplateSelection == 'MCCFL: Grievance Resolved - 3') { //**** Need to know the same email it goes to each time
             toRecipients.add('kriziabuck@gmail.com');
-         // targetObjectId =
+            Contact c = [SELECT Id, Email FROM Contact WHERE Id =: gn.ContactId LIMIT 1];
+            targetObjectId = c.Id;
             success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
             //CaseEmail.sendResolved3(caseList);
         }
@@ -224,9 +248,9 @@ public with sharing class SendCaseEmailController {
         System.debug('SUCCESS: ' + string.valueOf(success));
 
 
-        //Display success and close modal
+        //Display success
         if (success == true){
-            ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.INFO, 'Email sent. You may send another email or close the window.');
+            ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.CONFIRM, 'Email sent. You may send another email or close the window.');
             ApexPages.addMessage(errorMessage);
             System.debug(errorMessage);
         }
@@ -235,6 +259,9 @@ public with sharing class SendCaseEmailController {
             ApexPages.addMessage(errorMessage);
             System.debug(errorMessage);
         }
+
+        //reset button so that they have to go through the entire process of selection and preview again
+        disabledButton = true;
     }
 
 

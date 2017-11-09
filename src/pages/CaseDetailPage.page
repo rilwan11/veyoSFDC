@@ -59,8 +59,8 @@
                 <apex:commandButton value="Save Changes" status="updatingPicklists" action="{!updatePicklists}" /> <!--onComplete="window.top.location='/console';"/> -->
                 <apex:actionStatus startText="saving..." stopText="" id="updatingPicklists" />
                 <apex:commandButton action="{!cancel}" immediate="true" value="Cancel"/>
-                <apex:commandButton action="{!URLFOR($Action.Case.Email_Modal, Id)}" immediate="true" value="Send Emails" />
-                <apex:commandButton value="Clay's Button" id="buttoncb" onclick="javascript: emailsModal()" onComplete="return null;"/> <!-- work on this part -->
+           <!--     <apex:commandButton action="{!URLFOR($Action.Case.Email_Modal, Id)}" immediate="true" value="Send Emails" /> -->
+                <apex:commandButton value="Send Emails" id="buttonEmail" onclick="javascript: emailsModal()" onComplete="return null;"/> <!-- work on this part -->
 
            <!--     <apex:commandButton action="{!save}" value="Save Grievance" /> -->
             </apex:pageBlockButtons>
@@ -109,7 +109,7 @@
         <apex:pageBlock title="Member Client Comments">
             <apex:pageBlockSection>
                 <apex:inputTextArea value="{!gn.Description}" />
-                <apex:inputField value="{!gn.Priority}" />
+                <apex:outputField value="{!gn.Priority}" />
             </apex:pageBlockSection>
         </apex:pageBlock>
 
