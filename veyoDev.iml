@@ -199,6 +199,10 @@
                             <option name="name" value="CaseConfiguredPicklistsController" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="AccountTriggerHandler" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
                         </list>
                       </option>
                       <option name="name" value="ApexClass" />
@@ -470,6 +474,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CaseTrigger" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="AccountTrigger" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>

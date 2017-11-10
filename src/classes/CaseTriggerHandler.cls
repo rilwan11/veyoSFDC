@@ -357,91 +357,136 @@ public with sharing class CaseTriggerHandler {
      * @param a
      */
     public static void sendEmail(Case c, Account a) {
-        System.debug('CaseTriggerHandler::: sendEmail:: ');
+        Contact defaultEmail = [SELECT Id, FirstName, LastName, Email
+                                    FROM Contact
+                                    WHERE Email = :a.Default_Account_Email_Address__c
+                                    LIMIT 1];
+        System.debug('CaseTriggerHandler::: sendEmail:: default account email address: ' + string.valueOf(a.Default_Account_Email_Address__c));
+
 
         //Check to see if an Automatic Event matches this Status
         if (a.Automatic_Event_1__c != null) {
             //Recipients
             String[] toRecipients = new List<String>();
+            Id targetId;
             if (a.Automatic_Event_1__c.contains(c.Status)) {
                 System.debug('1: ' + string.valueOf(a.Automatic_Event_1__c));
                 //Go through recipients
                 if (a.Email_Recipient_1__c == 'Submitting Contact') {
                     toRecipients.add(c.ContactEmail);
-                } else {
+                    targetId = c.ContactId;
+                }
+                else if (a.Email_Recipient_1__c == 'Default Account Email Address') {
+                    toRecipients.add(defaultEmail.Email);
+                    targetId = defaultEmail.Id;
+                }
+                else {
                     toRecipients.add(String.valueOf(a.Default_Account_Email_Address__c));
                     toRecipients.add(c.ContactEmail);
+                    targetId = c.ContactId;
                 }
                 System.debug('CaseTriggerHandler::: sendEmail:: 1 ' + string.valueOf(toRecipients));
-                Boolean result = CaseEmail.sendEmailFromModal(c, toRecipients, c.ContactId, a.Email_Template_1__c);
+                Boolean result = CaseEmail.sendEmailFromModal(c, toRecipients, targetId, a.Email_Template_1__c);
                 System.debug('automatic 1: ' + string.valueOf(result));
             }
         }
         if (a.Automatic_Event_2__c != null) {
             //Recipients
             String[] toRecipients = new List<String>();
+            Id targetId;
             if (a.Automatic_Event_2__c.contains(c.Status)) {
                 System.debug('2: ' + string.valueOf(a.Automatic_Event_2__c));
                 //Go through recipients
                 if (a.Email_Recipient_2__c == 'Submitting Contact') {
                     toRecipients.add(c.ContactEmail);
-                } else {
+                    targetId = c.ContactId;
+                }
+                else if (a.Email_Recipient_2__c == 'Default Account Email Address') {
+                    toRecipients.add(defaultEmail.Email);
+                    targetId = defaultEmail.Id;
+                }
+                else {
                     toRecipients.add(String.valueOf(a.Default_Account_Email_Address__c));
                     toRecipients.add(c.ContactEmail);
+                    targetId = c.ContactId;
                 }
                 System.debug('CaseTriggerHandler::: sendEmail:: 2 ' + string.valueOf(toRecipients));
-                Boolean result = CaseEmail.sendEmailFromModal(c, toRecipients, c.ContactId, a.Email_Template_2__c);
+                Boolean result = CaseEmail.sendEmailFromModal(c, toRecipients, targetId, a.Email_Template_2__c);
                 System.debug('automatic 2: ' + string.valueOf(result));
             }
         }
         if (a.Automatic_Event_3__c != null) {
             //Recipients
             String[] toRecipients = new List<String>();
+            Id targetId;
             if (a.Automatic_Event_3__c.contains(c.Status)) {
                 System.debug('3: ' + string.valueOf(a.Automatic_Event_3__c));
                 //Go through recipients
                 if (a.Email_Recipient_3__c == 'Submitting Contact') {
                     toRecipients.add(c.ContactEmail);
-                } else {
+                    targetId = c.ContactId;
+                }
+                else if (a.Email_Recipient_3__c == 'Default Account Email Address') {
+                    toRecipients.add(defaultEmail.Email);
+                    targetId = defaultEmail.Id;
+                }
+                else {
                     toRecipients.add(String.valueOf(a.Default_Account_Email_Address__c));
                     toRecipients.add(c.ContactEmail);
+                    targetId = c.ContactId;
                 }
                 System.debug('CaseTriggerHandler::: sendEmail:: 3 ' + string.valueOf(toRecipients));
-                Boolean result = CaseEmail.sendEmailFromModal(c, toRecipients, c.ContactId, a.Email_Template_3__c);
+                Boolean result = CaseEmail.sendEmailFromModal(c, toRecipients, targetId, a.Email_Template_3__c);
                 System.debug('automatic 3: ' + string.valueOf(result));
             }
         }
         if (a.Automatic_Event_4__c != null) {
             //Recipients
             String[] toRecipients = new List<String>();
+            Id targetId;
             if (a.Automatic_Event_4__c.contains(c.Status)) {
                 System.debug('4: ' + string.valueOf(a.Automatic_Event_4__c));
                 //Go through recipients
                 if (a.Email_Recipient_4__c == 'Submitting Contact') {
                     toRecipients.add(c.ContactEmail);
-                } else {
+                    targetId = c.ContactId;
+                }
+                else if (a.Email_Recipient_4__c == 'Default Account Email Address') {
+                    toRecipients.add(defaultEmail.Email);
+                    targetId = defaultEmail.Id;
+                }
+                else {
                     toRecipients.add(String.valueOf(a.Default_Account_Email_Address__c));
                     toRecipients.add(c.ContactEmail);
+                    targetId = c.ContactId;
                 }
                 System.debug('CaseTriggerHandler::: sendEmail:: 4 ' + string.valueOf(toRecipients));
-                Boolean result = CaseEmail.sendEmailFromModal(c, toRecipients, c.ContactId, a.Email_Template_4__c);
+                Boolean result = CaseEmail.sendEmailFromModal(c, toRecipients, targetId, a.Email_Template_4__c);
                 System.debug('automatic 4: ' + string.valueOf(result));
             }
         }
         if (a.Automatic_Event_5__c != null) {
             //Recipients
             String[] toRecipients = new List<String>();
+            Id targetId;
             if (a.Automatic_Event_5__c.contains(c.Status)) {
                 System.debug('5: ' + string.valueOf(a.Automatic_Event_5__c));
                 //Go through recipients
                 if (a.Email_Recipient_5__c == 'Submitting Contact') {
                     toRecipients.add(c.ContactEmail);
-                } else {
+                    targetId = c.ContactId;
+                }
+                else if (a.Email_Recipient_5__c == 'Default Account Email Address') {
+                    toRecipients.add(defaultEmail.Email);
+                    targetId = defaultEmail.Id;
+                }
+                else {
                     toRecipients.add(String.valueOf(a.Default_Account_Email_Address__c));
                     toRecipients.add(c.ContactEmail);
+                    targetId = c.ContactId;
                 }
                 System.debug('CaseTriggerHandler::: sendEmail:: 5 ' + string.valueOf(toRecipients));
-                Boolean result = CaseEmail.sendEmailFromModal(c, toRecipients, c.ContactId, a.Email_Template_5__c);
+                Boolean result = CaseEmail.sendEmailFromModal(c, toRecipients, targetId, a.Email_Template_5__c);
                 System.debug('automatic 5: ' + string.valueOf(result));
             }
         }
