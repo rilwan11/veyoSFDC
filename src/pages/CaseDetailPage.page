@@ -87,6 +87,11 @@
                 <apex:outputField value="{!gn.Follow_Up_Completed__c}" />
                 <apex:pageBlockSectionItem />
                 <apex:inputTextArea value="{!gn.Follow_Up_Comments__c}" />
+                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Comments__c.inlineHelpText}">
+                        {!$ObjectType.Case.fields.Follow_Up_Comments__c.label}
+                    <apex:inputText value="{!gn.Follow_Up_Comments__c}" />
+                </apex:pageBlockSectionItem>
+
             </apex:pageBlockSection>
         </apex:pageBlock>
 
