@@ -158,6 +158,7 @@ public with sharing class SendCaseEmailController {
         if (emailTemplateSelection == 'KHB - Test Incoming Email') {
             Contact c = [SELECT Id, Email FROM Contact WHERE Id =: gn.ContactId LIMIT 1];
             toRecipients.add(c.Email);
+            targetObjectId = gn.ContactId;
 
             if (directEmail != '') {
                 if (isUserEmailValid(directEmail) == true) {
@@ -171,17 +172,16 @@ public with sharing class SendCaseEmailController {
                 }
             }
             System.debug('RECIPIENTS: ' + toRecipients);
-            targetObjectId = gn.ContactId;
             success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
         }
         else if (emailTemplateSelection == 'MCCFL Only: Grievance Created - 1') { //***** Need Email this one always goes to
-            toRecipients.add('krizia.buck@revcult.com');
-            targetObjectId = [SELECT Id FROM Contact WHERE Id =: gn.ContactId LIMIT 1].Id;
-         //   targetObjectId =
+            Contact c = [SELECT Id, Email FROM Contact WHERE Id =: gn.ContactId LIMIT 1];
+            toRecipients.add(c.Email);
+            targetObjectId = c.Id;
             success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
             //CaseEmail.sendMCCFLGNCreated1(caseList);
         }
-        else if (emailTemplateSelection == 'Grievance Investigation - Driver Statement') { //**** Need the Driver's email
+        else if (emailTemplateSelection == 'Grievance Investigation - Driver Statement' || emailTemplateSelection == 'Grievance Investigation - Trip Log') { //ONLY SEND TO DRIVER
             if (directEmail != '') {
                 if (isUserEmailValid(directEmail) == true) {
                     toRecipients.add(directEmail);
@@ -191,51 +191,51 @@ public with sharing class SendCaseEmailController {
                     System.debug(errorMessage);
                     return;
                 }
-            }
 
-            System.debug('RECIPIENTS: ' + toRecipients);
-            Contact c = [SELECT Id, Email FROM Contact WHERE Id =: gn.ContactId LIMIT 1];
-            targetObjectId = c.Id;
-            success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
-            //CaseEmail.sendDriverStatement(caseList);
-        }
-        else if (emailTemplateSelection == 'Grievance Investigation - Trip Log') { //**** Need to know the email of who the Trip Log is requested from
-            if (directEmail != '') {
-                if (isUserEmailValid(directEmail) == true) {
-                    toRecipients.add(directEmail);
+
+                //Check if the driver email already exists
+                List<Contact> cList = new List<Contact>();
+                Contact c;
+                cList = [SELECT Id, Email FROM Contact WHERE Email = :directEmail];
+
+                //Use existing driver or make a new one
+                if (cList.size() > 0) {
+                    c = cList.get(0);
                 } else {
-                    ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Unable to send email. Please check that the additional email is correct and try again.');
-                    ApexPages.addMessage(errorMessage);
-                    System.debug(errorMessage);
-                    return;
+                    c = new Contact(FirstName = 'requesting info from', LastName = 'Driver', Email = directEmail);
+                    insert c;
                 }
+
+                System.debug('RECIPIENTS: ' + toRecipients);
+                targetObjectId = c.Id;
+                System.debug(c);
+                success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
             }
-
-            Contact c = [SELECT Id, Email FROM Contact WHERE Id =: gn.ContactId LIMIT 1];
-            targetObjectId = c.Id;
-            success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
-
-            //CaseEmail.sendTripLog(caseList);
+            else {
+                ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Unable to send email. Please add an Email Address and try again.');
+                ApexPages.addMessage(errorMessage);
+                System.debug(errorMessage);
+                return;
+            }
         }
         else if (emailTemplateSelection == 'HCA/HCIC: Grievance Resolved - 1') {
             System.debug('OWNER: ' + string.valueOf(gn.OwnerId));
             Contact c = [SELECT Id, Email FROM Contact WHERE Id =: gn.ContactId LIMIT 1];
-            targetObjectId = c.Id;
             toRecipients.add(c.Email);
+            targetObjectId = c.Id;
             success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
             //CaseEmail.sendResolved1(caseList);
         }
         else if (emailTemplateSelection == 'MCCVA: Grievance Resolved - 2') { //**** Need to know the small group this sends to
-            toRecipients.add('k@ikrizia.com');
-            toRecipients.add('krizia.buck@revcult.com');
             Contact c = [SELECT Id, Email FROM Contact WHERE Id =: gn.ContactId LIMIT 1];
+            toRecipients.add(c.Email);
             targetObjectId = c.Id;
             success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
             //CaseEmail.sendResolved2(caseList);
         }
         else if (emailTemplateSelection == 'MCCFL: Grievance Resolved - 3') { //**** Need to know the same email it goes to each time
-            toRecipients.add('kriziabuck@gmail.com');
             Contact c = [SELECT Id, Email FROM Contact WHERE Id =: gn.ContactId LIMIT 1];
+            toRecipients.add(c.Email);
             targetObjectId = c.Id;
             success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
             //CaseEmail.sendResolved3(caseList);
