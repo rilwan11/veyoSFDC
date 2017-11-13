@@ -8,10 +8,6 @@ public with sharing class veyoCallCenterCaseSubmission_Test {
      * Krizia: Test call center landing page (veyoCallCenterCaseSubmission.page) with controller of (veyoCallCenterCaseSubmissionController)
      */
     public static testMethod void testVeyoCallCenterCaseSubmissionController() {
-        PageReference pageRef = Page.veyoCallCenterCaseSubmission;
-        Test.setCurrentPage(pageRef);
-
-        veyoCallCenterCaseSubmissionController controller = new veyoCallCenterCaseSubmissionController();
 
         //Insert Test data
         Id aRecordType = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Client').getRecordTypeId();
@@ -57,12 +53,19 @@ public with sharing class veyoCallCenterCaseSubmission_Test {
         insert c;
 
         // Add parameters to page URL
+        PageReference pageRef = Page.veyoCallCenterCaseSubmission;
+        Test.setCurrentPage(pageRef);
+
         ApexPages.currentPage().getParameters().put('AccountId', 'Test Account');
+        veyoCallCenterCaseSubmissionController controller = new veyoCallCenterCaseSubmissionController();
+        controller.save();
+        ApexPages.currentPage().getParameters().put('Incident Type', 'Grievance Note');
+        controller.save();
         ApexPages.currentPage().getParameters().put('Member Name', 'Johnny');
         controller.save();
         ApexPages.currentPage().getParameters().put('Member ID', '11223344');
+        ApexPages.currentPage().getParameters().put('Contact ID', c.Id);
         controller.save();
-        ApexPages.currentPage().getParameters().put('Incident Type', 'Grievance Note');
 
         Test.startTest();
         List<SelectOption> options = controller.getCaseSubmissionTypes();

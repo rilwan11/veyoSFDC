@@ -393,7 +393,7 @@
         <apex:pageBlock title="Additional Information" >
             <apex:pageBlockSection >
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.ContactId.inlineHelpText}">
-                    {!$ObjectType.Case.fields.ContactId.label}
+                    Submitting Contact <!-- {!$ObjectType.Case.fields.ContactId.label} -->
                     <apex:inputField value="{!gn.ContactId}" />
                 </apex:pageBlockSectionItem>
 
@@ -403,7 +403,7 @@
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.ContactEmail.inlineHelpText}">
-                    {!$ObjectType.Case.fields.ContactEmail.label}
+                    Submitting Contact Email <!-- {!$ObjectType.Case.fields.ContactEmail.label} -->
                     <apex:outputField value="{!gn.ContactEmail}" />
                 </apex:pageBlockSectionItem>
 
@@ -413,7 +413,7 @@
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.ContactPhone.inlineHelpText}">
-                {!$ObjectType.Case.fields.ContactPhone.label}
+                    Submitting Contact Phone <!-- {!$ObjectType.Case.fields.ContactPhone.label} -->
                     <apex:outputField value="{!gn.ContactPhone}" />
                 </apex:pageBlockSectionItem>
 
@@ -495,14 +495,5 @@
                   testSetTabTitle();
           }
     </script>
-<!--
-        <apex:pageBlock id="relatedLists" >
-            <apex:relatedList list="Case_Aging_History__r" title="Case Status History"/>
-            <apex:relatedList list="Open Activities" />
-            <apex:relatedList list="Activity History" />
-            <apex:relatedList list="Attachments" />
-            <apex:relatedList list="Grievance History" />
-        </apex:pageBlock>
--->
 
 </apex:page>

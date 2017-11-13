@@ -5,8 +5,8 @@
 public with sharing class SendCaseEmailController_Test {
 
     /**
- * Krizia: Test Grievance detail page popup for sending emails (SendCaseEmail.page) with controller of (SendCaseEmailController)
- */
+     * Krizia: Test Grievance detail page popup for sending emails (SendCaseEmail.page) with controller of (SendCaseEmailController)
+     */
     public static testMethod void testSendCaseEmailController() {
 
         Id aRecordType = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Client').getRecordTypeId();
@@ -28,6 +28,11 @@ public with sharing class SendCaseEmailController_Test {
                 Expedited_Priority_Days__c = 3
         );
         insert a;
+        Contact defaultEmail = new Contact(
+                LastName = 'Default Account Email Address',
+                Email = a.Default_Account_Email_Address__c
+        );
+        insert defaultEmail;
         Contact cont = new Contact(
                 LastName = 'Jones',
                 Email = 'test@tester.com',
@@ -45,28 +50,38 @@ public with sharing class SendCaseEmailController_Test {
         insert c;
 
 
+        PageReference pageRef = Page.SendCaseEmail;
+        Test.setCurrentPage(pageRef);
+        ApexPages.currentPage().getParameters().put('a', a.Id);
+        ApexPages.currentPage().getParameters().put('Id', c.Id);
         ApexPages.StandardController stdController = new ApexPages.StandardController(c);
         SendCaseEmailController controller = new SendCaseEmailController(stdController);
-        PageReference pageRef = Page.CaseDetailPage;
-        Test.setCurrentPage(pageRef);
 
         //NEED TO BE ABLE TO QUERY THE CASE/ACCOUNT in the actual Controller for this to work
 
         // Add parameters to page URL
+        test.startTest();
         List<SelectOption> options = controller.getEmailTemplates();
+        controller.templateSelection();
         ApexPages.currentPage().getParameters().put('Email Template', '');
         controller.renderEmail();
-        controller.onSend();
-        // controller.templateSelection();
+        options = controller.getEmailTemplates(); 
         ApexPages.currentPage().getParameters().put('Email Template', 'HCA/HCIC: Grievance Resolved - 1');
         controller.renderEmail();
         controller.onSend();
         ApexPages.currentPage().getParameters().put('Email Template', 'Grievance Investigation - Driver Statement');
         controller.renderEmail();
+        ApexPages.currentPage().getParameters().put('directEmail', 'incorrect');
+        controller.renderEmail();
+        ApexPages.currentPage().getParameters().put('directEmail', cont.Email);
+        controller.renderEmail();
+        controller.onSend();
+        ApexPages.currentPage().getParameters().put('Email Template', 'KHB - Test Incoming Email');
         ApexPages.currentPage().getParameters().put('Additional Email Text', 'just something I want to say');
         controller.renderEmail();
         controller.onSend();
-
+        test.stopTest();
+        
 
     } //public static testMethod void testSendCaseEmailController()
 
