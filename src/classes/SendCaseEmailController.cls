@@ -28,9 +28,9 @@ public with sharing class SendCaseEmailController {
                 FROM Case
                 WHERE Id =: recordId
                 LIMIT 1];
-        a = [SELECT Id, Default_Account_Email_Address__c, Email_Template_1__c, Email_Template_2__c, Email_Template_3__c,
+        a = [SELECT Id /* Default_Account_Email_Address__c, Email_Template_1__c, Email_Template_2__c, Email_Template_3__c,
                 Email_Template_4__c, Email_Template_5__c, Email_Recipient_1__c, Email_Recipient_2__c, Email_Recipient_3__c,
-                Email_Recipient_4__c, Email_Recipient_5__c
+                Email_Recipient_4__c, Email_Recipient_5__c */
                 FROM Account
                 WHERE Id =: gn.AccountId
                 LIMIT 1];
@@ -62,6 +62,8 @@ public with sharing class SendCaseEmailController {
         System.debug('SendCaseEmailController::: templateSelection :: ' + string.valueOf(emailTemplateSelection));
         //Reset the additional email
         System.currentPageReference().getParameters().put('directEmail', '');
+        emailSubject = '';
+        emailOutput = '';
 
         if (emailTemplateSelection == '--None--' || emailTemplateSelection == null) {
             ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'You did not select a Template. Please select an Email Template. ');

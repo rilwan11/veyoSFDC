@@ -29,6 +29,10 @@
             var j$ = jQuery.noConflict();
 
             var iframe_url = '{!URLFOR("/apex/SendCaseEmail")}'+'isdtp=vw&id='+'{!Case.Id}';
+            var wWidth = $(window).width();
+            var dWidth = wWidth * 0.8;
+            var wHeight = $(window).height();
+            var dHeight = wHeight * 0.8;
 
             var j$modalDialog = j$('<div></div>')
                 .html('<iframe id="iframeContentId" src="' + iframe_url + '" frameborder="0" height="100%" width="100%" marginheight="0" marginwidth="0" scrolling="yes" />')
@@ -36,11 +40,11 @@
                 autoOpen: true,
                 title: 'Send Grievance Note Email',
                 resizable: false,
-                width: 800,
-                height: 600,
+                width: dWidth,
+                height: dHeight,
                 autoResize: true,
                 modal: true,
-                draggable: true,
+                draggable: false,
                 buttons: {
                 "Cancel": function() {
                 j$(this).dialog("close");
