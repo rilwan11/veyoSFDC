@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="31df91ac-2f59-4d2a-8840-733adc358db0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls" afterPath="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController_Test.cls" afterPath="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController_Test.cls" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/classes/CaseEmailServiceHandler_Test.cls" afterPath="$PROJECT_DIR$/src/classes/CaseEmailServiceHandler_Test.cls" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/classes/SendCaseEmailController_Test.cls" afterPath="$PROJECT_DIR$/src/classes/SendCaseEmailController_Test.cls" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmission_Test.cls" afterPath="$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmission_Test.cls" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/CaseDetailPage.page" afterPath="$PROJECT_DIR$/src/pages/CaseDetailPage.page" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,45 +15,35 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/veyoDev$CaseEmailServiceHandler_Test.coverage" NAME="veyoDev Coverage Results" MODIFIED="1510590267292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="Apex" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" PROJECT_NAME="veyoDev" CONNECTION_NAME="veyoDev" />
+    <SUITE FILE_PATH="coverage/veyoDev$veyoCallCenterCaseSubmission_Test_testVeyoCallCenterCaseSubmissionController.coverage" NAME="veyoDev Coverage Results" MODIFIED="1510593437772" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="Apex" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" PROJECT_NAME="veyoDev" CONNECTION_NAME="veyoDev" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CaseEmailServiceHandler_Test.cls" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classes/CaseEmailServiceHandler_Test.cls">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="91" column="0" lean-forward="true" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="veyoCallCenterCaseSubmission_Test.cls" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmission_Test.cls">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="11" column="26" lean-forward="true" selection-start-line="11" selection-start-column="26" selection-end-line="12" selection-end-column="111" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CaseConfiguredPicklistsController_Test.cls" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController_Test.cls">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="65" column="37" lean-forward="true" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SendCaseEmailController_Test.cls" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/classes/SendCaseEmailController_Test.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="67" column="50" lean-forward="false" selection-start-line="67" selection-start-column="50" selection-end-line="67" selection-end-column="50" />
+            <state relative-caret-position="99">
+              <caret line="43" column="13" lean-forward="true" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SendCaseEmail.page" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/SendCaseEmail.page">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="32" column="53" lean-forward="false" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SendCaseEmailController.cls" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/classes/SendCaseEmailController.cls">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3258">
+              <caret line="11" column="54" lean-forward="true" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -79,6 +65,8 @@
       <find>created</find>
       <find>openEmailModal</find>
       <find>follow up comments</find>
+      <find>par</find>
+      <find>input</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -106,8 +94,8 @@
         <option value="$PROJECT_DIR$/src/classes/CaseTrigger_Test.cls" />
         <option value="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController_Test.cls" />
         <option value="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls" />
-        <option value="$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmission_Test.cls" />
         <option value="$PROJECT_DIR$/src/classes/CaseEmailServiceHandler_Test.cls" />
+        <option value="$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmission_Test.cls" />
         <option value="$PROJECT_DIR$/src/classes/SendCaseEmailController_Test.cls" />
       </list>
     </option>
@@ -149,8 +137,8 @@
                       <entry key="CLASSES/CASETRIGGER_TEST.CLS" value="1510453844886" />
                       <entry key="CLASSES/CHANGEPASSWORDCONTROLLERTEST.CLS" value="1510587171687" />
                       <entry key="CLASSES/SENDCASEEMAILCONTROLLER.CLS" value="1510334387524" />
-                      <entry key="CLASSES/SENDCASEEMAILCONTROLLER_TEST.CLS" value="1510590921598" />
-                      <entry key="CLASSES/VEYOCALLCENTERCASESUBMISSION_TEST.CLS" value="1510587972608" />
+                      <entry key="CLASSES/SENDCASEEMAILCONTROLLER_TEST.CLS" value="1510622755572" />
+                      <entry key="CLASSES/VEYOCALLCENTERCASESUBMISSION_TEST.CLS" value="1510621065092" />
                       <entry key="PAGES/CASEDETAILPAGE.PAGE" value="1510586319958" />
                       <entry key="PAGES/SENDCASEEMAIL.PAGE" value="1510239879742" />
                       <entry key="TRIGGERS/ACCOUNTTRIGGER.TRIGGER" value="1510326773681" />
@@ -2478,8 +2466,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="-1920" />
-    <option name="y" value="-115" />
+    <option name="x" value="-3840" />
+    <option name="y" value="-388" />
     <option name="width" value="1920" />
     <option name="height" value="1080" />
   </component>
@@ -2545,44 +2533,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Apex Unit Tests.CaseEmailServiceHandler_Test">
-    <configuration name="CaseConfiguredPicklistsController_Test.testCaseConfiguredPicklistsController" type="com.illuminatedcloud.intellij" factoryName="Apex Unit Tests" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
-      <option name="allTests" value="false" />
-      <option name="apexLogLevel" value="DEBUG" />
-      <option name="calloutsLogLevel" value="INFO" />
-      <option name="connectionName" value="veyoDev" />
-      <option name="contextConfiguration" value="true" />
-      <option name="databaseLogLevel" value="INFO" />
-      <option name="logLevelsInitialized" value="false" />
-      <option name="moduleToTestClassNames">
-        <map>
-          <entry key="veyoDev">
-            <value>
-              <set>
-                <option value="CaseConfiguredPicklistsController_Test" />
-              </set>
-            </value>
-          </entry>
-        </map>
-      </option>
-      <option name="profilingLogLevel" value="INFO" />
-      <option name="systemLogLevel" value="DEBUG" />
-      <option name="testClassToTestMethodNames">
-        <map>
-          <entry key="CaseConfiguredPicklistsController_Test">
-            <value>
-              <set>
-                <option value="testCaseConfiguredPicklistsController" />
-              </set>
-            </value>
-          </entry>
-        </map>
-      </option>
-      <option name="testSuiteName" />
-      <option name="validationLogLevel" value="INFO" />
-      <option name="visualforceLogLevel" value="INFO" />
-      <option name="workflowLogLevel" value="INFO" />
-    </configuration>
+  <component name="RunManager" selected="Apex Unit Tests.veyoCallCenterCaseSubmission_Test.testVeyoCallCenterCaseSubmissionController">
     <configuration name="CaseEmailServiceHandler_Test" type="com.illuminatedcloud.intellij" factoryName="Apex Unit Tests" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <option name="allTests" value="false" />
       <option name="apexLogLevel" value="DEBUG" />
@@ -2788,20 +2739,57 @@
       <option name="visualforceLogLevel" value="INFO" />
       <option name="workflowLogLevel" value="INFO" />
     </configuration>
+    <configuration name="veyoCallCenterCaseSubmission_Test.testVeyoCallCenterCaseSubmissionController" type="com.illuminatedcloud.intellij" factoryName="Apex Unit Tests" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allTests" value="false" />
+      <option name="apexLogLevel" value="DEBUG" />
+      <option name="calloutsLogLevel" value="INFO" />
+      <option name="connectionName" value="veyoDev" />
+      <option name="contextConfiguration" value="true" />
+      <option name="databaseLogLevel" value="INFO" />
+      <option name="logLevelsInitialized" value="false" />
+      <option name="moduleToTestClassNames">
+        <map>
+          <entry key="veyoDev">
+            <value>
+              <set>
+                <option value="veyoCallCenterCaseSubmission_Test" />
+              </set>
+            </value>
+          </entry>
+        </map>
+      </option>
+      <option name="profilingLogLevel" value="INFO" />
+      <option name="systemLogLevel" value="DEBUG" />
+      <option name="testClassToTestMethodNames">
+        <map>
+          <entry key="veyoCallCenterCaseSubmission_Test">
+            <value>
+              <set>
+                <option value="testVeyoCallCenterCaseSubmissionController" />
+              </set>
+            </value>
+          </entry>
+        </map>
+      </option>
+      <option name="testSuiteName" />
+      <option name="validationLogLevel" value="INFO" />
+      <option name="visualforceLogLevel" value="INFO" />
+      <option name="workflowLogLevel" value="INFO" />
+    </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Apex Unit Tests.CaseConfiguredPicklistsController_Test.testCaseConfiguredPicklistsController" />
-      <item index="1" class="java.lang.String" itemvalue="Apex Unit Tests.CaseEmailServiceHandler_Test.testBehavior" />
-      <item index="2" class="java.lang.String" itemvalue="Apex Unit Tests.veyoCallCenterCaseSubmission_Test" />
-      <item index="3" class="java.lang.String" itemvalue="Apex Unit Tests.SendCaseEmailController_Test" />
-      <item index="4" class="java.lang.String" itemvalue="Apex Unit Tests.CaseEmailServiceHandler_Test" />
+      <item index="0" class="java.lang.String" itemvalue="Apex Unit Tests.CaseEmailServiceHandler_Test.testBehavior" />
+      <item index="1" class="java.lang.String" itemvalue="Apex Unit Tests.veyoCallCenterCaseSubmission_Test" />
+      <item index="2" class="java.lang.String" itemvalue="Apex Unit Tests.SendCaseEmailController_Test" />
+      <item index="3" class="java.lang.String" itemvalue="Apex Unit Tests.CaseEmailServiceHandler_Test" />
+      <item index="4" class="java.lang.String" itemvalue="Apex Unit Tests.veyoCallCenterCaseSubmission_Test.testVeyoCallCenterCaseSubmissionController" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Apex Unit Tests.CaseEmailServiceHandler_Test" />
-        <item index="1" class="java.lang.String" itemvalue="Apex Unit Tests.CaseEmailServiceHandler_Test.testBehavior" />
-        <item index="2" class="java.lang.String" itemvalue="Apex Unit Tests.SendCaseEmailController_Test" />
-        <item index="3" class="java.lang.String" itemvalue="Apex Unit Tests.veyoCallCenterCaseSubmission_Test" />
-        <item index="4" class="java.lang.String" itemvalue="Apex Unit Tests.CaseConfiguredPicklistsController_Test.testCaseConfiguredPicklistsController" />
+        <item index="0" class="java.lang.String" itemvalue="Apex Unit Tests.veyoCallCenterCaseSubmission_Test.testVeyoCallCenterCaseSubmissionController" />
+        <item index="1" class="java.lang.String" itemvalue="Apex Unit Tests.CaseEmailServiceHandler_Test" />
+        <item index="2" class="java.lang.String" itemvalue="Apex Unit Tests.CaseEmailServiceHandler_Test.testBehavior" />
+        <item index="3" class="java.lang.String" itemvalue="Apex Unit Tests.SendCaseEmailController_Test" />
+        <item index="4" class="java.lang.String" itemvalue="Apex Unit Tests.veyoCallCenterCaseSubmission_Test" />
       </list>
     </recent_temporary>
   </component>
@@ -2819,12 +2807,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CaseConfiguredPicklistsController_Test_testCaseConfiguredPicklistsController - 2017.11.13 at 07h 33m 22s.xml">
-      <configuration name="CaseConfiguredPicklistsController_Test.testCaseConfiguredPicklistsController" configurationId="com.illuminatedcloud.intellij" />
-    </history-entry>
-    <history-entry file="CaseConfiguredPicklistsController_Test_testCaseConfiguredPicklistsController - 2017.11.13 at 07h 35m 46s.xml">
-      <configuration name="CaseConfiguredPicklistsController_Test.testCaseConfiguredPicklistsController" configurationId="com.illuminatedcloud.intellij" />
-    </history-entry>
     <history-entry file="CaseConfiguredPicklistsController_Test_testCaseConfiguredPicklistsController - 2017.11.13 at 07h 36m 16s.xml">
       <configuration name="CaseConfiguredPicklistsController_Test.testCaseConfiguredPicklistsController" configurationId="com.illuminatedcloud.intellij" />
     </history-entry>
@@ -2849,6 +2831,12 @@
     <history-entry file="veyoCallCenterCaseSubmission_Test - 2017.11.13 at 07h 42m 00s.xml">
       <configuration name="veyoCallCenterCaseSubmission_Test" configurationId="com.illuminatedcloud.intellij" />
     </history-entry>
+    <history-entry file="veyoCallCenterCaseSubmission_Test_testVeyoCallCenterCaseSubmissionController - 2017.11.13 at 09h 16m 49s.xml">
+      <configuration name="veyoCallCenterCaseSubmission_Test.testVeyoCallCenterCaseSubmissionController" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="veyoCallCenterCaseSubmission_Test_testVeyoCallCenterCaseSubmissionController - 2017.11.13 at 09h 17m 20s.xml">
+      <configuration name="veyoCallCenterCaseSubmission_Test.testVeyoCallCenterCaseSubmissionController" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2860,7 +2848,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1920" y="-115" width="1920" height="1080" extended-state="0" />
+    <frame x="-3840" y="-388" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -3013,13 +3001,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CaseEmailServiceHandler.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="31" column="36" lean-forward="true" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -3109,14 +3090,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/SendCaseEmailController.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5100">
-          <caret line="300" column="77" lean-forward="false" selection-start-line="300" selection-start-column="77" selection-end-line="300" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/AccountTriggerHandler.cls">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
@@ -3133,46 +3106,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CaseDetailPage.page">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="35" column="20" lean-forward="false" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="238" column="54" lean-forward="false" selection-start-line="238" selection-start-column="54" selection-end-line="238" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/veyoCallCenterCaseSubmission.page">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="58" lean-forward="false" selection-start-line="34" selection-start-column="58" selection-end-line="34" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/SendCaseEmail.page">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="37" column="85" lean-forward="false" selection-start-line="37" selection-start-column="85" selection-end-line="37" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmission_Test.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" column="26" lean-forward="true" selection-start-line="11" selection-start-column="26" selection-end-line="12" selection-end-column="111" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CaseTriggerHandler.cls">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -3181,26 +3114,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CaseEmailServiceHandler_Test.cls">
+    <entry file="file://$PROJECT_DIR$/src/classes/CaseEmailServiceHandler.cls">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="91" column="0" lean-forward="true" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+        <state relative-caret-position="476">
+          <caret line="31" column="36" lean-forward="true" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/veyoCallCenterCaseSubmission.page">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2">
+          <caret line="10" column="82" lean-forward="false" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmission_Test.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="554">
+          <caret line="82" column="0" lean-forward="true" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/CaseDetailPage.page">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="62" column="158" lean-forward="false" selection-start-line="62" selection-start-column="155" selection-end-line="62" selection-end-column="158" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-47">
+          <caret line="47" column="7" lean-forward="true" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController_Test.cls">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="65" column="37" lean-forward="true" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
+        <state relative-caret-position="261">
+          <caret line="67" column="64" lean-forward="true" selection-start-line="67" selection-start-column="64" selection-end-line="67" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CaseEmailServiceHandler_Test.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="70" column="36" lean-forward="true" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/SendCaseEmail.page">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="53" lean-forward="false" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/SendCaseEmailController.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3258">
+          <caret line="11" column="54" lean-forward="true" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/SendCaseEmailController_Test.cls">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="67" column="50" lean-forward="false" selection-start-line="67" selection-start-column="50" selection-end-line="67" selection-end-column="50" />
+        <state relative-caret-position="99">
+          <caret line="43" column="13" lean-forward="true" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
           <folding />
         </state>
       </provider>

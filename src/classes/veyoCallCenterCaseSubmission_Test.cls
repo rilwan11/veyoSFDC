@@ -53,26 +53,27 @@ public with sharing class veyoCallCenterCaseSubmission_Test {
         insert c;
 
         // Add parameters to page URL
+        Test.startTest();
         PageReference pageRef = Page.veyoCallCenterCaseSubmission;
         Test.setCurrentPage(pageRef);
 
-        ApexPages.currentPage().getParameters().put('AccountId', 'Test Account');
         veyoCallCenterCaseSubmissionController controller = new veyoCallCenterCaseSubmissionController();
-        controller.save();
-        ApexPages.currentPage().getParameters().put('Incident Type', 'Grievance Note');
-        controller.save();
-        ApexPages.currentPage().getParameters().put('Member Name', 'Johnny');
-        controller.save();
+        PageReference p = controller.save();
+        controller.m_case.accountId = a.Id;
+        system.debug(controller.m_case);
+        List<SelectOption> options = controller.getCaseSubmissionTypes();
+        PageReference p1 = controller.save();
+        system.debug('this is the message 2 '+ ApexPages.getMessages());
+        controller.caseType = 'Grievance Note';
+        PageReference p2 = controller.save();
+        system.debug('this is the message 3 '+ ApexPages.getMessages());
+        controller.m_case.Member_Name__c = 'Johnny';
         ApexPages.currentPage().getParameters().put('Member ID', '11223344');
         ApexPages.currentPage().getParameters().put('Contact ID', c.Id);
-        controller.save();
 
-        Test.startTest();
-        List<SelectOption> options = controller.getCaseSubmissionTypes();
         List<SelectOption> options2 = controller.getCategoryOptions();
         List<SelectOption> options3 = controller.getSubcategoryOptions();
         List<SelectOption> options4 = controller.getServiceModeOptions();
-        Test.stopTest();
 
         system.assertNotEquals(null, options, 'The collection should be instantiated');
         system.assert(!options2.isEmpty(), 'The collection should be populated');
@@ -88,18 +89,12 @@ public with sharing class veyoCallCenterCaseSubmission_Test {
         ApexPages.currentPage().getParameters().put('Contact Name', 'Testy');
         ApexPages.currentPage().getParameters().put('Service Mode', 'ALS');
         ApexPages.currentPage().getParameters().put('Priority', 'General');
-        controller.save();
+        PageReference p3 = controller.save();
+        test.stopTest();
 
-
-        // Instantiate a new controller with all parameters in the page
- /*       controller = new veyoCallCenterCaseSubmissionController();
-        controller.setLastName('lastname');
-        controller.setFirstName('firstname');
-        controller.setCompany('acme');
-        controller.setEmail('firstlast@acme.com'); */
-    //    String nextPage = controller.save().getUrl();
 
         // Verify that the success page displays
+        //    String nextPage = controller.save().getUrl();
     //    System.assertEquals('/apex/veyoCallCenterCaseSubmission', nextPage);
     } //public static testMethod void testCaseConfiguredPicklistsController()
 

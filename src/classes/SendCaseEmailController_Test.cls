@@ -57,29 +57,43 @@ public with sharing class SendCaseEmailController_Test {
         ApexPages.StandardController stdController = new ApexPages.StandardController(c);
         SendCaseEmailController controller = new SendCaseEmailController(stdController);
 
-        //NEED TO BE ABLE TO QUERY THE CASE/ACCOUNT in the actual Controller for this to work
 
         // Add parameters to page URL
         test.startTest();
         List<SelectOption> options = controller.getEmailTemplates();
         controller.templateSelection();
         ApexPages.currentPage().getParameters().put('Email Template', '');
+        controller.emailTemplateSelection = '';
         controller.renderEmail();
-        options = controller.getEmailTemplates(); 
-        ApexPages.currentPage().getParameters().put('Email Template', 'HCA/HCIC: Grievance Resolved - 1');
+        System.debug(ApexPages.getMessages());
+
+        controller.emailTemplateSelection = 'Grievance Investigation - Driver Statement';
+        controller.templateSelection();
         controller.renderEmail();
-        controller.onSend();
-        ApexPages.currentPage().getParameters().put('Email Template', 'Grievance Investigation - Driver Statement');
+        System.debug(ApexPages.getMessages());
+        controller.directEmail = 'incorrect';
         controller.renderEmail();
-        ApexPages.currentPage().getParameters().put('directEmail', 'incorrect');
-        controller.renderEmail();
-        ApexPages.currentPage().getParameters().put('directEmail', cont.Email);
-        controller.renderEmail();
-        controller.onSend();
-        ApexPages.currentPage().getParameters().put('Email Template', 'KHB - Test Incoming Email');
-        ApexPages.currentPage().getParameters().put('Additional Email Text', 'just something I want to say');
+        System.debug(ApexPages.getMessages());
+        controller.directEmail = cont.Email;
         controller.renderEmail();
         controller.onSend();
+        System.debug(ApexPages.getMessages());
+        controller.emailTemplateSelection = 'HCA/HCIC: Grievance Resolved - 1';
+        controller.templateSelection();
+        controller.renderEmail();
+        controller.onSend();
+        System.debug(ApexPages.getMessages());
+        controller.emailTemplateSelection = 'KHB - Test Incoming Email';
+        controller.templateSelection();
+        controller.additionalText = 'just something I want to say';
+        controller.renderEmail();
+        controller.onSend();
+        System.debug(ApexPages.getMessages());
+        controller.emailTemplateSelection = 'MCCFL Only: Grievance Created - 1';
+        controller.templateSelection();
+        controller.renderEmail();
+        controller.onSend();
+        System.debug(ApexPages.getMessages());
         test.stopTest();
         
 
