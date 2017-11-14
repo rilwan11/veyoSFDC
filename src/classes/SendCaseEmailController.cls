@@ -28,9 +28,9 @@ public with sharing class SendCaseEmailController {
                 FROM Case
                 WHERE Id =: recordId
                 LIMIT 1];
-        a = [SELECT Id /* Default_Account_Email_Address__c, Email_Template_1__c, Email_Template_2__c, Email_Template_3__c,
+        a = [SELECT Id, Default_Account_Email_Address__c, Email_Template_1__c, Email_Template_2__c, Email_Template_3__c,
                 Email_Template_4__c, Email_Template_5__c, Email_Recipient_1__c, Email_Recipient_2__c, Email_Recipient_3__c,
-                Email_Recipient_4__c, Email_Recipient_5__c */
+                Email_Recipient_4__c, Email_Recipient_5__c
                 FROM Account
                 WHERE Id =: gn.AccountId
                 LIMIT 1];
@@ -144,6 +144,7 @@ public with sharing class SendCaseEmailController {
             ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'You did not select an Email Template. Please select an Email Template, then try again. ');
             ApexPages.addMessage(errorMessage);
             System.debug(errorMessage);
+            disabledButton = true;
         }
     }
 
@@ -173,6 +174,7 @@ public with sharing class SendCaseEmailController {
                     ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Unable to send email. Please check that the additional email is correct and try again.');
                     ApexPages.addMessage(errorMessage);
                     System.debug(errorMessage);
+                    disabledButton = true; 
                     return;
                 }
             }
@@ -194,6 +196,7 @@ public with sharing class SendCaseEmailController {
                     ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Unable to send email. Please check that the additional email is correct and try again.');
                     ApexPages.addMessage(errorMessage);
                     System.debug(errorMessage);
+                    disabledButton = true;
                     return;
                 }
 
@@ -220,6 +223,7 @@ public with sharing class SendCaseEmailController {
                 ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Unable to send email. Please add an Email Address and try again.');
                 ApexPages.addMessage(errorMessage);
                 System.debug(errorMessage);
+                disabledButton = true;
                 return;
             }
         }
@@ -263,6 +267,7 @@ public with sharing class SendCaseEmailController {
             ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Unable to send email. Please check that appropriate information is completed on the Grievance Note.');
             ApexPages.addMessage(errorMessage);
             System.debug(errorMessage);
+            disabledButton = true;
         }
 
         //reset button so that they have to go through the entire process of selection and preview again

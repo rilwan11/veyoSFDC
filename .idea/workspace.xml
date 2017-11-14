@@ -19,17 +19,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CaseDetailPage.page" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CaseDetailPage.page" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/CaseDetailPage.page">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="40" column="51" lean-forward="true" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
-              <folding />
+            <state relative-caret-position="220">
+              <caret line="34" column="8" lean-forward="false" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
+              <folding>
+                <element signature="n#style#0;n#apex:commandButton#0;n#apex:pageBlockButtons#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#apex:commandButton#1;n#apex:pageBlockButtons#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CaseTrigger_Test.cls" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CaseTrigger_Test.cls" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/classes/CaseTrigger_Test.cls">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
@@ -42,10 +45,10 @@
       <file leaf-file-name="SendCaseEmailController.cls" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/classes/SendCaseEmailController.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2804">
-              <caret line="271" column="0" lean-forward="true" selection-start-line="271" selection-start-column="0" selection-end-line="271" selection-end-column="0" />
+            <state relative-caret-position="2941">
+              <caret line="176" column="43" lean-forward="false" selection-start-line="176" selection-start-column="43" selection-end-line="176" selection-end-column="43" />
               <folding>
-                <element signature="e#13703#13717#0" expanded="true" />
+                <element signature="e#13894#13908#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -54,8 +57,8 @@
       <file leaf-file-name="CaseTriggerHandler.cls" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/classes/CaseTriggerHandler.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5644">
-              <caret line="335" column="79" lean-forward="true" selection-start-line="331" selection-start-column="6" selection-end-line="335" selection-end-column="79" />
+            <state relative-caret-position="-2195">
+              <caret line="324" column="32" lean-forward="true" selection-start-line="324" selection-start-column="32" selection-end-line="324" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -64,8 +67,8 @@
       <file leaf-file-name="SendCaseEmail.page" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/SendCaseEmail.page">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="34" column="62" lean-forward="true" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
+            <state relative-caret-position="498">
+              <caret line="39" column="181" lean-forward="false" selection-start-line="39" selection-start-column="181" selection-end-line="39" selection-end-column="181" />
               <folding>
                 <element signature="n#style#0;n#apex:inputField#0;n#apex:pageBlockSection#0;n#div#0;n#apex:form#0;n#apex:pageBlock#0;n#body#0;n#apex:page#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#apex:inputText#0;n#apex:pageBlockSection#0;n#div#0;n#apex:form#0;n#apex:pageBlock#0;n#body#0;n#apex:page#0;n#!!top" expanded="true" />
@@ -121,11 +124,11 @@
         <option value="$PROJECT_DIR$/src/classes/CaseEmailServiceHandler_Test.cls" />
         <option value="$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmission_Test.cls" />
         <option value="$PROJECT_DIR$/src/classes/SendCaseEmailController_Test.cls" />
-        <option value="$PROJECT_DIR$/src/pages/SendCaseEmail.page" />
-        <option value="$PROJECT_DIR$/src/pages/CaseDetailPage.page" />
         <option value="$PROJECT_DIR$/src/classes/CaseTriggerHandler.cls" />
-        <option value="$PROJECT_DIR$/src/classes/SendCaseEmailController.cls" />
         <option value="$PROJECT_DIR$/src/classes/CaseTrigger_Test.cls" />
+        <option value="$PROJECT_DIR$/src/pages/CaseDetailPage.page" />
+        <option value="$PROJECT_DIR$/src/pages/SendCaseEmail.page" />
+        <option value="$PROJECT_DIR$/src/classes/SendCaseEmailController.cls" />
       </list>
     </option>
   </component>
@@ -165,11 +168,11 @@
                       <entry key="CLASSES/CASETRIGGERHANDLER.CLS" value="1510684561354" />
                       <entry key="CLASSES/CASETRIGGER_TEST.CLS" value="1510684594634" />
                       <entry key="CLASSES/CHANGEPASSWORDCONTROLLERTEST.CLS" value="1510587171687" />
-                      <entry key="CLASSES/SENDCASEEMAILCONTROLLER.CLS" value="1510684575946" />
+                      <entry key="CLASSES/SENDCASEEMAILCONTROLLER.CLS" value="1510689798975" />
                       <entry key="CLASSES/SENDCASEEMAILCONTROLLER_TEST.CLS" value="1510622755572" />
                       <entry key="CLASSES/VEYOCALLCENTERCASESUBMISSION_TEST.CLS" value="1510621065092" />
-                      <entry key="PAGES/CASEDETAILPAGE.PAGE" value="1510680823286" />
-                      <entry key="PAGES/SENDCASEEMAIL.PAGE" value="1510676249613" />
+                      <entry key="PAGES/CASEDETAILPAGE.PAGE" value="1510689564009" />
+                      <entry key="PAGES/SENDCASEEMAIL.PAGE" value="1510689667977" />
                       <entry key="TRIGGERS/ACCOUNTTRIGGER.TRIGGER" value="1510326773681" />
                       <entry key="TRIGGERS/CASETRIGGER.TRIGGER" value="1510263872798" />
                     </map>
@@ -3178,16 +3181,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CaseTriggerHandler.cls">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5644">
-          <caret line="335" column="79" lean-forward="true" selection-start-line="331" selection-start-column="6" selection-end-line="335" selection-end-column="79" />
+        <state relative-caret-position="-2195">
+          <caret line="324" column="32" lean-forward="true" selection-start-line="324" selection-start-column="32" selection-end-line="324" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CaseTrigger_Test.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="21" column="67" lean-forward="true" selection-start-line="21" selection-start-column="67" selection-end-line="21" selection-end-column="67" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/SendCaseEmail.page">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="62" lean-forward="true" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
+        <state relative-caret-position="498">
+          <caret line="39" column="181" lean-forward="false" selection-start-line="39" selection-start-column="181" selection-end-line="39" selection-end-column="181" />
           <folding>
             <element signature="n#style#0;n#apex:inputField#0;n#apex:pageBlockSection#0;n#div#0;n#apex:form#0;n#apex:pageBlock#0;n#body#0;n#apex:page#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#apex:inputText#0;n#apex:pageBlockSection#0;n#div#0;n#apex:form#0;n#apex:pageBlock#0;n#body#0;n#apex:page#0;n#!!top" expanded="true" />
@@ -3201,27 +3212,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/SendCaseEmailController.cls">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2804">
-          <caret line="271" column="0" lean-forward="true" selection-start-line="271" selection-start-column="0" selection-end-line="271" selection-end-column="0" />
+        <state relative-caret-position="2941">
+          <caret line="176" column="43" lean-forward="false" selection-start-line="176" selection-start-column="43" selection-end-line="176" selection-end-column="43" />
           <folding>
-            <element signature="e#13703#13717#0" expanded="true" />
+            <element signature="e#13894#13908#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/CaseDetailPage.page">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="40" column="51" lean-forward="true" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CaseTrigger_Test.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" column="67" lean-forward="true" selection-start-line="21" selection-start-column="67" selection-end-line="21" selection-end-column="67" />
-          <folding />
+        <state relative-caret-position="220">
+          <caret line="34" column="8" lean-forward="false" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
+          <folding>
+            <element signature="n#style#0;n#apex:commandButton#0;n#apex:pageBlockButtons#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#apex:commandButton#1;n#apex:pageBlockButtons#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

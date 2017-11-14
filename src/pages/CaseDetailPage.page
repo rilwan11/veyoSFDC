@@ -29,10 +29,10 @@
             var j$ = jQuery.noConflict();
 
             var iframe_url = '{!URLFOR("/apex/SendCaseEmail")}'+'isdtp=vw&id='+'{!Case.Id}';
-            var wWidth = $(window).width();
-            var dWidth = wWidth * 0.8;
-            var wHeight = $(window).height();
-            var dHeight = wHeight * 0.8;
+      //      var wWidth = $(window).width();
+      //      var dWidth = wWidth * 0.8;
+      //      var wHeight = $(window).height();
+      //      var dHeight = wHeight * 0.8;
 
             var j$modalDialog = j$('<div></div>')
                 .html('<iframe id="iframeContentId" src="' + iframe_url + '" frameborder="0" height="100%" width="100%" marginheight="0" marginwidth="0" scrolling="yes" />')
@@ -40,8 +40,8 @@
                 autoOpen: true,
                 title: 'Send Grievance Note Email',
                 resizable: false,
-                width: dWidth,
-                height: dHeight,
+                width: 800,
+                height: 600,
                 autoResize: true,
                 modal: true,
                 draggable: false,
@@ -59,11 +59,11 @@
 
             <!-- Button to save picklist selections and rerender this page & the service console (alert('Grievance Updated!'); window.top.location.href = '/{!Case.Id}'; )-->
             <apex:pageBlockButtons location="top">
-                <apex:commandButton value="Save Changes" status="updatingPicklists" action="{!updatePicklists}" /> <!--onComplete="window.top.location='/console';"/> -->
+                <apex:commandButton value="Save Changes" status="updatingPicklists" action="{!updatePicklists}" id="saveButton" style="display:none" /> <!--onComplete="window.top.location='/console';"/> -->
                 <apex:actionStatus startText="saving..." stopText="" id="updatingPicklists" />
-                <apex:commandButton action="{!cancel}" immediate="true" value="Cancel"/>
+                <apex:commandButton action="{!cancel}" immediate="true" value="Cancel" id="cancelButton" style="display:none" />
            <!--     <apex:commandButton action="{!URLFOR($Action.Case.Email_Modal, Id)}" immediate="true" value="Send Emails" /> -->
-                <apex:commandButton value="Send Emails" id="buttonEmail" onclick="javascript: emailsModal()" onComplete="return null;"/> <!-- work on this part -->
+                <apex:commandButton value="Send Emails" id="buttonEmail" onclick="javascript: emailsModal()" onComplete="return null;"/> <!-- work on this part - hide when editing -->
 
            <!--     <apex:commandButton action="{!save}" value="Save Grievance" /> -->
             </apex:pageBlockButtons>
@@ -75,17 +75,23 @@
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Member_Name__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Member_Name__c.label}
-                    <apex:inputText value="{!gn.Member_Name__c}" />
+                    <apex:outputField value="{!gn.Member_Name__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Date_of_Report__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Date_of_Report__c.label}
-                    <apex:inputField value="{!gn.Date_of_Report__c}" />
+                    <apex:outputField value="{!gn.Date_of_Report__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Member_ID__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Member_ID__c.label}
-                    <apex:inputText value="{!gn.Member_ID__c}" />
+                    <apex:outputField value="{!gn.Member_ID__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Due_Date__c.inlineHelpText}">
@@ -95,17 +101,23 @@
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Member_Phone_Number__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Member_Phone_Number__c.label}
-                    <apex:inputField value="{!gn.Member_Phone_Number__c}" />
+                    <apex:outputField value="{!gn.Member_Phone_Number__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Status.inlineHelpText}">
                     {!$ObjectType.Case.fields.Status.label}
-                    <apex:inputField value="{!gn.Status}" />
+                    <apex:outputField value="{!gn.Status}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Complainant_Name__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Complainant_Name__c.label}
-                    <apex:inputField value="{!gn.Complainant_Name__c}" />
+                    <apex:outputField value="{!gn.Complainant_Name__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Created__c.inlineHelpText}">
@@ -115,7 +127,9 @@
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Contact_Type__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Contact_Type__c.label}
-                    <apex:inputField value="{!gn.Contact_Type__c}" />
+                    <apex:outputField value="{!gn.Contact_Type__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Progress_Date__c.inlineHelpText}">
@@ -135,7 +149,9 @@
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.AccountId.inlineHelpText}">
                     {!$ObjectType.Case.fields.AccountId.label}
-                    <apex:inputField value="{!gn.AccountId}" />
+                    <apex:outputField value="{!gn.AccountId}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Requested__c.inlineHelpText}">
@@ -145,7 +161,9 @@
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Open_Email_Response__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Open_Email_Response__c.label}
-                    <apex:inputCheckbox value="{!gn.Open_Email_Response__c}" />
+                    <apex:outputField value="{!gn.Open_Email_Response__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Completed__c.inlineHelpText}">
@@ -157,14 +175,16 @@
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Comments__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Follow_Up_Comments__c.label}
-                    <apex:inputTextArea value="{!gn.Follow_Up_Comments__c}" />
+                    <apex:outputField value="{!gn.Follow_Up_Comments__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
             </apex:pageBlockSection>
         </apex:pageBlock>
 
 
-        <apex:pageBlock title="Member Client Details">
+        <apex:pageBlock title="Member Client Details" mode="inlineEdit" > <!-- COME BACK -->
             <apex:pageBlockSection >
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Category__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Category__c.label}
@@ -195,7 +215,9 @@
             <apex:pageBlockSection >
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Description.inlineHelpText}">
                     {!$ObjectType.Case.fields.Description.label}
-                        <apex:inputTextArea value="{!gn.Description}" />
+                        <apex:outputField value="{!gn.Description}" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                        </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Priority.inlineHelpText}">
@@ -211,32 +233,42 @@
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Provider_Name__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Provider_Name__c.label}
-                    <apex:inputField value="{!gn.Provider_Name__c}" />
+                    <apex:outputField value="{!gn.Provider_Name__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Trip_Date__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Trip_Date__c.label}
-                        <apex:inputField value="{!gn.Trip_Date__c}" />
+                        <apex:outputField value="{!gn.Trip_Date__c}" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                        </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Agent_Name__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Agent_Name__c.label}
-                    <apex:inputText value="{!gn.Agent_Name__c}" />
+                    <apex:outputField value="{!gn.Agent_Name__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem />
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Driver_Name__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Driver_Name__c.label}
-                    <apex:inputText value="{!gn.Driver_Name__c}" />
+                    <apex:outputField value="{!gn.Driver_Name__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem />
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Vehicle_Number__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Vehicle_Number__c.label}
-                    <apex:inputText value="{!gn.Vehicle_Number__c}" />
+                    <apex:outputField value="{!gn.Vehicle_Number__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
             </apex:pageBlockSection>
@@ -248,17 +280,23 @@
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Employee_Name__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Employee_Name__c.label}
-                    <apex:inputText value="{!gn.Employee_Name__c}" />
+                    <apex:outputField value="{!gn.Employee_Name__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Date_of_Investigation__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Date_of_Investigation__c.label}
-                    <apex:inputField value="{!gn.Date_of_Investigation__c}" />
+                    <apex:outputField value="{!gn.Date_of_Investigation__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Investigator_Comments__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Investigator_Comments__c.label}
-                    <apex:inputTextArea value="{!gn.Investigator_Comments__c}" />
+                    <apex:outputField value="{!gn.Investigator_Comments__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
             </apex:pageBlockSection>
         </apex:pageBlock>
@@ -268,12 +306,16 @@
             <apex:pageBlockSection >
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Substantiated__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Substantiated__c.label}
-                    <apex:inputCheckbox value="{!gn.Substantiated__c}" />
+                    <apex:outputField value="{!gn.Substantiated__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Action_Taken__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Action_Taken__c.label}
-                    <apex:inputTextArea value="{!gn.Action_Taken__c}" />
+                    <apex:outputField value="{!gn.Action_Taken__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
             </apex:pageBlockSection>
         </apex:pageBlock>
@@ -283,32 +325,44 @@
             <apex:pageBlockSection >
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Complaint_Origin__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Complaint_Origin__c.label}
-                    <apex:inputField value="{!gn.Complaint_Origin__c}" />
+                    <apex:outputField value="{!gn.Complaint_Origin__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Trip_Number__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Trip_Number__c.label}
-                    <apex:inputText value="{!gn.Trip_Number__c}" />
+                    <apex:outputField value="{!gn.Trip_Number__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Origin_Name__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Origin_Name__c.label}
-                    <apex:inputText value="{!gn.Origin_Name__c}" />
+                    <apex:outputField value="{!gn.Origin_Name__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.If_null_why__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.If_null_why__c.label}
-                    <apex:inputTextArea value="{!gn.If_null_why__c}" />
+                    <apex:outputField value="{!gn.If_null_why__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Additional_Origin_Name__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Additional_Origin_Name__c.label}
-                    <apex:inputText value="{!gn.Additional_Origin_Name__c}" />
+                    <apex:outputField value="{!gn.Additional_Origin_Name__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Grievance_Detail__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Grievance_Detail__c.label}
-                    <apex:inputTextArea value="{!gn.Grievance_Detail__c}" />
+                    <apex:outputField value="{!gn.Grievance_Detail__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
@@ -316,27 +370,37 @@
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Trip_Fraud__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Trip_Fraud__c.label}
-                    <apex:inputCheckbox value="{!gn.Trip_Fraud__c}" />
+                    <apex:outputField value="{!gn.Trip_Fraud__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Call_Recordings__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Call_Recordings__c.label}
-                    <apex:inputTextArea value="{!gn.Call_Recordings__c}" />
+                    <apex:outputField value="{!gn.Call_Recordings__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Fraud_Trip_Number__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Fraud_Trip_Number__c.label}
-                        <apex:inputText value="{!gn.Fraud_Trip_Number__c}" />
+                        <apex:outputField value="{!gn.Fraud_Trip_Number__c}" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                        </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Field_Notes__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Field_Notes__c.label}
-                    <apex:inputTextArea value="{!gn.Field_Notes__c}" />
+                    <apex:outputField value="{!gn.Field_Notes__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Fraud_Trip_Number_Additional__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Fraud_Trip_Number_Additional__c.label}
-                    <apex:inputTextArea value="{!gn.Fraud_Trip_Number_Additional__c}" />
+                    <apex:outputField value="{!gn.Fraud_Trip_Number_Additional__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
@@ -345,33 +409,43 @@
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Date_When_Reached_Out_to_Provider__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Date_When_Reached_Out_to_Provider__c.label}
-                    <apex:inputField value="{!gn.Date_When_Reached_Out_to_Provider__c}" />
+                    <apex:outputField value="{!gn.Date_When_Reached_Out_to_Provider__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Blank_Field_1__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Blank_Field_1__c.label}
-                    <apex:inputTextArea value="{!gn.Blank_Field_1__c}" />
+                    <apex:outputField value="{!gn.Blank_Field_1__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Blank_Field_2__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Blank_Field_2__c.label}
-                    <apex:inputTextArea value="{!gn.Blank_Field_2__c}" />
+                    <apex:outputField value="{!gn.Blank_Field_2__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Blank_Field_3__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Blank_Field_3__c.label}
-                    <apex:inputTextArea value="{!gn.Blank_Field_3__c}" />
+                    <apex:outputField value="{!gn.Blank_Field_3__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Blank_Field_4__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Blank_Field_4__c.label}
-                    <apex:inputTextArea value="{!gn.Blank_Field_4__c}" />
+                    <apex:outputField value="{!gn.Blank_Field_4__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
             </apex:pageBlockSection>
@@ -382,12 +456,16 @@
             <apex:pageBlockSection >
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.OwnerId.inlineHelpText}">
                     {!$ObjectType.Case.fields.OwnerId.label}
-                    <apex:inputField value="{!gn.OwnerId}" />
+                    <apex:outputField value="{!gn.OwnerId}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.LastmodifiedById.inlineHelpText}">
                     {!$ObjectType.Case.fields.LastmodifiedById.label}
-                    <apex:outputField value="{!gn.LastmodifiedById}" />
+                    <apex:outputField value="{!gn.LastmodifiedById}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
             </apex:pageBlockSection>
         </apex:pageBlock>
@@ -397,7 +475,9 @@
             <apex:pageBlockSection >
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.ContactId.inlineHelpText}">
                     Submitting Contact <!-- {!$ObjectType.Case.fields.ContactId.label} -->
-                    <apex:inputField value="{!gn.ContactId}" />
+                    <apex:outputField value="{!gn.ContactId}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Age_in_Days__c.inlineHelpText}">
@@ -427,7 +507,9 @@
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Origin.inlineHelpText}">
                 {!$ObjectType.Case.fields.Origin.label}
-                    <apex:inputField value="{!gn.Origin}" />
+                    <apex:outputField value="{!gn.Origin}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Time_with_Customer__c.inlineHelpText}">
@@ -437,7 +519,9 @@
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Subject.inlineHelpText}">
                     {!$ObjectType.Case.fields.Subject.label}
-                    <apex:inputText value="{!gn.Subject}" />
+                    <apex:outputField value="{!gn.Subject}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Period__c.inlineHelpText}">
@@ -447,7 +531,9 @@
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Type.inlineHelpText}">
                     {!$ObjectType.Case.fields.Type.label}
-                    <apex:inputField value="{!gn.Type}" />
+                    <apex:outputField value="{!gn.Type}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Age_in_Days__c.inlineHelpText}">
@@ -457,7 +543,9 @@
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Reason.inlineHelpText}">
                     {!$ObjectType.Case.fields.Reason.label}
-                    <apex:inputField value="{!gn.Reason}" />
+                    <apex:outputField value="{!gn.Reason}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttomEmail" event="ondblclick"/>
+                    </apex:outputField>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Age__c.inlineHelpText}">
