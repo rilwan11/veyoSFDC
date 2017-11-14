@@ -9,7 +9,6 @@
         <title>Grievance Note Outbound Email</title>
         <apex:slds />
     </head>
-
     <apex:outputpanel id="showmsg">
         <apex:pageMessages />
     </apex:outputpanel>
@@ -18,8 +17,7 @@
     <body>
     <apex:pageBlock >
 
-
-        <apex:form id="theForm"><div class="slds">
+        <apex:form id="theForm" ><div class="slds" aria-colcount="2">
             <!-- Update warning/info messages based on selected Email Template in real time without having to save
              so that the user knows if they can input Additional Text or not and rerender form to make Additional Text
              enabled or not -->
@@ -30,39 +28,25 @@
                 <apex:param name="param2" assignTo="{!additionalText}" value=""/>
             </apex:actionFunction> -->
 
-            <apex:pageBlockSection title="Email Input" columns="1" id="inputArea">
+            <apex:pageBlockSection title="Send Emails" columns="2" id="screen" >
+                <apex:inputField value="{!Case.Email_Template__c}" onchange="setParams(this.value)" style="width:200px; "/>
+                <apex:outputText value="{!emailTemplateSelection}" label="Selected Template"/>
+                <apex:inputText value="{!directEmail}" id="directEmail" label="Enter in specific email address when necessary" style="width:200px; " disabled="{!disabledEmail}" />
+                <apex:outputText value="{!emailSubject}" label="Email Subject: "/>
+                <apex:inputTextArea value="{!additionalText}"  style="width:200px; height:100px;" disabled="{!disabledAdditional}" id="addText" label="Input Additional Email Text Here"/>
+                <apex:outputText value="{!emailOutput}" style="white-space:pre-wrap;" />
 
-                <apex:inputField value="{!Case.Email_Template__c}" onchange="setParams(this.value)" style="width:550px; "/>
-                <apex:inputText value="{!directEmail}" id="directEmail" label="Enter in specific email address when necessary" style="width:550px; " disabled="{!disabledEmail}" />
-                <apex:inputTextArea value="{!additionalText}"  style="width:550px; height:100px;" disabled="{!disabledAdditional}" id="addText" label="Input Additional Email Text Here"/>
-                <apex:commandButton value="Preview Email" action="{!renderEmail}"  />
-
-
-          <!--      <c:SendCaseEmailModal GrievanceNote="{!Case.Id}"> </c:SendCaseEmailModal> -->
+                <apex:commandButton value="Preview Email" action="{!renderEmail}" style="center" />
+                <apex:commandButton value="Send Email" action="{!onSend}" rerender="sendComplete,sendButton,showmsg" disabled="{!disabledButton}" id="sendButton" style="center-right"/>
 
             </apex:pageBlockSection>
         </div></apex:form>
-        <apex:form id="secondForm" >
 
-            <apex:pageBlockSection title="Email Output" columns="1" id="theOutput">
-        <!--        <apex:outputText value="{!Case.Id}" />
-                <apex:outputText value="{!Case.Contact.Name}" /> -->
-                <apex:outputText value="{!emailOutput}" style="white-space:pre-wrap;" />
-                <apex:commandButton value="Send Email" action="{!onSend}" rerender="sendComplete,sendButton" disabled="{!disabledButton}" id="sendButton" />
-            </apex:pageBlockSection>
-        </apex:form>
         <apex:outputpanel id="sendComplete">
-            <apex:pageMessages />
+    <!--        <apex:pageMessages /> -->
         </apex:outputpanel>
 
-
     </apex:pageBlock>
-
-    <!--
-    <apex:form >
-        <apex:commandButton action="{!sendEmail}" value="Send my email" id="theButton"/>
-    </apex:form> -->
- <!--   <c:SendCaseEmailModal ></c:SendCaseEmailModal> -->
     </body>
 
     <script>

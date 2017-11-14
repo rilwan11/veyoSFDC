@@ -26,6 +26,7 @@ public with sharing class CaseTriggerHandler {
             upC.Follow_Up_Time_with_Support__c = 0.0;
             upC.Follow_Up_Time_with_Customer__c = 0.0;
             upC.Created__c = System.now();
+            upC.User_Account__c = upC.AccountId;
         }
     } //public static void insertCaseTime(List<Case> newCases)
 

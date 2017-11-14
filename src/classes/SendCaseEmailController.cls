@@ -16,6 +16,7 @@ public with sharing class SendCaseEmailController {
     public String directEmail { get; set; }
     public boolean disabledEmail { get; set; }
     public boolean disabledButton { get; set; }
+    public String emailSubject { get; set; }
 
 
 
@@ -132,6 +133,8 @@ public with sharing class SendCaseEmailController {
             Database.rollback(sp);
             System.debug('SendCaseEmailController::: renderEmail:: ' + string.valueOf(email));
             emailOutput = email.getPlainTextBody();
+            emailSubject = email.getSubject();
+            System.debug('KRIZIA HERE: ' + string.valueOf(emailSubject) + ' -- ' + string.valueOf(email.getSubject()));
 
             disabledButton = false;
         }
