@@ -286,7 +286,7 @@ public with sharing class CaseConfiguredPicklistsController {
         options.add(new SelectOption('', '--None--'));
 
         //Add to Provider Contact picklist
-        if (a.Service_State__c != null && (gn.Provider_Name__c != null || caseTransportationProvider != null)) {
+        if (a.Service_State__c != null && (caseTransportationProvider != null)) {
             List<Account> transportationProvider = new List<Account>();
             transportationProvider = [
                     SELECT Id, Name, Service_State__c

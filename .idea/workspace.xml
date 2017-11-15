@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31df91ac-2f59-4d2a-8840-733adc358db0" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls" afterPath="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/CaseDetailPage.page" afterPath="$PROJECT_DIR$/src/pages/CaseDetailPage.page" />
     </list>
@@ -21,8 +22,8 @@
       <file leaf-file-name="CaseDetailPage.page" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/CaseDetailPage.page">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="232" column="107" lean-forward="false" selection-start-line="232" selection-start-column="107" selection-end-line="232" selection-end-column="107" />
+            <state relative-caret-position="160">
+              <caret line="191" column="72" lean-forward="false" selection-start-line="191" selection-start-column="72" selection-end-line="191" selection-end-column="72" />
               <folding>
                 <element signature="n#style#0;n#apex:commandButton#1;n#apex:pageBlockButtons#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#apex:outputField#0;n#apex:pageBlockSectionItem#16;n#apex:pageBlockSection#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
@@ -46,13 +47,13 @@
       <file leaf-file-name="CaseConfiguredPicklistsController.cls" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="535">
-              <caret line="293" column="60" lean-forward="false" selection-start-line="293" selection-start-column="60" selection-end-line="293" selection-end-column="60" />
+            <state relative-caret-position="626">
+              <caret line="311" column="0" lean-forward="true" selection-start-line="311" selection-start-column="0" selection-end-line="311" selection-end-column="0" />
               <folding>
                 <element signature="e#12623#12637#0" expanded="true" />
                 <element signature="e#12846#12855#0" expanded="true" />
-                <element signature="e#14586#14595#0" expanded="true" />
-                <element signature="e#14874#14883#0" expanded="true" />
+                <element signature="e#14555#14564#0" expanded="true" />
+                <element signature="e#14843#14852#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -150,8 +151,8 @@
         <option value="$PROJECT_DIR$/src/classes/SendCaseEmailController.cls" />
         <option value="$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmissionController.cls" />
         <option value="$PROJECT_DIR$/src/pages/veyoCallCenterCaseSubmission.page" />
-        <option value="$PROJECT_DIR$/src/pages/CaseDetailPage.page" />
         <option value="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls" />
+        <option value="$PROJECT_DIR$/src/pages/CaseDetailPage.page" />
       </list>
     </option>
   </component>
@@ -184,7 +185,7 @@
                   <option name="buildSuccessDatesBySourceRootRelativePath">
                     <map>
                       <entry key="CLASSES/ACCOUNTTRIGGERHANDLER.CLS" value="1510329401203" />
-                      <entry key="CLASSES/CASECONFIGUREDPICKLISTSCONTROLLER.CLS" value="1510768072998" />
+                      <entry key="CLASSES/CASECONFIGUREDPICKLISTSCONTROLLER.CLS" value="1510769600645" />
                       <entry key="CLASSES/CASECONFIGUREDPICKLISTSCONTROLLER_TEST.CLS" value="1510587450112" />
                       <entry key="CLASSES/CASEEMAIL.CLS" value="1510345466942" />
                       <entry key="CLASSES/CASEEMAILSERVICEHANDLER_TEST.CLS" value="1510590630566" />
@@ -195,7 +196,7 @@
                       <entry key="CLASSES/SENDCASEEMAILCONTROLLER_TEST.CLS" value="1510622755572" />
                       <entry key="CLASSES/VEYOCALLCENTERCASESUBMISSIONCONTROLLER.CLS" value="1510758048183" />
                       <entry key="CLASSES/VEYOCALLCENTERCASESUBMISSION_TEST.CLS" value="1510621065092" />
-                      <entry key="PAGES/CASEDETAILPAGE.PAGE" value="1510767973203" />
+                      <entry key="PAGES/CASEDETAILPAGE.PAGE" value="1510769625258" />
                       <entry key="PAGES/SENDCASEEMAIL.PAGE" value="1510689667977" />
                       <entry key="PAGES/VEYOCALLCENTERCASESUBMISSION.PAGE" value="1510758056783" />
                       <entry key="TRIGGERS/ACCOUNTTRIGGER.TRIGGER" value="1510326773681" />
@@ -3231,21 +3232,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="293" column="60" lean-forward="false" selection-start-line="293" selection-start-column="60" selection-end-line="293" selection-end-column="60" />
+        <state relative-caret-position="626">
+          <caret line="311" column="0" lean-forward="true" selection-start-line="311" selection-start-column="0" selection-end-line="311" selection-end-column="0" />
           <folding>
             <element signature="e#12623#12637#0" expanded="true" />
             <element signature="e#12846#12855#0" expanded="true" />
-            <element signature="e#14586#14595#0" expanded="true" />
-            <element signature="e#14874#14883#0" expanded="true" />
+            <element signature="e#14555#14564#0" expanded="true" />
+            <element signature="e#14843#14852#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/CaseDetailPage.page">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="232" column="107" lean-forward="false" selection-start-line="232" selection-start-column="107" selection-end-line="232" selection-end-column="107" />
+        <state relative-caret-position="160">
+          <caret line="191" column="72" lean-forward="false" selection-start-line="191" selection-start-column="72" selection-end-line="191" selection-end-column="72" />
           <folding>
             <element signature="n#style#0;n#apex:commandButton#1;n#apex:pageBlockButtons#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#apex:outputField#0;n#apex:pageBlockSectionItem#16;n#apex:pageBlockSection#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
