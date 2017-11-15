@@ -111,13 +111,6 @@ public class veyoCallCenterCaseSubmissionController {
             return null;
         }
 
-        if(null == m_case.ContactId) {
-            ApexPages.Message errMsg = new ApexPages.Message(ApexPages.Severity.Error, 'You must enter the Submitter\'s Contact Name');
-            ApexPages.addMessage(errMsg);
-            return null;
-        }
-        //m_case.ContactId
-
         if(GRIEVANCE_NOTE == caseType) {
             insert m_case;
 
