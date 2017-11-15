@@ -43,8 +43,6 @@ public class veyoCallCenterCaseSubmissionController {
     // member variables...
     public Case m_case { get; set; }
     public String caseType { get; set; }
-    public String acctErrorMessage { get; set; }
-    public Boolean displayAcctErrorMessage { get; set; }
 
     /**
      * Constructor
@@ -54,8 +52,6 @@ public class veyoCallCenterCaseSubmissionController {
         m_case = new Case();
         m_case.Date_of_Report__c = system.today();
         m_case.Contact_Type__c = PHONE;
-
-        displayAcctErrorMessage = false;
     }
 
     /**
@@ -88,20 +84,63 @@ public class veyoCallCenterCaseSubmissionController {
 
                 } else if(ONLY_FIRST_CALL_RESOLUTIONS == acct.Call_Center_Can_Create__c) {
                     options.add(new SelectOption(GRIEVANCE_NOTE, GRIEVANCE_NOTE));
-                } else if(NEITHER == acct.Call_Center_Can_Create__c || NONE == acct.Call_Center_Can_Create__c) {
-
-
-                    ApexPages.Message errMsg = new ApexPages.Message(
-                            ApexPages.Severity.WARNING,
-                            'For '+acct.Name+' Veyo call center agents do not log Grievances into Salesforce.com. Please warm transfer this member to '+acct.Name+' member services');
-                    ApexPages.addMessage(errMsg);
-                    acctErrorMessage = 'For '+acct.Name+' Veyo call center agents do not log Grievances into Salesforce.com. Please warm transfer this member to '+acct.Name+' member services';
-                    displayAcctErrorMessage = true;
-                    system.debug('veyoCallCenterSubmissionController.getCaseSubmissionTypes() :: adding warning message to ApexPage.Message... displayAcctErrorMessage <'+displayAcctErrorMessage+'>');
                 }
             }
         }
         return options;
+    }
+
+    /**
+     *
+     *
+     * @return
+     */
+    public String getAccountErrorMessage() {
+
+        String errMsg;
+        if(null != m_case.AccountId) {
+            List<Account> accounts = [SELECT Name, Call_Center_Can_Create__c
+                                      FROM Account
+                                      WHERE Id = :m_case.AccountId];
+
+            if(accounts.size() > 0) {
+                Account acct = accounts[0];
+
+                system.debug('veyoCallCenterSubmissionController.getCaseSubmissionTypes() :: acct.Call_Center_Can_Create__c <'+acct.Call_Center_Can_Create__c+'>');
+
+                if(NEITHER == acct.Call_Center_Can_Create__c || NONE == acct.Call_Center_Can_Create__c) {
+                    errMsg = 'For '+acct.Name+', Veyo call center agents do not log Grievances into Salesforce.com. Please warm transfer this member to '+acct.Name+' member services';
+                }
+            }
+        }
+
+        return errMsg;
+    }
+
+    /**
+     *
+     *
+     * @return
+     */
+    public Boolean getDisplayAccountErrorMessage() {
+
+        if(null != m_case.AccountId) {
+            List<Account> accounts = [SELECT Name, Call_Center_Can_Create__c
+                                      FROM Account
+                                      WHERE Id = :m_case.AccountId];
+
+            if(accounts.size() > 0) {
+                Account acct = accounts[0];
+
+                system.debug('veyoCallCenterSubmissionController.getCaseSubmissionTypes() :: acct.Call_Center_Can_Create__c <'+acct.Call_Center_Can_Create__c+'>');
+
+                if(NEITHER == acct.Call_Center_Can_Create__c || NONE == acct.Call_Center_Can_Create__c) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     /**

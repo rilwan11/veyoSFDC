@@ -5,10 +5,13 @@
         </apex:outputPanel>
 
         <apex:pageBlock title="Call Center Submission Page" id="pageBlockCaseCreation">
-            <apex:pageBlockSection id="pbsCaseCreation">
-                <apex:outputText value="{!acctErrorMessage}"  rendered="{!displayAcctErrorMessage}"  id="optTextErrMsg"/>
-                <apex:pageBlockSectionItem rendered="false"/>
 
+            <apex:pageBlockSection id="pbsAcctErrMsgId" columns="1">
+                <apex:outputText value="{!AccountErrorMessage}" id="optTextErrMsg" rendered="{!DisplayAccountErrorMessage}" style="background-color:yellow;font-size:14px"/>
+                <apex:pageBlockSectionItem rendered="{!DisplayAccountErrorMessage}"/>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection id="pbsCaseCreation">
                 <apex:pageBlockSectionItem >
                     <apex:outputLabel value="Account" />
                     <apex:outputPanel >
@@ -17,7 +20,7 @@
                                                 rerender="pageMsgsOutputId"
                                                 status="loadAcctCaseTypes" />-->
                             <apex:actionSupport event="onchange"
-                                                rerender="pbsCaseCreation,pageMsgsId"
+                                                rerender="pbsCaseCreation,pbsAcctErrMsgId"
                                                 status="loadAcctCaseTypes" />
                         </apex:inputField>
                         <apex:actionStatus startText="loading allowable Incident Types..." id="loadIncidenTypes" />

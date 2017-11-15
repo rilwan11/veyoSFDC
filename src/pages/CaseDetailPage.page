@@ -227,7 +227,7 @@
             <apex:pageBlockSection id="serviceDetails">
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Provider_Name__c.inlineHelpText}">
-                    Transportation Provider
+                    {!$ObjectType.Case.fields.Provider_Name__c.label}
                     <apex:selectList value="{!caseTransportationProvider}" multiselect="false" size="1" id="transportationProviderOptions" label="Transportation Provider" onchange="updateProviderContact();" >
                         <apex:selectOptions value="{!transportationProviderOptions}"  />
                <!--         <apex:actionSupport event="onchange" reRender="updateProviderContact();" /> -->
