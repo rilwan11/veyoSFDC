@@ -329,11 +329,11 @@ public with sharing class CaseTriggerHandler {
 
         //All Accounts connected to these Cases
         List<Account> aList = [SELECT Id, General_Priority_Days__c, Expedited_Priority_Days__c,
-            Default_Account_Email_Address__c, Email_Template_1__c, Email_Recipient_1__c, Automatic_Event_1__c,
-                Email_Template_2__c, Email_Recipient_2__c, Automatic_Event_2__c,
-                Email_Template_3__c, Email_Recipient_3__c, Automatic_Event_3__c,
-                Email_Template_4__c, Email_Recipient_4__c, Automatic_Event_4__c,
-                Email_Template_5__c, Email_Recipient_5__c, Automatic_Event_5__c
+            Default_Account_Email_Address__c, Email_Template_1__c, Email_Recipients_1__c, Automatic_Event_1__c,
+                Email_Template_2__c, Email_Recipients_2__c, Automatic_Event_2__c,
+                Email_Template_3__c, Email_Recipients_3__c, Automatic_Event_3__c,
+                Email_Template_4__c, Email_Recipients_4__c, Automatic_Event_4__c,
+                Email_Template_5__c, Email_Recipients_5__c, Automatic_Event_5__c
                                 FROM Account
                                 WHERE Id IN: accountIds];
         System.debug(aList);
@@ -362,6 +362,9 @@ public with sharing class CaseTriggerHandler {
                                     FROM Contact
                                     WHERE Email = :a.Default_Account_Email_Address__c
                                     LIMIT 1];
+        List<Contact> staticGroup = [SELECT Id, FirstName, LastName, Email, AccountId
+                                        FROM Contact
+                                        WHERE AccountId =: a.Id AND Member_of_Static_Account_Email_Group__c = true];
         System.debug('CaseTriggerHandler::: sendEmail:: default account email address: ' + string.valueOf(a.Default_Account_Email_Address__c));
 
 
@@ -373,18 +376,19 @@ public with sharing class CaseTriggerHandler {
             if (a.Automatic_Event_1__c.contains(c.Status)) {
                 System.debug('1: ' + string.valueOf(a.Automatic_Event_1__c));
                 //Go through recipients
-                if (a.Email_Recipient_1__c == 'Submitting Contact') {
+                if (a.Email_Recipients_1__c.contains('Submitting Contact') && c.ContactEmail != null) {
                     toRecipients.add(c.ContactEmail);
                     targetId = c.ContactId;
                 }
-                else if (a.Email_Recipient_1__c == 'Default Account Email Address') {
+                if (a.Email_Recipients_1__c.contains('Default Account Email Address') && defaultEmail.Email != null) {
                     toRecipients.add(defaultEmail.Email);
-                    targetId = defaultEmail.Id;
+                    if (targetId == null) { targetId = defaultEmail.Id; }
                 }
-                else {
-                    toRecipients.add(String.valueOf(a.Default_Account_Email_Address__c));
-                    toRecipients.add(c.ContactEmail);
-                    targetId = c.ContactId;
+                if (a.Email_Recipients_1__c.contains('Static Account Email Group') && staticGroup.size() > 0) {
+                    if (targetId == null) { targetId = staticGroup[0].Id; }
+                    for (Contact contact : staticGroup) {
+                        toRecipients.add(contact.Email);
+                    }
                 }
                 System.debug('CaseTriggerHandler::: sendEmail:: 1 ' + string.valueOf(toRecipients));
                 Boolean result = CaseEmail.sendEmailFromModal(c, toRecipients, targetId, a.Email_Template_1__c);
@@ -398,18 +402,19 @@ public with sharing class CaseTriggerHandler {
             if (a.Automatic_Event_2__c.contains(c.Status)) {
                 System.debug('2: ' + string.valueOf(a.Automatic_Event_2__c));
                 //Go through recipients
-                if (a.Email_Recipient_2__c == 'Submitting Contact') {
+                if (a.Email_Recipients_2__c.contains('Submitting Contact') && c.ContactEmail != null) {
                     toRecipients.add(c.ContactEmail);
                     targetId = c.ContactId;
                 }
-                else if (a.Email_Recipient_2__c == 'Default Account Email Address') {
+                if (a.Email_Recipients_2__c.contains('Default Account Email Address') && defaultEmail.Email != null) {
                     toRecipients.add(defaultEmail.Email);
-                    targetId = defaultEmail.Id;
+                    if (targetId == null) { targetId = defaultEmail.Id; }
                 }
-                else {
-                    toRecipients.add(String.valueOf(a.Default_Account_Email_Address__c));
-                    toRecipients.add(c.ContactEmail);
-                    targetId = c.ContactId;
+                if (a.Email_Recipients_2__c.contains('Static Account Email Group') && staticGroup.size() > 0) {
+                    if (targetId == null) { targetId = staticGroup[0].Id; }
+                    for (Contact contact : staticGroup) {
+                        toRecipients.add(contact.Email);
+                    }
                 }
                 System.debug('CaseTriggerHandler::: sendEmail:: 2 ' + string.valueOf(toRecipients));
                 Boolean result = CaseEmail.sendEmailFromModal(c, toRecipients, targetId, a.Email_Template_2__c);
@@ -423,18 +428,19 @@ public with sharing class CaseTriggerHandler {
             if (a.Automatic_Event_3__c.contains(c.Status)) {
                 System.debug('3: ' + string.valueOf(a.Automatic_Event_3__c));
                 //Go through recipients
-                if (a.Email_Recipient_3__c == 'Submitting Contact') {
+                if (a.Email_Recipients_3__c.contains('Submitting Contact') && c.ContactEmail != null) {
                     toRecipients.add(c.ContactEmail);
                     targetId = c.ContactId;
                 }
-                else if (a.Email_Recipient_3__c == 'Default Account Email Address') {
+                if (a.Email_Recipients_3__c.contains('Default Account Email Address') && defaultEmail.Email != null) {
                     toRecipients.add(defaultEmail.Email);
-                    targetId = defaultEmail.Id;
+                    if (targetId == null) { targetId = defaultEmail.Id; }
                 }
-                else {
-                    toRecipients.add(String.valueOf(a.Default_Account_Email_Address__c));
-                    toRecipients.add(c.ContactEmail);
-                    targetId = c.ContactId;
+                if (a.Email_Recipients_3__c.contains('Static Account Email Group') && staticGroup.size() > 0) {
+                    if (targetId == null) { targetId = staticGroup[0].Id; }
+                    for (Contact contact : staticGroup) {
+                        toRecipients.add(contact.Email);
+                    }
                 }
                 System.debug('CaseTriggerHandler::: sendEmail:: 3 ' + string.valueOf(toRecipients));
                 Boolean result = CaseEmail.sendEmailFromModal(c, toRecipients, targetId, a.Email_Template_3__c);
@@ -448,18 +454,19 @@ public with sharing class CaseTriggerHandler {
             if (a.Automatic_Event_4__c.contains(c.Status)) {
                 System.debug('4: ' + string.valueOf(a.Automatic_Event_4__c));
                 //Go through recipients
-                if (a.Email_Recipient_4__c == 'Submitting Contact') {
+                if (a.Email_Recipients_4__c.contains('Submitting Contact') && c.ContactEmail != null) {
                     toRecipients.add(c.ContactEmail);
                     targetId = c.ContactId;
                 }
-                else if (a.Email_Recipient_4__c == 'Default Account Email Address') {
+                if (a.Email_Recipients_4__c.contains('Default Account Email Address') && defaultEmail.Email != null) {
                     toRecipients.add(defaultEmail.Email);
-                    targetId = defaultEmail.Id;
+                    if (targetId == null) { targetId = defaultEmail.Id; }
                 }
-                else {
-                    toRecipients.add(String.valueOf(a.Default_Account_Email_Address__c));
-                    toRecipients.add(c.ContactEmail);
-                    targetId = c.ContactId;
+                if (a.Email_Recipients_4__c.contains('Static Account Email Group') && staticGroup.size() > 0) {
+                    if (targetId == null) { targetId = staticGroup[0].Id; }
+                    for (Contact contact : staticGroup) {
+                        toRecipients.add(contact.Email);
+                    }
                 }
                 System.debug('CaseTriggerHandler::: sendEmail:: 4 ' + string.valueOf(toRecipients));
                 Boolean result = CaseEmail.sendEmailFromModal(c, toRecipients, targetId, a.Email_Template_4__c);
@@ -473,18 +480,19 @@ public with sharing class CaseTriggerHandler {
             if (a.Automatic_Event_5__c.contains(c.Status)) {
                 System.debug('5: ' + string.valueOf(a.Automatic_Event_5__c));
                 //Go through recipients
-                if (a.Email_Recipient_5__c == 'Submitting Contact') {
+                if (a.Email_Recipients_5__c.contains('Submitting Contact') && c.ContactEmail != null) {
                     toRecipients.add(c.ContactEmail);
                     targetId = c.ContactId;
                 }
-                else if (a.Email_Recipient_5__c == 'Default Account Email Address') {
+                if (a.Email_Recipients_5__c.contains('Default Account Email Address') && defaultEmail.Email != null) {
                     toRecipients.add(defaultEmail.Email);
-                    targetId = defaultEmail.Id;
+                    if (targetId == null) { targetId = defaultEmail.Id; }
                 }
-                else {
-                    toRecipients.add(String.valueOf(a.Default_Account_Email_Address__c));
-                    toRecipients.add(c.ContactEmail);
-                    targetId = c.ContactId;
+                if (a.Email_Recipients_5__c.contains('Static Account Email Group') && staticGroup.size() > 0) {
+                    if (targetId == null) { targetId = staticGroup[0].Id; }
+                    for (Contact contact : staticGroup) {
+                        toRecipients.add(contact.Email);
+                    }
                 }
                 System.debug('CaseTriggerHandler::: sendEmail:: 5 ' + string.valueOf(toRecipients));
                 Boolean result = CaseEmail.sendEmailFromModal(c, toRecipients, targetId, a.Email_Template_5__c);

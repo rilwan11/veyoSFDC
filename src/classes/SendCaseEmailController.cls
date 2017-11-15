@@ -29,8 +29,8 @@ public with sharing class SendCaseEmailController {
                 WHERE Id =: recordId
                 LIMIT 1];
         a = [SELECT Id, Default_Account_Email_Address__c, Email_Template_1__c, Email_Template_2__c, Email_Template_3__c,
-                Email_Template_4__c, Email_Template_5__c, Email_Recipient_1__c, Email_Recipient_2__c, Email_Recipient_3__c,
-                Email_Recipient_4__c, Email_Recipient_5__c
+                Email_Template_4__c, Email_Template_5__c, Email_Recipients_1__c, Email_Recipients_2__c, Email_Recipients_3__c,
+                Email_Recipients_4__c, Email_Recipients_5__c
                 FROM Account
                 WHERE Id =: gn.AccountId
                 LIMIT 1];

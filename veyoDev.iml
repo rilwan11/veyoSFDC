@@ -454,10 +454,6 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="AccountConfiguration" />
-                            <option name="selected" value="true" />
-                          </MetadataEntry>
-                          <MetadataEntry>
                             <option name="name" value="veyoCallCenterCaseSubmission" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
