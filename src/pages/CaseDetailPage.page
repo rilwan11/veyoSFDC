@@ -190,7 +190,7 @@
 
 
         <apex:pageBlock title="Member Client Details" mode="inlineEdit" > <!-- COME BACK - needs to be inline also -->
-            <apex:pageBlockSection  >
+            <apex:pageBlockSection >
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Category__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Category__c.label}
                         <apex:outputField value="{!gn.Category__c}"  id="catOptions" label="Category" > <!-- multiselect="false" size="1" -->

@@ -43,14 +43,19 @@ public class veyoCallCenterCaseSubmissionController {
     // member variables...
     public Case m_case { get; set; }
     public String caseType { get; set; }
+    public String acctErrorMessage { get; set; }
+    public Boolean displayAcctErrorMessage { get; set; }
 
     /**
      * Constructor
      */
     public veyoCallCenterCaseSubmissionController() {
+        system.debug('veyoCallCenterCaseSubmissionController.constructor()...');
         m_case = new Case();
         m_case.Date_of_Report__c = system.today();
         m_case.Contact_Type__c = PHONE;
+
+        displayAcctErrorMessage = false;
     }
 
     /**
@@ -65,21 +70,34 @@ public class veyoCallCenterCaseSubmissionController {
         options.add(new SelectOption('', NONE));
 
         if(null != m_case.AccountId) {
-            List<Account> accounts = [SELECT Call_Center_Can_Create__c
+            List<Account> accounts = [SELECT Name, Call_Center_Can_Create__c
                                       FROM Account
                                       WHERE Id = :m_case.AccountId];
 
             if(accounts.size() > 0) {
                 Account acct = accounts[0];
-                if(acct.Call_Center_Can_Create__c == GRIEVANCE_NOTES_AND_FIRST_CALL_RESOLUTION) {
+
+                system.debug('veyoCallCenterSubmissionController.getCaseSubmissionTypes() :: acct.Call_Center_Can_Create__c <'+acct.Call_Center_Can_Create__c+'>');
+
+                if(GRIEVANCE_NOTES_AND_FIRST_CALL_RESOLUTION == acct.Call_Center_Can_Create__c) {
                     options.add(new SelectOption(FIRST_CALL_RESOLUTION, FIRST_CALL_RESOLUTION));
                     options.add(new SelectOption(GRIEVANCE_NOTE, GRIEVANCE_NOTE));
 
-                } else if(acct.Call_Center_Can_Create__c == ONLY_GRIEVANCE_NOTES) {
+                } else if(ONLY_GRIEVANCE_NOTES == acct.Call_Center_Can_Create__c) {
                     options.add(new SelectOption(GRIEVANCE_NOTE, GRIEVANCE_NOTE));
 
-                } else if(acct.Call_Center_Can_Create__c == ONLY_FIRST_CALL_RESOLUTIONS) {
+                } else if(ONLY_FIRST_CALL_RESOLUTIONS == acct.Call_Center_Can_Create__c) {
                     options.add(new SelectOption(GRIEVANCE_NOTE, GRIEVANCE_NOTE));
+                } else if(NEITHER == acct.Call_Center_Can_Create__c || NONE == acct.Call_Center_Can_Create__c) {
+
+
+                    ApexPages.Message errMsg = new ApexPages.Message(
+                            ApexPages.Severity.WARNING,
+                            'For '+acct.Name+' Veyo call center agents do not log Grievances into Salesforce.com. Please warm transfer this member to '+acct.Name+' member services');
+                    ApexPages.addMessage(errMsg);
+                    acctErrorMessage = 'For '+acct.Name+' Veyo call center agents do not log Grievances into Salesforce.com. Please warm transfer this member to '+acct.Name+' member services';
+                    displayAcctErrorMessage = true;
+                    system.debug('veyoCallCenterSubmissionController.getCaseSubmissionTypes() :: adding warning message to ApexPage.Message... displayAcctErrorMessage <'+displayAcctErrorMessage+'>');
                 }
             }
         }

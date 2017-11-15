@@ -1,16 +1,23 @@
 <apex:page id="veyoCallCenterCaseSubmission" controller="veyoCallCenterCaseSubmissionController" showHeader="true" sideBar="false">
     <apex:form >
-        <apex:pageMessages />
-        <br />
-        <br />
-        <apex:pageBlock title="Call Center Submission Page">
-            <apex:pageBlockSection id="pbCaseCreation">
+        <apex:outputPanel id="pageMsgsOutputId">
+            <apex:pageMessages id="pageMsgsId"/>
+        </apex:outputPanel>
+
+        <apex:pageBlock title="Call Center Submission Page" id="pageBlockCaseCreation">
+            <apex:pageBlockSection id="pbsCaseCreation">
+                <apex:outputText value="{!acctErrorMessage}"  rendered="{!displayAcctErrorMessage}"  id="optTextErrMsg"/>
+                <apex:pageBlockSectionItem rendered="false"/>
+
                 <apex:pageBlockSectionItem >
                     <apex:outputLabel value="Account" />
                     <apex:outputPanel >
                         <apex:inputField value="{!m_case.AccountId}" id="AccountId">
+                          <!--  <apex:actionSupport event="onchange"
+                                                rerender="pageMsgsOutputId"
+                                                status="loadAcctCaseTypes" />-->
                             <apex:actionSupport event="onchange"
-                                                rerender="pbCaseCreation"
+                                                rerender="pbsCaseCreation,pageMsgsId"
                                                 status="loadAcctCaseTypes" />
                         </apex:inputField>
                         <apex:actionStatus startText="loading allowable Incident Types..." id="loadIncidenTypes" />
@@ -44,7 +51,7 @@
             </apex:pageBlockSection>
             <apex:pageBlockButtons location="bottom">
                 <apex:outputLabel for="btnCreateCase" value="" />
-                <apex:commandButton id="btnCreateCase" value="Submit" action="{!save}"   />
+                <apex:commandButton id="btnCreateCase" value="Submit" action="{!save}"  />
             </apex:pageBlockButtons>
         </apex:pageBlock>
     </apex:form>
