@@ -6,6 +6,8 @@ public with sharing class CaseConfiguredPicklistsController {
     public String caseCategory { get; set; }
     public String caseSubcategory { get; set; }
     public String caseServiceMode { get; set; }
+    public String caseTransportationProvider { get; set; }
+    public String caseProviderContact { get; set; }
     public Case gn { get; set; }
     public Account a { get; set; }
     private ApexPages.StandardController sc;
@@ -59,7 +61,7 @@ public with sharing class CaseConfiguredPicklistsController {
         //String recordNumber = ApexPages.CurrentPage().getParameters().get('CaseNumber');
         System.debug('SendCaseEmailController::: recordId: ' + string.valueOf(recordId));
 
-        grievances = [SELECT Id, CaseNumber, AccountId, ContactId, Status, Category__c, Subcategory__c, Service_Mode__c,
+        grievances = [SELECT Id, CaseNumber, AccountId, ContactId, Status, Provider_Contact__c, Category__c, Subcategory__c, Service_Mode__c,
                 CreatedById, Member_Name__c, Date_of_Report__c, Member_ID__c, Due_Date__c, Member_Phone_Number__c,
                 Complainant_Name__c, CreatedDate, Created__c, Type, Contact_Type__c, Progress_Date__c, User_Account__c,
                 Resolved__c, Follow_Up_Requested__c, Open_Email_Response__c, Follow_Up_Completed__c, Follow_Up_Comments__c,
@@ -84,7 +86,7 @@ public with sharing class CaseConfiguredPicklistsController {
         }
 
         List<Account> accList = new List<Account>();
-        accList = [SELECT Id, Complaint_Category__c, Quality_of_Care_Concern_Category__c, Letter_of_Inquiry_Category__c,
+        accList = [SELECT Id, Service_State__c, RecordTypeId, Record_Type_Name__c, Complaint_Category__c, Quality_of_Care_Concern_Category__c, Letter_of_Inquiry_Category__c,
                         Agent_Issue_Subcategory__c, Driver_Issue_Subcategory__c, Early_Arrival_Subcategory__c, Late_Pickup_Subcategory__c, Damage_Injury_Subcategory__c, Missed_Pickup_Subcategory__c,
                         Safety_Concern_Subcategory__c, Scheduling_Error_Subcategory__c, Technical_Issue_Subcategory__c, Vehicle_Issue_Subcategory__c, Missed_Pickup_A_Leg_Subcategory__c, Missed_Pickup_B_Leg_Subcategory__c,
                         Late_Pickup_A_Leg_Subcategory__c, Late_Pickup_B_Leg_Subcategory__c,
@@ -240,9 +242,89 @@ public with sharing class CaseConfiguredPicklistsController {
 
 
     /**
+     * Krizia: make specific Transportation Providers available in picklist based upon Account Service State
+    */
+    public List<SelectOption> getTransportationProviderOptions() {
+        System.debug('CaseConfiguredPicklistsController::: getTransportationProviderOptions:: ');
+        List<SelectOption> options = new List<SelectOption>();
+        options.add(new SelectOption('', '--None--'));
+
+        if (a.Service_State__c != null) {
+            //Add to Provider Contact picklist
+            List<Account> transportationProviders = new List<Account>();
+            transportationProviders = [
+                    SELECT Id, Name, Service_State__c
+                    FROM Account
+                    WHERE Service_State__c =: a.Service_State__c AND Record_Type_Name__c = 'Transportation Provider'
+            ];
+
+
+            if (transportationProviders.size() > 0) {
+                for (Account a : transportationProviders) {
+                    String aName = a.Name;
+                    options.add(new SelectOption(aName, aName));
+                }
+            }
+        }
+        //Initial value to put into Provider Name (Transportation Provider)
+        if (gn.Provider_Name__c != null) {
+            System.debug('CaseConfiguredPicklistsController::: getTransportationProviderOptions:: set TransportationProvider to previous value - ' + string.valueOf(gn.Provider_Name__c));
+            String tp = gn.Provider_Name__c;
+            caseTransportationProvider = tp;
+        }
+
+        return options;
+    } //public List<SelectOption> getTransportationProviderOptions()
+
+
+    /**
+      * Krizia: make specific Transportation Provider Contacts available in picklist based upon Account Service State and Transportation Provider Account
+     */
+    public List<SelectOption> getProviderContactOptions() {
+        System.debug('CaseConfiguredPicklistsController::: getProviderContactOptions:: ' + string.valueOf(caseTransportationProvider));
+        List<SelectOption> options = new List<SelectOption>();
+        options.add(new SelectOption('', '--None--'));
+
+        //Add to Provider Contact picklist
+        if (a.Service_State__c != null && (gn.Provider_Name__c != null || caseTransportationProvider != null)) {
+            List<Account> transportationProvider = new List<Account>();
+            transportationProvider = [
+                    SELECT Id, Name, Service_State__c
+                    FROM Account
+                    WHERE Name =: caseTransportationProvider
+                    LIMIT 1
+            ];
+            List<Contact> contacts = new List<Contact>();
+            contacts = [
+                    SELECT Id, Name
+                    FROM Contact
+                    WHERE AccountId = :transportationProvider[0].Id
+            ];
+
+            if (contacts.size() > 0) {
+                for (Contact c : contacts) {
+                    String cName = c.Name;
+                    options.add(new SelectOption(cName, cName));
+                }
+            }
+        }
+
+
+        //Initial value to put into Provider Contact
+        if (gn.Provider_Contact__c != null) {
+            System.debug('CaseConfiguredPicklistsController::: getProviderContactOptions:: set Provider Contact to previous value - ' + string.valueOf(gn.Provider_Contact__c));
+            String pc = gn.Provider_Contact__c;
+            caseProviderContact = pc;
+        }
+
+        return options;
+    } //public List<SelectOption> getProviderContactOptions()
+
+
+    /**
      * Krizia: button - update the Case with the selected Category, Subcategory, and Service Mode as well as normal fields
      */
-    public void updatePicklists() {
+    public pageReference updatePicklists() {
         System.debug('CaseConfiguredPicklistsController::: updatePicklists:: Follow Up Requested and no Follow Up Comments ' + string.valueOf(gn.Status));
 
         //Check to be sure that Follow Up Comments entered when trying to change Status to Follow Up Requested
@@ -252,7 +334,7 @@ public with sharing class CaseConfiguredPicklistsController {
                 ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Unable to save, please enter Follow Up Comments to move into Follow Up Requested.');
                 ApexPages.addMessage(errorMessage);
                 System.debug(errorMessage);
-                return;
+                return null;
             }
             System.debug('CaseConfiguredPicklistsController::: updatePicklists:: Follow Up Requested with Follow Up Comments');
         }
@@ -262,6 +344,8 @@ public with sharing class CaseConfiguredPicklistsController {
         gn.Category__c = caseCategory;
         gn.Subcategory__c = caseSubcategory;
         gn.Service_Mode__c = caseServiceMode;
+        gn.Provider_Name__c = caseTransportationProvider;
+        gn.Provider_Contact__c = caseProviderContact;
 
         System.debug('CaseConfiguredPicklistsController::: updatePicklists:: ' + string.valueOf(gn));
 
@@ -271,5 +355,9 @@ public with sharing class CaseConfiguredPicklistsController {
         else {
             update gn;
         }
+
+        PageReference pr = new PageReference(ApexPages.currentPage().getUrl());
+        pr.setRedirect(true);
+        return pr;
     } //public void updatePicklists()
 }

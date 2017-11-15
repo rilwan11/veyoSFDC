@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31df91ac-2f59-4d2a-8840-733adc358db0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmissionController.cls" afterPath="$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmissionController.cls" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls" afterPath="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/CaseDetailPage.page" afterPath="$PROJECT_DIR$/src/pages/CaseDetailPage.page" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/veyoCallCenterCaseSubmission.page" afterPath="$PROJECT_DIR$/src/pages/veyoCallCenterCaseSubmission.page" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,12 +18,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CaseDetailPage.page" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CaseDetailPage.page" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/CaseDetailPage.page">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="564" column="0" lean-forward="false" selection-start-line="564" selection-start-column="0" selection-end-line="564" selection-end-column="0" />
+            <state relative-caret-position="310">
+              <caret line="232" column="107" lean-forward="false" selection-start-line="232" selection-start-column="107" selection-end-line="232" selection-end-column="107" />
               <folding>
+                <element signature="n#style#0;n#apex:commandButton#1;n#apex:pageBlockButtons#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#apex:outputField#0;n#apex:pageBlockSectionItem#16;n#apex:pageBlockSection#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#apex:outputField#0;n#apex:pageBlockSectionItem#17;n#apex:pageBlockSection#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#apex:outputField#0;n#apex:pageBlockSectionItem#2;n#apex:pageBlockSection#0;n#apex:pageBlock#3;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
@@ -39,9 +38,32 @@
                 <element signature="n#style#0;n#apex:outputField#0;n#apex:pageBlockSectionItem#21;n#apex:pageBlockSection#0;n#apex:pageBlock#5;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#apex:outputField#0;n#apex:pageBlockSectionItem#23;n#apex:pageBlockSection#0;n#apex:pageBlock#5;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#apex:outputField#0;n#apex:pageBlockSectionItem#8;n#apex:pageBlockSection#0;n#apex:pageBlock#7;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
-                <marker date="1510758045000" expanded="false" signature="2498:2510" ph="..." />
-                <marker date="1510758045000" expanded="false" signature="2777:2789" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CaseConfiguredPicklistsController.cls" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="535">
+              <caret line="293" column="60" lean-forward="false" selection-start-line="293" selection-start-column="60" selection-end-line="293" selection-end-column="60" />
+              <folding>
+                <element signature="e#12623#12637#0" expanded="true" />
+                <element signature="e#12846#12855#0" expanded="true" />
+                <element signature="e#14586#14595#0" expanded="true" />
+                <element signature="e#14874#14883#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="veyoCallCenterCaseSubmission.page" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/veyoCallCenterCaseSubmission.page">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="663">
+              <caret line="39" column="70" lean-forward="false" selection-start-line="39" selection-start-column="70" selection-end-line="39" selection-end-column="70" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -49,28 +71,8 @@
       <file leaf-file-name="veyoCallCenterCaseSubmissionController.cls" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmissionController.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="111" column="9" lean-forward="false" selection-start-line="111" selection-start-column="9" selection-end-line="111" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="veyoCallCenterCaseSubmission.page" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/pages/veyoCallCenterCaseSubmission.page">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="503">
-              <caret line="39" column="70" lean-forward="false" selection-start-line="39" selection-start-column="70" selection-end-line="39" selection-end-column="70" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CaseTrigger_Test.cls" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classes/CaseTrigger_Test.cls">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="67" lean-forward="false" selection-start-line="21" selection-start-column="67" selection-end-line="21" selection-end-column="67" />
+            <state relative-caret-position="677">
+              <caret line="120" column="8" lean-forward="true" selection-start-line="120" selection-start-column="8" selection-end-line="122" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -79,21 +81,11 @@
       <file leaf-file-name="SendCaseEmailController.cls" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/classes/SendCaseEmailController.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2992">
+            <state relative-caret-position="780">
               <caret line="176" column="43" lean-forward="false" selection-start-line="176" selection-start-column="43" selection-end-line="176" selection-end-column="43" />
               <folding>
                 <element signature="e#13894#13908#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CaseTriggerHandler.cls" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classes/CaseTriggerHandler.cls">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5508">
-              <caret line="324" column="32" lean-forward="false" selection-start-line="324" selection-start-column="32" selection-end-line="324" selection-end-column="32" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -127,6 +119,7 @@
       <find>par</find>
       <find>input</find>
       <find>buttomEmail</find>
+      <find>ConfigurablePicklists</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -148,7 +141,6 @@
         <option value="$PROJECT_DIR$/src/classes/CaseEmail.cls" />
         <option value="$PROJECT_DIR$/src/classes/GrievanceAppPagesController_Test.cls" />
         <option value="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController_Test.cls" />
-        <option value="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls" />
         <option value="$PROJECT_DIR$/src/classes/CaseEmailServiceHandler_Test.cls" />
         <option value="$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmission_Test.cls" />
         <option value="$PROJECT_DIR$/src/classes/SendCaseEmailController_Test.cls" />
@@ -156,9 +148,10 @@
         <option value="$PROJECT_DIR$/src/classes/CaseTrigger_Test.cls" />
         <option value="$PROJECT_DIR$/src/pages/SendCaseEmail.page" />
         <option value="$PROJECT_DIR$/src/classes/SendCaseEmailController.cls" />
-        <option value="$PROJECT_DIR$/src/pages/CaseDetailPage.page" />
         <option value="$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmissionController.cls" />
         <option value="$PROJECT_DIR$/src/pages/veyoCallCenterCaseSubmission.page" />
+        <option value="$PROJECT_DIR$/src/pages/CaseDetailPage.page" />
+        <option value="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls" />
       </list>
     </option>
   </component>
@@ -191,7 +184,7 @@
                   <option name="buildSuccessDatesBySourceRootRelativePath">
                     <map>
                       <entry key="CLASSES/ACCOUNTTRIGGERHANDLER.CLS" value="1510329401203" />
-                      <entry key="CLASSES/CASECONFIGUREDPICKLISTSCONTROLLER.CLS" value="1510587545619" />
+                      <entry key="CLASSES/CASECONFIGUREDPICKLISTSCONTROLLER.CLS" value="1510768072998" />
                       <entry key="CLASSES/CASECONFIGUREDPICKLISTSCONTROLLER_TEST.CLS" value="1510587450112" />
                       <entry key="CLASSES/CASEEMAIL.CLS" value="1510345466942" />
                       <entry key="CLASSES/CASEEMAILSERVICEHANDLER_TEST.CLS" value="1510590630566" />
@@ -202,7 +195,7 @@
                       <entry key="CLASSES/SENDCASEEMAILCONTROLLER_TEST.CLS" value="1510622755572" />
                       <entry key="CLASSES/VEYOCALLCENTERCASESUBMISSIONCONTROLLER.CLS" value="1510758048183" />
                       <entry key="CLASSES/VEYOCALLCENTERCASESUBMISSION_TEST.CLS" value="1510621065092" />
-                      <entry key="PAGES/CASEDETAILPAGE.PAGE" value="1510757840584" />
+                      <entry key="PAGES/CASEDETAILPAGE.PAGE" value="1510767973203" />
                       <entry key="PAGES/SENDCASEEMAIL.PAGE" value="1510689667977" />
                       <entry key="PAGES/VEYOCALLCENTERCASESUBMISSION.PAGE" value="1510758056783" />
                       <entry key="TRIGGERS/ACCOUNTTRIGGER.TRIGGER" value="1510326773681" />
@@ -2917,23 +2910,23 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.4968051" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.4946752" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16683218" sideWeight="0.51544195" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Anonymous Apex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23138034" sideWeight="0.7470713" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14001986" sideWeight="0.514377" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Anonymous Apex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23138034" sideWeight="0.74387646" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20357497" sideWeight="0.48455805" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14001986" sideWeight="0.4877529" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14001986" sideWeight="0.485623" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12140575" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="SOQL Query" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14026602" sideWeight="0.490701" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.4978701" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="SOQL Query" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14001986" sideWeight="0.48668796" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Log Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Log Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.5654952" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -3165,14 +3158,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-47">
-          <caret line="47" column="7" lean-forward="true" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController_Test.cls">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="261">
@@ -3194,29 +3179,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CaseTriggerHandler.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5508">
-          <caret line="324" column="32" lean-forward="false" selection-start-line="324" selection-start-column="32" selection-end-line="324" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CaseTrigger_Test.cls">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="67" lean-forward="false" selection-start-line="21" selection-start-column="67" selection-end-line="21" selection-end-column="67" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/SendCaseEmailController.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2992">
-          <caret line="176" column="43" lean-forward="false" selection-start-line="176" selection-start-column="43" selection-end-line="176" selection-end-column="43" />
-          <folding>
-            <element signature="e#13894#13908#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3228,11 +3195,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CaseTriggerHandler.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="324" column="32" lean-forward="false" selection-start-line="324" selection-start-column="32" selection-end-line="324" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/SendCaseEmailController.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="176" column="43" lean-forward="false" selection-start-line="176" selection-start-column="43" selection-end-line="176" selection-end-column="43" />
+          <folding>
+            <element signature="e#13894#13908#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmissionController.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="677">
+          <caret line="120" column="8" lean-forward="true" selection-start-line="120" selection-start-column="8" selection-end-line="122" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/veyoCallCenterCaseSubmission.page">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" column="70" lean-forward="false" selection-start-line="39" selection-start-column="70" selection-end-line="39" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="293" column="60" lean-forward="false" selection-start-line="293" selection-start-column="60" selection-end-line="293" selection-end-column="60" />
+          <folding>
+            <element signature="e#12623#12637#0" expanded="true" />
+            <element signature="e#12846#12855#0" expanded="true" />
+            <element signature="e#14586#14595#0" expanded="true" />
+            <element signature="e#14874#14883#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/CaseDetailPage.page">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="564" column="0" lean-forward="false" selection-start-line="564" selection-start-column="0" selection-end-line="564" selection-end-column="0" />
+        <state relative-caret-position="310">
+          <caret line="232" column="107" lean-forward="false" selection-start-line="232" selection-start-column="107" selection-end-line="232" selection-end-column="107" />
           <folding>
+            <element signature="n#style#0;n#apex:commandButton#1;n#apex:pageBlockButtons#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#apex:outputField#0;n#apex:pageBlockSectionItem#16;n#apex:pageBlockSection#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#apex:outputField#0;n#apex:pageBlockSectionItem#17;n#apex:pageBlockSection#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#apex:outputField#0;n#apex:pageBlockSectionItem#2;n#apex:pageBlockSection#0;n#apex:pageBlock#3;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
@@ -3246,25 +3261,7 @@
             <element signature="n#style#0;n#apex:outputField#0;n#apex:pageBlockSectionItem#21;n#apex:pageBlockSection#0;n#apex:pageBlock#5;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#apex:outputField#0;n#apex:pageBlockSectionItem#23;n#apex:pageBlockSection#0;n#apex:pageBlock#5;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#apex:outputField#0;n#apex:pageBlockSectionItem#8;n#apex:pageBlockSection#0;n#apex:pageBlock#7;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
-            <marker date="1510758045000" expanded="false" signature="2498:2510" ph="..." />
-            <marker date="1510758045000" expanded="false" signature="2777:2789" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmissionController.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="111" column="9" lean-forward="false" selection-start-line="111" selection-start-column="9" selection-end-line="111" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/veyoCallCenterCaseSubmission.page">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="39" column="70" lean-forward="false" selection-start-line="39" selection-start-column="70" selection-end-line="39" selection-end-column="70" />
-          <folding />
         </state>
       </provider>
     </entry>

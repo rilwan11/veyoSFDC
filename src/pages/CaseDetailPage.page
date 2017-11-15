@@ -54,12 +54,12 @@
         }
     </script>
 
-    <apex:form id="ConfigurablePicklists" title="Grievance Detail: {!Case.CaseNumber}">
-        <apex:pageBlock title="Member Contact Details">
+    <apex:form id="theForm" title="Grievance Detail: {!Case.CaseNumber}">
+        <apex:pageBlock title="Member Contact Details" id="thePageBlock">
 
             <!-- Button to save picklist selections and rerender this page & the service console (alert('Grievance Updated!'); window.top.location.href = '/{!Case.Id}'; )-->
             <apex:pageBlockButtons location="top">
-                <apex:commandButton value="Save Changes" status="updatingPicklists" action="{!updatePicklists}" id="saveButton" style="display:none" /> <!--onComplete="window.top.location='/console';"/> -->
+                <apex:commandButton value="Save Changes" status="updatingPicklists" action="{!updatePicklists}" id="saveButton"  /> <!-- ******ADD BACK AFTER TESTING selectLists: style="display:none" -->
                 <apex:actionStatus startText="saving..." stopText="" id="updatingPicklists" />
                 <apex:commandButton action="{!cancel}" immediate="true" value="Cancel" id="cancelButton" style="display:none" />
            <!--     <apex:commandButton action="{!URLFOR($Action.Case.Email_Modal, Id)}" immediate="true" value="Send Emails" /> -->
@@ -190,7 +190,7 @@
 
 
         <apex:pageBlock title="Member Client Details" > <!-- COME BACK - needs to be inline also -->
-            <apex:pageBlockSection >
+            <apex:pageBlockSection  >
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Category__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Category__c.label}
                         <apex:outputField value="{!gn.Category__c}"  id="catOptions" label="Category" > <!-- multiselect="false" size="1" -->
@@ -223,21 +223,22 @@
 
 
         <apex:pageBlock title="Service Details">
-            <apex:pageBlockSection >
+            <apex:actionFunction name="updateProviderContact" rerender="providerContactOptions"/>
+            <apex:pageBlockSection id="serviceDetails">
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Provider_Name__c.inlineHelpText}">
-                    Transportation Provider Name - NEED TO MAKE selectList
-                    <apex:outputField value="{!gn.Provider_Name__c}" >
-                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
-                    </apex:outputField>
+                    Transportation Provider
+                    <apex:selectList value="{!caseTransportationProvider}" multiselect="false" size="1" id="transportationProviderOptions" label="Transportation Provider" onchange="updateProviderContact();" >
+                        <apex:selectOptions value="{!transportationProviderOptions}"  />
+               <!--         <apex:actionSupport event="onchange" reRender="updateProviderContact();" /> -->
+                    </apex:selectList>
                 </apex:pageBlockSectionItem>
 
-
-                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Trip_Date__c.inlineHelpText}">
-                    {!$ObjectType.Case.fields.Trip_Date__c.label}
-                        <apex:outputField value="{!gn.Trip_Date__c}" >
-                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
-                        </apex:outputField>
+                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Provider_Contact__c.inlineHelpText}" id="ProvContact" >
+                    {!$ObjectType.Case.fields.Provider_Contact__c.label}
+                    <apex:selectList value="{!caseProviderContact}" multiselect="false" size="1" id="providerContactOptions" label="Provider Contact"  >
+                        <apex:selectOptions value="{!providerContactOptions}"  />
+                    </apex:selectList>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Agent_Name__c.inlineHelpText}">
@@ -247,7 +248,12 @@
                     </apex:outputField>
                 </apex:pageBlockSectionItem>
 
-                <apex:pageBlockSectionItem />
+                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Trip_Date__c.inlineHelpText}">
+                {!$ObjectType.Case.fields.Trip_Date__c.label}
+                    <apex:outputField value="{!gn.Trip_Date__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                    </apex:outputField>
+                </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Driver_Name__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Driver_Name__c.label}
