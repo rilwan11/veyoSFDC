@@ -54,7 +54,7 @@ public with sharing class CaseTrigger_Test {
                 Call_Center_Can_Create__c = 'Only Grievance Notes',
                 Type = 'Customer',
                 AccountNumber = '0002',
-                Default_Account_Email_Address__c = 'mr@test.com',
+                Default_Account_Email_Address__c = 'mr1@test1.com',
                 Complaint_Category__c = true,
                 Quality_of_Care_Concern_Category__c = true,
                 Agent_Issue_Subcategory__c = true,

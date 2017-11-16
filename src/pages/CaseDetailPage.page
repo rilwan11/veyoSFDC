@@ -2,7 +2,7 @@
  - Created by krizia on 11/8/17.
  -->
 
-<apex:page id="CaseDetailPage" standardController="Case" extensions="CaseConfiguredPicklistsController" showHeader="true" sideBar="false">
+<apex:page id="CaseDetailPage" standardController="Case" extensions="CaseConfiguredPicklistsController" showHeader="true" sideBar="false"  >
     <head>
         <title>Grievance Note</title>
         <apex:slds />
@@ -54,26 +54,28 @@
         }
     </script>
 
+    <div class="slds-scope">
     <apex:form id="theForm" title="Grievance Detail: {!Case.CaseNumber}">
         <apex:pageBlock title="Member Contact Details" id="thePageBlock">
 
             <!-- Button to save picklist selections and rerender this page & the service console (alert('Grievance Updated!'); window.top.location.href = '/{!Case.Id}'; )-->
+            <div style="Text-align:center;" >
             <apex:pageBlockButtons location="top">
-                <apex:commandButton value="Save Changes" status="updatingPicklists" action="{!updatePicklists}" id="saveButton"  /> <!-- ******ADD BACK AFTER TESTING selectLists: style="display:none" -->
+                <apex:commandButton value="Save Changes" status="updatingPicklists" action="{!updatePicklists}" id="saveButton" styleClass="slds-button slds-button--neutral" /> <!-- ******ADD BACK AFTER TESTING selectLists: style="display:none" -->
                 <apex:actionStatus startText="saving..." stopText="" id="updatingPicklists" />
-                <apex:commandButton action="{!cancel}" immediate="true" value="Cancel" id="cancelButton" style="display:none" />
+                <apex:commandButton action="{!cancel}" immediate="true" value="Cancel" id="cancelButton" styleClass="slds-button slds-button--neutral" /> <!-- ******ADD BACK AFTER TESTING selectLists: style="display:none" -->
            <!--     <apex:commandButton action="{!URLFOR($Action.Case.Email_Modal, Id)}" immediate="true" value="Send Emails" /> -->
-                <apex:commandButton value="Send Emails" id="buttonEmail" onclick="javascript: emailsModal()" onComplete="return null;"/> <!-- work on this part - hide when editing -->
+                <apex:commandButton value="Send Emails" id="buttonEmail" onclick="javascript: emailsModal()" onComplete="return null;" styleClass="slds-button slds-button--neutral" /> <!-- work on this part - hide when editing -->
 
            <!--     <apex:commandButton action="{!save}" value="Save Grievance" /> -->
             </apex:pageBlockButtons>
-
+            </div>
 
             <apex:pageBlockSection >
                 <apex:outputField value="{!gn.CreatedById}" />
                 <apex:outputField value="{!gn.CaseNumber}" />
 
-                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Member_Name__c.inlineHelpText}">
+                <apex:pageBlockSectionItem  HelpText="{!$ObjectType.Case.fields.Member_Name__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Member_Name__c.label}
                     <apex:outputField value="{!gn.Member_Name__c}" >
                         <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
@@ -189,7 +191,7 @@
         </apex:pageBlock>
 
 
-        <apex:pageBlock title="Member Client Details" mode="inlineEdit" > <!-- COME BACK - needs to be inline also -->
+        <apex:pageBlock title="Member Client Details"  > <!-- COME BACK - needs to be inline also -->
             <apex:pageBlockSection >
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Category__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Category__c.label}
@@ -571,20 +573,23 @@
         </apex:pageBlock>
     </apex:form>
 
+
     <!-- All related lists not on the left side of the console -->
-    <apex:relatedList list="Histories" />
-    <apex:relatedList list="Case_Aging_Histories__r" title="Status Changes" subject="{!gn}" />
+    <apex:relatedList list="Histories"  />
+    <apex:relatedList list="Case_Aging_Histories__r" title="Status Changes" subject="{!gn}"  />
     <apex:relatedList list="ActivityHistories" title="Outgoing Emails / Activity History" subject="{!gn}" />
     <apex:relatedList list="CombinedAttachments" title="Notes and Attachments" subject="{!gn}" />
     <apex:relatedList list="OpenActivities" title="Email Responses" subject="{!gn}" />
-    <apex:pageBlock title="Grievance Field Tracking History" >
+ <!--   <apex:pageBlock title="Grievance Field Tracking History" >
         <apex:pageBlockTable value="{!case.Histories}" var="c" >
             <apex:column value="{!c.Field}" headerValue="Field" />
             <apex:column value="{!c.NewValue}" headerValue="New Value" />
             <apex:column value="{!c.OldValue}" headerValue="Previous Value" />
             <apex:column value="{!c.CreatedById}" headerValue="User" />
         </apex:pageBlockTable>
-    </apex:pageBlock>
+    </apex:pageBlock> -->
+    </div>
+
 
     <apex:includeScript value="/support/console/20.0/integration.js"/>
     <script type="text/javascript">

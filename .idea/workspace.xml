@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="31df91ac-2f59-4d2a-8840-733adc358db0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls" afterPath="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/classes/SendCaseEmailController.cls" afterPath="$PROJECT_DIR$/src/classes/SendCaseEmailController.cls" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController_Test.cls" afterPath="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController_Test.cls" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/classes/CaseTrigger_Test.cls" afterPath="$PROJECT_DIR$/src/classes/CaseTrigger_Test.cls" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmission_Test.cls" afterPath="$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmission_Test.cls" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/CaseDetailPage.page" afterPath="$PROJECT_DIR$/src/pages/CaseDetailPage.page" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -16,43 +17,38 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/veyoDev$CaseTrigger_Test.coverage" NAME="veyoDev Coverage Results" MODIFIED="1510774550610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="Apex" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" PROJECT_NAME="veyoDev" CONNECTION_NAME="veyoDev" />
+    <SUITE FILE_PATH="coverage/veyoDev$CaseEmailServiceHandler_Test.coverage" NAME="veyoDev Coverage Results" MODIFIED="1510871740162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="Apex" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" PROJECT_NAME="veyoDev" CONNECTION_NAME="veyoDev" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CaseDetailPage.page" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CaseDetailPage.page" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/CaseDetailPage.page">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="197" column="142" lean-forward="false" selection-start-line="197" selection-start-column="142" selection-end-line="197" selection-end-column="142" />
+            <state relative-caret-position="265">
+              <caret line="583" column="64" lean-forward="true" selection-start-line="583" selection-start-column="64" selection-end-line="583" selection-end-column="64" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#apex:pageBlock#0;n#apex:form#0;n#div#0;n#apex:page#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CaseConfiguredPicklistsController_Test.cls" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController_Test.cls">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1360">
+              <caret line="82" column="108" lean-forward="false" selection-start-line="82" selection-start-column="108" selection-end-line="82" selection-end-column="108" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CaseConfiguredPicklistsController.cls" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls">
+      <file leaf-file-name="SendCaseEmailController_Test.cls" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/classes/SendCaseEmailController_Test.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-206">
-              <caret line="310" column="13" lean-forward="false" selection-start-line="310" selection-start-column="13" selection-end-line="310" selection-end-column="13" />
-              <folding>
-                <element signature="e#12623#12637#0" expanded="true" />
-                <element signature="e#12846#12855#0" expanded="true" />
-                <element signature="e#14555#14564#0" expanded="true" />
-                <element signature="e#14900#14909#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SendCaseEmailController.cls" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classes/SendCaseEmailController.cls">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="143" column="192" lean-forward="false" selection-start-line="143" selection-start-column="192" selection-end-line="143" selection-end-column="192" />
-              <folding>
-                <element signature="e#13912#13926#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="374">
+              <caret line="24" column="43" lean-forward="true" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -60,18 +56,38 @@
       <file leaf-file-name="CaseTriggerHandler.cls" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/classes/CaseTriggerHandler.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8075">
-              <caret line="475" column="45" lean-forward="false" selection-start-line="475" selection-start-column="45" selection-end-line="475" selection-end-column="45" />
+            <state relative-caret-position="259">
+              <caret line="360" column="0" lean-forward="false" selection-start-line="360" selection-start-column="0" selection-end-line="360" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SendCaseEmail.page" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/SendCaseEmail.page">
+      <file leaf-file-name="CaseTrigger_Test.cls" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/classes/CaseTrigger_Test.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="39" column="181" lean-forward="false" selection-start-line="39" selection-start-column="181" selection-end-line="39" selection-end-column="181" />
+            <state relative-caret-position="232">
+              <caret line="120" column="19" lean-forward="true" selection-start-line="120" selection-start-column="19" selection-end-line="120" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CaseEmailServiceHandler_Test.cls" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/classes/CaseEmailServiceHandler_Test.cls">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="402">
+              <caret line="26" column="59" lean-forward="true" selection-start-line="26" selection-start-column="59" selection-end-line="26" selection-end-column="59" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="veyoCallCenterCaseSubmission_Test.cls" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmission_Test.cls">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="19" column="62" lean-forward="true" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -118,18 +134,18 @@
         <option value="$PROJECT_DIR$/src/classes/AccountTriggerHandler.cls" />
         <option value="$PROJECT_DIR$/src/classes/CaseEmail.cls" />
         <option value="$PROJECT_DIR$/src/classes/GrievanceAppPagesController_Test.cls" />
-        <option value="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController_Test.cls" />
         <option value="$PROJECT_DIR$/src/classes/CaseEmailServiceHandler_Test.cls" />
-        <option value="$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmission_Test.cls" />
         <option value="$PROJECT_DIR$/src/classes/SendCaseEmailController_Test.cls" />
         <option value="$PROJECT_DIR$/src/pages/SendCaseEmail.page" />
         <option value="$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmissionController.cls" />
         <option value="$PROJECT_DIR$/src/pages/veyoCallCenterCaseSubmission.page" />
         <option value="$PROJECT_DIR$/src/classes/CaseTriggerHandler.cls" />
-        <option value="$PROJECT_DIR$/src/classes/CaseTrigger_Test.cls" />
         <option value="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls" />
         <option value="$PROJECT_DIR$/src/classes/SendCaseEmailController.cls" />
         <option value="$PROJECT_DIR$/src/pages/CaseDetailPage.page" />
+        <option value="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController_Test.cls" />
+        <option value="$PROJECT_DIR$/src/classes/CaseTrigger_Test.cls" />
+        <option value="$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmission_Test.cls" />
       </list>
     </option>
   </component>
@@ -163,17 +179,17 @@
                     <map>
                       <entry key="CLASSES/ACCOUNTTRIGGERHANDLER.CLS" value="1510329401203" />
                       <entry key="CLASSES/CASECONFIGUREDPICKLISTSCONTROLLER.CLS" value="1510791074019" />
-                      <entry key="CLASSES/CASECONFIGUREDPICKLISTSCONTROLLER_TEST.CLS" value="1510587450112" />
+                      <entry key="CLASSES/CASECONFIGUREDPICKLISTSCONTROLLER_TEST.CLS" value="1510871095797" />
                       <entry key="CLASSES/CASEEMAIL.CLS" value="1510345466942" />
                       <entry key="CLASSES/CASEEMAILSERVICEHANDLER_TEST.CLS" value="1510590630566" />
                       <entry key="CLASSES/CASETRIGGERHANDLER.CLS" value="1510774046815" />
-                      <entry key="CLASSES/CASETRIGGER_TEST.CLS" value="1510774541665" />
+                      <entry key="CLASSES/CASETRIGGER_TEST.CLS" value="1510871250940" />
                       <entry key="CLASSES/CHANGEPASSWORDCONTROLLERTEST.CLS" value="1510587171687" />
                       <entry key="CLASSES/SENDCASEEMAILCONTROLLER.CLS" value="1510847473313" />
                       <entry key="CLASSES/SENDCASEEMAILCONTROLLER_TEST.CLS" value="1510622755572" />
                       <entry key="CLASSES/VEYOCALLCENTERCASESUBMISSIONCONTROLLER.CLS" value="1510758048183" />
-                      <entry key="CLASSES/VEYOCALLCENTERCASESUBMISSION_TEST.CLS" value="1510621065092" />
-                      <entry key="PAGES/CASEDETAILPAGE.PAGE" value="1510851203478" />
+                      <entry key="CLASSES/VEYOCALLCENTERCASESUBMISSION_TEST.CLS" value="1510871724519" />
+                      <entry key="PAGES/CASEDETAILPAGE.PAGE" value="1510870430008" />
                       <entry key="PAGES/SENDCASEEMAIL.PAGE" value="1510689667977" />
                       <entry key="PAGES/VEYOCALLCENTERCASESUBMISSION.PAGE" value="1510758056783" />
                       <entry key="TRIGGERS/ACCOUNTTRIGGER.TRIGGER" value="1510326773681" />
@@ -2570,7 +2586,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Apex Unit Tests.CaseTrigger_Test">
+  <component name="RunManager" selected="Apex Unit Tests.CaseEmailServiceHandler_Test">
     <configuration name="CaseEmailServiceHandler_Test" type="com.illuminatedcloud.intellij" factoryName="Apex Unit Tests" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <option name="allTests" value="false" />
       <option name="apexLogLevel" value="DEBUG" />
@@ -2637,7 +2653,7 @@
       <option name="visualforceLogLevel" value="INFO" />
       <option name="workflowLogLevel" value="INFO" />
     </configuration>
-    <configuration name="CaseTrigger_Test" type="com.illuminatedcloud.intellij" factoryName="Apex Unit Tests" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="CaseTrigger_Test.insertCase" type="com.illuminatedcloud.intellij" factoryName="Apex Unit Tests" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <option name="allTests" value="false" />
       <option name="apexLogLevel" value="DEBUG" />
       <option name="calloutsLogLevel" value="INFO" />
@@ -2659,7 +2675,15 @@
       <option name="profilingLogLevel" value="INFO" />
       <option name="systemLogLevel" value="DEBUG" />
       <option name="testClassToTestMethodNames">
-        <map />
+        <map>
+          <entry key="CaseTrigger_Test">
+            <value>
+              <set>
+                <option value="insertCase" />
+              </set>
+            </value>
+          </entry>
+        </map>
       </option>
       <option name="testSuiteName" />
       <option name="validationLogLevel" value="INFO" />
@@ -2776,7 +2800,7 @@
       <properties />
       <listeners />
     </configuration>
-    <configuration name="veyoCallCenterCaseSubmission_Test.testVeyoCallCenterCaseSubmissionController" type="com.illuminatedcloud.intellij" factoryName="Apex Unit Tests" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="veyoCallCenterCaseSubmission_Test" type="com.illuminatedcloud.intellij" factoryName="Apex Unit Tests" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <option name="allTests" value="false" />
       <option name="apexLogLevel" value="DEBUG" />
       <option name="calloutsLogLevel" value="INFO" />
@@ -2798,15 +2822,7 @@
       <option name="profilingLogLevel" value="INFO" />
       <option name="systemLogLevel" value="DEBUG" />
       <option name="testClassToTestMethodNames">
-        <map>
-          <entry key="veyoCallCenterCaseSubmission_Test">
-            <value>
-              <set>
-                <option value="testVeyoCallCenterCaseSubmissionController" />
-              </set>
-            </value>
-          </entry>
-        </map>
+        <map />
       </option>
       <option name="testSuiteName" />
       <option name="validationLogLevel" value="INFO" />
@@ -2814,18 +2830,18 @@
       <option name="workflowLogLevel" value="INFO" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Apex Unit Tests.CaseEmailServiceHandler_Test.testBehavior" />
-      <item index="1" class="java.lang.String" itemvalue="Apex Unit Tests.SendCaseEmailController_Test" />
-      <item index="2" class="java.lang.String" itemvalue="Apex Unit Tests.CaseEmailServiceHandler_Test" />
-      <item index="3" class="java.lang.String" itemvalue="Apex Unit Tests.veyoCallCenterCaseSubmission_Test.testVeyoCallCenterCaseSubmissionController" />
-      <item index="4" class="java.lang.String" itemvalue="Apex Unit Tests.CaseTrigger_Test" />
+      <item index="0" class="java.lang.String" itemvalue="Apex Unit Tests.SendCaseEmailController_Test" />
+      <item index="1" class="java.lang.String" itemvalue="Apex Unit Tests.veyoCallCenterCaseSubmission_Test" />
+      <item index="2" class="java.lang.String" itemvalue="Apex Unit Tests.CaseTrigger_Test.insertCase" />
+      <item index="3" class="java.lang.String" itemvalue="Apex Unit Tests.CaseEmailServiceHandler_Test.testBehavior" />
+      <item index="4" class="java.lang.String" itemvalue="Apex Unit Tests.CaseEmailServiceHandler_Test" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Apex Unit Tests.CaseTrigger_Test" />
-        <item index="1" class="java.lang.String" itemvalue="Apex Unit Tests.veyoCallCenterCaseSubmission_Test.testVeyoCallCenterCaseSubmissionController" />
-        <item index="2" class="java.lang.String" itemvalue="Apex Unit Tests.CaseEmailServiceHandler_Test" />
-        <item index="3" class="java.lang.String" itemvalue="Apex Unit Tests.CaseEmailServiceHandler_Test.testBehavior" />
+        <item index="0" class="java.lang.String" itemvalue="Apex Unit Tests.CaseEmailServiceHandler_Test" />
+        <item index="1" class="java.lang.String" itemvalue="Apex Unit Tests.veyoCallCenterCaseSubmission_Test" />
+        <item index="2" class="java.lang.String" itemvalue="Apex Unit Tests.CaseEmailServiceHandler_Test.testBehavior" />
+        <item index="3" class="java.lang.String" itemvalue="Apex Unit Tests.CaseTrigger_Test.insertCase" />
         <item index="4" class="java.lang.String" itemvalue="Apex Unit Tests.SendCaseEmailController_Test" />
       </list>
     </recent_temporary>
@@ -2844,28 +2860,28 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CaseEmailServiceHandler_Test_testBehavior - 2017.11.13 at 07h 55m 25s.xml">
+    <history-entry file="CaseConfiguredPicklistsController_Test - 2017.11.16 at 14h 08m 39s.xml">
+      <configuration name="CaseConfiguredPicklistsController_Test" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="CaseEmailServiceHandler_Test - 2017.11.16 at 14h 35m 43s.xml">
+      <configuration name="CaseEmailServiceHandler_Test" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="CaseEmailServiceHandler_Test_testBehavior - 2017.11.16 at 14h 28m 53s.xml">
       <configuration name="CaseEmailServiceHandler_Test.testBehavior" configurationId="com.illuminatedcloud.intellij" />
     </history-entry>
-    <history-entry file="CaseEmailServiceHandler_Test_testBehavior - 2017.11.13 at 07h 56m 50s.xml">
-      <configuration name="CaseEmailServiceHandler_Test.testBehavior" configurationId="com.illuminatedcloud.intellij" />
+    <history-entry file="CaseTrigger_Test_insertCase - 2017.11.16 at 14h 28m 37s.xml">
+      <configuration name="CaseTrigger_Test.insertCase" configurationId="com.illuminatedcloud.intellij" />
     </history-entry>
-    <history-entry file="CaseEmailServiceHandler_Test_testBehavior - 2017.11.13 at 08h 21m 34s.xml">
-      <configuration name="CaseEmailServiceHandler_Test.testBehavior" configurationId="com.illuminatedcloud.intellij" />
-    </history-entry>
-    <history-entry file="CaseTrigger_Test - 2017.11.15 at 11h 34m 31s.xml">
-      <configuration name="CaseTrigger_Test" configurationId="com.illuminatedcloud.intellij" />
-    </history-entry>
-    <history-entry file="CaseTrigger_Test - 2017.11.15 at 11h 35m 57s.xml">
-      <configuration name="CaseTrigger_Test" configurationId="com.illuminatedcloud.intellij" />
-    </history-entry>
-    <history-entry file="SendCaseEmailController_Test - 2017.11.13 at 08h 09m 48s.xml">
+    <history-entry file="SendCaseEmailController_Test - 2017.11.16 at 14h 25m 44s.xml">
       <configuration name="SendCaseEmailController_Test" configurationId="com.illuminatedcloud.intellij" />
     </history-entry>
-    <history-entry file="SendCaseEmailController_Test - 2017.11.13 at 08h 11m 18s.xml">
-      <configuration name="SendCaseEmailController_Test" configurationId="com.illuminatedcloud.intellij" />
+    <history-entry file="veyoCallCenterCaseSubmission_Test - 2017.11.16 at 14h 26m 14s.xml">
+      <configuration name="veyoCallCenterCaseSubmission_Test" configurationId="com.illuminatedcloud.intellij" />
     </history-entry>
-    <history-entry file="veyoCallCenterCaseSubmission_Test - 2017.11.13 at 07h 42m 00s.xml">
+    <history-entry file="veyoCallCenterCaseSubmission_Test - 2017.11.16 at 14h 34m 48s.xml">
+      <configuration name="veyoCallCenterCaseSubmission_Test" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="veyoCallCenterCaseSubmission_Test - 2017.11.16 at 14h 35m 31s.xml">
       <configuration name="veyoCallCenterCaseSubmission_Test" configurationId="com.illuminatedcloud.intellij" />
     </history-entry>
     <history-entry file="veyoCallCenterCaseSubmission_Test_testVeyoCallCenterCaseSubmissionController - 2017.11.13 at 09h 16m 49s.xml">
@@ -2886,38 +2902,37 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="-388" width="1920" height="1080" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20357497" sideWeight="0.51970184" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Anonymous Apex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23138034" sideWeight="0.74387646" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.4946752" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16683218" sideWeight="0.51757187" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Anonymous Apex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23138034" sideWeight="0.74387646" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20357497" sideWeight="0.4824281" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20357497" sideWeight="0.4802982" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14001986" sideWeight="0.485623" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.092651755" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1996805" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.4978701" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="SOQL Query" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14001986" sideWeight="0.48668796" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Log Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.5654952" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40119165" sideWeight="0.49520767" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -3112,34 +3127,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmission_Test.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="554">
-          <caret line="82" column="0" lean-forward="true" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController_Test.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="67" column="64" lean-forward="true" selection-start-line="67" selection-start-column="64" selection-end-line="67" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CaseEmailServiceHandler_Test.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="70" column="36" lean-forward="true" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/SendCaseEmailController_Test.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="43" column="13" lean-forward="false" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmissionController.cls">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="677">
@@ -3151,21 +3138,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
           <caret line="39" column="62" lean-forward="false" selection-start-line="39" selection-start-column="62" selection-end-line="39" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CaseTrigger_Test.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="32" column="52" lean-forward="true" selection-start-line="32" selection-start-column="52" selection-end-line="32" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CaseTriggerHandler.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8075">
-          <caret line="475" column="45" lean-forward="false" selection-start-line="475" selection-start-column="45" selection-end-line="475" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3184,16 +3156,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/SendCaseEmailController.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="143" column="192" lean-forward="false" selection-start-line="143" selection-start-column="192" selection-end-line="143" selection-end-column="192" />
-          <folding>
-            <element signature="e#13912#13926#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-206">
@@ -3209,8 +3171,68 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/CaseDetailPage.page">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="197" column="142" lean-forward="false" selection-start-line="197" selection-start-column="142" selection-end-line="197" selection-end-column="142" />
+        <state relative-caret-position="265">
+          <caret line="583" column="64" lean-forward="true" selection-start-line="583" selection-start-column="64" selection-end-line="583" selection-end-column="64" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#apex:pageBlock#0;n#apex:form#0;n#div#0;n#apex:page#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController_Test.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="82" column="108" lean-forward="false" selection-start-line="82" selection-start-column="108" selection-end-line="82" selection-end-column="108" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/SendCaseEmailController_Test.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="24" column="43" lean-forward="true" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/SendCaseEmailController.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="143" column="192" lean-forward="false" selection-start-line="143" selection-start-column="192" selection-end-line="143" selection-end-column="192" />
+          <folding>
+            <element signature="e#13912#13926#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CaseTrigger_Test.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="120" column="19" lean-forward="true" selection-start-line="120" selection-start-column="19" selection-end-line="120" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CaseTriggerHandler.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="360" column="0" lean-forward="false" selection-start-line="360" selection-start-column="0" selection-end-line="360" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmission_Test.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="19" column="62" lean-forward="true" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CaseEmailServiceHandler_Test.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="26" column="59" lean-forward="true" selection-start-line="26" selection-start-column="59" selection-end-line="26" selection-end-column="59" />
           <folding />
         </state>
       </provider>

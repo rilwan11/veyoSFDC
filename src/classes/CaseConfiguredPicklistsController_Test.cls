@@ -11,7 +11,7 @@ public with sharing class CaseConfiguredPicklistsController_Test {
 
         Id aRecordType = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Client').getRecordTypeId();
         Account a = new Account(
-                Name = 'Test Account 2',
+                Name = 'Test Account 1',
                 RecordTypeId = aRecordType,
                 Call_Center_Can_Create__c = 'Only Grievance Notes',
                 Type = 'Customer',
@@ -42,15 +42,28 @@ public with sharing class CaseConfiguredPicklistsController_Test {
                 Public_Transportation_Service_Mode__c = true,
                 Mileage_Reimbursement_Service_Mode__c = true,
                 General_Priority_Days__c = 4,
-                Expedited_Priority_Days__c = 2
+                Expedited_Priority_Days__c = 2,
+                Service_State__c = 'AR'
         );
         insert a;
+        Id transRecordType = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Transportation Provider').getRecordTypeId();
+        Account provider = new Account(
+                Name = 'Transportation Provider 1',
+                RecordTypeId = transRecordType,
+                Service_State__c = 'AR'
+        );
+        insert provider;
         Contact cont = new Contact(
                 LastName = 'Jones',
                 Email = 'test@tester.com',
                 Account = a
         );
         insert cont;
+        Contact cont2 = new Contact(
+                LastName = 'Trans',
+                Email = 'transportationprovider@contact.com',
+                Account = provider
+        );
         Case c = new Case (
                 AccountId = a.Id,
                 ContactId = cont.Id,
@@ -69,26 +82,22 @@ public with sharing class CaseConfiguredPicklistsController_Test {
         ApexPages.StandardController stdController = new ApexPages.StandardController(c);
         CaseConfiguredPicklistsController controller = new CaseConfiguredPicklistsController(stdController);
 
-        //NEED TO BE ABLE TO QUERY THE CASE/ACCOUNT in the actual Controller for this to work
-
         // Add parameters to page URL
         test.startTest();
+        controller.caseCategory = 'Complaint';
+        controller.caseSubcategory = 'Agent Issue';
+        controller.caseServiceMode = 'ALS';
+        controller.caseTransportationProvider = provider.Id;
+        controller.gn.Status = 'Follow Up Requested';
+        controller.updatePicklists();
         List<SelectOption> options = controller.getCategoryOptions();
         List<SelectOption> options2 = controller.getSubcategoryOptions();
         List<SelectOption> options3 = controller.getServiceModeOptions();
-        ApexPages.currentPage().getParameters().put('Category', 'Complaint');
-        ApexPages.currentPage().getParameters().put('Subcategory', 'Agent Issue');
-        ApexPages.currentPage().getParameters().put('Service Mode', 'ALS');
-        ApexPages.currentPage().getParameters().put('Status', 'Follow Up Requested');
-        controller.updatePicklists();
-        ApexPages.currentPage().getParameters().put('Follow Up Comments', 'Should have just failed');
+        List<SelectOption> options4 = controller.getTransportationProviderOptions();
+        List<SelectOption> options5 = controller.getProviderContactOptions();
+        controller.gn.Follow_Up_Comments__c = 'Should have just failed';
         controller.updatePicklists();
         test.stopTest();
-
-
-
-
-
 
     } //public static testMethod void testCaseConfiguredPicklistsController()
 

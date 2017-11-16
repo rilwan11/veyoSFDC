@@ -17,6 +17,7 @@ public with sharing class veyoCallCenterCaseSubmission_Test {
                 Call_Center_Can_Create__c = 'Only Grievance Notes',
                 Type = 'Customer',
                 AccountNumber = '0001',
+                Default_Account_Email_Address__c = 'mr@t.com',
                 Complaint_Category__c = true,
                 Letter_of_Inquiry_Category__c = true,
                 Quality_of_Care_Concern_Category__c = true,
