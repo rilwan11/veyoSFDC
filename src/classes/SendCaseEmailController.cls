@@ -141,7 +141,7 @@ public with sharing class SendCaseEmailController {
             disabledButton = false;
         }
         catch (exception ex) {
-            ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'You did not select an Email Template. Please select an Email Template, then try again. ');
+            ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Please make sure all input is correct and that there is a Contact on the Grievance, then try again. ');
             ApexPages.addMessage(errorMessage);
             System.debug(errorMessage);
             disabledButton = true;

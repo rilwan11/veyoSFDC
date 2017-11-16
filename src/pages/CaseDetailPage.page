@@ -18,21 +18,21 @@
             requireCssFile('/resource/jQuery/jquery-ui/jquery-ui.min.css');
 
             function requireCssFile(filename) {
-            var fileref = document.createElement('link');
-            fileref.setAttribute('rel', 'stylesheet');
-            fileref.setAttribute('type', 'text/css');
-            fileref.setAttribute('href', filename);
-            document.getElementsByTagName('head')[0].appendChild(fileref);
+                var fileref = document.createElement('link');
+                fileref.setAttribute('rel', 'stylesheet');
+                fileref.setAttribute('type', 'text/css');
+                fileref.setAttribute('href', filename);
+                document.getElementsByTagName('head')[0].appendChild(fileref);
             }
 
 
             var j$ = jQuery.noConflict();
 
             var iframe_url = '{!URLFOR("/apex/SendCaseEmail")}'+'isdtp=vw&id='+'{!Case.Id}';
-      //      var wWidth = $(window).width();
-      //      var dWidth = wWidth * 0.8;
-      //      var wHeight = $(window).height();
-      //      var dHeight = wHeight * 0.8;
+            var wWidth = j$(window).width();
+            var dWidth = wWidth * 0.8;
+            var wHeight = j$(window).height();
+            var dHeight = wHeight * 0.8;
 
             var j$modalDialog = j$('<div></div>')
                 .html('<iframe id="iframeContentId" src="' + iframe_url + '" frameborder="0" height="100%" width="100%" marginheight="0" marginwidth="0" scrolling="yes" />')
@@ -40,8 +40,8 @@
                 autoOpen: true,
                 title: 'Send Grievance Note Email',
                 resizable: false,
-                width: 800,
-                height: 600,
+                width: dWidth,
+                height: dHeight,
                 autoResize: true,
                 modal: true,
                 draggable: false,
@@ -193,10 +193,10 @@
             <apex:pageBlockSection >
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Category__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Category__c.label}
-                        <apex:outputField value="{!gn.Category__c}"  id="catOptions" label="Category" > <!-- multiselect="false" size="1" -->
+                        <apex:selectList value="{!caseCategory}" multiselect="false" size="1" id="catOptions" label="Category" >
                             <apex:selectOptions value="{!categoryOptions}" />
-                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
-                        </apex:outputField>
+                   <!--         <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/> -->
+                        </apex:selectList>
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Service_Mode__c.inlineHelpText}">
@@ -568,15 +568,23 @@
                 </apex:pageBlockSectionItem>
 
             </apex:pageBlockSection>
-
         </apex:pageBlock>
-
     </apex:form>
 
     <!-- All related lists not on the left side of the console -->
+    <apex:relatedList list="Histories" />
     <apex:relatedList list="Case_Aging_Histories__r" title="Status Changes" subject="{!gn}" />
     <apex:relatedList list="ActivityHistories" title="Outgoing Emails / Activity History" subject="{!gn}" />
     <apex:relatedList list="CombinedAttachments" title="Notes and Attachments" subject="{!gn}" />
+    <apex:relatedList list="OpenActivities" title="Email Responses" subject="{!gn}" />
+    <apex:pageBlock title="Grievance Field Tracking History" >
+        <apex:pageBlockTable value="{!case.Histories}" var="c" >
+            <apex:column value="{!c.Field}" headerValue="Field" />
+            <apex:column value="{!c.NewValue}" headerValue="New Value" />
+            <apex:column value="{!c.OldValue}" headerValue="Previous Value" />
+            <apex:column value="{!c.CreatedById}" headerValue="User" />
+        </apex:pageBlockTable>
+    </apex:pageBlock>
 
     <apex:includeScript value="/support/console/20.0/integration.js"/>
     <script type="text/javascript">

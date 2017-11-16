@@ -294,17 +294,19 @@ public with sharing class CaseConfiguredPicklistsController {
                     WHERE Name =: caseTransportationProvider
                     LIMIT 1
             ];
-            List<Contact> contacts = new List<Contact>();
-            contacts = [
-                    SELECT Id, Name
-                    FROM Contact
-                    WHERE AccountId = :transportationProvider[0].Id
-            ];
+            if (transportationProvider.size() > 0) {
+                List<Contact> contacts = new List<Contact>();
+                contacts = [
+                        SELECT Id, Name
+                        FROM Contact
+                        WHERE AccountId = :transportationProvider[0].Id
+                ];
 
-            if (contacts.size() > 0) {
-                for (Contact c : contacts) {
-                    String cName = c.Name;
-                    options.add(new SelectOption(cName, cName));
+                if (contacts.size() > 0) {
+                    for (Contact c : contacts) {
+                        String cName = c.Name;
+                        options.add(new SelectOption(cName, cName));
+                    }
                 }
             }
         }
