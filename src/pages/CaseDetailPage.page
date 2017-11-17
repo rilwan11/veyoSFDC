@@ -75,7 +75,7 @@
                 <apex:outputField value="{!gn.CreatedById}" />
                 <apex:outputField value="{!gn.CaseNumber}" />
 
-                <apex:pageBlockSectionItem  HelpText="{!$ObjectType.Case.fields.Member_Name__c.inlineHelpText}">
+                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Member_Name__c.inlineHelpText}"> 
                     {!$ObjectType.Case.fields.Member_Name__c.label}
                     <apex:outputField value="{!gn.Member_Name__c}" >
                         <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>

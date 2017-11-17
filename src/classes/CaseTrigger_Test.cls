@@ -15,6 +15,12 @@ public with sharing class CaseTrigger_Test {
 
 
     public static testmethod void insertCase() {
+        OrgWideEmailAddress veyo = new OrgWideEmailAddress(
+                DisplayName = 'Veyo Case Management',
+                Address = 'test@veyo.com'
+        );
+        insert veyo;
+
         Id aRecordType = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Client').getRecordTypeId();
         Account a = new Account(
                 Name = 'Test Account',
