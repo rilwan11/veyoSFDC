@@ -5,6 +5,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/classes/MassUpdateSimpleControllerTest.cls" afterPath="$PROJECT_DIR$/src/classes/MassUpdateSimpleControllerTest.cls" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/CaseClientPortal.page" afterPath="$PROJECT_DIR$/src/pages/CaseClientPortal.page" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/CaseClientPortal.page-meta.xml" afterPath="$PROJECT_DIR$/src/pages/CaseClientPortal.page-meta.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,7 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/veyoDev$MassUpdateSimpleControllerTest.coverage" NAME="veyoDev Coverage Results" MODIFIED="1510943084135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="Apex" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" PROJECT_NAME="veyoDev" CONNECTION_NAME="veyoDev" />
+    <SUITE FILE_PATH="coverage/veyoDev$MassUpdateSimpleControllerTest.coverage" NAME="veyoDev Coverage Results" MODIFIED="1510957551695" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="Apex" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" PROJECT_NAME="veyoDev" CONNECTION_NAME="veyoDev" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -23,7 +24,7 @@
         <entry file="file://$PROJECT_DIR$/src/pages/CaseDetailPage.page">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1224">
-              <caret line="72" column="0" lean-forward="true" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+              <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -42,11 +43,11 @@
       <file leaf-file-name="MassUpdateSimpleControllerTest.cls" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/classes/MassUpdateSimpleControllerTest.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="66" column="38" lean-forward="false" selection-start-line="66" selection-start-column="38" selection-end-line="66" selection-end-column="38" />
+            <state relative-caret-position="1377">
+              <caret line="81" column="38" lean-forward="true" selection-start-line="81" selection-start-column="38" selection-end-line="81" selection-end-column="38" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
-                <element signature="e#7017#7030#0" expanded="true" />
+                <element signature="e#728#741#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -56,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/src/pages/CaseClientPortal.page">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="16" column="77" lean-forward="true" selection-start-line="16" selection-start-column="77" selection-end-line="16" selection-end-column="77" />
+              <caret line="16" column="77" lean-forward="false" selection-start-line="16" selection-start-column="77" selection-end-line="16" selection-end-column="77" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#apex:pageBlock#0;n#apex:form#0;n#div#0;n#apex:page#0;n#!!top" expanded="true" />
               </folding>
@@ -68,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/src/classes/CaseClientPortalController.cls">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="17" column="69" lean-forward="true" selection-start-line="17" selection-start-column="69" selection-end-line="17" selection-end-column="69" />
+              <caret line="17" column="69" lean-forward="false" selection-start-line="17" selection-start-column="69" selection-end-line="17" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -78,7 +79,7 @@
         <entry file="file://$PROJECT_DIR$/src/classes/CaseTrigger_Test.cls">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="18" selection-end-column="111" />
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="18" selection-end-column="111" />
               <folding />
             </state>
           </provider>
@@ -140,6 +141,7 @@
         <option value="$PROJECT_DIR$/src/classes/CaseClientPortalController.cls" />
         <option value="$PROJECT_DIR$/src/pages/CaseDetailPage.page" />
         <option value="$PROJECT_DIR$/src/pages/CaseClientPortal.page" />
+        <option value="$PROJECT_DIR$/src/build/veyoDev/sfdc-package/classes/MassUpdateSimpleControllerTest.cls" />
         <option value="$PROJECT_DIR$/src/classes/MassUpdateSimpleControllerTest.cls" />
       </list>
     </option>
@@ -161,8 +163,15 @@
       <ProjectWorkspaceSettings>
         <option name="anonymousApexSettings">
           <AnonymousApexSettings>
+            <option name="calloutsLogLevel" value="ERROR" />
             <option name="connectionName" value="veyoDev" />
+            <option name="databaseLogLevel" value="ERROR" />
             <option name="documentText" value="" />
+            <option name="profilingLogLevel" value="ERROR" />
+            <option name="systemLogLevel" value="ERROR" />
+            <option name="validationLogLevel" value="ERROR" />
+            <option name="visualforceLogLevel" value="ERROR" />
+            <option name="workflowLogLevel" value="ERROR" />
           </AnonymousApexSettings>
         </option>
         <option name="connectionWorkspaceSettings">
@@ -181,7 +190,7 @@
                       <entry key="CLASSES/CASETRIGGERHANDLER.CLS" value="1510774046815" />
                       <entry key="CLASSES/CASETRIGGER_TEST.CLS" value="1510932851741" />
                       <entry key="CLASSES/CHANGEPASSWORDCONTROLLERTEST.CLS" value="1510587171687" />
-                      <entry key="CLASSES/MASSUPDATESIMPLECONTROLLERTEST.CLS" value="1510956164910" />
+                      <entry key="CLASSES/MASSUPDATESIMPLECONTROLLERTEST.CLS" value="1510957864541" />
                       <entry key="CLASSES/SENDCASEEMAILCONTROLLER.CLS" value="1510847473313" />
                       <entry key="CLASSES/SENDCASEEMAILCONTROLLER_TEST.CLS" value="1510622755572" />
                       <entry key="CLASSES/VEYOCALLCENTERCASESUBMISSIONCONTROLLER.CLS" value="1510758048183" />
@@ -219,7 +228,7 @@
             <entry key="veyoDev">
               <value>
                 <MetadataContents>
-                  <option name="lastPopulated" value="1510772070252" />
+                  <option name="lastPopulated" value="1510935557025" />
                   <option name="metadataTypes">
                     <set>
                       <MetadataType>
@@ -229,6 +238,7 @@
                             <option value="AccountHierarchyTestData" />
                             <option value="AccountStructure" />
                             <option value="AccountTriggerHandler" />
+                            <option value="CaseClientPortalController" />
                             <option value="CaseConfiguredPicklistsController" />
                             <option value="CaseConfiguredPicklistsController_Test" />
                             <option value="CaseEmail" />
@@ -299,6 +309,7 @@
                             <option value="Activity_Button" />
                             <option value="AnswersHome" />
                             <option value="BandwidthExceeded" />
+                            <option value="CaseClientPortal" />
                             <option value="CaseConfiguredPicklistsPage" />
                             <option value="CaseDetailPage" />
                             <option value="ChangePassword" />
@@ -1401,6 +1412,17 @@
                       <MetadataType>
                         <option name="members">
                           <set>
+                            <option value="Communities_Shared_Document_Folder/Veyo_Logo_small_png.png" />
+                            <option value="Communities_Shared_Document_Folder/Veyo_logo_transparent_png.png" />
+                            <option value="Communities_Shared_Document_Folder/Veyo_transparent_small_png.png" />
+                          </set>
+                        </option>
+                        <option name="name" value="Document" />
+                      </MetadataType>
+                      <MetadataType>
+                        <option name="members">
+                          <set>
+                            <option value="Communities_Shared_Document_Folder" />
                             <option value="Directory_Tools" />
                             <option value="SalesTools" />
                             <option value="Salesforce1_Branding_Resources" />
@@ -1583,6 +1605,7 @@
                             <option value="Campaign-Email Campaign" />
                             <option value="CampaignMember-Campaign Member Page Layout" />
                             <option value="Case-Case Layout" />
+                            <option value="Case-Client Portal GN Layout" />
                             <option value="Case-GN Service Console" />
                             <option value="CaseClose-Close Case Layout" />
                             <option value="CaseInteraction-Case Feed Layout" />
@@ -2690,11 +2713,11 @@
     <configuration name="MassUpdateSimpleControllerTest" type="com.illuminatedcloud.intellij" factoryName="Apex Unit Tests" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <option name="allTests" value="false" />
       <option name="apexLogLevel" value="DEBUG" />
-      <option name="calloutsLogLevel" value="INFO" />
+      <option name="calloutsLogLevel" value="ERROR" />
       <option name="connectionName" value="veyoDev" />
       <option name="contextConfiguration" value="true" />
-      <option name="databaseLogLevel" value="INFO" />
-      <option name="logLevelsInitialized" value="false" />
+      <option name="databaseLogLevel" value="ERROR" />
+      <option name="logLevelsInitialized" value="true" />
       <option name="moduleToTestClassNames">
         <map>
           <entry key="veyoDev">
@@ -2706,15 +2729,15 @@
           </entry>
         </map>
       </option>
-      <option name="profilingLogLevel" value="INFO" />
-      <option name="systemLogLevel" value="DEBUG" />
+      <option name="profilingLogLevel" value="ERROR" />
+      <option name="systemLogLevel" value="ERROR" />
       <option name="testClassToTestMethodNames">
         <map />
       </option>
       <option name="testSuiteName" />
-      <option name="validationLogLevel" value="INFO" />
-      <option name="visualforceLogLevel" value="INFO" />
-      <option name="workflowLogLevel" value="INFO" />
+      <option name="validationLogLevel" value="ERROR" />
+      <option name="visualforceLogLevel" value="ERROR" />
+      <option name="workflowLogLevel" value="ERROR" />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
@@ -2857,23 +2880,23 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CaseEmailServiceHandler_Test - 2017.11.16 at 14h 35m 43s.xml">
-      <configuration name="CaseEmailServiceHandler_Test" configurationId="com.illuminatedcloud.intellij" />
-    </history-entry>
-    <history-entry file="CaseEmailServiceHandler_Test_testBehavior - 2017.11.16 at 14h 28m 53s.xml">
-      <configuration name="CaseEmailServiceHandler_Test.testBehavior" configurationId="com.illuminatedcloud.intellij" />
-    </history-entry>
-    <history-entry file="CaseTrigger_Test_insertCase - 2017.11.16 at 14h 28m 37s.xml">
-      <configuration name="CaseTrigger_Test.insertCase" configurationId="com.illuminatedcloud.intellij" />
-    </history-entry>
     <history-entry file="MassUpdateSimpleControllerTest - 2017.11.17 at 10h 24m 49s.xml">
       <configuration name="MassUpdateSimpleControllerTest" configurationId="com.illuminatedcloud.intellij" />
     </history-entry>
-    <history-entry file="SendCaseEmailController_Test - 2017.11.16 at 14h 25m 44s.xml">
-      <configuration name="SendCaseEmailController_Test" configurationId="com.illuminatedcloud.intellij" />
+    <history-entry file="MassUpdateSimpleControllerTest - 2017.11.17 at 14h 14m 03s.xml">
+      <configuration name="MassUpdateSimpleControllerTest" configurationId="com.illuminatedcloud.intellij" />
     </history-entry>
-    <history-entry file="veyoCallCenterCaseSubmission_Test - 2017.11.16 at 14h 26m 14s.xml">
-      <configuration name="veyoCallCenterCaseSubmission_Test" configurationId="com.illuminatedcloud.intellij" />
+    <history-entry file="MassUpdateSimpleControllerTest - 2017.11.17 at 14h 20m 29s.xml">
+      <configuration name="MassUpdateSimpleControllerTest" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="MassUpdateSimpleControllerTest - 2017.11.17 at 14h 21m 47s.xml">
+      <configuration name="MassUpdateSimpleControllerTest" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="MassUpdateSimpleControllerTest - 2017.11.17 at 14h 22m 30s.xml">
+      <configuration name="MassUpdateSimpleControllerTest" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="MassUpdateSimpleControllerTest - 2017.11.17 at 14h 25m 56s.xml">
+      <configuration name="MassUpdateSimpleControllerTest" configurationId="com.illuminatedcloud.intellij" />
     </history-entry>
     <history-entry file="veyoCallCenterCaseSubmission_Test - 2017.11.16 at 14h 34m 48s.xml">
       <configuration name="veyoCallCenterCaseSubmission_Test" configurationId="com.illuminatedcloud.intellij" />
@@ -2902,27 +2925,28 @@
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20357497" sideWeight="0.52183175" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20357497" sideWeight="0.52396166" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Anonymous Apex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23138034" sideWeight="0.74387646" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Anonymous Apex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23138034" sideWeight="0.7406816" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39920557" sideWeight="0.4978701" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.4978701" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.4946752" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20357497" sideWeight="0.47816828" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20357497" sideWeight="0.47603834" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.4978701" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14001986" sideWeight="0.485623" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1485623" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.4978701" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="SOQL Query" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14001986" sideWeight="0.48668796" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40119165" sideWeight="0.49520767" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Log Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.5654952" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -2931,7 +2955,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40119165" sideWeight="0.49520767" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -2942,13 +2965,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/classes/CaseTrigger_Test.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="19" lean-forward="false" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CaseEmail.cls">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -3183,7 +3199,7 @@
     <entry file="file://$PROJECT_DIR$/src/pages/CaseDetailPage.page">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1224">
-          <caret line="72" column="0" lean-forward="true" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+          <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -3191,7 +3207,7 @@
     <entry file="file://$PROJECT_DIR$/src/pages/CaseClientPortal.page">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="16" column="77" lean-forward="true" selection-start-line="16" selection-start-column="77" selection-end-line="16" selection-end-column="77" />
+          <caret line="16" column="77" lean-forward="false" selection-start-line="16" selection-start-column="77" selection-end-line="16" selection-end-column="77" />
           <folding>
             <element signature="n#style#0;n#div#0;n#apex:pageBlock#0;n#apex:form#0;n#div#0;n#apex:page#0;n#!!top" expanded="true" />
           </folding>
@@ -3201,7 +3217,7 @@
     <entry file="file://$PROJECT_DIR$/src/classes/CaseClientPortalController.cls">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="17" column="69" lean-forward="true" selection-start-line="17" selection-start-column="69" selection-end-line="17" selection-end-column="69" />
+          <caret line="17" column="69" lean-forward="false" selection-start-line="17" selection-start-column="69" selection-end-line="17" selection-end-column="69" />
           <folding />
         </state>
       </provider>
@@ -3209,7 +3225,7 @@
     <entry file="file://$PROJECT_DIR$/src/classes/CaseTrigger_Test.cls">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="18" selection-end-column="111" />
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="18" selection-end-column="111" />
           <folding />
         </state>
       </provider>
@@ -3222,13 +3238,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/build/veyoDev/sfdc-package/classes/MassUpdateSimpleControllerTest.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/MassUpdateSimpleControllerTest.cls">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="66" column="38" lean-forward="false" selection-start-line="66" selection-start-column="38" selection-end-line="66" selection-end-column="38" />
+        <state relative-caret-position="1377">
+          <caret line="81" column="38" lean-forward="true" selection-start-line="81" selection-start-column="38" selection-end-line="81" selection-end-column="38" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <element signature="e#7017#7030#0" expanded="true" />
+            <element signature="e#728#741#0" expanded="true" />
           </folding>
         </state>
       </provider>
