@@ -19,7 +19,7 @@
                 <!-- Button to save picklist selections and rerender this page -->
                 <div style="Text-align:center;" >
                     <apex:pageBlockButtons location="top">
-                        <apex:commandButton value="Save Changes" status="updatingPicklists" action="{!savePage}" id="saveButton" styleClass="slds-button slds-button--neutral" />
+                        <apex:commandButton value="Save Changes" status="updatingGrievance" action="{!savePage}" id="saveButton" styleClass="slds-button slds-button--neutral" />
                         <apex:commandButton action="{!cancel}" immediate="true" value="Cancel" id="cancelButton" styleClass="slds-button slds-button--neutral" />
                     </apex:pageBlockButtons>
                 </div>
