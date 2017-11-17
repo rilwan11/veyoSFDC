@@ -1,0 +1,154 @@
+<!--
+ - Created by krizia on 11/17/17.
+ -->
+
+<apex:page id="CaseClientPortal" standardController="Case" extensions="CaseClientPortalController" showHeader="true" sideBar="false"  >
+    <head>
+        <title>Grievance Note</title>
+        <apex:slds />
+        <script src="//code.jquery.com/jquery-1.11.3.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    </head>
+
+    <apex:pageMessages />
+
+    <div class="slds-scope">
+        <apex:form id="theForm" title="Grievance Detail: {!Case.CaseNumber}">
+            <apex:pageBlock title="Member Contact Details" id="thePageBlock">
+
+                <!-- Button to save picklist selections and rerender this page -->
+                <div style="Text-align:center;" >
+                    <apex:pageBlockButtons location="top">
+                        <apex:commandButton value="Save Changes" status="updatingPicklists" action="{!savePage}" id="saveButton" styleClass="slds-button slds-button--neutral" />
+                        <apex:commandButton action="{!cancel}" immediate="true" value="Cancel" id="cancelButton" styleClass="slds-button slds-button--neutral" />
+                    </apex:pageBlockButtons>
+                </div>
+
+                <apex:pageBlockSection >
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Member_Name__c.inlineHelpText}">
+                    {!$ObjectType.Case.fields.Member_Name__c.label}
+                        <apex:outputField value="{!gn.Member_Name__c}" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                        </apex:outputField>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Date_of_Report__c.inlineHelpText}">
+                    {!$ObjectType.Case.fields.Date_of_Report__c.label}
+                        <apex:outputField value="{!gn.Date_of_Report__c}" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                        </apex:outputField>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Member_ID__c.inlineHelpText}">
+                    {!$ObjectType.Case.fields.Member_ID__c.label}
+                        <apex:outputField value="{!gn.Member_ID__c}" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                        </apex:outputField>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Contact_Type__c.inlineHelpText}">
+                    {!$ObjectType.Case.fields.Contact_Type__c.label}
+                        <apex:outputField value="{!gn.Contact_Type__c}" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                        </apex:outputField>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Member_Phone_Number__c.inlineHelpText}">
+                    {!$ObjectType.Case.fields.Member_Phone_Number__c.label}
+                        <apex:outputField value="{!gn.Member_Phone_Number__c}" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                        </apex:outputField>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Complainant_Name__c.inlineHelpText}">
+                    {!$ObjectType.Case.fields.Complainant_Name__c.label}
+                        <apex:outputField value="{!gn.Complainant_Name__c}" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                        </apex:outputField>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Status.inlineHelpText}">
+                    {!$ObjectType.Case.fields.Status.label}
+                        <apex:outputField value="{!gn.Status}" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                        </apex:outputField>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+
+            <apex:pageBlock title="Member Client Comments"  >
+                <apex:pageBlockSection >
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Category__c.inlineHelpText}">
+                    {!$ObjectType.Case.fields.Category__c.label}
+                        <apex:selectList value="{!caseCategory}" multiselect="false" size="1" id="catOptions" label="Category" >
+                            <apex:selectOptions value="{!categoryOptions}" />
+                            <!--         <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/> -->
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Priority.inlineHelpText}">
+                    {!$ObjectType.Case.fields.Priority.label}
+                        <apex:outputField value="{!gn.Priority}" />
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Subcategory__c.inlineHelpText}">
+                    {!$ObjectType.Case.fields.Subcategory__c.label}
+                        <apex:selectList value="{!caseSubcategory}" multiselect="false" size="1" id="subcatOptions" label="Subcategory"  >
+                            <apex:selectOptions value="{!subcategoryOptions}"  />
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Description.inlineHelpText}">
+                    {!$ObjectType.Case.fields.Description.label}
+                        <apex:outputField value="{!gn.Description}" style="width:90%;" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick" />
+                        </apex:outputField>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+
+            <apex:pageBlock title="Service Details">
+                <apex:actionFunction name="updateProviderContact" rerender="providerContactOptions"/>
+                <apex:pageBlockSection id="serviceDetails">
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Provider_Name__c.inlineHelpText}">
+                    {!$ObjectType.Case.fields.Provider_Name__c.label}
+                        <apex:selectList value="{!caseTransportationProvider}" multiselect="false" size="1" id="transportationProviderOptions" label="Transportation Provider" onchange="updateProviderContact();" >
+                            <apex:selectOptions value="{!transportationProviderOptions}"  />
+
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Trip_Date__c.inlineHelpText}">
+                    {!$ObjectType.Case.fields.Trip_Date__c.label}
+                        <apex:outputField value="{!gn.Trip_Date__c}" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                        </apex:outputField>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Service_Mode__c.inlineHelpText}">
+                    {!$ObjectType.Case.fields.Service_Mode__c.label}
+                        <apex:selectList value="{!caseServiceMode}" multiselect="false" size="1" id="smOptions" label="Service Mode">
+                            <apex:selectOptions value="{!serviceModeOptions}" />
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Vehicle_Number__c.inlineHelpText}">
+                    {!$ObjectType.Case.fields.Vehicle_Number__c.label}
+                        <apex:outputField value="{!gn.Vehicle_Number__c}" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                        </apex:outputField>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Driver_Name__c.inlineHelpText}">
+                    {!$ObjectType.Case.fields.Driver_Name__c.label}
+                        <apex:outputField value="{!gn.Driver_Name__c}" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                        </apex:outputField>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:form>
+    </div>
+
+</apex:page>

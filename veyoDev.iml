@@ -215,6 +215,10 @@
                             <option name="name" value="SendCaseEmailController_Test" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CaseClientPortalController" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
                         </list>
                       </option>
                       <option name="name" value="ApexClass" />
@@ -463,6 +467,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CaseDetailPage" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CaseClientPortal" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
