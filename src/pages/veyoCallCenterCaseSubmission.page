@@ -1,5 +1,5 @@
-<apex:page id="veyoCallCenterCaseSubmission" controller="veyoCallCenterCaseSubmissionController" showHeader="true" sideBar="false">
-
+<apex:page id="veyoCallCenterCaseSubmission" controller="veyoCallCenterCaseSubmissionController" showHeader="true" sideBar="false" lightningStyleSheets="true">
+    <apex:slds />
     <apex:form >
         <apex:outputPanel id="pageMsgsOutputId">
             <apex:pageMessages id="pageMsgsId"/>
@@ -48,7 +48,13 @@
                 </apex:selectList>
                 <apex:inputField value="{!m_case.Complainant_Name__c}" />
                 <apex:inputField value="{!m_case.Member_Phone_Number__c}" />
-                <apex:inputField value="{!m_case.Provider_Name__c}" />
+
+
+                <!--<apex:inputField value="{!m_case.Provider_Name__c}" />-->
+                <apex:selectList value="{!m_case.Provider_Name__c}" multiSelect="false" size="1" id="smProviderOptions" label="Provider Name">
+                    <apex:selectOptions value="{!Providers}" />
+                </apex:selectList>
+
             </apex:pageBlockSection>
             <apex:pageBlockSection columns="1">
                 <apex:inputField value="{!m_case.Description}" style="width:500px;height:200px;"/>

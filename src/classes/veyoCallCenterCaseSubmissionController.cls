@@ -341,4 +341,45 @@ public class veyoCallCenterCaseSubmissionController {
 
         return options;
     }
+
+    /**
+     *
+     *
+     * @return
+     */
+    public List<SelectOption> getProviders() {
+        List<SelectOption> options = new List<SelectOption>();
+        options.add(new SelectOption('', '--None--'));
+
+        if(null == m_case.AccountId) {
+            return options;
+        }
+
+        List<Account> clientAccts = [SELECT Id, Service_State__c
+                                     FROM Account
+                                     WHERE Id = :m_case.AccountId];
+
+        List<RecordType> recTypes = [SELECT Id, DeveloperName, SobjectType
+                                     FROM RecordType
+                                     WHERE SobjectType = 'Account'
+                                       AND DeveloperName = 'Transportation_Provider'];
+
+
+        if(clientAccts.size() > 0 && recTypes.size() > 0) {
+            RecordType rtProvider = recTypes[0];
+            Account clntAcct = clientAccts[0];
+
+            List<Account> providerAccts = [SELECT Id, Name
+                                           FROM Account
+                                           WHERE Service_State__c = :clntAcct.Service_State__c
+                                             AND RecordTypeId = :rtProvider.Id
+                                           ORDER BY Name];
+
+            for(Account providerAcct : providerAccts) {
+                options.add(new SelectOption(providerAcct.Id, providerAcct.Name));
+            }
+        }
+
+        return options;
+    }
 }

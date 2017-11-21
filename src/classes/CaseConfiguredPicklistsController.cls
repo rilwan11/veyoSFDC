@@ -103,7 +103,7 @@ public with sharing class CaseConfiguredPicklistsController {
         }
 
         System.debug('CaseConfiguredPicklistsController::: constructor:: gn: ' + string.valueOf(gn));
-
+        System.debug('STATUS here: ' + string.valueOf(gn.Status));
     } //public CaseConfiguredPicklistsController(ApexPages.StandardController stdController)
 
 
@@ -327,7 +327,7 @@ public with sharing class CaseConfiguredPicklistsController {
      * Krizia: button - update the Case with the selected Category, Subcategory, and Service Mode as well as normal fields
      */
     public pageReference updatePicklists() {
-        System.debug('CaseConfiguredPicklistsController::: updatePicklists:: Follow Up Requested and no Follow Up Comments ' + string.valueOf(gn.Status));
+        System.debug('CaseConfiguredPicklistsController::: updatePicklists:: Status: ' + string.valueOf(gn.Status));
 
         //Check to be sure that Follow Up Comments entered when trying to change Status to Follow Up Requested
         if (gn.Status == 'Follow Up Requested') {
@@ -342,6 +342,7 @@ public with sharing class CaseConfiguredPicklistsController {
         }
 
 
+        System.debug('STATUS here 2: ' + string.valueOf(gn.Status));
         //Update the three values available in this picklist page
         gn.Category__c = caseCategory;
         gn.Subcategory__c = caseSubcategory;
@@ -357,9 +358,12 @@ public with sharing class CaseConfiguredPicklistsController {
         else {
             update gn;
         }
+        System.debug('STATUS here 3: ' + string.valueOf(gn.Status));
 
-        PageReference pr = new PageReference(ApexPages.currentPage().getUrl());
+        //TEMP: PageReference pr = new PageReference(ApexPages.currentPage().getUrl());
+        PageReference pr = ApexPages.currentPage();
         pr.setRedirect(true);
+        System.debug('STATUS here 4: ' + string.valueOf(gn.Status));
         return pr;
     } //public void updatePicklists()
 }
