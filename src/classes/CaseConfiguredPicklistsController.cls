@@ -72,7 +72,12 @@ public with sharing class CaseConfiguredPicklistsController {
                 Date_When_Reached_Out_to_Provider__c, Blank_Field_1__c, Blank_Field_2__c, Blank_Field_3__c, Blank_Field_4__c,
                 OwnerId, LastModifiedById, Age_in_Days__c, ContactEmail, Case_Age_in_Business_Hours__c, Origin, Time_With_Support__c,
                 ContactPhone, Time_With_Customer__c, Subject, Follow_Up_Period__c, Follow_Up_Age_In_Days__c, Reason,
-                Follow_Up_Age__c, Follow_Up_Time_With_Support__c, Follow_Up_Time_With_Customer__c
+                Follow_Up_Age__c, Follow_Up_Time_With_Support__c, Follow_Up_Time_With_Customer__c,
+                Selected_For_Audit__c, Auditor__c, Audit_Date__c, Feedback__c, Investigation_Date__c, Service_Detail__c, Status_audit__c,
+                Internal_Feed__c, Notes_Attachments_Recordings__c, Provider_Name_audit__c, Subcategory_audit__c, Trip_Date_audit__c,
+                Trip_Number_audit__c, Trip_Details__c, Data_Entry_Score__c, All_Issues_Investigated__c, Clear_Timeline_of_Events__c,
+                Avoids_Jargon_or_Internal_Communication__c, Uses_Spell_Check__c, Proper_Use_of_Grammar__c, Account_Protocol__c,
+                Investigation_Score__c, Substantiation_Accurate__c, Actions_Taken__c
                 FROM Case
                 WHERE Id =: recordId //CaseNumber =: recordNumber
                 LIMIT 1];
@@ -354,9 +359,11 @@ public with sharing class CaseConfiguredPicklistsController {
 
         if (gn.Id == null) {
             insert gn;
+            System.debug('CaseConfiguredPicklistsController::: updatePicklists:: inserting gn');
         }
         else {
             update gn;
+            System.debug('CaseConfiguredPicklistsController::: updatePicklists:: updating gn');
         }
         System.debug('STATUS here 3: ' + string.valueOf(gn.Status));
 
