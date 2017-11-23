@@ -11,12 +11,12 @@ trigger CaseTrigger on Case (before insert, before update, before delete, after 
         if (Trigger.isBefore) {
             if (Trigger.isInsert) {
                 System.debug('CaseTrigger::: before insert');
-            //    CaseTriggerHandler.setDueDate(Trigger.new, Trigger.newMap);
-            //    CaseTriggerHandler.insertCaseTime(Trigger.new);
+                CaseTriggerHandler.setDueDate(Trigger.new, Trigger.newMap);
+                CaseTriggerHandler.insertCaseTime(Trigger.new);
             }
             else if (Trigger.isUpdate) {
                 System.debug('CaseTrigger::: before update');
-            //    CaseTriggerHandler.updateCaseTime(Trigger.new, Trigger.oldMap);
+                CaseTriggerHandler.updateCaseTime(Trigger.new, Trigger.oldMap);
             }
             else {
 
@@ -25,13 +25,13 @@ trigger CaseTrigger on Case (before insert, before update, before delete, after 
         else {
             if (Trigger.isInsert) {
                 System.debug('CaseTrigger::: after insert');
-            //    CaseTriggerHandler.insertCaseAgingHistory(Trigger.new, Trigger.oldMap);
-            //    CaseTriggerHandler.sendAutomaticEmailsOnInsert(Trigger.new);
+                CaseTriggerHandler.insertCaseAgingHistory(Trigger.new, Trigger.oldMap);
+                CaseTriggerHandler.sendAutomaticEmailsOnInsert(Trigger.new);
             }
             else if (Trigger.isUpdate) {
                 System.debug('CaseTrigger::: after update');
-            //    CaseTriggerHandler.insertCaseAgingHistory(Trigger.new, Trigger.oldMap);
-            //    CaseTriggerHandler.sendAutomaticEmails(Trigger.new, Trigger.oldMap);
+                CaseTriggerHandler.insertCaseAgingHistory(Trigger.new, Trigger.oldMap);
+                CaseTriggerHandler.sendAutomaticEmails(Trigger.new, Trigger.oldMap);
             }
             else {
 
