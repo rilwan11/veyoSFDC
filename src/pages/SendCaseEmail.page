@@ -35,6 +35,9 @@
                 <apex:outputText value="{!emailSubject}" label="Email Subject: "/>
                 <apex:inputTextArea value="{!additionalText}"  style="width:200px; height:100px;" disabled="{!disabledAdditional}" id="addText" label="Input Additional Email Text Here"/>
                 <apex:outputText value="{!emailOutput}" style="white-space:pre-wrap;" />
+          <!--      <apex:outputField value="{!Case.Email_Output__c}" style="width:90%;" >
+                    <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick" />
+                </apex:outputField> -->
 
                 <apex:commandButton value="Preview Email" action="{!renderEmail}" style="center" />
                 <apex:commandButton value="Send Email" action="{!onSend}" rerender="sendComplete,sendButton,showmsg" disabled="{!disabledButton}" id="sendButton" style="center-right"/>

@@ -18,6 +18,12 @@ public with sharing class SendCaseEmailController {
     public boolean disabledButton { get; set; }
     public String emailSubject { get; set; }
 
+    //Email Template lists for checking in Preview and Send methods
+    public List<String> directEmailAdditionalText { get; set; }
+    public List<String> directEmailNOadditionalText { get; set; }
+    public List<String> additionalTextDefaultEmail { get; set; }
+    public List<String> defaultEmailOnly { get; set; }
+
 
 
     public sendCaseEmailController(ApexPages.StandardController stdController) {
@@ -52,7 +58,35 @@ public with sharing class SendCaseEmailController {
             ApexPages.addMessage(errorMessage);
             System.debug(errorMessage);
         }
-    }
+
+
+        //Populate Email Template type lists
+        directEmailAdditionalText = new List<String>();
+        directEmailAdditionalText.add('KHB - Test Incoming Email');
+        directEmailAdditionalText.add('Request Information from Member');
+        directEmailAdditionalText.add('Request Information from Plan');
+        directEmailAdditionalText.add('Request Information from Facility');
+        directEmailAdditionalText.add('Grievance Investigation - Other');
+        directEmailAdditionalText.add('Internal Information Request - Call Center General');
+        directEmailAdditionalText.add('Internal Information Request - Call Center Call');
+        directEmailAdditionalText.add('Internal Information Request - IDP Question');
+        directEmailAdditionalText.add('Internal Information Request - IDP Suspension');
+        directEmailAdditionalText.add('Remediation - Call Center Agent Retraining');
+        directEmailAdditionalText.add('Remediation - Command Center Agent Retraining');
+        directEmailAdditionalText.add('Remediation - IDP Retraining');
+        directEmailAdditionalText.add('Summary Email - Member');
+        directEmailAdditionalText.add('General');
+        directEmailNOadditionalText = new List<String>();
+        directEmailNOadditionalText.add('Grievance Investigation - Driver Statement');
+        directEmailNOadditionalText.add('Grievance Investigation - Trip Information');
+        directEmailNOadditionalText.add('Grievance Investigation - Accident Information');
+        directEmailNOadditionalText.add('Remediation - 3PO');
+        directEmailNOadditionalText.add('Summary Email - Facility');
+        additionalTextDefaultEmail = new List<String>();
+   //     additionalTextDefaultEmail.add();
+        defaultEmailOnly = new List<String>();
+   //     defaultEmail.add();
+}
 
 
     /**
@@ -64,20 +98,21 @@ public with sharing class SendCaseEmailController {
         System.currentPageReference().getParameters().put('directEmail', '');
         emailSubject = '';
         emailOutput = '';
+        Integer emailType = getEmailOptionType(emailTemplateSelection);
 
         if (emailTemplateSelection == '--None--' || emailTemplateSelection == null) {
             ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'You did not select a Template. Please select an Email Template. ');
             ApexPages.addMessage(errorMessage);
             System.debug(errorMessage);
         }
-        else if (emailTemplateSelection == 'KHB - Test Incoming Email') {
+        else if (emailType == 1) {
             disabledAdditional = false;
             disabledEmail = false;
             ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.WARNING, 'You selected an Email Template that accepts Additional Email Text. Please add your comments in the text box below and Preview your entire Email before Sending. ');
             ApexPages.addMessage(errorMessage);
             System.debug(errorMessage);
         }
-        else if (emailTemplateSelection == 'Grievance Investigation - Driver Statement' || emailTemplateSelection == 'Grievance Investigation - Trip Log'){
+        else if (emailType == 2){
             additionalText = null;
             disabledAdditional = true;
             disabledEmail = false;
@@ -122,6 +157,7 @@ public with sharing class SendCaseEmailController {
 
         //Falsify sending of email in order to see previewed body
         try {
+            System.debug('renderEmail emailTemplateSelection: ' + string.valueOf(emailTemplateSelection));
             Id templateId = [SELECT Id FROM EmailTemplate WHERE Name = :emailTemplateSelection LIMIT 1].Id;
 
             Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
@@ -136,7 +172,7 @@ public with sharing class SendCaseEmailController {
             System.debug('SendCaseEmailController::: renderEmail:: ' + string.valueOf(email));
             emailOutput = email.getPlainTextBody();
             emailSubject = email.getSubject();
-            System.debug('KRIZIA HERE: ' + string.valueOf(emailSubject) + ' -- ' + string.valueOf(email.getSubject()));
+            System.debug('Email subject: ' + string.valueOf(emailSubject) + ' -- ' + string.valueOf(email.getSubject()));
 
             disabledButton = false;
         }
@@ -144,6 +180,7 @@ public with sharing class SendCaseEmailController {
             ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Please make sure all input is correct and that there is a Contact on the Grievance, then try again. ');
             ApexPages.addMessage(errorMessage);
             System.debug(errorMessage);
+            System.debug(ex);
             disabledButton = true;
         }
     }
@@ -158,74 +195,41 @@ public with sharing class SendCaseEmailController {
         boolean success = false;
         String[] toRecipients = new List<String>();
         Id targetObjectId; // ** Must be a User, Contact, Lead, or Person **
+        Integer emailType = getEmailOptionType(emailTemplateSelection); //Check the Email Template type in order to assign the recipients properly
 
 
-        //Specific method for each Email Template due to the fact that recipients vary
-        if (emailTemplateSelection == 'KHB - Test Incoming Email') {
-            Contact c = [SELECT Id, Email FROM Contact WHERE Id =: gn.ContactId LIMIT 1];
-            toRecipients.add(c.Email);
-            targetObjectId = gn.ContactId;
+        //Recipients vary for Email Templates
 
-            if (directEmail != '') {
-                if (isUserEmailValid(directEmail) == true) {
-                    toRecipients.add(directEmail);
-                }
-                else {
-                    ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Unable to send email. Please check that the additional email is correct and try again.');
-                    ApexPages.addMessage(errorMessage);
-                    System.debug(errorMessage);
-                    disabledButton = true; 
-                    return;
-                }
-            }
-            System.debug('RECIPIENTS: ' + toRecipients);
-            success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
-        }
-        else if (emailTemplateSelection == 'MCCFL Only: Grievance Created - 1') { //***** Need Email this one always goes to
-            Contact c = [SELECT Id, Email FROM Contact WHERE Id =: gn.ContactId LIMIT 1];
+        //Email Templates using the Direct Email Address & additional input
+        if (emailType == 1) {
+            Contact c = new Contact(LastName = string.valueOf(directEmail), Email = directEmail);
+            insert c;
             toRecipients.add(c.Email);
             targetObjectId = c.Id;
+
+            System.debug('RECIPIENTS: ' + toRecipients);
             success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
-            //CaseEmail.sendMCCFLGNCreated1(caseList);
+            delete c;
         }
-        else if (emailTemplateSelection == 'Grievance Investigation - Driver Statement' || emailTemplateSelection == 'Grievance Investigation - Trip Log') { //ONLY SEND TO DRIVER
-            if (directEmail != '') {
-                if (isUserEmailValid(directEmail) == true) {
-                    toRecipients.add(directEmail);
-                } else {
-                    ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Unable to send email. Please check that the additional email is correct and try again.');
-                    ApexPages.addMessage(errorMessage);
-                    System.debug(errorMessage);
-                    disabledButton = true;
-                    return;
-                }
+        else if (emailType == 2) {//Email Templates using the Direct Email Address and no additional input
+            //Check if the driver email already exists
+            List<Contact> cList = new List<Contact>();
+            Contact c;
+            cList = [SELECT Id, Email FROM Contact WHERE Email = :directEmail];
 
-
-                //Check if the driver email already exists
-                List<Contact> cList = new List<Contact>();
-                Contact c;
-                cList = [SELECT Id, Email FROM Contact WHERE Email = :directEmail];
-
-                //Use existing driver or make a new one
-                if (cList.size() > 0) {
-                    c = cList.get(0);
-                } else {
-                    c = new Contact(FirstName = 'requesting info from', LastName = 'Driver', Email = directEmail);
-                    insert c;
-                }
-
-                System.debug('RECIPIENTS: ' + toRecipients);
-                targetObjectId = c.Id;
-                System.debug(c);
-                success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
+            //Use existing driver or make a new one
+            if (cList.size() > 0) {
+                c = cList.get(0);
+            } else {
+                c = new Contact(FirstName = 'requesting info from', LastName = 'Driver', Email = directEmail);
+                insert c;
             }
-            else {
-                ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Unable to send email. Please add an Email Address and try again.');
-                ApexPages.addMessage(errorMessage);
-                System.debug(errorMessage);
-                disabledButton = true;
-                return;
-            }
+
+            toRecipients.add(directEmail);
+            System.debug('RECIPIENTS: ' + toRecipients);
+            targetObjectId = c.Id;
+            System.debug(c);
+            success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
         }
         else if (emailTemplateSelection == 'HCA/HCIC: Grievance Resolved - 1') {
             System.debug('OWNER: ' + string.valueOf(gn.OwnerId));
@@ -275,11 +279,30 @@ public with sharing class SendCaseEmailController {
     }
 
 
+    /**
+     * Krizia: find out which option a list belongs to by passing in the Email Template Selection
+     *
+     * @return
+     */
+    public Integer getEmailOptionType(String ETS) {
 
 
+        for (String s : directEmailAdditionalText) {
+            if (s == ETS) { System.debug('EmailType: 1'); return (1); }
+        }
+        for (String s : directEmailNOadditionalText) {
+            if (s == ETS) { System.debug('EmailType: 2'); return (2);  }
+        }
+        for (String s : additionalTextDefaultEmail) {
+            if (s == ETS) { System.debug('EmailType: 3'); return (3);  }
+        }
+        for (String s : defaultEmailOnly) {
+            if (s == ETS) { System.debug('EmailType: 4'); return (4); }
+        }
 
-
-
+        //If it wasn't in any of the lists
+        return (10);
+    }
 
 
 

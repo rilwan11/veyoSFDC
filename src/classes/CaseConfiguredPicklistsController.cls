@@ -331,7 +331,7 @@ public with sharing class CaseConfiguredPicklistsController {
     /**
      * Krizia: button - update the Case with the selected Category, Subcategory, and Service Mode as well as normal fields
      */
-    public pageReference updatePicklists() {
+    public pageReference updatePicklists() { //pageReference causes issues with Status
         System.debug('CaseConfiguredPicklistsController::: updatePicklists:: Status: ' + string.valueOf(gn.Status));
 
         //Check to be sure that Follow Up Comments entered when trying to change Status to Follow Up Requested
@@ -359,17 +359,17 @@ public with sharing class CaseConfiguredPicklistsController {
 
         if (gn.Id == null) {
             insert gn;
-            System.debug('CaseConfiguredPicklistsController::: updatePicklists:: inserting gn');
+            System.debug('CaseConfiguredPicklistsController::: updatePicklists:: INSERTING gn');
         }
         else {
             update gn;
-            System.debug('CaseConfiguredPicklistsController::: updatePicklists:: updating gn');
+            System.debug('CaseConfiguredPicklistsController::: updatePicklists:: UPDATING gn');
         }
         System.debug('STATUS here 3: ' + string.valueOf(gn.Status));
 
         //TEMP: PageReference pr = new PageReference(ApexPages.currentPage().getUrl());
         PageReference pr = ApexPages.currentPage();
-        pr.setRedirect(true);
+        pr.setRedirect(false);
         System.debug('STATUS here 4: ' + string.valueOf(gn.Status));
         return pr;
     } //public void updatePicklists()

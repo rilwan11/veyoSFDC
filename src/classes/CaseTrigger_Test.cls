@@ -17,6 +17,11 @@ public with sharing class CaseTrigger_Test {
     public static testmethod void insertCase() {
 
         Id aRecordType = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Client').getRecordTypeId();
+        Contact testContact = new Contact(
+                LastName = 'Test1',
+                Email = 'mr@test.com'
+        );
+        insert testContact;
         Account a = new Account(
                 Name = 'Test Account',
                 RecordTypeId = aRecordType,
@@ -24,19 +29,19 @@ public with sharing class CaseTrigger_Test {
                 Type = 'Customer',
                 AccountNumber = '0001',
                 Default_Account_Email_Address__c = 'mr@test.com',
-                Email_Template_1__c = 'MCCFL Only: Grievance Created - 1',
+                Email_Template_1__c = 'Grievance Created - General',
                 Email_Recipients_1__c = 'Default Account Email Address',
                 Automatic_Event_1__c = 'Submitted',
-                Email_Template_2__c = 'HCA/HCIC: Grievance Resolved - 1',
+                Email_Template_2__c = 'Grievance Created - MCCFL',
                 Email_Recipients_2__c = 'Submitting Contact',
                 Automatic_Event_2__c = 'Resolved',
-                Email_Template_3__c = 'MCCFL Only: Grievance Created - 1',
+                Email_Template_3__c = 'Resolution - Detailed',
                 Email_Recipients_3__c = 'Default Account Email Address',
                 Automatic_Event_3__c = 'Follow Up Requested',
-                Email_Template_4__c = 'MCCVA: Grievance Resolved - 2',
+                Email_Template_4__c = 'Resolution - MCCVA',
                 Email_Recipients_4__c = 'Submitting Contact',
                 Automatic_Event_4__c = 'Submitted',
-                Email_Template_5__c = 'MCCVA: Grievance Resolved - 2',
+                Email_Template_5__c = 'Resolution - General',
                 Email_Recipients_5__c = 'Static Account Email Group',
                 Automatic_Event_5__c = 'Follow Up Completed',
                 Complaint_Category__c = true,
@@ -73,7 +78,8 @@ public with sharing class CaseTrigger_Test {
         Contact cont = new Contact(
                 LastName = 'Jones',
                 Email = 'test@tester.com',
-                Account = a
+                Account = a,
+                Member_of_Static_Account_Email_Group__c = true
         );
         insert cont;
         Case c = new Case (

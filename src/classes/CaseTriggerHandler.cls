@@ -491,7 +491,9 @@ public with sharing class CaseTriggerHandler {
                 if (a.Email_Recipients_5__c.contains('Static Account Email Group') && staticGroup.size() > 0) {
                     if (targetId == null) { targetId = staticGroup[0].Id; }
                     for (Contact contact : staticGroup) {
-                        toRecipients.add(contact.Email);
+                        if (contact.Email != null) {
+                            toRecipients.add(contact.Email);
+                        }
                     }
                 }
                 System.debug('CaseTriggerHandler::: sendEmail:: 5 ' + string.valueOf(toRecipients));
