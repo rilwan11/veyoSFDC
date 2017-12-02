@@ -30,7 +30,7 @@ public with sharing class SendCaseEmailController {
         //gn = (Case)stdControl.getRecord();
         Id recordId = ApexPages.CurrentPage().getParameters().get('Id');
         System.debug('SendCaseEmailController::: recordId: ' + string.valueOf(recordId));
-        gn = [SELECT Id, CaseNumber, ContactId, Additional_Email_Text__c, Email_Template__c, AccountId
+        gn = [SELECT Id, CaseNumber, ContactId, OwnerId, Additional_Email_Text__c, Email_Template__c, AccountId
                 FROM Case
                 WHERE Id =: recordId
                 LIMIT 1];
@@ -52,12 +52,10 @@ public with sharing class SendCaseEmailController {
 
         disabledButton = true;
 
-        //Make sure the Grievance has a Contact in order to set it as the targetObjectId when sending emails
-        if (gn.ContactId == null) {
-            ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Please make sure there is a Contact on this Grievance. You cannot send emails without it. ');
-            ApexPages.addMessage(errorMessage);
-            System.debug(errorMessage);
-        }
+        //Tell them how to send an email
+        ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.INFO, 'Please make sure to add all necessary input, then click the Preview button to check the Email before clicking Send. ');
+        ApexPages.addMessage(errorMessage);
+        System.debug(errorMessage);
 
 
         //Populate Email Template type lists
@@ -160,6 +158,7 @@ public with sharing class SendCaseEmailController {
             System.debug('renderEmail emailTemplateSelection: ' + string.valueOf(emailTemplateSelection));
             Id templateId = [SELECT Id FROM EmailTemplate WHERE Name = :emailTemplateSelection LIMIT 1].Id;
 
+
             Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
             email.setTargetObjectId([SELECT Id FROM Contact WHERE Id = :gn.ContactId LIMIT 1].Id);
             email.setWhatId(gn.Id);
@@ -177,7 +176,7 @@ public with sharing class SendCaseEmailController {
             disabledButton = false;
         }
         catch (exception ex) {
-            ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Please make sure all input is correct and that there is a Contact on the Grievance, then try again. ');
+            ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Please make sure all input is correct, then try again. **Still working on Owner fix, please try again after the next deployment.**');
             ApexPages.addMessage(errorMessage);
             System.debug(errorMessage);
             System.debug(ex);
@@ -230,28 +229,6 @@ public with sharing class SendCaseEmailController {
             targetObjectId = c.Id;
             System.debug(c);
             success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
-        }
-        else if (emailTemplateSelection == 'HCA/HCIC: Grievance Resolved - 1') {
-            System.debug('OWNER: ' + string.valueOf(gn.OwnerId));
-            Contact c = [SELECT Id, Email FROM Contact WHERE Id =: gn.ContactId LIMIT 1];
-            toRecipients.add(c.Email);
-            targetObjectId = c.Id;
-            success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
-            //CaseEmail.sendResolved1(caseList);
-        }
-        else if (emailTemplateSelection == 'MCCVA: Grievance Resolved - 2') { //**** Need to know the small group this sends to
-            Contact c = [SELECT Id, Email FROM Contact WHERE Id =: gn.ContactId LIMIT 1];
-            toRecipients.add(c.Email);
-            targetObjectId = c.Id;
-            success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
-            //CaseEmail.sendResolved2(caseList);
-        }
-        else if (emailTemplateSelection == 'MCCFL: Grievance Resolved - 3') { //**** Need to know the same email it goes to each time
-            Contact c = [SELECT Id, Email FROM Contact WHERE Id =: gn.ContactId LIMIT 1];
-            toRecipients.add(c.Email);
-            targetObjectId = c.Id;
-            success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
-            //CaseEmail.sendResolved3(caseList);
         }
         else {
             ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'You did not select an Email Template. Please select an Email Template, then try again. ');

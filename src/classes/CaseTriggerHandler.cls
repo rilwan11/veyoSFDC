@@ -236,6 +236,14 @@ public with sharing class CaseTriggerHandler {
         //Get all Accounts
         Map<Id, Account> accountMap = getAccountMap(Cases);
 
+
+  //KRIZIA COME BACK HERE     *********************************
+        //Get and create Submitting Contacts
+        List<Contact> submittingContacts = new List<Contact>();
+     //   List<Contact> currentContacts = new List<Contact>();
+      //  currentContacts = [SELECT Id, LastName, Email FROM Contact WHERE ];
+
+
         //Get the default business hours for setting Due Dates on Business Days
         BusinessHours defaultHours = [SELECT Id FROM BusinessHours WHERE isDefault = true];
 
@@ -253,7 +261,19 @@ public with sharing class CaseTriggerHandler {
 
             //Set the due date according to the number of days specified by Priority
             c.Due_Date__c = BusinessHours.add(defaultHours.Id, System.now(), days);
+
+
+       /*     //Set the Submitting Contact as the Owner's information for Emails later on
+            List<User> ownerUser = [SELECT Id, LastName, Email FROM User WHERE Id = :c.OwnerId LIMIT 1];
+            Contact submittingContact = new Contact(
+                    FirstName = string.valueOf(c.Id),
+                    LastName = ownerUser[0].LastName,
+                    Email = ownerUser[0].Email
+            );
+            submittingContacts.add(submittingContact);
+            c.ContactId = submittingContact.Id; */
         }
+     //   insert submittingContacts;
     } //public static void setDueDate(List<Case> Cases)
 
 

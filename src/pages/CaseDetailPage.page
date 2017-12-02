@@ -74,7 +74,7 @@
             </div>
 
             <apex:pageBlockSection >
-                <apex:outputField value="{!gn.CreatedById}" />
+                <apex:outputField value="{!gn.OwnerId}" />
                 <apex:outputField value="{!gn.CaseNumber}" />
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Member_Name__c.inlineHelpText}"> 
@@ -425,7 +425,12 @@
                     </apex:outputField>
                 </apex:pageBlockSectionItem>
 
-                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.LastmodifiedById.inlineHelpText}">
+                    {!$ObjectType.Case.fields.LastmodifiedById.label}
+                    <apex:outputField value="{!gn.LastmodifiedById}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                    </apex:outputField>
+                </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Blank_Field_2__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Blank_Field_2__c.label}
@@ -452,26 +457,6 @@
                     </apex:outputField>
                 </apex:pageBlockSectionItem>
 
-            </apex:pageBlockSection>
-        </apex:pageBlock>
-
-
-        <apex:pageBlock title="System Information" >
-            <apex:pageBlockSection >
-                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.OwnerId.inlineHelpText}">
-                    {!$ObjectType.Case.fields.OwnerId.label}
-                        <apex:inputField value="{!gn.OwnerId}" />
-               <!--     <apex:outputField value="{!gn.OwnerId}" >
-                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
-                    </apex:outputField> -->
-                </apex:pageBlockSectionItem>
-
-                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.LastmodifiedById.inlineHelpText}">
-                    {!$ObjectType.Case.fields.LastmodifiedById.label}
-                    <apex:outputField value="{!gn.LastmodifiedById}" >
-                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
-                    </apex:outputField>
-                </apex:pageBlockSectionItem>
             </apex:pageBlockSection>
         </apex:pageBlock>
 

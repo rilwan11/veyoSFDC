@@ -9,7 +9,7 @@
             <apex:pageMessages id="pageMsgsId"/>
         </apex:outputPanel>
 
-        <apex:pageBlock title="Call Center Submission Page" id="pageBlockCaseCreation">
+        <apex:pageBlock title="Member Assistance Submission Page" id="pageBlockCaseCreation">
 
             <apex:pageBlockSection id="pbsAcctErrMsgId" columns="1">
                 <apex:outputText value="{!AccountErrorMessage}" id="optTextErrMsg" rendered="{!DisplayAccountErrorMessage}" style="background-color:yellow;font-size:14px"/>

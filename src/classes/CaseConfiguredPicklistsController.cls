@@ -274,8 +274,11 @@ public with sharing class CaseConfiguredPicklistsController {
         //Initial value to put into Provider Name (Transportation Provider)
         if (gn.Provider_Name__c != null) {
             System.debug('CaseConfiguredPicklistsController::: getTransportationProviderOptions:: set TransportationProvider to previous value - ' + string.valueOf(gn.Provider_Name__c));
-            String tp = gn.Provider_Name__c;
-            caseTransportationProvider = tp;
+            List<Account> tpList = [SELECT Id, Name FROM Account WHERE Id =: gn.Provider_Name__c];
+            if (tpList.size() > 0) {
+                String tp = tpList[0].Name;
+                caseTransportationProvider = tp;
+            }
         }
 
         return options;
