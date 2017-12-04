@@ -439,7 +439,12 @@
                     </apex:outputField>
                 </apex:pageBlockSectionItem>
 
-                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Source__c.inlineHelpText}">
+                {!$ObjectType.Case.fields.Source__c.label}
+                    <apex:outputField value="{!gn.Source__c}" >
+                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                    </apex:outputField>
+                </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Blank_Field_3__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Blank_Field_3__c.label}
@@ -466,7 +471,7 @@
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.ContactId.inlineHelpText}">
                     Submitting Contact <!-- {!$ObjectType.Case.fields.ContactId.label} -->
                     <apex:outputField value="{!gn.ContactId}" >
-                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                    <!--    <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/> -->
                     </apex:outputField>
                 </apex:pageBlockSectionItem>
 

@@ -46,6 +46,66 @@ public with sharing class veyoCallCenterCaseSubmission_Test {
                 Expedited_Priority_Days__c = 2
         );
         insert a;
+        Account a2 = new Account(
+                Name = 'Test Account 2',
+                RecordTypeId = aRecordType,
+                Call_Center_Can_Create__c = 'Only First Call Resolutions',
+                Type = 'Customer',
+                AccountNumber = '0002',
+                Default_Account_Email_Address__c = 'mr@test.com',
+                Complaint_Category__c = true,
+                Letter_of_Inquiry_Category__c = true,
+                Quality_of_Care_Concern_Category__c = true,
+                Agent_Issue_Subcategory__c = true,
+                Driver_Issue_Subcategory__c = true,
+                Damage_Injury_Subcategory__c = true,
+                Early_Arrival_Subcategory__c = true,
+                Late_Pickup_Subcategory__c = true,
+                Ambulatory_Service_Mode__c = true,
+                Wheelchair_Service_Mode__c = true,
+                Bariatric_Wheelchair_Service_Mode__c = true,
+                General_Priority_Days__c = 4,
+                Expedited_Priority_Days__c = 2
+        );
+        insert a2;
+        Account a3 = new Account(
+                Name = 'Test Account 3',
+                RecordTypeId = aRecordType,
+                Call_Center_Can_Create__c = 'Grievance Notes and First Call Resolutions',
+                Type = 'Customer',
+                AccountNumber = '0003',
+                Default_Account_Email_Address__c = 'mr@test123.com',
+                Complaint_Category__c = true,
+                Letter_of_Inquiry_Category__c = true,
+                Quality_of_Care_Concern_Category__c = true,
+                Agent_Issue_Subcategory__c = true,
+                Driver_Issue_Subcategory__c = true,
+                Damage_Injury_Subcategory__c = true,
+                Wheelchair_Service_Mode__c = true,
+                Bariatric_Wheelchair_Service_Mode__c = true,
+                General_Priority_Days__c = 6,
+                Expedited_Priority_Days__c = 1
+        );
+        insert a3;
+        Account a4 = new Account(
+                Name = 'Test Account 4',
+                RecordTypeId = aRecordType,
+                Call_Center_Can_Create__c = 'Neither',
+                Type = 'Customer',
+                AccountNumber = '0004',
+                Default_Account_Email_Address__c = 'mr123@test123.com',
+                Complaint_Category__c = true,
+                Letter_of_Inquiry_Category__c = true,
+                Quality_of_Care_Concern_Category__c = true,
+                Agent_Issue_Subcategory__c = true,
+                Driver_Issue_Subcategory__c = true,
+                Damage_Injury_Subcategory__c = true,
+                Wheelchair_Service_Mode__c = true,
+                Bariatric_Wheelchair_Service_Mode__c = true,
+                General_Priority_Days__c = 10,
+                Expedited_Priority_Days__c = 3
+        );
+        insert a4;
         Contact c = new Contact(
                 LastName = 'Testy',
                 Email = 'test@test.com',
@@ -60,21 +120,46 @@ public with sharing class veyoCallCenterCaseSubmission_Test {
 
         veyoCallCenterCaseSubmissionController controller = new veyoCallCenterCaseSubmissionController();
         PageReference p = controller.save();
-        controller.m_case.accountId = a.Id;
+
+        controller.m_case.AccountId = a4.Id;
+        Boolean err1 = controller.getDisplayAccountErrorMessage();
+        System.debug(controller.getaccountErrorMessage());
         system.debug(controller.m_case);
         List<SelectOption> options = controller.getCaseSubmissionTypes();
         PageReference p1 = controller.save();
+        system.debug('this is the message from a4 '+ ApexPages.getMessages());
+        controller.m_case.AccountId = a3.Id;
+        Boolean err2 = controller.getDisplayAccountErrorMessage();
+        System.debug(controller.getaccountErrorMessage());
+        system.debug(controller.m_case);
+        List<SelectOption> options2 = controller.getCaseSubmissionTypes();
+        PageReference p2 = controller.save();
+        system.debug('this is the message from a3 '+ ApexPages.getMessages());
+        controller.m_case.AccountId = a2.Id;
+        Boolean err3 = controller.getDisplayAccountErrorMessage();
+        System.debug(controller.getaccountErrorMessage());
+        system.debug(controller.m_case);
+        List<SelectOption> options3 = controller.getCaseSubmissionTypes();
+        PageReference p3 = controller.save();
+        system.debug('this is the message from a2 '+ ApexPages.getMessages());
+
+
+
+        controller.m_case.accountId = a.Id;
+        system.debug(controller.m_case);
+        List<SelectOption> options4 = controller.getCaseSubmissionTypes();
+        PageReference p4 = controller.save();
         system.debug('this is the message 2 '+ ApexPages.getMessages());
         controller.caseType = 'Grievance Note';
-        PageReference p2 = controller.save();
+        PageReference p5 = controller.save();
         system.debug('this is the message 3 '+ ApexPages.getMessages());
         controller.m_case.Member_Name__c = 'Johnny';
         ApexPages.currentPage().getParameters().put('Member ID', '11223344');
         ApexPages.currentPage().getParameters().put('Contact ID', c.Id);
 
-        List<SelectOption> options2 = controller.getCategoryOptions();
-        List<SelectOption> options3 = controller.getSubcategoryOptions();
-        List<SelectOption> options4 = controller.getServiceModeOptions();
+        List<SelectOption> options5 = controller.getCategoryOptions();
+        List<SelectOption> options6 = controller.getSubcategoryOptions();
+        List<SelectOption> options7 = controller.getServiceModeOptions();
 
         system.assertNotEquals(null, options, 'The collection should be instantiated');
         system.assert(!options2.isEmpty(), 'The collection should be populated');
@@ -90,7 +175,7 @@ public with sharing class veyoCallCenterCaseSubmission_Test {
         ApexPages.currentPage().getParameters().put('Contact Name', 'Testy');
         ApexPages.currentPage().getParameters().put('Service Mode', 'ALS');
         ApexPages.currentPage().getParameters().put('Priority', 'General');
-        PageReference p3 = controller.save();
+        PageReference p6 = controller.save();
         test.stopTest();
 
 

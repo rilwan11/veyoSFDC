@@ -51,7 +51,7 @@ public class veyoCallCenterCaseSubmissionController {
         system.debug('veyoCallCenterCaseSubmissionController.constructor()...');
         m_case = new Case();
         m_case.Date_of_Report__c = system.today();
-        m_case.Contact_Type__c = PHONE;
+    //    m_case.Contact_Type__c = PHONE;
     }
 
     /**
@@ -81,9 +81,8 @@ public class veyoCallCenterCaseSubmissionController {
 
                 } else if(ONLY_GRIEVANCE_NOTES == acct.Call_Center_Can_Create__c) {
                     options.add(new SelectOption(GRIEVANCE_NOTE, GRIEVANCE_NOTE));
-
                 } else if(ONLY_FIRST_CALL_RESOLUTIONS == acct.Call_Center_Can_Create__c) {
-                    options.add(new SelectOption(GRIEVANCE_NOTE, GRIEVANCE_NOTE));
+                    options.add(new SelectOption(FIRST_CALL_RESOLUTION, FIRST_CALL_RESOLUTION));
                 }
             }
         }
@@ -109,7 +108,13 @@ public class veyoCallCenterCaseSubmissionController {
                 system.debug('veyoCallCenterSubmissionController.getCaseSubmissionTypes() :: acct.Call_Center_Can_Create__c <'+acct.Call_Center_Can_Create__c+'>');
 
                 if(NEITHER == acct.Call_Center_Can_Create__c || NONE == acct.Call_Center_Can_Create__c) {
-                    errMsg = 'For '+acct.Name+', Veyo call center agents do not log Grievances into Salesforce.com. Please warm transfer this member to '+acct.Name+' member services';
+                    errMsg = 'For '+acct.Name+', Veyo call center agents do not log Grievances into Salesforce.com. Please warm transfer this member to '+acct.Name+' member services.';
+                }
+                else if (ONLY_GRIEVANCE_NOTES == acct.Call_Center_Can_Create__c) {
+                    errMsg = 'For ' + acct.Name + ', Veyo call center agents do not log First Call Resolutions into Salesforce. Please work with the member to resolve this issue. ';
+                }
+                else if (ONLY_FIRST_CALL_RESOLUTIONS == acct.Call_Center_Can_Create__c) {
+                    errMsg = 'For ' + acct.Name + ', Veyo call center agents do not log Grievances into Salesforce. Please warm transfer this member to ' + Acct.Name + ' Member Services.';
                 }
             }
         }
@@ -135,6 +140,10 @@ public class veyoCallCenterCaseSubmissionController {
                 system.debug('veyoCallCenterSubmissionController.getCaseSubmissionTypes() :: acct.Call_Center_Can_Create__c <'+acct.Call_Center_Can_Create__c+'>');
 
                 if(NEITHER == acct.Call_Center_Can_Create__c || NONE == acct.Call_Center_Can_Create__c) {
+                    return true;
+                }
+                else if (ONLY_FIRST_CALL_RESOLUTIONS == acct.Call_Center_Can_Create__c || ONLY_GRIEVANCE_NOTES == acct.Call_Center_Can_Create__c) {
+                    //Adding to keep Call Center Agents from completing a call on an Account that does not support FCRs or GNs
                     return true;
                 }
             }
@@ -168,9 +177,40 @@ public class veyoCallCenterCaseSubmissionController {
             return null;
         }
 
+        //Set source based on who is submitting the Member Assistance
+        List<Profile> PROFILE = [SELECT Id, Name FROM Profile WHERE Id=:userinfo.getProfileId() LIMIT 1];
+        String profileName = PROFILE[0].Name;
+        if (profileName == 'Call Center Escalation Agents') {
+            System.debug('Submitted by Call Center Escalation Agent');
+            m_case.Source__c = 'Call Center';
+            m_case.Contact_Type__c = PHONE;
+        } else if (profileName == 'QA Coordinators' || profileName == 'QA Management') {
+            System.debug('Submitted by QA');
+            m_case.Source__c = 'QA Team';
+        } else if (profileName == 'Quality Assurance Community Profile') {
+            System.debug('Submitted by Client');
+            m_case.Source__c = 'Client Community';
+        }
+
+        //Set Submitting Contact behind the scenes as the Owner of the Member Assistance
+        List<Contact> possibleDups = [SELECT Id, Name, Email FROM Contact WHERE Email =: userinfo.getUserEmail()];
+        Contact c = new Contact();
+        if (possibleDups.size() > 0) {
+            System.debug('This User already exists as a Contact: ' + string.valueOf(possibleDups[0]));
+            m_case.ContactId = possibleDups[0].Id;
+            System.debug(m_case.ContactId);
+        } else {
+            c.LastName = userinfo.getLastName();
+            c.Email = userinfo.getUserEmail();
+            System.debug('This User is a new Contact: ' + string.valueOf(c));
+            insert c;
+        }
+
+
+
         if(GRIEVANCE_NOTE == caseType) {
             insert m_case;
-
+            System.debug(m_case);
         } else if (FIRST_CALL_RESOLUTION == caseType) {
             //TODO: coming soon...
         }
