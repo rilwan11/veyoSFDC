@@ -425,9 +425,9 @@
                     </apex:outputField>
                 </apex:pageBlockSectionItem>
 
-                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.LastmodifiedById.inlineHelpText}">
-                    {!$ObjectType.Case.fields.LastmodifiedById.label}
-                    <apex:outputField value="{!gn.LastmodifiedById}" >
+                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Source__c.inlineHelpText}">
+                {!$ObjectType.Case.fields.Source__c.label}
+                    <apex:outputField value="{!gn.Source__c}" >
                         <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
                     </apex:outputField>
                 </apex:pageBlockSectionItem>
@@ -439,9 +439,9 @@
                     </apex:outputField>
                 </apex:pageBlockSectionItem>
 
-                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Source__c.inlineHelpText}">
-                {!$ObjectType.Case.fields.Source__c.label}
-                    <apex:outputField value="{!gn.Source__c}" >
+                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.LastmodifiedById.inlineHelpText}">
+                {!$ObjectType.Case.fields.LastmodifiedById.label}
+                    <apex:outputField value="{!gn.LastmodifiedById}" >
                         <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
                     </apex:outputField>
                 </apex:pageBlockSectionItem>
@@ -468,21 +468,15 @@
 
         <apex:pageBlock title="Additional Information" >
             <apex:pageBlockSection >
-                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.ContactId.inlineHelpText}">
-                    Submitting Contact <!-- {!$ObjectType.Case.fields.ContactId.label} -->
-                    <apex:outputField value="{!gn.ContactId}" >
-                    <!--    <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/> -->
-                    </apex:outputField>
-                </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Age_in_Days__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Age_in_Days__c.label}
                     <apex:outputField value="{!gn.Age_in_Days__c}" />
                 </apex:pageBlockSectionItem>
 
-                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.ContactEmail.inlineHelpText}">
-                    Submitting Contact Email <!-- {!$ObjectType.Case.fields.ContactEmail.label} -->
-                    <apex:outputField value="{!gn.ContactEmail}" />
+                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Period__c.inlineHelpText}">
+                {!$ObjectType.Case.fields.Follow_Up_Period__c.label}
+                    <apex:outputField value="{!gn.Follow_Up_Period__c}" />
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Case_Age_in_Business_Hours__c.inlineHelpText}">
@@ -490,9 +484,9 @@
                     <apex:outputField value="{!gn.Case_Age_in_Business_Hours__c}" />
                 </apex:pageBlockSectionItem>
 
-                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.ContactPhone.inlineHelpText}">
-                    Submitting Contact Phone <!-- {!$ObjectType.Case.fields.ContactPhone.label} -->
-                    <apex:outputField value="{!gn.ContactPhone}" />
+                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Age_in_Days__c.inlineHelpText}">
+                {!$ObjectType.Case.fields.Follow_Up_Age_in_Days__c.label}
+                    <apex:outputField value="{!gn.Follow_Up_Age_in_Days__c}" />
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Time_with_Support__c.inlineHelpText}">
@@ -500,11 +494,9 @@
                     <apex:outputField value="{!gn.Time_with_Support__c}" />
                 </apex:pageBlockSectionItem>
 
-                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Origin.inlineHelpText}">
-                {!$ObjectType.Case.fields.Origin.label}
-                    <apex:outputField value="{!gn.Origin}" >
-                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
-                    </apex:outputField>
+                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Age__c.inlineHelpText}">
+                {!$ObjectType.Case.fields.Follow_Up_Age__c.label}
+                    <apex:outputField value="{!gn.Follow_Up_Age__c}" />
                 </apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Time_with_Customer__c.inlineHelpText}">
@@ -512,50 +504,12 @@
                     <apex:outputField value="{!gn.Time_with_Customer__c}" />
                 </apex:pageBlockSectionItem>
 
-                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Subject.inlineHelpText}">
-                    {!$ObjectType.Case.fields.Subject.label}
-                    <apex:outputField value="{!gn.Subject}" style="width:90%;" >
-                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
-                    </apex:outputField>
-                </apex:pageBlockSectionItem>
-
-                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Period__c.inlineHelpText}">
-                    {!$ObjectType.Case.fields.Follow_Up_Period__c.label}
-                    <apex:outputField value="{!gn.Follow_Up_Period__c}" />
-                </apex:pageBlockSectionItem>
-
-                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Type.inlineHelpText}">
-                    {!$ObjectType.Case.fields.Type.label}
-                    <apex:outputField value="{!gn.Type}" >
-                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
-                    </apex:outputField>
-                </apex:pageBlockSectionItem>
-
-                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Age_in_Days__c.inlineHelpText}">
-                    {!$ObjectType.Case.fields.Follow_Up_Age_in_Days__c.label}
-                    <apex:outputField value="{!gn.Follow_Up_Age_in_Days__c}" />
-                </apex:pageBlockSectionItem>
-
-                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Reason.inlineHelpText}">
-                    {!$ObjectType.Case.fields.Reason.label}
-                    <apex:outputField value="{!gn.Reason}" >
-                        <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
-                    </apex:outputField>
-                </apex:pageBlockSectionItem>
-
-                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Age__c.inlineHelpText}">
-                    {!$ObjectType.Case.fields.Follow_Up_Age__c.label}
-                    <apex:outputField value="{!gn.Follow_Up_Age__c}" />
-                </apex:pageBlockSectionItem>
-
-                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
-
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Time_with_Support__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Follow_Up_Time_with_Support__c.label}
                     <apex:outputField value="{!gn.Follow_Up_Time_with_Support__c}" />
                 </apex:pageBlockSectionItem>
 
-                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem></apex:pageBlockSectionItem>
 
                 <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Time_with_Customer__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Follow_Up_Time_with_Customer__c.label}

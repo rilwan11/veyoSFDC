@@ -21,7 +21,7 @@
             <!-- Update warning/info messages based on selected Email Template in real time without having to save
              so that the user knows if they can input Additional Text or not and rerender form to make Additional Text
              enabled or not -->
-            <apex:actionFunction action="{!templateSelection}" name="setParams" rerender="showmsg,theForm" immediate="true" >
+            <apex:actionFunction action="{!templateSelection}" name="setParams" rerender="showmsg,theForm,screen" immediate="true" >
                 <apex:param name="param1" assignTo="{!emailTemplateSelection}" value=""/>
             </apex:actionFunction>
        <!--     <apex:actionFunction action="{!renderEmail}" name="emailOutput" rerender="Dummy,theOutput" immediate="true" >
@@ -29,17 +29,24 @@
             </apex:actionFunction> -->
 
             <apex:pageBlockSection title="Send Emails" columns="2" id="screen" >
-                <apex:inputField value="{!Case.Email_Template__c}" onchange="setParams(this.value)" style="width:200px; "/>
+                <apex:inputField value="{!Case.Email_Template__c}" onchange="setParams(this.value)" style="width:200px; "  />
                 <apex:outputText value="{!emailTemplateSelection}" label="Selected Template"/>
-                <apex:inputText value="{!directEmail}" id="directEmail" label="Enter in specific email address when necessary" style="width:200px; " disabled="{!disabledEmail}" />
+                <apex:inputText value="{!directEmail1}" id="directEmail1" label="Enter in specific email address when necessary" style="width:200px; " disabled="{!disabledEmail}" />
                 <apex:outputText value="{!emailSubject}" label="Email Subject: "/>
+                <apex:inputText value="{!directEmail2}" id="directEmail2" label="Second Additional Email Address" style="width:200px; " disabled="{!disabledEmail}" />
+                <apex:outputText value="{!allRecipients}" label="Recipients" />
+                <apex:inputText value="{!directEmail3}" id="directEmail3" label="Third Additional Email Address" style="width:200px; " disabled="{!disabledEmail}" />
+                <apex:pageBlockSectionItem></apex:pageBlockSectionItem>
+                <apex:inputText value="{!directEmail4}" id="directEmail4" label="Fourth Additional Email Address" style="width:200px; " disabled="{!disabledEmail}" />
+                <apex:outputText style="font-weight:800; center" value="Email Body" />
                 <apex:inputTextArea value="{!additionalText}"  style="width:200px; height:100px;" disabled="{!disabledAdditional}" id="addText" label="Input Additional Email Text Here"/>
                 <apex:outputText value="{!emailOutput}" style="white-space:pre-wrap;" />
           <!--      <apex:outputField value="{!Case.Email_Output__c}" style="width:90%;" >
                     <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick" />
                 </apex:outputField> -->
 
-                <apex:commandButton value="Preview Email" action="{!renderEmail}" style="center" />
+
+                <apex:commandButton value="Preview Email" action="{!emailPreSend}" style="center" />
                 <apex:commandButton value="Send Email" action="{!onSend}" rerender="sendComplete,sendButton,showmsg" disabled="{!disabledButton}" id="sendButton" style="center-right"/>
 
             </apex:pageBlockSection>

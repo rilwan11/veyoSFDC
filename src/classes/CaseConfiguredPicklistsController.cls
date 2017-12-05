@@ -62,7 +62,7 @@ public with sharing class CaseConfiguredPicklistsController {
         System.debug('CaseConfiguredPicklistsController::: recordId: ' + string.valueOf(recordId));
 
         grievances = [SELECT Id, CaseNumber, AccountId, ContactId, Status, Provider_Contact__c, Category__c, Subcategory__c, Service_Mode__c,
-                CreatedById, Member_Name__c, Date_of_Report__c, Member_ID__c, Due_Date__c, Member_Phone_Number__c, Source__c,
+                CreatedById, Member_Name__c, Date_of_Report__c, Member_ID__c, Due_Date__c, Member_Phone_Number__c, Source__c, 
                 Complainant_Name__c, CreatedDate, Created__c, Type, Contact_Type__c, Progress_Date__c, User_Account__c,
                 Resolved__c, Follow_Up_Requested__c, Open_Email_Response__c, Follow_Up_Completed__c, Follow_Up_Comments__c,
                 Description, Priority, Provider_Name__c, Trip_Date__c, Agent_Name__c, Driver_Name__c, Vehicle_Number__c,

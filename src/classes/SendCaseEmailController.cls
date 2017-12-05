@@ -13,10 +13,14 @@ public with sharing class SendCaseEmailController {
     public boolean disabledAdditional { get; set; }
     public String additionalText { get; set; }
     public String input { get; set; }
-    public String directEmail { get; set; }
+    public String directEmail1 { get; set; }
+    public String directEmail2 { get; set; }
+    public String directEmail3 { get; set; }
+    public String directEmail4 { get; set; }
     public boolean disabledEmail { get; set; }
     public boolean disabledButton { get; set; }
     public String emailSubject { get; set; }
+    public List<String> allRecipients { get; set; }
 
     //Email Template lists for checking in Preview and Send methods
     public List<String> directEmailAdditionalText { get; set; }
@@ -30,7 +34,7 @@ public with sharing class SendCaseEmailController {
         //gn = (Case)stdControl.getRecord();
         Id recordId = ApexPages.CurrentPage().getParameters().get('Id');
         System.debug('SendCaseEmailController::: recordId: ' + string.valueOf(recordId));
-        gn = [SELECT Id, CaseNumber, ContactId, OwnerId, Additional_Email_Text__c, Email_Template__c, AccountId
+        gn = [SELECT Id, CaseNumber, ContactId, OwnerId, Additional_Email_Text__c, Email_Template__c, AccountId, ContactEmail
                 FROM Case
                 WHERE Id =: recordId
                 LIMIT 1];
@@ -47,7 +51,10 @@ public with sharing class SendCaseEmailController {
         System.currentPageReference().getParameters().put('addText','');
         emailTemplateSelection = '--None--';
 
-        System.currentPageReference().getParameters().put('directEmail', '');
+        System.currentPageReference().getParameters().put('directEmail1', '');
+        System.currentPageReference().getParameters().put('directEmail2', '');
+        System.currentPageReference().getParameters().put('directEmail3', '');
+        System.currentPageReference().getParameters().put('directEmail4', '');
         disabledEmail = false;
 
         disabledButton = true;
@@ -93,7 +100,10 @@ public with sharing class SendCaseEmailController {
     public void templateSelection() {
         System.debug('SendCaseEmailController::: templateSelection :: ' + string.valueOf(emailTemplateSelection));
         //Reset the additional email
-        System.currentPageReference().getParameters().put('directEmail', '');
+        System.currentPageReference().getParameters().put('directEmail1', '');
+        System.currentPageReference().getParameters().put('directEmail2', '');
+        System.currentPageReference().getParameters().put('directEmail3', '');
+        System.currentPageReference().getParameters().put('directEmail4', '');
         emailSubject = '';
         emailOutput = '';
         Integer emailType = getEmailOptionType(emailTemplateSelection);
@@ -106,7 +116,7 @@ public with sharing class SendCaseEmailController {
         else if (emailType == 1) {
             disabledAdditional = false;
             disabledEmail = false;
-            ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.WARNING, 'You selected an Email Template that accepts Additional Email Text. Please add your comments in the text box below and Preview your entire Email before Sending. ');
+            ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.WARNING, 'You selected an Email Template that accepts Additional Email Text and Email Address(es). Please add your comments in the text box below and Preview your entire Email before Sending. ');
             ApexPages.addMessage(errorMessage);
             System.debug(errorMessage);
         }
@@ -118,8 +128,23 @@ public with sharing class SendCaseEmailController {
             ApexPages.addMessage(errorMessage);
             System.debug(errorMessage);
         }
+        else if (emailType == 3) {
+            directEmail1 = null;
+            directEmail2 = null;
+            directEmail3 = null;
+            directEmail4 = null;
+            additionalText = null;
+            disabledAdditional = false;
+            disabledEmail = true;
+            ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.INFO, 'You selected an Email Template that accepts Additional Email Text. Please add your comments in the text box below and Preview your entire Email before Sending. ');
+            ApexPages.addMessage(errorMessage);
+            System.debug(errorMessage);
+        }
         else {
-            directEmail = null;
+            directEmail1 = null;
+            directEmail2 = null;
+            directEmail3 = null;
+            directEmail4 = null;
             additionalText = null;
             disabledAdditional = true;
             disabledEmail = true;
@@ -127,6 +152,8 @@ public with sharing class SendCaseEmailController {
             ApexPages.addMessage(errorMessage);
             System.debug(errorMessage);
         }
+
+        renderEmail();
     }
 
 
@@ -136,22 +163,9 @@ public with sharing class SendCaseEmailController {
      */
     public void renderEmail() {
         gn.Additional_Email_Text__c = additionalText;
-        System.debug('SendCaseEmailController::: renderEmail:: additionalText: ' + string.valueOf(additionalText) + ' TEMPLATE: ' + string.valueOf(emailTemplateSelection) + ' additionalEmail: ' + string.valueOf(directEmail));
+        System.debug('SendCaseEmailController::: renderEmail:: additionalText: ' + string.valueOf(additionalText) + ' TEMPLATE: ' + string.valueOf(emailTemplateSelection) + ' additionalEmails: ' + string.valueOf(directEmail1) + string.valueOf(directEmail2) + string.valueOf(directEmail3) + string.valueOf(directEmail4));
         update gn;
 
-        //Ensure the additional email is in good form
-        if (directEmail != null) {
-            if (directEmail != '' && isUserEmailValid(directEmail) == false) {
-                ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Incorrect email address format. Please check that the additional email is correct and try again.');
-                ApexPages.addMessage(errorMessage);
-                System.debug(errorMessage);
-
-                //Make sure they cannot send while the email address is incorrect
-                disabledButton = true;
-
-                return;
-            }
-        }
 
         //Falsify sending of email in order to see previewed body
         try {
@@ -173,16 +187,97 @@ public with sharing class SendCaseEmailController {
             emailSubject = email.getSubject();
             System.debug('Email subject: ' + string.valueOf(emailSubject) + ' -- ' + string.valueOf(email.getSubject()));
 
-            disabledButton = false;
         }
         catch (exception ex) {
-            ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Please make sure all input is correct, then try again. **Still working on Owner fix, please try again after the next deployment.**');
+            ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Please make sure all input is correct, then try again. ');
             ApexPages.addMessage(errorMessage);
             System.debug(errorMessage);
             System.debug(ex);
-            disabledButton = true;
         }
-    }
+        disabledButton = true;
+    } //public void renderEmail()
+
+
+    /**
+     * Krizia: Preview button will initiate email address tests and full email body preview as well as enabling send button
+     */
+    public void emailPreSend() {
+        Boolean errorsBoolean = false;
+        allRecipients = new List<String>();
+
+        //Ensure the additional email is in good form
+        if (directEmail1 != null) {
+            if (directEmail1 != '' && isUserEmailValid(directEmail1) == false) {
+                ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Incorrect email address format. Please check that the first email address is correct and try again.');
+                ApexPages.addMessage(errorMessage);
+                System.debug(errorMessage);
+
+                //Make sure they cannot send while the email address is incorrect
+                disabledButton = true;
+                errorsBoolean = true;
+                //   return;
+            }
+            else {
+                allRecipients.add(directEmail1);
+            }
+        }
+        if (directEmail2 != null) {
+            if (directEmail2 != '' && isUserEmailValid(directEmail2) == false) {
+                ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Incorrect email address format. Please check that the second email address is correct and try again.');
+                ApexPages.addMessage(errorMessage);
+                System.debug(errorMessage);
+
+                //Make sure they cannot send while the email address is incorrect
+                disabledButton = true;
+                errorsBoolean = true;
+                //   return;
+            }
+            else {
+                allRecipients.add(directEmail2);
+            }
+        }
+        if (directEmail3 != null) {
+            if (directEmail3 != '' && isUserEmailValid(directEmail3) == false) {
+                ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Incorrect email address format. Please check that the third email address is correct and try again.');
+                ApexPages.addMessage(errorMessage);
+                System.debug(errorMessage);
+
+                //Make sure they cannot send while the email address is incorrect
+                disabledButton = true;
+                errorsBoolean = true;
+                //   return;
+            }
+            else {
+                allRecipients.add(directEmail3);
+            }
+        }
+        if (directEmail4 != null) {
+            if (directEmail4 != '' && isUserEmailValid(directEmail4) == false) {
+                ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Incorrect email address format. Please check that the fourth email address is correct and try again.');
+                ApexPages.addMessage(errorMessage);
+                System.debug(errorMessage);
+
+                //Make sure they cannot send while the email address is incorrect
+                disabledButton = true;
+                errorsBoolean = true;
+                //   return;
+            }
+            else {
+                allRecipients.add(directEmail4);
+            }
+        }
+        if (errorsBoolean == true) {
+            System.debug('There are errors in the additional email(s)');
+            errorsBoolean = false;
+            return;
+        }
+
+        //Display what the email will look like as well as Recipients and Subject
+        renderEmail();
+
+        disabledButton = false;
+
+    } //public void emailPreSend
 
 
     /**
@@ -193,42 +288,60 @@ public with sharing class SendCaseEmailController {
         //Common for any template
         boolean success = false;
         String[] toRecipients = new List<String>();
-        Id targetObjectId; // ** Must be a User, Contact, Lead, or Person **
+        Id targetObjectId; // ** Must be a User, Contact, Lead, or Person ** (truly needs to be a Contact)
         Integer emailType = getEmailOptionType(emailTemplateSelection); //Check the Email Template type in order to assign the recipients properly
 
 
         //Recipients vary for Email Templates
+        Contact c1;
+        Contact c2;
+        Contact c3;
+        Contact c4;
+        List<Contact> contactList = new List<Contact>();
+        if (directEmail1 != null && directEmail1 != '') {
+            c1 = new Contact(LastName = string.valueOf(directEmail1), Email = directEmail1);
+            contactList.add(c1);
+        }
+        if (directEmail2 != null && directEmail2 != '') {
+            c2 = new Contact(LastName = string.valueOf(directEmail2), Email = directEmail2);
+            contactList.add(c2);
+        }
+        if (directEmail3 != null && directEmail3 != '') {
+            c3 = new Contact(LastName = string.valueOf(directEmail3), Email = directEmail3);
+            contactList.add(c3);
+        }
+        if (directEmail4 != null && directEmail4 != '') {
+            c4 = new Contact(LastName = string.valueOf(directEmail4), Email = directEmail4);
+            contactList.add(c4);
+        }
+
+        //New email addresses added
+        System.debug('SendCaseEmailController::: contactList of recipients size: ' + string.valueOf(contactList.size()));
+        if (contactList.size() > 0) {
+            insert contactList;
+            targetObjectId = contactList[0].Id;
+
+            for (Contact c : contactList) {
+                toRecipients.add(c.Email);
+            }
+        }
+        else {
+            targetObjectId = gn.ContactId;
+            toRecipients.add(gn.ContactEmail);
+        }
+
 
         //Email Templates using the Direct Email Address & additional input
         if (emailType == 1) {
-            Contact c = new Contact(LastName = string.valueOf(directEmail), Email = directEmail);
-            insert c;
-            toRecipients.add(c.Email);
-            targetObjectId = c.Id;
-
             System.debug('RECIPIENTS: ' + toRecipients);
             success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
-            delete c;
+            delete contactList;
         }
         else if (emailType == 2) {//Email Templates using the Direct Email Address and no additional input
-            //Check if the driver email already exists
-            List<Contact> cList = new List<Contact>();
-            Contact c;
-            cList = [SELECT Id, Email FROM Contact WHERE Email = :directEmail];
-
-            //Use existing driver or make a new one
-            if (cList.size() > 0) {
-                c = cList.get(0);
-            } else {
-                c = new Contact(FirstName = 'requesting info from', LastName = 'Driver', Email = directEmail);
-                insert c;
-            }
-
-            toRecipients.add(directEmail);
             System.debug('RECIPIENTS: ' + toRecipients);
-            targetObjectId = c.Id;
-            System.debug(c);
+            System.debug(contactList);
             success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
+            delete contactList;
         }
         else {
             ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'You did not select an Email Template. Please select an Email Template, then try again. ');
@@ -270,10 +383,10 @@ public with sharing class SendCaseEmailController {
         for (String s : directEmailNOadditionalText) {
             if (s == ETS) { System.debug('EmailType: 2'); return (2);  }
         }
-        for (String s : additionalTextDefaultEmail) {
+        for (String s : additionalTextDefaultEmail) { //Currently no templates fall into this category
             if (s == ETS) { System.debug('EmailType: 3'); return (3);  }
         }
-        for (String s : defaultEmailOnly) {
+        for (String s : defaultEmailOnly) { //Currently no templates fall into this category
             if (s == ETS) { System.debug('EmailType: 4'); return (4); }
         }
 
