@@ -36,7 +36,16 @@
                 <apex:inputText value="{!directEmail2}" id="directEmail2" label="Second Additional Email Address" style="width:200px; " disabled="{!disabledEmail}" />
                 <apex:outputText value="{!allRecipients}" label="Recipients" />
                 <apex:inputText value="{!directEmail3}" id="directEmail3" label="Third Additional Email Address" style="width:200px; " disabled="{!disabledEmail}" />
-                <apex:pageBlockSectionItem></apex:pageBlockSectionItem>
+
+
+                <apex:pageBlockSectionItem >
+                    Attachments
+                    <apex:selectList value="{!attachments}" multiselect="false" size="1" id="attachmentOptions" label="Attachments" >
+                        <apex:selectOptions value="{!attachmentOptions}" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+
+
                 <apex:inputText value="{!directEmail4}" id="directEmail4" label="Fourth Additional Email Address" style="width:200px; " disabled="{!disabledEmail}" />
                 <apex:outputText style="font-weight:800; center" value="Email Body" />
                 <apex:inputTextArea value="{!additionalText}"  style="width:200px; height:100px;" disabled="{!disabledAdditional}" id="addText" label="Input Additional Email Text Here"/>

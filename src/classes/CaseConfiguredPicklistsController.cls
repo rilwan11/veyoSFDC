@@ -85,6 +85,9 @@ public with sharing class CaseConfiguredPicklistsController {
 
         if (grievances.size() > 0) {
             gn = grievances[0];
+            if (gn.Provider_Name__c != null) {
+                caseTransportationProvider = gn.Provider_Name__c;
+            }
         }
         else {
             gn = new Case();
@@ -254,6 +257,17 @@ public with sharing class CaseConfiguredPicklistsController {
         List<SelectOption> options = new List<SelectOption>();
         options.add(new SelectOption('', '--None--'));
 
+        //Initial value to put into Provider Name (Transportation Provider)
+        if (gn.Provider_Name__c != null) {
+            System.debug('CaseConfiguredPicklistsController::: getTransportationProviderOptions:: set TransportationProvider to previous value - ' + string.valueOf(gn.Provider_Name__c));
+            List<Account> tpList = [SELECT Id, Name FROM Account WHERE Id =: gn.Provider_Name__c];
+            if (tpList.size() > 0) {
+                String tp = tpList[0].Name;
+                caseTransportationProvider = tp;
+            }
+        }
+
+
         if (a.Service_State__c != null) {
             //Add to Provider Contact picklist
             List<Account> transportationProviders = new List<Account>();
@@ -269,15 +283,6 @@ public with sharing class CaseConfiguredPicklistsController {
                     String aName = a.Name;
                     options.add(new SelectOption(aName, aName));
                 }
-            }
-        }
-        //Initial value to put into Provider Name (Transportation Provider)
-        if (gn.Provider_Name__c != null) {
-            System.debug('CaseConfiguredPicklistsController::: getTransportationProviderOptions:: set TransportationProvider to previous value - ' + string.valueOf(gn.Provider_Name__c));
-            List<Account> tpList = [SELECT Id, Name FROM Account WHERE Id =: gn.Provider_Name__c];
-            if (tpList.size() > 0) {
-                String tp = tpList[0].Name;
-                caseTransportationProvider = tp;
             }
         }
 

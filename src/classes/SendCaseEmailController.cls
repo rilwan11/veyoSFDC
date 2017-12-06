@@ -21,6 +21,7 @@ public with sharing class SendCaseEmailController {
     public boolean disabledButton { get; set; }
     public String emailSubject { get; set; }
     public List<String> allRecipients { get; set; }
+    public String attachments { get; set; }
 
     //Email Template lists for checking in Preview and Send methods
     public List<String> directEmailAdditionalText { get; set; }
@@ -44,6 +45,7 @@ public with sharing class SendCaseEmailController {
                 FROM Account
                 WHERE Id =: gn.AccountId
                 LIMIT 1];
+
 
         System.debug('SendCaseEmailController::: constructor:: gn: ' + string.valueOf(gn));
         disabledAdditional = false;
@@ -426,4 +428,44 @@ public with sharing class SendCaseEmailController {
         }
         return flag;
     } //public static boolean isUserEmailValid(String userEmail)
+
+
+    /**
+     * Krizia: need to get all attachments in order to attach one
+     *
+     * @return
+     */
+    public List<SelectOption> getAttachmentOptions() {
+        List<SelectOption> options = new List<SelectOption>();
+        options.add(new SelectOption('', '--None--'));
+
+
+        System.debug(gn.Id);
+        List<Attachment> queriedAttachments = new List<Attachment>();
+        queriedAttachments = [SELECT Id, Name, Body, ContentType, Description
+            FROM Attachment
+            WHERE ParentId =: gn.Id LIMIT 200];
+        List<Note> queriedNotes = new List<Note>();
+        queriedNotes = [SELECT Id, Title, Body
+            FROM Note
+            WHERE ParentId =: gn.Id LIMIT 200];
+        System.debug(queriedAttachments);
+        System.debug(queriedNotes);
+        if (queriedAttachments.size() > 0) {
+            for (Attachment att : queriedAttachments ){
+                options.add(new SelectOption(att.Name,att.Name));
+                System.debug(att.Name);
+            }
+        }
+        if (queriedNotes.size() > 0) {
+            for (Note n : queriedNotes ) {
+                options.add(new SelectOption(n.Title, n.Title));
+                System.debug(n.Title);
+            }
+        }
+
+
+        System.debug(options);
+        return options;
+    } //public List<SelectOption> getAttachmentOptions()
 }
