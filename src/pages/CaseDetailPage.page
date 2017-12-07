@@ -509,7 +509,7 @@
                         <apex:outputField value="{!gn.Follow_Up_Time_with_Support__c}" />
                     </apex:pageBlockSectionItem>
 
-                    <apex:pageBlockSectionItem></apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
 
                     <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Time_with_Customer__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Follow_Up_Time_with_Customer__c.label}

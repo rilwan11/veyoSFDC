@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31df91ac-2f59-4d2a-8840-733adc358db0" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls" afterPath="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/classes/CaseEmail.cls" afterPath="$PROJECT_DIR$/src/classes/CaseEmail.cls" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/classes/CaseEmailServiceHandler.cls" afterPath="$PROJECT_DIR$/src/classes/CaseEmailServiceHandler.cls" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/classes/SendCaseEmailController.cls" afterPath="$PROJECT_DIR$/src/classes/SendCaseEmailController.cls" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/classes/SendCaseEmailController_Test.cls" afterPath="$PROJECT_DIR$/src/classes/SendCaseEmailController_Test.cls" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/CaseDetailPage.page" afterPath="$PROJECT_DIR$/src/pages/CaseDetailPage.page" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/SendCaseEmail.page" afterPath="$PROJECT_DIR$/src/pages/SendCaseEmail.page" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -16,15 +19,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/veyoDev$SendCaseEmailController_Test_testSendCaseEmailController.coverage" NAME="veyoDev Coverage Results" MODIFIED="1512495121282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="Apex" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" PROJECT_NAME="veyoDev" CONNECTION_NAME="veyoDev" />
+    <SUITE FILE_PATH="coverage/veyoDev$SendCaseEmailController_Test_testSendCaseEmailController.coverage" NAME="veyoDev Coverage Results" MODIFIED="1512676045898" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="Apex" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" PROJECT_NAME="veyoDev" CONNECTION_NAME="veyoDev" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SendCaseEmailController.cls" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SendCaseEmailController.cls" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/classes/SendCaseEmailController.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="356" column="0" lean-forward="true" selection-start-line="356" selection-start-column="0" selection-end-line="356" selection-end-column="0" />
+            <state relative-caret-position="223">
+              <caret line="500" column="49" lean-forward="true" selection-start-line="500" selection-start-column="49" selection-end-line="500" selection-end-column="49" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#3459#3467#0" expanded="true" />
@@ -35,12 +38,11 @@
                 <element signature="e#14289#14297#0" expanded="true" />
                 <element signature="e#14727#14736#0" expanded="true" />
                 <element signature="e#16114#16145#0" expanded="true" />
-                <element signature="e#16383#16387#0" expanded="true" />
-                <element signature="e#16618#16622#0" expanded="true" />
-                <element signature="e#16722#16738#0" expanded="true" />
-                <element signature="e#22804#22818#0" expanded="true" />
-                <element signature="e#22945#22957#0" expanded="true" />
-                <element signature="e#23169#23190#0" expanded="true" />
+                <element signature="e#16204#16225#0" expanded="true" />
+                <element signature="e#21393#21407#0" expanded="true" />
+                <element signature="e#22744#22758#0" expanded="true" />
+                <element signature="e#22885#22897#0" expanded="true" />
+                <element signature="e#23109#23130#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -49,8 +51,8 @@
       <file leaf-file-name="SendCaseEmail.page" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/SendCaseEmail.page">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="33" column="97" lean-forward="false" selection-start-line="33" selection-start-column="97" selection-end-line="33" selection-end-column="97" />
+            <state relative-caret-position="261">
+              <caret line="42" column="64" lean-forward="false" selection-start-line="42" selection-start-column="64" selection-end-line="42" selection-end-column="64" />
               <folding>
                 <element signature="n#style#0;n#apex:inputField#0;n#apex:pageBlockSection#0;n#div#0;n#apex:form#0;n#apex:pageBlock#0;n#body#0;n#apex:page#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#apex:outputLabel#0;n#apex:pageBlockSection#0;n#div#0;n#apex:form#0;n#apex:pageBlock#0;n#body#0;n#apex:page#0;n#!!top" expanded="true" />
@@ -65,9 +67,15 @@
       <file leaf-file-name="CaseEmail.cls" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/classes/CaseEmail.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
-              <caret line="118" column="169" lean-forward="false" selection-start-line="118" selection-start-column="169" selection-end-line="118" selection-end-column="169" />
-              <folding />
+            <state relative-caret-position="275">
+              <caret line="108" column="56" lean-forward="false" selection-start-line="108" selection-start-column="56" selection-end-line="108" selection-end-column="56" />
+              <folding>
+                <element signature="e#3539#3569#0" expanded="true" />
+                <element signature="e#5032#5036#0" expanded="true" />
+                <element signature="e#5235#5239#0" expanded="true" />
+                <element signature="e#5352#5368#0" expanded="true" />
+                <element signature="e#5699#5711#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -75,8 +83,8 @@
       <file leaf-file-name="CaseEmailServiceHandler.cls" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/classes/CaseEmailServiceHandler.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="75" column="47" lean-forward="true" selection-start-line="75" selection-start-column="47" selection-end-line="75" selection-end-column="47" />
+            <state relative-caret-position="229">
+              <caret line="88" column="73" lean-forward="true" selection-start-line="88" selection-start-column="73" selection-end-line="88" selection-end-column="73" />
               <folding>
                 <element signature="e#3525#3537#0" expanded="true" />
                 <element signature="e#6123#6135#0" expanded="true" />
@@ -89,8 +97,30 @@
         <entry file="file://$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="442">
-              <caret line="83" column="9" lean-forward="true" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
-              <folding />
+              <caret line="83" column="9" lean-forward="false" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
+              <folding>
+                <marker date="1512668146000" expanded="true" signature="2392:6765" ph="{...}" />
+                <marker date="1512668146000" expanded="false" signature="5420:5429" ph="&lt;~&gt;" />
+                <marker date="1512668146000" expanded="true" signature="6859:6965" ph="/* Krizia: make specific Categories... */" />
+                <marker date="1512668146000" expanded="true" signature="7017:8066" ph="{...}" />
+                <marker date="1512668146000" expanded="false" signature="7148:7162" ph="&lt;~&gt;" />
+                <marker date="1512668146000" expanded="true" signature="8118:8227" ph="/* Krizia: make specific Subcategories... */" />
+                <marker date="1512668146000" expanded="true" signature="8282:11085" ph="{...}" />
+                <marker date="1512668146000" expanded="false" signature="8416:8430" ph="&lt;~&gt;" />
+                <marker date="1512668146000" expanded="true" signature="11141:11250" ph="/* Krizia: make specific Service... */" />
+                <marker date="1512668146000" expanded="true" signature="11305:13071" ph="{...}" />
+                <marker date="1512668146000" expanded="false" signature="11439:11453" ph="&lt;~&gt;" />
+                <marker date="1512668146000" expanded="true" signature="13127:13246" ph="/* Krizia: make specific Transportation... */" />
+                <marker date="1512668146000" expanded="true" signature="13312:14809" ph="{...}" />
+                <marker date="1512668146000" expanded="false" signature="13457:13471" ph="&lt;~&gt;" />
+                <marker date="1512668146000" expanded="false" signature="14241:14250" ph="&lt;~&gt;" />
+                <marker date="1512668146000" expanded="true" signature="14879:15044" ph="/* Krizia: make specific Transportation... */" />
+                <marker date="1512668146000" expanded="true" signature="15103:16776" ph="{...}" />
+                <marker date="1512668146000" expanded="false" signature="15286:15300" ph="&lt;~&gt;" />
+                <marker date="1512668146000" expanded="false" signature="15544:15553" ph="&lt;~&gt;" />
+                <marker date="1512668146000" expanded="false" signature="15889:15898" ph="&lt;~&gt;" />
+                <marker date="1512668146000" expanded="true" signature="16839:16973" ph="/* Krizia: button - update the... */" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -100,26 +130,75 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1349">
               <caret line="727" column="70" lean-forward="false" selection-start-line="727" selection-start-column="70" selection-end-line="727" selection-end-column="70" />
-              <folding />
+              <folding>
+                <marker date="1512668146000" expanded="true" signature="33776:34001" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="34280:48016" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="34346:35928" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="34469:34852" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="34623:34803" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="35043:35404" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="35175:35355" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="35520:35887" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="35658:35838" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="35989:41916" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="36318:36701" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="36472:36652" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="36821:37196" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="36967:37147" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="37314:37685" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="37456:37636" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="37804:38177" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="37948:38128" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="38311:38714" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="38485:38665" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="38839:39224" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="38995:39175" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="39347:39728" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="39499:39679" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="39849:40226" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="39997:40177" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="40349:40730" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="40501:40681" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="40848:41219" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="40990:41170" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="41496:41875" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="41646:41826" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="42098:46138" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="42433:42826" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="42597:42777" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="42956:43351" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="43122:43302" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="43496:43921" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="43692:43872" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="44043:44422" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="44193:44373" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="44549:44938" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="44709:44889" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="45060:45432" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="45203:45383" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="45712:46097" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="45868:46048" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="46323:47379" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="46452:46845" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="46616:46796" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="46965:47338" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="47109:47289" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="47449:47986" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="47562:47945" ph="..." />
+                <marker date="1512668146000" expanded="false" signature="47704:47714" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="47715:47896" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="49070:49542" ph="..." />
+                <marker date="1512668146000" expanded="true" signature="49664:50039" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="veyoCallCenterCaseSubmissionController.cls" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmissionController.cls">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3434">
-              <caret line="202" column="48" lean-forward="false" selection-start-line="202" selection-start-column="48" selection-end-line="202" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SendCaseEmailController_Test.cls" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SendCaseEmailController_Test.cls" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/classes/SendCaseEmailController_Test.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1003">
-              <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+            <state relative-caret-position="275">
+              <caret line="66" column="26" lean-forward="false" selection-start-line="66" selection-start-column="26" selection-end-line="66" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -190,14 +269,14 @@
         <option value="$PROJECT_DIR$/src/classes/CaseTriggerHandler.cls" />
         <option value="$PROJECT_DIR$/src/pages/veyoCallCenterCaseSubmission.page" />
         <option value="$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmission_Test.cls" />
-        <option value="$PROJECT_DIR$/src/classes/SendCaseEmailController_Test.cls" />
         <option value="$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmissionController.cls" />
         <option value="$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls" />
         <option value="$PROJECT_DIR$/src/pages/CaseDetailPage.page" />
         <option value="$PROJECT_DIR$/src/classes/CaseEmailServiceHandler.cls" />
-        <option value="$PROJECT_DIR$/src/classes/CaseEmail.cls" />
         <option value="$PROJECT_DIR$/src/pages/SendCaseEmail.page" />
+        <option value="$PROJECT_DIR$/src/classes/CaseEmail.cls" />
         <option value="$PROJECT_DIR$/src/classes/SendCaseEmailController.cls" />
+        <option value="$PROJECT_DIR$/src/classes/SendCaseEmailController_Test.cls" />
       </list>
     </option>
   </component>
@@ -240,22 +319,22 @@
                       <entry key="CLASSES/CASECLIENTPORTALCONTROLLER.CLS" value="1510937035596" />
                       <entry key="CLASSES/CASECONFIGUREDPICKLISTSCONTROLLER.CLS" value="1512515575503" />
                       <entry key="CLASSES/CASECONFIGUREDPICKLISTSCONTROLLER_TEST.CLS" value="1510871095797" />
-                      <entry key="CLASSES/CASEEMAIL.CLS" value="1512627058010" />
+                      <entry key="CLASSES/CASEEMAIL.CLS" value="1512674438009" />
                       <entry key="CLASSES/CASEEMAILSERVICEHANDLER.CLS" value="1512602527208" />
                       <entry key="CLASSES/CASEEMAILSERVICEHANDLER_TEST.CLS" value="1510590630566" />
                       <entry key="CLASSES/CASETRIGGERHANDLER.CLS" value="1512186907387" />
                       <entry key="CLASSES/CASETRIGGER_TEST.CLS" value="1512062927828" />
                       <entry key="CLASSES/CHANGEPASSWORDCONTROLLERTEST.CLS" value="1510587171687" />
                       <entry key="CLASSES/MASSUPDATESIMPLECONTROLLERTEST.CLS" value="1510962550769" />
-                      <entry key="CLASSES/SENDCASEEMAILCONTROLLER.CLS" value="1512630513865" />
-                      <entry key="CLASSES/SENDCASEEMAILCONTROLLER_TEST.CLS" value="1512495116174" />
+                      <entry key="CLASSES/SENDCASEEMAILCONTROLLER.CLS" value="1512676041411" />
+                      <entry key="CLASSES/SENDCASEEMAILCONTROLLER_TEST.CLS" value="1512678647501" />
                       <entry key="CLASSES/VEYOCALLCENTERCASESUBMISSIONCONTROLLER.CLS" value="1512514061065" />
                       <entry key="CLASSES/VEYOCALLCENTERCASESUBMISSION_TEST.CLS" value="1512405237089" />
                       <entry key="PAGES/CASECLIENTPORTAL.PAGE" value="1510937467654" />
                       <entry key="PAGES/CASECOMMUNITYDETAILPAGE.PAGE" value="1511383102485" />
                       <entry key="PAGES/CASEDETAILPAGE.PAGE" value="1512574994218" />
                       <entry key="PAGES/COMMUNITIESLOGIN.PAGE" value="1511379205281" />
-                      <entry key="PAGES/SENDCASEEMAIL.PAGE" value="1512630005447" />
+                      <entry key="PAGES/SENDCASEEMAIL.PAGE" value="1512671686034" />
                       <entry key="PAGES/VEYOCALLCENTERCASESUBMISSION.PAGE" value="1512187001146" />
                       <entry key="TRIGGERS/ACCOUNTTRIGGER.TRIGGER" value="1510326773681" />
                       <entry key="TRIGGERS/CASETRIGGER.TRIGGER" value="1512059781109" />
@@ -2632,8 +2711,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="x" value="-1920" />
+    <option name="y" value="-82" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -2969,12 +3050,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MassUpdateSimpleControllerTest - 2017.11.17 at 14h 21m 47s.xml">
-      <configuration name="MassUpdateSimpleControllerTest" configurationId="com.illuminatedcloud.intellij" />
-    </history-entry>
-    <history-entry file="MassUpdateSimpleControllerTest - 2017.11.17 at 14h 22m 30s.xml">
-      <configuration name="MassUpdateSimpleControllerTest" configurationId="com.illuminatedcloud.intellij" />
-    </history-entry>
     <history-entry file="MassUpdateSimpleControllerTest - 2017.11.17 at 14h 25m 56s.xml">
       <configuration name="MassUpdateSimpleControllerTest" configurationId="com.illuminatedcloud.intellij" />
     </history-entry>
@@ -2982,6 +3057,12 @@
       <configuration name="SendCaseEmailController_Test.testSendCaseEmailController" configurationId="com.illuminatedcloud.intellij" />
     </history-entry>
     <history-entry file="SendCaseEmailController_Test_testSendCaseEmailController - 2017.12.05 at 09h 32m 10s.xml">
+      <configuration name="SendCaseEmailController_Test.testSendCaseEmailController" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="SendCaseEmailController_Test_testSendCaseEmailController - 2017.12.07 at 11h 44m 48s.xml">
+      <configuration name="SendCaseEmailController_Test.testSendCaseEmailController" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="SendCaseEmailController_Test_testSendCaseEmailController - 2017.12.07 at 11h 47m 34s.xml">
       <configuration name="SendCaseEmailController_Test.testSendCaseEmailController" configurationId="com.illuminatedcloud.intellij" />
     </history-entry>
     <history-entry file="veyoCallCenterCaseSubmission_Test - 2017.11.16 at 14h 34m 48s.xml">
@@ -3010,39 +3091,39 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="-1920" y="-82" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24726911" sideWeight="0.5330138" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Anonymous Apex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23138034" sideWeight="0.7406816" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39920557" sideWeight="0.4978701" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.4978701" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.4946752" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2744861" sideWeight="0.52646637" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Anonymous Apex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23138034" sideWeight="0.7406816" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24726911" sideWeight="0.4691161" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24726911" sideWeight="0.46698615" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.4978701" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14001986" sideWeight="0.485623" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17596567" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13099042" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26713008" sideWeight="0.4914803" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="SOQL Query" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2744861" sideWeight="0.47353363" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="SOQL Query" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22542204" sideWeight="0.4744409" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Log Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.5654952" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39920557" sideWeight="0.4978701" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40119165" sideWeight="0.49307775" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -3271,14 +3352,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/SendCaseEmailController_Test.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/veyoCallCenterCaseSubmissionController.cls">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3434">
@@ -3290,18 +3363,29 @@
     <entry file="file://$PROJECT_DIR$/src/classes/CaseConfiguredPicklistsController.cls">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
-          <caret line="83" column="9" lean-forward="true" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CaseEmailServiceHandler.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="75" column="47" lean-forward="true" selection-start-line="75" selection-start-column="47" selection-end-line="75" selection-end-column="47" />
+          <caret line="83" column="9" lean-forward="false" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
           <folding>
-            <element signature="e#3525#3537#0" expanded="true" />
-            <element signature="e#6123#6135#0" expanded="true" />
+            <marker date="1512668146000" expanded="true" signature="2392:6765" ph="{...}" />
+            <marker date="1512668146000" expanded="false" signature="5420:5429" ph="&lt;~&gt;" />
+            <marker date="1512668146000" expanded="true" signature="6859:6965" ph="/* Krizia: make specific Categories... */" />
+            <marker date="1512668146000" expanded="true" signature="7017:8066" ph="{...}" />
+            <marker date="1512668146000" expanded="false" signature="7148:7162" ph="&lt;~&gt;" />
+            <marker date="1512668146000" expanded="true" signature="8118:8227" ph="/* Krizia: make specific Subcategories... */" />
+            <marker date="1512668146000" expanded="true" signature="8282:11085" ph="{...}" />
+            <marker date="1512668146000" expanded="false" signature="8416:8430" ph="&lt;~&gt;" />
+            <marker date="1512668146000" expanded="true" signature="11141:11250" ph="/* Krizia: make specific Service... */" />
+            <marker date="1512668146000" expanded="true" signature="11305:13071" ph="{...}" />
+            <marker date="1512668146000" expanded="false" signature="11439:11453" ph="&lt;~&gt;" />
+            <marker date="1512668146000" expanded="true" signature="13127:13246" ph="/* Krizia: make specific Transportation... */" />
+            <marker date="1512668146000" expanded="true" signature="13312:14809" ph="{...}" />
+            <marker date="1512668146000" expanded="false" signature="13457:13471" ph="&lt;~&gt;" />
+            <marker date="1512668146000" expanded="false" signature="14241:14250" ph="&lt;~&gt;" />
+            <marker date="1512668146000" expanded="true" signature="14879:15044" ph="/* Krizia: make specific Transportation... */" />
+            <marker date="1512668146000" expanded="true" signature="15103:16776" ph="{...}" />
+            <marker date="1512668146000" expanded="false" signature="15286:15300" ph="&lt;~&gt;" />
+            <marker date="1512668146000" expanded="false" signature="15544:15553" ph="&lt;~&gt;" />
+            <marker date="1512668146000" expanded="false" signature="15889:15898" ph="&lt;~&gt;" />
+            <marker date="1512668146000" expanded="true" signature="16839:16973" ph="/* Krizia: button - update the... */" />
           </folding>
         </state>
       </provider>
@@ -3310,22 +3394,98 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1349">
           <caret line="727" column="70" lean-forward="false" selection-start-line="727" selection-start-column="70" selection-end-line="727" selection-end-column="70" />
-          <folding />
+          <folding>
+            <marker date="1512668146000" expanded="true" signature="33776:34001" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="34280:48016" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="34346:35928" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="34469:34852" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="34623:34803" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="35043:35404" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="35175:35355" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="35520:35887" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="35658:35838" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="35989:41916" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="36318:36701" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="36472:36652" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="36821:37196" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="36967:37147" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="37314:37685" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="37456:37636" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="37804:38177" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="37948:38128" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="38311:38714" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="38485:38665" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="38839:39224" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="38995:39175" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="39347:39728" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="39499:39679" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="39849:40226" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="39997:40177" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="40349:40730" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="40501:40681" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="40848:41219" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="40990:41170" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="41496:41875" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="41646:41826" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="42098:46138" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="42433:42826" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="42597:42777" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="42956:43351" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="43122:43302" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="43496:43921" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="43692:43872" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="44043:44422" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="44193:44373" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="44549:44938" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="44709:44889" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="45060:45432" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="45203:45383" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="45712:46097" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="45868:46048" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="46323:47379" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="46452:46845" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="46616:46796" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="46965:47338" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="47109:47289" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="47449:47986" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="47562:47945" ph="..." />
+            <marker date="1512668146000" expanded="false" signature="47704:47714" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="47715:47896" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="49070:49542" ph="..." />
+            <marker date="1512668146000" expanded="true" signature="49664:50039" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CaseEmail.cls">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="118" column="169" lean-forward="false" selection-start-line="118" selection-start-column="169" selection-end-line="118" selection-end-column="169" />
-          <folding />
+        <state relative-caret-position="275">
+          <caret line="108" column="56" lean-forward="false" selection-start-line="108" selection-start-column="56" selection-end-line="108" selection-end-column="56" />
+          <folding>
+            <element signature="e#3539#3569#0" expanded="true" />
+            <element signature="e#5032#5036#0" expanded="true" />
+            <element signature="e#5235#5239#0" expanded="true" />
+            <element signature="e#5352#5368#0" expanded="true" />
+            <element signature="e#5699#5711#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CaseEmailServiceHandler.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="88" column="73" lean-forward="true" selection-start-line="88" selection-start-column="73" selection-end-line="88" selection-end-column="73" />
+          <folding>
+            <element signature="e#3525#3537#0" expanded="true" />
+            <element signature="e#6123#6135#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/SendCaseEmail.page">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="33" column="97" lean-forward="false" selection-start-line="33" selection-start-column="97" selection-end-line="33" selection-end-column="97" />
+        <state relative-caret-position="261">
+          <caret line="42" column="64" lean-forward="false" selection-start-line="42" selection-start-column="64" selection-end-line="42" selection-end-column="64" />
           <folding>
             <element signature="n#style#0;n#apex:inputField#0;n#apex:pageBlockSection#0;n#div#0;n#apex:form#0;n#apex:pageBlock#0;n#body#0;n#apex:page#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#apex:outputLabel#0;n#apex:pageBlockSection#0;n#div#0;n#apex:form#0;n#apex:pageBlock#0;n#body#0;n#apex:page#0;n#!!top" expanded="true" />
@@ -3338,8 +3498,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/SendCaseEmailController.cls">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="356" column="0" lean-forward="true" selection-start-line="356" selection-start-column="0" selection-end-line="356" selection-end-column="0" />
+        <state relative-caret-position="223">
+          <caret line="500" column="49" lean-forward="true" selection-start-line="500" selection-start-column="49" selection-end-line="500" selection-end-column="49" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#3459#3467#0" expanded="true" />
@@ -3350,13 +3510,20 @@
             <element signature="e#14289#14297#0" expanded="true" />
             <element signature="e#14727#14736#0" expanded="true" />
             <element signature="e#16114#16145#0" expanded="true" />
-            <element signature="e#16383#16387#0" expanded="true" />
-            <element signature="e#16618#16622#0" expanded="true" />
-            <element signature="e#16722#16738#0" expanded="true" />
-            <element signature="e#22804#22818#0" expanded="true" />
-            <element signature="e#22945#22957#0" expanded="true" />
-            <element signature="e#23169#23190#0" expanded="true" />
+            <element signature="e#16204#16225#0" expanded="true" />
+            <element signature="e#21393#21407#0" expanded="true" />
+            <element signature="e#22744#22758#0" expanded="true" />
+            <element signature="e#22885#22897#0" expanded="true" />
+            <element signature="e#23109#23130#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/SendCaseEmailController_Test.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="66" column="26" lean-forward="false" selection-start-line="66" selection-start-column="26" selection-end-line="66" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>

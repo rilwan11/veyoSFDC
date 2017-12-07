@@ -48,6 +48,24 @@ public with sharing class SendCaseEmailController_Test {
                 Priority = 'General'
         );
         insert c;
+        //Attachments
+        Attachment att = new Attachment(
+                Name = 'attachment',
+                ParentId = c.Id,
+                Body = Blob.valueOf('Just a regular ole attachment'));
+        insert att;
+        ContentVersion cv = new ContentVersion();
+    //    cv.ContentDocumentId = contentDocumentId;
+        cv.VersionData = Blob.valueOf('Hello');
+        cv.Title = 'Content';
+        cv.ContentLocation = 'S';
+        cv.PathOnClient = 'Content.jpg';
+        insert cv;
+        ContentDocumentLink cdl = new ContentDocumentLink();
+        cdl.ContentDocumentId = [SELECT Id, ContentDocumentId FROM ContentVersion WHERE Id =: cv.Id].ContentDocumentId;
+        cdl.LinkedEntityId = [SELECT Id FROM Case WHERE ContactId =: cont.Id LIMIT 1].Id;
+        cdl.ShareType = 'V';
+        insert cdl;
 
 
         PageReference pageRef = Page.SendCaseEmail;
@@ -90,6 +108,8 @@ public with sharing class SendCaseEmailController_Test {
         controller.templateSelection();
         controller.additionalText = 'just something I want to say';
         controller.emailPreSend();
+        controller.getAttachmentOptions();
+        controller.attachments = String.valueof(att.Name) + ';' + string.valueOf(cv.Title);
         controller.onSend();
         System.debug(ApexPages.getMessages());
         test.stopTest();

@@ -86,7 +86,7 @@ public with sharing class CaseConfiguredPicklistsController {
         if (grievances.size() > 0) {
             gn = grievances[0];
             if (gn.Provider_Name__c != null) {
-                caseTransportationProvider = gn.Provider_Name__c;
+                caseTransportationProvider = gn.Provider_Name__c; 
             }
         }
         else {

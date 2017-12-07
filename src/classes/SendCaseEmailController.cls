@@ -338,62 +338,49 @@ public with sharing class SendCaseEmailController {
 
         //Attachments
         List<Messaging.EmailFileAttachment> emailAttachments = new List<Messaging.EmailFileAttachment>{};
+        List<ContentDocumentLink> chosenCDLs = new List<ContentDocumentLink>();
         if (attachments != null || attachments != '--None--') {
+            System.debug('Attachments chosen, add them');
             //ContentDocument
-            //add to emailAttachments
-            if (queriedContentDocuments.size() > 0) {
-
-                Set<Id> contentDocIds = new Set<Id>();
-                for(ContentDocumentLink contentDocLink : queriedContentDocuments) {
-                    contentDocIds.add(contentDocLink.ContentDocumentId);
-                }
-                List<Id> contentDocIdList = new List<Id>(contentDocIds);
-
-                // Get the actual files
-                contentVersions = new List<ContentVersion>();
-                contentVersions = [SELECT Id, ContentUrl, Title, FileType, VersionData, isLatest, ContentDocumentId
-                        FROM ContentVersion
-                        WHERE ContentDocumentId IN :contentDocIdList  AND  IsLatest = True ];
-
-
-
-
-
-                //add to emailAttachments
-                for (ContentVersion con : contentVersions) {
-                    if (con.title == attachments) {
-                        Messaging.EmailFileAttachment attachME = new Messaging.EmailFileAttachment();
-
-                        attachME.setBody(con.VersionData);
-                        attachME.setFileName(con.Title);
-
-                        emailAttachments.add(attachME);
+            //add to chosenCDLs to then be queried in CaseEmail
+            if (queriedContentDocuments != null) {
+                if (queriedContentDocuments.size() > 0) {
+                    for (ContentDocumentLink cdl : queriedContentDocuments) {
+                        if (attachments.contains(cdl.ContentDocument.Title)) { // == attachments) {
+                            System.debug(cdl.ContentDocument.Title);
+                            chosenCDLs.add(cdl);
+                        }
                     }
+                    System.debug('chosenCDLs: ' + String.valueOf(chosenCDLs));
                 }
             }
 
             //Actual Attachments
             //Add to emailAttachments
-            if (queriedAttachments.size() > 0) {
-                for (Attachment att : queriedAttachments) {
-                    if (att.Name == attachments) {
-                        Messaging.EmailFileAttachment attachME = new Messaging.EmailFileAttachment();
+            if (queriedAttachments != null) {
+                if (queriedAttachments.size() > 0) {
+                    for (Attachment att : queriedAttachments) {
+                        if (attachments.contains(att.Name)) { //== attachments) {
+                            System.debug(att.Name);
+                            Messaging.EmailFileAttachment attachME = new Messaging.EmailFileAttachment();
 
-                        attachME.setBody(att.Body);
-                        attachME.setFileName(att.Name);
+                            attachME.setBody(att.Body);
+                            attachME.setFileName(att.Name);
 
-                        emailAttachments.add(attachME);
+                            emailAttachments.add(attachME);
+                        }
                     }
+                    System.debug('attachments: ' + string.valueOf(emailAttachments));
                 }
             }
         }
-
+        System.debug('emailAttachments: ' + string.valueOf(emailAttachments));
 
         //Email Templates using the Direct Email Address & additional input
         if (emailType == 1) {
             System.debug('RECIPIENTS: ' + toRecipients);
-            if (emailAttachments.size() > 0) {
-                success = CaseEmail.sendEmailFromModalWithAttachments(gn, toRecipients, targetObjectId, emailTemplateSelection, emailAttachments);
+            if (emailAttachments.size() > 0 || chosenCDLs.size() > 0) {
+                success = CaseEmail.sendEmailFromModalWithAttachments(gn, toRecipients, targetObjectId, emailTemplateSelection, emailAttachments, chosenCDLs);
             } else {
                 success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
             }
@@ -402,8 +389,8 @@ public with sharing class SendCaseEmailController {
         else if (emailType == 2) {//Email Templates using the Direct Email Address and no additional input
             System.debug('RECIPIENTS: ' + toRecipients);
             System.debug(contactList);
-            if (emailAttachments.size() > 0) {
-                success = CaseEmail.sendEmailFromModalWithAttachments(gn, toRecipients, targetObjectId, emailTemplateSelection, emailAttachments);
+            if (emailAttachments.size() > 0 || chosenCDLs.size() > 0) {
+                success = CaseEmail.sendEmailFromModalWithAttachments(gn, toRecipients, targetObjectId, emailTemplateSelection, emailAttachments, chosenCDLs);
             } else {
                 success = CaseEmail.sendEmailFromModal(gn, toRecipients, targetObjectId, emailTemplateSelection);
             }
@@ -525,32 +512,9 @@ public with sharing class SendCaseEmailController {
             }
         }
         if (queriedContentDocuments.size() > 0) {
-
-//            Set<Id> contentDocIds = new Set<Id>();
-//            for(ContentDocumentLink contentDocLink : queriedContentDocuments) {
-//                contentDocIds.add(contentDocLink.ContentDocumentId);
-//            }
-//            List<Id> contentDocIdList = new List<Id>(contentDocIds);
-//
-//            // Get the actual files
-//            contentVersions = new List<ContentVersion>();
-//            contentVersions = [SELECT Id, ContentUrl, Title, FileType, VersionData, isLatest, ContentDocumentId
-//                    FROM ContentVersion
-//                    WHERE ContentDocumentId IN :contentDocIdList  AND  IsLatest = True ];
-
-     //       contentDocs = [SELECT Id, Title
-     //           FROM ContentDocument
-     //           WHERE Id IN :contentDocIdList];
-
-            //Take titles to display in picklist
-//            for (ContentVersion con : contentVersions ) {
-//                options.add(new SelectOption(con.Title, con.Title));
-//                System.debug(con.Title);
-//            }
-
             for (ContentDocumentLink cdl : queriedContentDocuments) {
                 options.add(new SelectOption(cdl.ContentDocument.Title, cdl.ContentDocument.Title));
-                SYstem.debug(cdl.ContentDocument.Title);
+                System.debug(cdl.ContentDocument.Title);
             }
         }
 

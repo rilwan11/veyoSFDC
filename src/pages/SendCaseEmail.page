@@ -40,8 +40,8 @@
 
            <!--     <apex:pageBlockSectionItem></apex:pageBlockSectionItem> -->
                 <apex:pageBlockSectionItem >
-                    Attachments
-                    <apex:selectList value="{!attachments}" multiselect="false" size="1" id="attachmentOptions" label="Attachments" rendered="{!IF( disabledButton==true, false, true)}" >
+                    Attachments <!--multiselect="false" size="1"-->
+                    <apex:selectList value="{!attachments}" multiselect="true"  id="attachmentOptions" label="Attachments" rendered="{!IF( disabledButton==true, false, true)}" >
                         <apex:selectOptions value="{!attachmentOptions}" />
                     </apex:selectList>
                 </apex:pageBlockSectionItem>
