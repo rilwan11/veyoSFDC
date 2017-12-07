@@ -64,4 +64,59 @@ global class CaseEmail {
 
 
 
+    public static Boolean sendEmailFromModalWithAttachments(Case c, String[] toRecipients, Id TargetObjId, String templateString, List<Messaging.EmailFileAttachment> efa) {
+
+        //Common variables
+        List<Messaging.SingleEmailMessage> allEmails = new List<Messaging.SingleEmailMessage>();
+        Schema.sObjectType entityType = Case.getSobjectType();
+        ID orgWideEmailId = [SELECT Id FROM OrgWideEmailAddress WHERE DisplayName = 'Veyo Case Management' LIMIT 1].Id;
+        EmailServicesAddress domainName = [SELECT EmailDomainName FROM EmailServicesAddress WHERE LocalPart = 'caseemailservice'];
+        String caseEmailService = 'caseemailservice@' + string.valueOf(domainName.EmailDomainName);
+        Boolean saveAsActivity = true;
+        Id whatId = c.Id;
+        Attachment[] attachList;
+        Id templateId;
+
+        //Get the specified Email Template
+        try {
+            templateId = [SELECT Id FROM EmailTemplate WHERE Name =: TemplateString].Id;
+        } catch (Exception e) {
+            System.debug('CaseEmail::: Exception in sendEmailFromModal');
+            //   throw new UtilException ('[U-03] Unable to locate EmailTemplate using name: ' + templateApiName + ' refer to Setup | Communications Templates ' + templateApiName);
+        }
+        System.debug('CaseEmail::: sendEmailFromModal templateId: ' + string.valueOf(templateId));
+
+
+        //Compose Email
+        Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
+
+        System.debug('!! CaseEmail::: sendEmailFromModal:: toRecipients: ' + string.valueOf(toRecipients));
+        email.setToAddresses(toRecipients);
+        email.setOrgWideEmailAddressId(orgWideEmailId);
+        email.setReplyTo(caseEmailService);
+        email.setTemplateId(templateId);
+        email.setTargetObjectId(targetObjId);
+        email.setWhatId(whatId);
+        email.setFileAttachments(efa);
+        email.setSaveAsActivity(saveAsActivity);      // save email as activity on the targetObjId (i.e. Case). Note activity can't be saved on Users
+
+        System.debug(LoggingLevel.INFO, '** entered sendEmailFromModal, to:' + toRecipients + 'templateId:' + templateId + ' targetObjId:' + targetObjId + ' whatId:' + whatId + ' orgWideEmailId: ' + orgWideEmailId);
+
+
+
+        //Now send email
+        try {
+            Messaging.sendEmail(new Messaging.SingleEmailMessage[] { email });
+            System.debug('CaseEmail::: sendEmailFromModal successful');
+            return(true);
+            //return;
+        } catch (EmailException e) {
+            System.debug('CaseEmail::: Exception in sendEmailFromModal2');
+            System.debug(e);
+            return(false);
+        }
+
+    } //public static Boolean sendEmailFromModalWithAttachments(Case c, String[] toRecipients, Id TargetObjId, String templateString, List<Messaging.EmailFileAttachment> efa)
+
+
 } //public with sharing class CaseEmail
