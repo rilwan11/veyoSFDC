@@ -1,0 +1,35 @@
+<!--
+ - Created by krizia on 12/12/17.
+ -->
+
+<apex:page id="uploadAttachment" standardController="Attachment__c" extensions="uploadAttachmentController">
+    <apex:sectionHeader subtitle="Attach File"/>
+    <apex:form id="form_Upload">
+        <apex:pageBlock title="Member Assistance: {!gn.CaseNumber}">
+            <apex:pageMessages />
+            <apex:pageBlockSection columns="1">
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="File" for="file_File"/>
+                        <apex:inputFile id="file_File" value="{!fileBody}" filename="{!fileName}"/>
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Visibility" for="file_Visibility"/>
+                        <apex:inputField value="{!theAttachment.Visibility__c}" id="visibility"/>
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Description" for="file_Description"/>
+                        <apex:inputField value="{!theAttachment.Description__c}" style="width:90%;"/>
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="" for="uploadBtn"/>
+                        <apex:commandButton id="uploadBtn" value="Attach File" action="{!processUpload}" />
+                </apex:pageBlockSectionItem>
+
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -70,8 +70,10 @@ public class veyoCallCenterCaseSubmissionController {
                                       FROM Account
                                       WHERE Id = :m_case.AccountId];
 
+
             if(accounts.size() > 0) {
                 Account acct = accounts[0];
+                System.debug('This account allows for: ' + string.valueOf(acct.Call_Center_Can_Create__c));
 
                 system.debug('veyoCallCenterSubmissionController.getCaseSubmissionTypes() :: acct.Call_Center_Can_Create__c <'+acct.Call_Center_Can_Create__c+'>');
 
@@ -105,9 +107,10 @@ public class veyoCallCenterCaseSubmissionController {
             if(accounts.size() > 0) {
                 Account acct = accounts[0];
 
+
                 system.debug('veyoCallCenterSubmissionController.getCaseSubmissionTypes() :: acct.Call_Center_Can_Create__c <'+acct.Call_Center_Can_Create__c+'>');
 
-                if(NEITHER == acct.Call_Center_Can_Create__c || NONE == acct.Call_Center_Can_Create__c) {
+                if(NEITHER == acct.Call_Center_Can_Create__c || NONE == acct.Call_Center_Can_Create__c || null == acct.Call_Center_Can_Create__c || '' == acct.Call_Center_Can_Create__c) {
                     errMsg = 'For '+acct.Name+', Veyo call center agents do not log Grievances into Salesforce.com. Please warm transfer this member to '+acct.Name+' member services.';
                 }
                 else if (ONLY_GRIEVANCE_NOTES == acct.Call_Center_Can_Create__c) {
@@ -139,7 +142,7 @@ public class veyoCallCenterCaseSubmissionController {
 
                 system.debug('veyoCallCenterSubmissionController.getCaseSubmissionTypes() :: acct.Call_Center_Can_Create__c <'+acct.Call_Center_Can_Create__c+'>');
 
-                if(NEITHER == acct.Call_Center_Can_Create__c || NONE == acct.Call_Center_Can_Create__c) {
+                if(NEITHER == acct.Call_Center_Can_Create__c || NONE == acct.Call_Center_Can_Create__c || null == acct.Call_Center_Can_Create__c || '' == acct.Call_Center_Can_Create__c) {
                     return true;
                 }
                 else if (ONLY_FIRST_CALL_RESOLUTIONS == acct.Call_Center_Can_Create__c || ONLY_GRIEVANCE_NOTES == acct.Call_Center_Can_Create__c) {
@@ -206,13 +209,18 @@ public class veyoCallCenterCaseSubmissionController {
             insert c;
         }
 
-
+        RecordType CaseGN = [SELECT Id, Name FROM RecordType WHERE SobjectType = 'Case' AND Name = 'Grievance Note' LIMIT 1];
+        RecordType CaseFCR = [SELECT Id, Name FROM RecordType WHERE SobjectType = 'Case' AND Name = 'First Call Resolution' LIMIT 1];
 
         if(GRIEVANCE_NOTE == caseType) {
+            m_case.RecordTypeId = CaseGN.Id;
             insert m_case;
             System.debug(m_case);
         } else if (FIRST_CALL_RESOLUTION == caseType) {
-            //TODO: coming soon...
+            m_case.RecordTypeId = CaseFCR.Id;
+            m_case.Contact_Type__c = PHONE;
+            insert m_case;
+            System.debug(m_case);
         }
 
         PageReference pr = new PageReference(Apexpages.currentPage().getUrl());

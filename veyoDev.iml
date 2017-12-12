@@ -219,6 +219,10 @@
                             <option name="name" value="CaseClientPortalController" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="uploadAttachmentController" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
                         </list>
                       </option>
                       <option name="name" value="ApexClass" />
@@ -475,6 +479,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CaseCommunityDetailPage" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="uploadAttachment" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>

@@ -11,6 +11,9 @@ public with sharing class CaseConfiguredPicklistsController {
     public Case gn { get; set; }
     public Account a { get; set; }
     private ApexPages.StandardController sc;
+    public Boolean FCR { get; set; }
+    public List<Attachment__c> externalAttachments { get; set; }
+    public List<Attachment__c> internalAttachments { get; set; }
 
     //Categories
     private final String COMPLAINT_CAT = 'Complaint';
@@ -62,7 +65,7 @@ public with sharing class CaseConfiguredPicklistsController {
         System.debug('CaseConfiguredPicklistsController::: recordId: ' + string.valueOf(recordId));
 
         grievances = [SELECT Id, CaseNumber, AccountId, ContactId, Status, Provider_Contact__c, Category__c, Subcategory__c, Service_Mode__c,
-                CreatedById, Member_Name__c, Date_of_Report__c, Member_ID__c, Due_Date__c, Member_Phone_Number__c, Source__c, 
+                CreatedById, Member_Name__c, Date_of_Report__c, Member_ID__c, Due_Date__c, Member_Phone_Number__c, Source__c, RecordTypeId,
                 Complainant_Name__c, CreatedDate, Created__c, Type, Contact_Type__c, Progress_Date__c, User_Account__c,
                 Resolved__c, Follow_Up_Requested__c, Open_Email_Response__c, Follow_Up_Completed__c, Follow_Up_Comments__c,
                 Description, Priority, Provider_Name__c, Trip_Date__c, Agent_Name__c, Driver_Name__c, Vehicle_Number__c,
@@ -110,8 +113,27 @@ public with sharing class CaseConfiguredPicklistsController {
             a = new Account();
         }
 
+
+        //If it is an FCR, then we won't show everything
+        RecordType CaseFCR = [SELECT Id, Name FROM RecordType WHERE SobjectType = 'Case' AND Name = 'First Call Resolution' LIMIT 1];
+        if (gn.RecordTypeId == CaseFCR.Id) {
+            FCR = true;
+        }
+        else {
+            FCR = false;
+        }
+
         System.debug('CaseConfiguredPicklistsController::: constructor:: gn: ' + string.valueOf(gn));
         System.debug('STATUS here: ' + string.valueOf(gn.Status));
+
+
+        //Populate Attachment__c related lists
+        externalAttachments = [SELECT Id, Name, File_Attachment__c, Description__c, Visibility__c, Case__c
+                                FROM Attachment__c
+                                WHERE Case__c =: recordId AND Visibility__c = 'External'];
+        internalAttachments = [SELECT Id, Name, File_Attachment__c, Description__c, Visibility__c, Case__c
+                                FROM Attachment__c
+                                WHERE Case__c =: recordId AND Visibility__c = 'Internal'];
     } //public CaseConfiguredPicklistsController(ApexPages.StandardController stdController)
 
 
@@ -151,6 +173,7 @@ public with sharing class CaseConfiguredPicklistsController {
         System.debug('CaseConfiguredPicklistsController::: getSubcategoryOptions:: ');
         List<SelectOption> options = new List<SelectOption>();
         options.add(new SelectOption('', '--None--'));
+        options.add(new SelectOption('Other', 'Other'));
 
         //Add to Subcategories picklist
         if (a.Agent_Issue_Subcategory__c == true) {
@@ -381,4 +404,5 @@ public with sharing class CaseConfiguredPicklistsController {
         System.debug('STATUS here 4: ' + string.valueOf(gn.Status));
         return pr;
     } //public void updatePicklists()
+    
 }

@@ -25,13 +25,14 @@ public with sharing class SendCaseEmailController {
     public List<Attachment> queriedAttachments { get; set; }
     public List<ContentDocumentLink> queriedContentDocuments { get; set; }
     public List<ContentVersion> contentVersions { get; set; }
+
 //    public Attachment doc { get; set; }
 
     //Email Template lists for checking in Preview and Send methods
     public List<String> directEmailAdditionalText { get; set; }
     public List<String> directEmailNOadditionalText { get; set; }
-    public List<String> additionalTextDefaultEmail { get; set; }
-    public List<String> defaultEmailOnly { get; set; }
+//    public List<String> additionalTextDefaultEmail { get; set; }
+//    public List<String> defaultEmailOnly { get; set; }
 
 
 
@@ -93,9 +94,9 @@ public with sharing class SendCaseEmailController {
         directEmailNOadditionalText.add('Grievance Investigation - Accident Information');
         directEmailNOadditionalText.add('Remediation - 3PO');
         directEmailNOadditionalText.add('Summary Email - Facility');
-        additionalTextDefaultEmail = new List<String>();
+   //     additionalTextDefaultEmail = new List<String>();
    //     additionalTextDefaultEmail.add();
-        defaultEmailOnly = new List<String>();
+   //     defaultEmailOnly = new List<String>();
    //     defaultEmail.add();
 }
 
@@ -396,6 +397,12 @@ public with sharing class SendCaseEmailController {
             }
             delete contactList;
         }
+//        else if (emailType == 3) { //Email Templates using the Submitting Contact (Owner) and Additional Text
+//
+//        }
+//        else if (emailType == 4) { //Email Templates using the Submitting Contact (Owner) and NO Additional Text
+//
+//        }
         else {
             ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'You did not select an Email Template. Please select an Email Template, then try again. ');
             ApexPages.addMessage(errorMessage);
@@ -436,12 +443,12 @@ public with sharing class SendCaseEmailController {
         for (String s : directEmailNOadditionalText) {
             if (s == ETS) { System.debug('EmailType: 2'); return (2);  }
         }
-        for (String s : additionalTextDefaultEmail) { //Currently no templates fall into this category
-            if (s == ETS) { System.debug('EmailType: 3'); return (3);  }
-        }
-        for (String s : defaultEmailOnly) { //Currently no templates fall into this category
-            if (s == ETS) { System.debug('EmailType: 4'); return (4); }
-        }
+//        for (String s : additionalTextDefaultEmail) { //Currently no templates fall into this category
+//            if (s == ETS) { System.debug('EmailType: 3'); return (3);  }
+//        }
+//        for (String s : defaultEmailOnly) { //Currently no templates fall into this category
+//            if (s == ETS) { System.debug('EmailType: 4'); return (4); }
+//        }
 
         //If it wasn't in any of the lists
         return (10);
@@ -502,6 +509,26 @@ public with sharing class SendCaseEmailController {
             FROM ContentDocumentLink
             WHERE LinkedEntityId =: gn.Id
             LIMIT 200];
+
+        //Add all Internal Items ContentDocuments
+        List<Internal_Item__c> iiList = new List<Internal_Item__c>();
+        List<ContentDocumentLink> iiAttach = new List<ContentDocumentLink>();
+        iiList = [SELECT Id FROM Internal_Item__c WHERE Case__c =: gn.Id LIMIT 200];
+
+        List<Id> iiIds = new List<Id>();
+        Set<Id> iiIdSet;
+        if (iiList.size() > 0) {
+            for (Internal_Item__c ii : iiList) {
+                iiIds.add(ii.Id);
+            }
+            iiIdSet = new Set<Id>(iiIds);
+
+            iiAttach = [SELECT ContentDocumentId, ContentDocument.Title FROM ContentDocumentLink WHERE LinkedEntityId IN :iiIdSet LIMIT 200];
+        }
+
+
+
+
     //    contentDocs = new List<ContentDocument>();
         System.debug(queriedAttachments);
         System.debug(queriedContentDocuments);
@@ -515,6 +542,13 @@ public with sharing class SendCaseEmailController {
             for (ContentDocumentLink cdl : queriedContentDocuments) {
                 options.add(new SelectOption(cdl.ContentDocument.Title, cdl.ContentDocument.Title));
                 System.debug(cdl.ContentDocument.Title);
+            }
+            for (ContentDocumentLink cdl2 : iiAttach) {
+                options.add(new SelectOption(cdl2.ContentDocument.Title, cdl2.ContentDocument.Title));
+                System.debug(cdl2.ContentDocument.Title);
+
+                //Make sure to add Internal Items to be able to actually be sent with the Email
+                queriedContentDocuments.add(cdl2);
             }
         }
 

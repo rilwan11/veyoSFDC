@@ -2,7 +2,7 @@
  - Created by krizia on 11/8/17.
  -->
 
-<apex:page id="CaseDetailPage" standardController="Case" extensions="CaseConfiguredPicklistsController" showHeader="true" sideBar="false"  >
+<apex:page id="CaseDetailPage" standardController="Case" extensions="CaseConfiguredPicklistsController" showHeader="true" sideBar="false" >
     <head>
         <title>Grievance Note</title>
         <apex:slds />
@@ -58,7 +58,10 @@
 
 
     <div class="slds-scope">
-        <apex:form id="theForm" title="Grievance Detail: {!Case.CaseNumber}">
+
+    <!--    <chatter:feed entityId="{!gn.Id}"/> -->
+
+        <apex:form id="theForm" > <!-- title="Grievance Detail: {!Case.CaseNumber}" -->
             <apex:pageBlock title="Member Contact Details" id="thePageBlock"  >
 
                 <!-- Button to save picklist selections and rerender this page & the service console (alert('Grievance Updated!'); window.top.location.href = '/{!Case.Id}'; )-->
@@ -67,7 +70,7 @@
                         <apex:commandButton value="Save Changes" status="updatingPicklists" action="{!updatePicklists}" id="saveButton" styleClass="slds-button slds-button--neutral" /> <!-- ******ADD BACK AFTER TESTING selectLists: style="display:none" -->
                         <apex:actionStatus startText="saving..." stopText="" id="updatingPicklists" />
                         <apex:commandButton action="{!cancel}" immediate="true" value="Cancel" id="cancelButton" styleClass="slds-button slds-button--neutral" /> <!-- ******ADD BACK AFTER TESTING selectLists: style="display:none" -->
-                        <apex:commandButton value="Send Emails" id="buttonEmail" onclick="javascript: emailsModal()" onComplete="return null;" styleClass="slds-button slds-button--neutral"  rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), true , false)}"  /> <!-- work on this part - hide when editing -->
+                        <apex:commandButton value="Send Emails" id="buttonEmail" onclick="javascript: emailsModal()" onComplete="return null;" styleClass="slds-button slds-button--neutral"  rendered="{!IF(AND(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management') , (FCR == false)), true , false)}"  /> <!-- work on this part - hide when editing -->
 
                         <!--     <apex:commandButton action="{!save}" value="Save Grievance" /> -->
                     </apex:pageBlockButtons>
@@ -98,7 +101,7 @@
                         </apex:outputField>
                     </apex:pageBlockSectionItem>
 
-                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Due_Date__c.inlineHelpText}">
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Due_Date__c.inlineHelpText}" rendered="{!IF((FCR == false), true , false)}" >
                     {!$ObjectType.Case.fields.Due_Date__c.label}
                         <apex:outputField value="{!gn.Due_Date__c}" />
                     </apex:pageBlockSectionItem>
@@ -129,14 +132,14 @@
                         <apex:outputField value="{!gn.Created__c}" />
                     </apex:pageBlockSectionItem>
 
-                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Contact_Type__c.inlineHelpText}">
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Contact_Type__c.inlineHelpText}" rendered="{!IF((FCR == false), true , false)}" >
                     {!$ObjectType.Case.fields.Contact_Type__c.label}
                         <apex:outputField value="{!gn.Contact_Type__c}" >
                             <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
                         </apex:outputField>
                     </apex:pageBlockSectionItem>
 
-                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Progress_Date__c.inlineHelpText}">
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Progress_Date__c.inlineHelpText}" rendered="{!IF((FCR == false), true , false)}" >
                     {!$ObjectType.Case.fields.Progress_Date__c.label}
                         <apex:outputField value="{!gn.Progress_Date__c}" />
                     </apex:pageBlockSectionItem>
@@ -158,31 +161,33 @@
                         </apex:outputField>
                     </apex:pageBlockSectionItem>
 
-                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Requested__c.inlineHelpText}">
-                    {!$ObjectType.Case.fields.Follow_Up_Requested__c.label}
-                        <apex:outputField value="{!gn.Follow_Up_Requested__c}" />
-                    </apex:pageBlockSectionItem>
-
-                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Open_Email_Response__c.inlineHelpText}" rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), true , false)}" >
-                    {!$ObjectType.Case.fields.Open_Email_Response__c.label}
-                        <apex:outputField value="{!gn.Open_Email_Response__c}" >
-                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
-                        </apex:outputField>
-                    </apex:pageBlockSectionItem>
-
-                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Completed__c.inlineHelpText}">
-                    {!$ObjectType.Case.fields.Follow_Up_Completed__c.label}
-                        <apex:outputField value="{!gn.Follow_Up_Completed__c}" />
-                    </apex:pageBlockSectionItem>
-
-                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Description.inlineHelpText}">
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Description.inlineHelpText}" rendered="{!IF((FCR == true), true , false)}">
                     {!$ObjectType.Case.fields.Description.label}
                         <apex:outputField value="{!gn.Description}" style="width:90%;" >
                             <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick" />
                         </apex:outputField>
                     </apex:pageBlockSectionItem>
 
-                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Comments__c.inlineHelpText}">
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Requested__c.inlineHelpText}" rendered="{!IF((FCR == false), true , false)}" >
+                    {!$ObjectType.Case.fields.Follow_Up_Requested__c.label}
+                        <apex:outputField value="{!gn.Follow_Up_Requested__c}" />
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Open_Email_Response__c.inlineHelpText}" rendered="{!IF(AND(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), (FCR == false)), true , false)}" >
+                    {!$ObjectType.Case.fields.Open_Email_Response__c.label}
+                        <apex:outputField value="{!gn.Open_Email_Response__c}" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                        </apex:outputField>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Completed__c.inlineHelpText}" rendered="{!IF((FCR == false), true , false)}" >
+                    {!$ObjectType.Case.fields.Follow_Up_Completed__c.label}
+                        <apex:outputField value="{!gn.Follow_Up_Completed__c}" />
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem rendered="{!IF((FCR == false), true , false)}" />
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Comments__c.inlineHelpText}" rendered="{!IF((FCR == false), true , false)}" >
                     {!$ObjectType.Case.fields.Follow_Up_Comments__c.label}
                         <apex:outputField value="{!gn.Follow_Up_Comments__c}" style="width:90%;" >
                             <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
@@ -193,7 +198,7 @@
             </apex:pageBlock>
 
 
-            <apex:pageBlock title="Member Client Details"  > <!-- COME BACK - needs to be inline also -->
+            <apex:pageBlock title="Member Client Details"  >
                 <apex:pageBlockSection >
                     <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Category__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Category__c.label}
@@ -279,7 +284,7 @@
             </apex:pageBlock>
 
 
-            <apex:pageBlock title="Investigator Details"  >
+            <apex:pageBlock title="Investigator Details"  rendered="{!IF((FCR == false), true , false)}">
                 <apex:pageBlockSection >
 
                     <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Employee_Name__c.inlineHelpText}">
@@ -302,11 +307,18 @@
                             <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
                         </apex:outputField>
                     </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Description.inlineHelpText}">
+                    {!$ObjectType.Case.fields.Description.label}
+                        <apex:outputField value="{!gn.Description}" style="width:90%;" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick" />
+                        </apex:outputField>
+                    </apex:pageBlockSectionItem>
                 </apex:pageBlockSection>
             </apex:pageBlock>
 
 
-            <apex:pageBlock title="Action Taken"  >
+            <apex:pageBlock title="Action Taken" rendered="{!IF((FCR == false), true , false)}" >
                 <apex:pageBlockSection >
                     <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Substantiated__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Substantiated__c.label}
@@ -325,7 +337,7 @@
             </apex:pageBlock>
 
 
-            <apex:pageBlock title="Case Details" rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), true , false)}" >
+            <apex:pageBlock title="Case Details" rendered="{!IF(AND(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management') , (FCR == false)), true , false)}" >
                 <apex:pageBlockSection >
                     <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Complaint_Origin__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Complaint_Origin__c.label}
@@ -466,7 +478,7 @@
             </apex:pageBlock>
 
 
-            <apex:pageBlock title="Additional Information" rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), true , false)}" >
+            <apex:pageBlock title="Additional Information" rendered="{!IF(AND(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management') , (FCR == false)), true , false)}" >
                 <apex:pageBlockSection >
 
                     <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Age_in_Days__c.inlineHelpText}">
@@ -521,7 +533,7 @@
 
 
             <!-- BEGIN AUDIT SECTION -->
-            <apex:pageBlock title="Grievance Audit" rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Management'), true , false)}" >
+            <apex:pageBlock title="Grievance Audit" rendered="{!IF(AND(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Management') , (FCR == false)), true , false)}" >
                 <apex:pageBlockSection title="Auditing Details">
                     <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Selected_for_Audit__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Selected_for_Audit__c.label}
@@ -633,7 +645,7 @@
                 </apex:pageBlockSection>
 
 
-                <apex:pageBlockSection title="Investigator Details" rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Management'), true , false)}" >
+                <apex:pageBlockSection title="Investigator Details"  >
                     <apex:outputLabel value="Please check if any of these categories were not completed. "  ></apex:outputLabel>
                     <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
                     <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.All_Issues_Investigated__c.inlineHelpText}">
@@ -690,7 +702,7 @@
                 </apex:pageBlockSection>
 
 
-                <apex:pageBlockSection title="Substantiation Accuracy" rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Management'), true , false)}" >
+                <apex:pageBlockSection title="Substantiation Accuracy" >
                     <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Substantiation_Accurate__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Substantiation_Accurate__c.label}
                         <apex:outputField value="{!gn.Substantiation_Accurate__c}" >
@@ -721,19 +733,41 @@
 
 
         <!-- All related lists not on the left side of the console -->
-        <apex:relatedList list="Histories"  rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), true , false)}" />
-        <apex:relatedList list="Case_Aging_Histories__r" title="Status Changes" subject="{!gn}"  rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), true , false)}" />
-        <apex:relatedList list="ActivityHistories" title="Outgoing Emails / Activity History" subject="{!gn}"  />
-        <apex:relatedList list="OpenActivities" title="Incoming Email Responses" subject="{!gn}" />
-        <apex:relatedList list="CombinedAttachments" title="Notes and Attachments" subject="{!gn}" rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), true , false)}" />
-        <!--   <apex:pageBlock title="Grievance Field Tracking History" >
-        <apex:pageBlockTable value="{!case.Histories}" var="c" >
-            <apex:column value="{!c.Field}" headerValue="Field" />
-            <apex:column value="{!c.NewValue}" headerValue="New Value" />
-            <apex:column value="{!c.OldValue}" headerValue="Previous Value" />
-            <apex:column value="{!c.CreatedById}" headerValue="User" />
-        </apex:pageBlockTable>
-    </apex:pageBlock> -->
+<!-- INTERNAL -->
+        <apex:relatedList list="Histories" title="Member Assistance History - INTERNAL VEYO" rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), true , false)}" />
+        <apex:relatedList list="Case_Aging_Histories__r" title="Status Changes - INTERNAL VEYO" subject="{!gn}"  rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), true , false)}" />
+        <apex:relatedList list="Internal_Items__r" title="Internal Items - INTERNAL VEYO" subject="{!gn}" rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), true , false)}" />
+<!-- INTERNAL && EXTERNAL -->
+        <apex:relatedList list="ActivityHistories" title="Outgoing Emails / Closed Email Responses" subject="{!gn}" rendered="{!IF((FCR == false), true , false)}" />
+        <apex:relatedList list="OpenActivities" title="Incoming Open Email Responses" subject="{!gn}" rendered="{!IF((FCR == false), true , false)}" />
+        <apex:relatedList list="CombinedAttachments" title="Notes and Attachments" subject="{!gn}"  />
+
+
+
+
+        <!--       <apex:relatedList list="Attachments__r" title="ALL Attachments" subject="{!gn}" rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), true , false)}" />
+            <apex:relatedList list="Attachments__r" title="Member Assistance Attachments" subject="{!externalAttachments}" /> <!-- rendered="{!IF((Visibility__c == 'External'), true, false)}"  -->
+
+  <!--      <apex:pageBlock title="Internal Attachments for Veyo Only" >
+            <apex:pageBlockTable value="{!internalAttachments}" var="ia" >
+                <apex:column value="{!ia.Name}" headerValue="File Name" />
+                <apex:column value="{!ia.Description__c}" headerValue="Description" />
+                <apex:column value="{!ia.Visibility__c}" headerValue="Visibility" />
+                <apex:column value="{!ia.File_Attachment__c}" headerValue="File Attachment" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        <apex:pageBlock title="All Attachments" >
+            <apex:pageBlockTable value="{!externalAttachments}" var="ia" >
+                <apex:column value="{!ia.Name}" headerValue="File Name" />
+                <apex:column value="{!ia.Description__c}" headerValue="Description" />
+                <apex:column value="{!ia.File_Attachment__c}" headerValue="File Attachment" />
+            </apex:pageBlockTable>
+        </apex:pageBlock> -->
+<apex:pageBlock >
+        <chatter:feed entityId="{!gn.Id}" rendered="{!IF((FCR == false), true , false)}" />
+</apex:pageBlock>
+
+
     </div>
 
 
