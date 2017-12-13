@@ -155,7 +155,7 @@ public with sharing class veyoCallCenterCaseSubmission_Test {
         system.debug('this is the message 3 '+ ApexPages.getMessages());
         controller.m_case.Member_Name__c = 'Johnny';
         ApexPages.currentPage().getParameters().put('Member ID', '11223344');
-        ApexPages.currentPage().getParameters().put('Contact ID', c.Id);
+    //    ApexPages.currentPage().getParameters().put('Contact ID', c.Id);
 
         List<SelectOption> options5 = controller.getCategoryOptions();
         List<SelectOption> options6 = controller.getSubcategoryOptions();
@@ -172,9 +172,6 @@ public with sharing class veyoCallCenterCaseSubmission_Test {
         ApexPages.currentPage().getParameters().put('Service Mode', 'ALS');
         ApexPages.currentPage().getParameters().put('Priority', 'General');
      //   ApexPages.currentPage().getParameters().put('Trip Date', '11/11/2017');
-        ApexPages.currentPage().getParameters().put('Contact Name', 'Testy');
-        ApexPages.currentPage().getParameters().put('Service Mode', 'ALS');
-        ApexPages.currentPage().getParameters().put('Priority', 'General');
         PageReference p6 = controller.save();
         test.stopTest();
 

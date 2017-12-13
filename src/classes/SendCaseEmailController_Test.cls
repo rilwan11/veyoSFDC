@@ -39,7 +39,9 @@ public with sharing class SendCaseEmailController_Test {
                 Account = a
         );
         insert cont;
+        Id CaseGN = Schema.SObjectType.Case.getRecordTypeInfosByName().get('Grievance Note').getRecordTypeId();
         Case c = new Case (
+                RecordTypeId = CaseGN,
                 AccountId = a.Id,
                 ContactId = cont.Id,
                 Status = 'Submitted',

@@ -56,7 +56,9 @@ private class CaseEmailServiceHandler_Test {
                 AccountId = a.Id
         );
         insert c;
+        Id CaseGN = Schema.SObjectType.Case.getRecordTypeInfosByName().get('Grievance Note').getRecordTypeId();
         Case testCase = new Case(
+                RecordTypeId = CaseGN,
                 AccountId = a.Id,
                 ContactId = c.Id,
                 Status = 'Submitted'

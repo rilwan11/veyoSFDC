@@ -82,7 +82,9 @@ public with sharing class CaseTrigger_Test {
                 Member_of_Static_Account_Email_Group__c = true
         );
         insert cont;
+        Id CaseGN = Schema.SObjectType.Case.getRecordTypeInfosByName().get('Grievance Note').getRecordTypeId();
         Case c = new Case (
+                RecordTypeId = CaseGN,
                 AccountId = a.Id,
                 ContactId = cont.Id,
                 Status = 'Submitted',
@@ -94,6 +96,7 @@ public with sharing class CaseTrigger_Test {
                 Priority = 'General'
         );
         Case c2 = new Case (
+                RecordTypeId = CaseGN,
                 AccountId = a2.Id,
                 ContactId = cont.Id,
                 Status = 'Submitted',

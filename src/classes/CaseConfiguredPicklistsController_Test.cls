@@ -64,7 +64,9 @@ public with sharing class CaseConfiguredPicklistsController_Test {
                 Email = 'transportationprovider@contact.com',
                 Account = provider
         );
+        Id CaseGN = Schema.SObjectType.Case.getRecordTypeInfosByName().get('Grievance Note').getRecordTypeId();
         Case c = new Case (
+                RecordTypeId = CaseGN,
                 AccountId = a.Id,
                 ContactId = cont.Id,
                 Status = 'Submitted',

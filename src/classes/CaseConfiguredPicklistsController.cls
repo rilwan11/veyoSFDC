@@ -12,8 +12,6 @@ public with sharing class CaseConfiguredPicklistsController {
     public Account a { get; set; }
     private ApexPages.StandardController sc;
     public Boolean FCR { get; set; }
-    public List<Attachment__c> externalAttachments { get; set; }
-    public List<Attachment__c> internalAttachments { get; set; }
 
     //Categories
     private final String COMPLAINT_CAT = 'Complaint';
@@ -127,13 +125,6 @@ public with sharing class CaseConfiguredPicklistsController {
         System.debug('STATUS here: ' + string.valueOf(gn.Status));
 
 
-        //Populate Attachment__c related lists
-        externalAttachments = [SELECT Id, Name, File_Attachment__c, Description__c, Visibility__c, Case__c
-                                FROM Attachment__c
-                                WHERE Case__c =: recordId AND Visibility__c = 'External'];
-        internalAttachments = [SELECT Id, Name, File_Attachment__c, Description__c, Visibility__c, Case__c
-                                FROM Attachment__c
-                                WHERE Case__c =: recordId AND Visibility__c = 'Internal'];
     } //public CaseConfiguredPicklistsController(ApexPages.StandardController stdController)
 
 
