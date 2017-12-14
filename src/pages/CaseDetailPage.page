@@ -8,10 +8,25 @@
         <apex:slds />
         <script src="//code.jquery.com/jquery-1.11.3.js"></script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+        <style>
+            body .bPageBlock, body #bodyCell .bResource .secondaryPalette, body .secondaryPalette.bPageBlock, body .individualPalette .secondaryPalette.bPageBlock, body .bodyDiv .genericTable, body .genericPageBlockTable, body .bodyDiv .bSubBlock, body .bComponentBlock .bPageBlock, body .bMyDashboard .bPageBlock, body.rlHoverFrame .bPageBlock, body.subjectSelectionPopup div.choicesBox, body.lookupTab .secondaryPalette.bPageBlock, body.popupTab .secondaryPalette.bPageBlock, body.UserTagStatsPage .secondaryPalette.bPageBlock {
+                background-color: #FFFFFF;
+                border-bottom: 1px solid #eaeaea;
+                border-left: 1px solid #eaeaea;
+                border-right: 1px solid #eaeaea;
+                -moz-border-radius: 4px;
+                -webkit-border-radius: 4px;
+                border-radius: 4px;
+            }
+        </style>
     </head>
 
-    <apex:pageMessages />
 
+    <apex:pageMessages />
+    <apex:pageBlock rendered="{!IF((FCR == false), true , false)}"  >
+        <chatter:feed entityId="{!gn.Id}"  />
+    </apex:pageBlock>
 
     <script>
         function emailsModal(){
@@ -197,7 +212,6 @@
                 </apex:pageBlockSection>
             </apex:pageBlock>
 
-
             <apex:pageBlock title="Member Client Details"  >
                 <apex:pageBlockSection >
                     <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Category__c.inlineHelpText}">
@@ -271,11 +285,32 @@
                         </apex:outputField>
                     </apex:pageBlockSectionItem>
 
-                    <apex:pageBlockSectionItem />
+                    <apex:pageBlockSectionItem rendered="{!IF((FCR == false), true , false)}" />
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Blank_Field_1__c.inlineHelpText}" rendered="{!IF((FCR == true), true , false)}" >
+                        Blank Field
+                        <apex:outputField value="{!gn.Blank_Field_1__c}" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                        </apex:outputField>
+                    </apex:pageBlockSectionItem>
 
                     <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Vehicle_Number__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Vehicle_Number__c.label}
                         <apex:outputField value="{!gn.Vehicle_Number__c}" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                        </apex:outputField>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Audited__c.inlineHelpText}" rendered="{!IF((FCR == true), true , false)}" >
+                    {!$ObjectType.Case.fields.Audited__c.label}
+                        <apex:outputField value="{!gn.Audited__c}" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                        </apex:outputField>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Summary__c.inlineHelpText}" rendered="{!IF((FCR == true), true , false)}" >
+                    {!$ObjectType.Case.fields.Summary__c.label}
+                        <apex:outputField value="{!gn.Summary__c}" >
                             <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
                         </apex:outputField>
                     </apex:pageBlockSectionItem>
@@ -763,9 +798,7 @@
                 <apex:column value="{!ia.File_Attachment__c}" headerValue="File Attachment" />
             </apex:pageBlockTable>
         </apex:pageBlock> -->
-<apex:pageBlock >
-        <chatter:feed entityId="{!gn.Id}" rendered="{!IF((FCR == false), true , false)}" />
-</apex:pageBlock>
+
 
 
     </div>

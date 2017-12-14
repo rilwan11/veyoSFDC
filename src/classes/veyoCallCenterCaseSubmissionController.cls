@@ -30,6 +30,7 @@ public class veyoCallCenterCaseSubmissionController {
     private final String MISSED_PICKUP_B_LEG_SUBCAT = 'Missed Pickup - B-Leg';
     private final String LATE_PICKUP_A_LEG_SUBCAT = 'Late Pickup - A-Leg';
     private final String LATE_PICKUP_B_LEG_SUBCAT = 'Late Pickup - B-Leg';
+    private final String OTHER_SUBCAT = 'Other';
 
     //Service Modes
     private final String AMBULATORY_SERVICE_MODE = 'Ambulatory';
@@ -284,7 +285,7 @@ public class veyoCallCenterCaseSubmissionController {
         List<Account> accounts = [SELECT Id, Agent_Issue_Subcategory__c, Damage_Injury_Subcategory__c, Driver_Issue_Subcategory__c,
                                     Early_Arrival_Subcategory__c, Late_Pickup_Subcategory__c, Missed_Pickup_Subcategory__c, Safety_Concern_Subcategory__c,
                                     Scheduling_Error_Subcategory__c, Technical_Issue_Subcategory__c, Vehicle_Issue_Subcategory__c, Missed_Pickup_A_Leg_Subcategory__c,
-                                    Missed_Pickup_B_Leg_Subcategory__c, Late_Pickup_A_Leg_Subcategory__c, Late_Pickup_B_Leg_Subcategory__c
+                                    Missed_Pickup_B_Leg_Subcategory__c, Late_Pickup_A_Leg_Subcategory__c, Late_Pickup_B_Leg_Subcategory__c, Other_Subcategory__c
                                   FROM Account
                                   WHERE Id = :m_case.AccountId];
         if(accounts.size() > 0) {
@@ -333,6 +334,9 @@ public class veyoCallCenterCaseSubmissionController {
             }
             if (a.Late_Pickup_B_Leg_Subcategory__c == true) {
                 options.add(new SelectOption(LATE_PICKUP_B_LEG_SUBCAT, LATE_PICKUP_B_LEG_SUBCAT));
+            }
+            if (a.Other_Subcategory__c == true) {
+                options.add(new SelectOption(OTHER_SUBCAT, OTHER_SUBCAT));
             }
         }
 

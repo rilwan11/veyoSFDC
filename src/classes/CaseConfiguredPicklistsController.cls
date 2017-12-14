@@ -33,6 +33,7 @@ public with sharing class CaseConfiguredPicklistsController {
     private final String MISSED_PICKUP_B_LEG_SUBCAT = 'Missed Pickup - B-Leg';
     private final String LATE_PICKUP_A_LEG_SUBCAT = 'Late Pickup - A-Leg';
     private final String LATE_PICKUP_B_LEG_SUBCAT = 'Late Pickup - B-Leg';
+    private final String OTHER_SUBCAT = 'Other';
 
     //Service Modes
     private final String AMBULATORY_SERVICE_MODE = 'Ambulatory';
@@ -78,7 +79,7 @@ public with sharing class CaseConfiguredPicklistsController {
                 Internal_Feed__c, Notes_Attachments_Recordings__c, Provider_Name_audit__c, Subcategory_audit__c, Trip_Date_audit__c,
                 Trip_Number_audit__c, Trip_Details__c, Data_Entry_Score__c, All_Issues_Investigated__c, Clear_Timeline_of_Events__c,
                 Avoids_Jargon_or_Internal_Communication__c, Uses_Spell_Check__c, Proper_Use_of_Grammar__c, Account_Protocol__c,
-                Investigation_Score__c, Substantiation_Accurate__c, Actions_Taken__c
+                Investigation_Score__c, Substantiation_Accurate__c, Actions_Taken__c, Summary__c, Audited__c
                 FROM Case
                 WHERE Id =: recordId //CaseNumber =: recordNumber
                 LIMIT 1];
@@ -99,7 +100,8 @@ public with sharing class CaseConfiguredPicklistsController {
                         Agent_Issue_Subcategory__c, Driver_Issue_Subcategory__c, Early_Arrival_Subcategory__c, Late_Pickup_Subcategory__c, Damage_Injury_Subcategory__c, Missed_Pickup_Subcategory__c,
                         Safety_Concern_Subcategory__c, Scheduling_Error_Subcategory__c, Technical_Issue_Subcategory__c, Vehicle_Issue_Subcategory__c, Missed_Pickup_A_Leg_Subcategory__c, Missed_Pickup_B_Leg_Subcategory__c,
                         Late_Pickup_A_Leg_Subcategory__c, Late_Pickup_B_Leg_Subcategory__c,
-                        Wheelchair_Service_Mode__c, Bariatric_Wheelchair_Service_Mode__c, BLS_Service_Mode__c, ALS_Service_Mode__c, Ambulatory_Service_Mode__c, Public_Transportation_Service_Mode__c, Mileage_Reimbursement_Service_Mode__c
+                        Wheelchair_Service_Mode__c, Bariatric_Wheelchair_Service_Mode__c, BLS_Service_Mode__c, ALS_Service_Mode__c, Ambulatory_Service_Mode__c, Public_Transportation_Service_Mode__c, Mileage_Reimbursement_Service_Mode__c,
+                        Other_Subcategory__c
                 FROM Account
                 WHERE Id = :gn.AccountId
                 LIMIT 1
@@ -208,6 +210,9 @@ public with sharing class CaseConfiguredPicklistsController {
         }
         if (a.Late_Pickup_B_Leg_Subcategory__c == true) {
             options.add(new SelectOption(LATE_PICKUP_B_LEG_SUBCAT, LATE_PICKUP_B_LEG_SUBCAT));
+        }
+        if (a.Other_Subcategory__c == true) {
+            options.add(new SelectOption(OTHER_SUBCAT, OTHER_SUBCAT));
         }
 
         //Initial value to put into Subcategory
