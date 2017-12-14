@@ -166,7 +166,6 @@ public with sharing class CaseConfiguredPicklistsController {
         System.debug('CaseConfiguredPicklistsController::: getSubcategoryOptions:: ');
         List<SelectOption> options = new List<SelectOption>();
         options.add(new SelectOption('', '--None--'));
-        options.add(new SelectOption('Other', 'Other'));
 
         //Add to Subcategories picklist
         if (a.Agent_Issue_Subcategory__c == true) {

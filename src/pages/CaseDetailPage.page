@@ -8,6 +8,7 @@
         <apex:slds />
         <script src="//code.jquery.com/jquery-1.11.3.js"></script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
         <style>
             body .bPageBlock, body #bodyCell .bResource .secondaryPalette, body .secondaryPalette.bPageBlock, body .individualPalette .secondaryPalette.bPageBlock, body .bodyDiv .genericTable, body .genericPageBlockTable, body .bodyDiv .bSubBlock, body .bComponentBlock .bPageBlock, body .bMyDashboard .bPageBlock, body.rlHoverFrame .bPageBlock, body.subjectSelectionPopup div.choicesBox, body.lookupTab .secondaryPalette.bPageBlock, body.popupTab .secondaryPalette.bPageBlock, body.UserTagStatsPage .secondaryPalette.bPageBlock {
@@ -20,12 +21,30 @@
                 border-radius: 4px;
             }
         </style>
+
+
+
+        <script>
+            $(document).ready(function(){
+                $("#hide").click(function(){
+                    $("#chatterFeed").hide();
+                });
+                $("#show").click(function(){
+                    $("#chatterFeed").show();
+                });
+            });
+        </script>
     </head>
 
 
     <apex:pageMessages />
-    <apex:pageBlock rendered="{!IF((FCR == false), true , false)}"  >
-        <chatter:feed entityId="{!gn.Id}"  />
+
+    <apex:pageBlock rendered="{!IF((FCR == false), true , false)}" id="chatterFeedPB" >
+        <button id="hide" >Hide Feed</button>
+        <button id="show" >Show Feed</button>
+        <div id="chatterFeed">
+            <chatter:feed entityId="{!gn.Id}" />
+        </div>
     </apex:pageBlock>
 
     <script>
@@ -770,36 +789,12 @@
         <!-- All related lists not on the left side of the console -->
 <!-- INTERNAL -->
         <apex:relatedList list="Histories" title="Member Assistance History - INTERNAL VEYO" rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), true , false)}" />
-        <apex:relatedList list="Case_Aging_Histories__r" title="Status Changes - INTERNAL VEYO" subject="{!gn}"  rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), true , false)}" />
+        <apex:relatedList list="Case_Aging_Histories__r" title="Status Changes - INTERNAL VEYO" subject="{!gn}"  rendered="{!IF(AND(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management') , (FCR == false)), true , false)}" />
         <apex:relatedList list="Internal_Items__r" title="Internal Items - INTERNAL VEYO" subject="{!gn}" rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), true , false)}" />
 <!-- INTERNAL && EXTERNAL -->
         <apex:relatedList list="ActivityHistories" title="Outgoing Emails / Closed Email Responses" subject="{!gn}" rendered="{!IF((FCR == false), true , false)}" />
         <apex:relatedList list="OpenActivities" title="Incoming Open Email Responses" subject="{!gn}" rendered="{!IF((FCR == false), true , false)}" />
         <apex:relatedList list="CombinedAttachments" title="Notes and Attachments" subject="{!gn}"  />
-
-
-
-
-        <!--       <apex:relatedList list="Attachments__r" title="ALL Attachments" subject="{!gn}" rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), true , false)}" />
-            <apex:relatedList list="Attachments__r" title="Member Assistance Attachments" subject="{!externalAttachments}" /> <!-- rendered="{!IF((Visibility__c == 'External'), true, false)}"  -->
-
-  <!--      <apex:pageBlock title="Internal Attachments for Veyo Only" >
-            <apex:pageBlockTable value="{!internalAttachments}" var="ia" >
-                <apex:column value="{!ia.Name}" headerValue="File Name" />
-                <apex:column value="{!ia.Description__c}" headerValue="Description" />
-                <apex:column value="{!ia.Visibility__c}" headerValue="Visibility" />
-                <apex:column value="{!ia.File_Attachment__c}" headerValue="File Attachment" />
-            </apex:pageBlockTable>
-        </apex:pageBlock>
-        <apex:pageBlock title="All Attachments" >
-            <apex:pageBlockTable value="{!externalAttachments}" var="ia" >
-                <apex:column value="{!ia.Name}" headerValue="File Name" />
-                <apex:column value="{!ia.Description__c}" headerValue="Description" />
-                <apex:column value="{!ia.File_Attachment__c}" headerValue="File Attachment" />
-            </apex:pageBlockTable>
-        </apex:pageBlock> -->
-
-
 
     </div>
 
