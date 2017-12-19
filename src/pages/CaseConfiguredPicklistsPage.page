@@ -1,5 +1,5 @@
 <!--
- - Created by krizia on 11/3/17.
+ - Created on 11/3/17.
  -->
 
 <apex:page id="CaseConfiguredPicklistsPage" standardController="Case" extensions="CaseConfiguredPicklistsController" showHeader="false" sideBar="false">

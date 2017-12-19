@@ -1,5 +1,5 @@
 <!--
- - Created by krizia on 11/8/17.
+ - Created on 11/8/17.
  -->
 
 <apex:page id="CaseDetailPage" standardController="Case" extensions="CaseConfiguredPicklistsController" showHeader="true" sideBar="false" >
@@ -8,7 +8,7 @@
         <apex:slds />
         <script src="//code.jquery.com/jquery-1.11.3.js"></script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 
         <style>
             body .bPageBlock, body #bodyCell .bResource .secondaryPalette, body .secondaryPalette.bPageBlock, body .individualPalette .secondaryPalette.bPageBlock, body .bodyDiv .genericTable, body .genericPageBlockTable, body .bodyDiv .bSubBlock, body .bComponentBlock .bPageBlock, body .bMyDashboard .bPageBlock, body.rlHoverFrame .bPageBlock, body.subjectSelectionPopup div.choicesBox, body.lookupTab .secondaryPalette.bPageBlock, body.popupTab .secondaryPalette.bPageBlock, body.UserTagStatsPage .secondaryPalette.bPageBlock {
@@ -45,7 +45,7 @@
         <div id="chatterFeed">
             <chatter:feed entityId="{!gn.Id}" />
         </div>
-    </apex:pageBlock>
+    </apex:pageBlock> 
 
     <script>
         function emailsModal(){
@@ -104,7 +104,7 @@
                         <apex:commandButton value="Save Changes" status="updatingPicklists" action="{!updatePicklists}" id="saveButton" styleClass="slds-button slds-button--neutral" /> <!-- ******ADD BACK AFTER TESTING selectLists: style="display:none" -->
                         <apex:actionStatus startText="saving..." stopText="" id="updatingPicklists" />
                         <apex:commandButton action="{!cancel}" immediate="true" value="Cancel" id="cancelButton" styleClass="slds-button slds-button--neutral" /> <!-- ******ADD BACK AFTER TESTING selectLists: style="display:none" -->
-                        <apex:commandButton value="Send Emails" id="buttonEmail" onclick="javascript: emailsModal()" onComplete="return null;" styleClass="slds-button slds-button--neutral"  rendered="{!IF(AND(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management') , (FCR == false)), true , false)}"  /> <!-- work on this part - hide when editing -->
+                        <apex:commandButton value="Send Emails" id="buttonEmail" onclick="javascript:emailsModal()" onComplete="return null;" styleClass="slds-button slds-button--neutral"  rendered="{!IF(AND(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management') , (FCR == false)), true , false)}"  /> <!-- work on this part - hide when editing -->
 
                         <!--     <apex:commandButton action="{!save}" value="Save Grievance" /> -->
                     </apex:pageBlockButtons>

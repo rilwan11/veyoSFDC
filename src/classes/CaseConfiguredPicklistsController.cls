@@ -1,5 +1,5 @@
 /**
- * Created by krizia on 11/3/17.
+ * Created on 11/3/17.
  */
 
 public with sharing class CaseConfiguredPicklistsController {

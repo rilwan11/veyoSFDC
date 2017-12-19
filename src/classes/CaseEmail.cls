@@ -1,5 +1,5 @@
 /**
- * Created by krizia on 10/19/17.
+ * Created on 10/19/17.
  * Individual methods for each type of outbound email from the Case object (Grievance Note)
  */
 //Handler for all outgoing Email from an Case (Grievance Note / First Call Resolution)

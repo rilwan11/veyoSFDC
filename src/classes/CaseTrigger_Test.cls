@@ -1,5 +1,5 @@
 /**
- * Created by krizia on 10/20/17.
+ * Created on 10/20/17.
  */
 @isTest
 public with sharing class CaseTrigger_Test {

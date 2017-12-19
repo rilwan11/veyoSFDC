@@ -1,5 +1,5 @@
 /**
- * Created by krizia on 10/25/17.
+ * Created on 10/25/17.
  * Manage all logic behind the Sending of Emails from the UI
  */
 

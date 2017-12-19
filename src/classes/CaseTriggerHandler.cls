@@ -1,5 +1,5 @@
 /**
- * Created by krizia on 10/19/17.
+ * Created on 10/19/17.
  * All logic for CaseTrigger to handle Case Aging Histories or anything dealing with time on the Case (Grievance Note) object
  */
 

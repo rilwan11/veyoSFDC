@@ -1,5 +1,5 @@
 /**
- * Created by krizia on 11/10/17.
+ * Created on 11/10/17.
  */
 
 trigger AccountTrigger on Account (before insert, before update, before delete, after insert, after update, after delete, after undelete) {

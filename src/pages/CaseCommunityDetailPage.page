@@ -1,5 +1,5 @@
 <!--
- - Created by krizia on 11/22/17.
+ - Created on 11/22/17.
  -->
 
 <apex:page id="CaseCommunityDetailPage" standardController="Case">

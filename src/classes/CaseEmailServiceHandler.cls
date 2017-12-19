@@ -1,5 +1,5 @@
 /**
- * Created by krizia on 10/19/17.
+ * Created on 10/19/17.
  * Handles all inbound emails to the CaseEmailService in order to add to corresponding Case (Grievance Note) Activities
  */
 
