@@ -18,7 +18,7 @@
 
             <apex:pageBlockSection id="pbsCaseCreation">
                 <apex:pageBlockSectionItem >
-                    <apex:outputLabel value="Account" />
+                    <apex:outputLabel value="Account" rendered="{!IF(NOT($Profile.Name == 'QA Community User' ), true , false)}" />
                     <apex:outputPanel >
                         <apex:inputField value="{!m_case.AccountId}" id="AccountId" >
                           <!--  <apex:actionSupport event="onchange"
@@ -31,7 +31,7 @@
                         <apex:actionStatus startText="loading allowable Incident Types..." id="loadIncidenTypes" />
                     </apex:outputPanel>
                 </apex:pageBlockSectionItem>
-                <apex:pageBlockSectionItem id="pbsiIncidentType">
+                <apex:pageBlockSectionItem id="pbsiIncidentType" rendered="{!IF(NOT($Profile.Name == 'QA Community User' ), true , false)}"  >
                     <apex:outputLabel value="Incident Type"/>
                     <apex:selectList value="{!caseType}" multiselect="false" size="1" id="caseTypeSL" >
                         <apex:selectOptions value="{!CaseSubmissionTypes}" />

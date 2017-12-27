@@ -80,7 +80,7 @@ public with sharing class CaseConfiguredPicklistsController {
                 Trip_Number_audit__c, Trip_Details__c, Data_Entry_Score__c, All_Issues_Investigated__c, Clear_Timeline_of_Events__c,
                 Avoids_Jargon_or_Internal_Communication__c, Uses_Spell_Check__c, Proper_Use_of_Grammar__c, Account_Protocol__c,
                 Investigation_Score__c, Substantiation_Accurate__c, Actions_Taken__c, Summary__c, Audited__c, Internal_Review__c, Legacy_TTE_ID__c,
-                Member_Address__c, Member_Email__c
+                Member_Address__c, Member_Email__c, TTE_Reason__c
                 FROM Case
                 WHERE Id =: recordId //CaseNumber =: recordNumber
                 LIMIT 1];

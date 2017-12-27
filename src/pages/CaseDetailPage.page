@@ -559,6 +559,13 @@
                         </apex:outputField>
                     </apex:pageBlockSectionItem>
 
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.TTE_Reason__c.inlineHelpText}">
+                    {!$ObjectType.Case.fields.TTE_Reason__c.label}
+                        <apex:outputField value="{!gn.TTE_Reason__c}" style="width:90%;" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                        </apex:outputField>
+                    </apex:pageBlockSectionItem>
+
                 </apex:pageBlockSection>
             </apex:pageBlock>
 

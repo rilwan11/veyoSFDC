@@ -83,7 +83,7 @@ global class CaseEmailServiceHandler implements Messaging.InboundEmailHandler {
                     else {
                         for (Messaging.Inboundemail.TextAttachment tAttachment : email.textAttachments) {
                             System.debug('textAttachments');
-                            Attachment attachment = new Attachment();
+                         /*   Attachment attachment = new Attachment();
                             attachment.Name = tAttachment.fileName;
                             System.debug(attachment.Name);
                             attachment.Body = Blob.valueOf(tAttachment.body);
@@ -94,7 +94,7 @@ global class CaseEmailServiceHandler implements Messaging.InboundEmailHandler {
                             attachment.Description = 'Attachment from Email Response';
                             System.debug(attachment.ParentId);
                             attachment.OwnerId = c.OwnerId;
-                            attachList.add(attachment);
+                            attachList.add(attachment); */
 
                             //Activity attachment
                             Attachment attachment2 = new Attachment();
@@ -118,7 +118,7 @@ global class CaseEmailServiceHandler implements Messaging.InboundEmailHandler {
                     else {
                         List<Attachment> attachList2 = new List<Attachment>();
                         for (Messaging.Inboundemail.BinaryAttachment bAttachment : email.binaryAttachments) {
-                            System.debug('binaryAttachments');
+                         /*   System.debug('binaryAttachments');
                             Attachment attachment = new Attachment();
                             attachment.Name = bAttachment.fileName;
                             attachment.Body = bAttachment.body;
@@ -126,7 +126,7 @@ global class CaseEmailServiceHandler implements Messaging.InboundEmailHandler {
                             attachment.ParentId = c.Id;
                             attachment.OwnerId = c.OwnerId;
                             System.debug(attachment.Name);
-                            attachList2.add(attachment);
+                            attachList2.add(attachment); */
 
                             //Activity attachment
                             Attachment attachment2 = new Attachment();
