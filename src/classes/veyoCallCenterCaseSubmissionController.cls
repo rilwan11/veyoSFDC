@@ -70,6 +70,7 @@ public class veyoCallCenterCaseSubmissionController {
             m_case.AccountId = [SELECT Id FROM Account WHERE Id =: u.AccountId].Id;
             System.debug('Submitted by Client');
             m_case.Source__c = 'Client Community';
+            caseType = GRIEVANCE_NOTE;
         }
     }
 

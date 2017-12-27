@@ -17,8 +17,8 @@
             </apex:pageBlockSection>
 
             <apex:pageBlockSection id="pbsCaseCreation">
-                <apex:pageBlockSectionItem >
-                    <apex:outputLabel value="Account" rendered="{!IF(NOT($Profile.Name == 'QA Community User' ), true , false)}" />
+                <apex:pageBlockSectionItem rendered="{!IF(NOT($Profile.Name == 'QA Community User' ), true , false)}" >
+                    <apex:outputLabel value="Account"  />
                     <apex:outputPanel >
                         <apex:inputField value="{!m_case.AccountId}" id="AccountId" >
                           <!--  <apex:actionSupport event="onchange"
