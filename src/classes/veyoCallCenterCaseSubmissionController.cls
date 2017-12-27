@@ -44,15 +44,33 @@ public class veyoCallCenterCaseSubmissionController {
     // member variables...
     public Case m_case { get; set; }
     public String caseType { get; set; }
+    public String profileName { get; set; }
+    private ApexPages.StandardController sc;
 
     /**
      * Constructor
      */
-    public veyoCallCenterCaseSubmissionController() {
+    public veyoCallCenterCaseSubmissionController(ApexPages.StandardController stdController) {
+        sc = stdController;
         system.debug('veyoCallCenterCaseSubmissionController.constructor()...');
         m_case = new Case();
         m_case.Date_of_Report__c = system.today();
-    //    m_case.Contact_Type__c = PHONE;
+        //    m_case.Contact_Type__c = PHONE;
+
+
+        //Checking for Client Community Portal users
+        Id profileId = userinfo.getProfileId();
+        profileName = [SELECT Id, Name FROM Profile WHERE Id =: profileId].Name;
+        system.debug('ProfileName' + profileName);
+
+
+        if (profileName == 'QA Community User') {
+            User u = [SELECT Id, CompanyName, AccountId FROM User WHERE Id =: userinfo.getUserId()];
+            System.debug(u);
+            m_case.AccountId = [SELECT Id FROM Account WHERE Id =: u.AccountId].Id;
+            System.debug('Submitted by Client');
+            m_case.Source__c = 'Client Community';
+        }
     }
 
     /**
@@ -68,8 +86,8 @@ public class veyoCallCenterCaseSubmissionController {
 
         if(null != m_case.AccountId) {
             List<Account> accounts = [SELECT Name, Call_Center_Can_Create__c
-                                      FROM Account
-                                      WHERE Id = :m_case.AccountId];
+            FROM Account
+            WHERE Id = :m_case.AccountId];
 
 
             if(accounts.size() > 0) {
@@ -78,10 +96,15 @@ public class veyoCallCenterCaseSubmissionController {
 
                 system.debug('veyoCallCenterSubmissionController.getCaseSubmissionTypes() :: acct.Call_Center_Can_Create__c <'+acct.Call_Center_Can_Create__c+'>');
 
-                if(GRIEVANCE_NOTES_AND_FIRST_CALL_RESOLUTION == acct.Call_Center_Can_Create__c) {
+
+
+                if (profileName == 'QA Community User') {
+                    List<SelectOption> onlyOption = new List<SelectOption>();
+                    onlyOption.add(new SelectOption(GRIEVANCE_NOTE, GRIEVANCE_NOTE));
+                    return (onlyOption);
+                } else if(GRIEVANCE_NOTES_AND_FIRST_CALL_RESOLUTION == acct.Call_Center_Can_Create__c) {
                     options.add(new SelectOption(FIRST_CALL_RESOLUTION, FIRST_CALL_RESOLUTION));
                     options.add(new SelectOption(GRIEVANCE_NOTE, GRIEVANCE_NOTE));
-
                 } else if(ONLY_GRIEVANCE_NOTES == acct.Call_Center_Can_Create__c) {
                     options.add(new SelectOption(GRIEVANCE_NOTE, GRIEVANCE_NOTE));
                 } else if(ONLY_FIRST_CALL_RESOLUTIONS == acct.Call_Center_Can_Create__c) {
@@ -102,8 +125,8 @@ public class veyoCallCenterCaseSubmissionController {
         String errMsg;
         if(null != m_case.AccountId) {
             List<Account> accounts = [SELECT Name, Call_Center_Can_Create__c
-                                      FROM Account
-                                      WHERE Id = :m_case.AccountId];
+            FROM Account
+            WHERE Id = :m_case.AccountId];
 
             if(accounts.size() > 0) {
                 Account acct = accounts[0];
@@ -135,8 +158,8 @@ public class veyoCallCenterCaseSubmissionController {
 
         if(null != m_case.AccountId) {
             List<Account> accounts = [SELECT Name, Call_Center_Can_Create__c
-                                      FROM Account
-                                      WHERE Id = :m_case.AccountId];
+            FROM Account
+            WHERE Id = :m_case.AccountId];
 
             if(accounts.size() > 0) {
                 Account acct = accounts[0];
@@ -162,22 +185,58 @@ public class veyoCallCenterCaseSubmissionController {
      * @return
      */
     public PageReference save() {
+        List<ApexPages.Message> errorMessages = new List<ApexPages.Message>();
 
         if(null == m_case.AccountId) {
             ApexPages.Message errMsg = new ApexPages.Message(ApexPages.Severity.Error, 'You must select an Account');
+            errorMessages.add(errMsg);
             ApexPages.addMessage(errMsg);
-            return null;
+            //    return null;
         }
 
         if(null == caseType || '' == caseType || NONE == caseType) {
             ApexPages.Message errMsg = new ApexPages.Message(ApexPages.Severity.Error, 'You must select an Incident Type');
+            errorMessages.add(errMsg);
             ApexPages.addMessage(errMsg);
-            return null;
+            //    return null;
         }
 
         if(null == m_case.Member_Name__c) {
             ApexPages.Message errMsg = new ApexPages.Message(ApexPages.Severity.Error, 'You must enter the Member Name');
+            errorMessages.add(errMsg);
             ApexPages.addMessage(errMsg);
+            //    return null;
+        }
+
+        if (null == m_case.Member_ID__c) {
+            ApexPages.Message errMsg = new ApexPages.Message(ApexPages.Severity.Error, 'You must enter the Member ID');
+            errorMessages.add(errMsg);
+            ApexPages.addMessage(errMsg);
+            //    return null;
+        }
+
+        if(null == m_case.Priority) {
+            ApexPages.Message errMsg = new ApexPages.Message(ApexPages.Severity.Error, 'You must enter the Priority');
+            errorMessages.add(errMsg);
+            ApexPages.addMessage(errMsg);
+            //    return null;
+        }
+
+        if (null == m_case.Trip_Date__c) {
+            ApexPages.Message errMsg = new ApexPages.Message(ApexPages.Severity.Error, 'You must enter the Trip Date');
+            errorMessages.add(errMsg);
+            ApexPages.addMessage(errMsg);
+            //    return null;
+        }
+
+        if (null == m_case.Description) {
+            ApexPages.Message errMsg = new ApexPages.Message(ApexPages.Severity.Error, 'You must enter the Description');
+            errorMessages.add(errMsg);
+            ApexPages.addMessage(errMsg);
+            //    return null;
+        }
+
+        if (errorMessages.size() > 0) {
             return null;
         }
 
@@ -191,9 +250,6 @@ public class veyoCallCenterCaseSubmissionController {
         } else if (profileName == 'QA Coordinators' || profileName == 'QA Management') {
             System.debug('Submitted by QA');
             m_case.Source__c = 'QA Team';
-        } else if (profileName == 'Quality Assurance Community Profile') {
-            System.debug('Submitted by Client');
-            m_case.Source__c = 'Client Community';
         }
 
         //Set Submitting Contact behind the scenes as the Owner of the Member Assistance
@@ -246,8 +302,8 @@ public class veyoCallCenterCaseSubmissionController {
 
         // get Account data from DB...
         List<Account> accounts = [SELECT Id, Complaint_Category__c, Quality_of_Care_Concern_Category__c, Letter_of_Inquiry_Category__c
-                                  FROM Account
-                                  WHERE Id = :m_case.AccountId];
+        FROM Account
+        WHERE Id = :m_case.AccountId];
 
         if(accounts.size() > 0) {
 
@@ -283,11 +339,11 @@ public class veyoCallCenterCaseSubmissionController {
 
         // get Account data from DB...
         List<Account> accounts = [SELECT Id, Agent_Issue_Subcategory__c, Damage_Injury_Subcategory__c, Driver_Issue_Subcategory__c,
-                                    Early_Arrival_Subcategory__c, Late_Pickup_Subcategory__c, Missed_Pickup_Subcategory__c, Safety_Concern_Subcategory__c,
-                                    Scheduling_Error_Subcategory__c, Technical_Issue_Subcategory__c, Vehicle_Issue_Subcategory__c, Missed_Pickup_A_Leg_Subcategory__c,
-                                    Missed_Pickup_B_Leg_Subcategory__c, Late_Pickup_A_Leg_Subcategory__c, Late_Pickup_B_Leg_Subcategory__c, Other_Subcategory__c
-                                  FROM Account
-                                  WHERE Id = :m_case.AccountId];
+                Early_Arrival_Subcategory__c, Late_Pickup_Subcategory__c, Missed_Pickup_Subcategory__c, Safety_Concern_Subcategory__c,
+                Scheduling_Error_Subcategory__c, Technical_Issue_Subcategory__c, Vehicle_Issue_Subcategory__c, Missed_Pickup_A_Leg_Subcategory__c,
+                Missed_Pickup_B_Leg_Subcategory__c, Late_Pickup_A_Leg_Subcategory__c, Late_Pickup_B_Leg_Subcategory__c, Other_Subcategory__c
+        FROM Account
+        WHERE Id = :m_case.AccountId];
         if(accounts.size() > 0) {
 
             Account a = accounts[0];
@@ -359,9 +415,9 @@ public class veyoCallCenterCaseSubmissionController {
 
         // get Account data from DB...
         List<Account> accounts = [SELECT Id, Ambulatory_Service_Mode__c, Wheelchair_Service_Mode__c, Bariatric_Wheelchair_Service_Mode__c,
-                                    BLS_Service_Mode__c, ALS_Service_Mode__c, Public_Transportation_Service_Mode__c, Mileage_Reimbursement_Service_Mode__c
-                                  FROM Account
-                                  WHERE Id = :m_case.AccountId];
+                BLS_Service_Mode__c, ALS_Service_Mode__c, Public_Transportation_Service_Mode__c, Mileage_Reimbursement_Service_Mode__c
+        FROM Account
+        WHERE Id = :m_case.AccountId];
 
         if(accounts.size() > 0) {
 
@@ -408,13 +464,13 @@ public class veyoCallCenterCaseSubmissionController {
         }
 
         List<Account> clientAccts = [SELECT Id, Service_State__c
-                                     FROM Account
-                                     WHERE Id = :m_case.AccountId];
+        FROM Account
+        WHERE Id = :m_case.AccountId];
 
         List<RecordType> recTypes = [SELECT Id, DeveloperName, SobjectType
-                                     FROM RecordType
-                                     WHERE SobjectType = 'Account'
-                                       AND DeveloperName = 'Transportation_Provider'];
+        FROM RecordType
+        WHERE SobjectType = 'Account'
+        AND DeveloperName = 'Transportation_Provider'];
 
 
         if(clientAccts.size() > 0 && recTypes.size() > 0) {
@@ -422,10 +478,10 @@ public class veyoCallCenterCaseSubmissionController {
             Account clntAcct = clientAccts[0];
 
             List<Account> providerAccts = [SELECT Id, Name
-                                           FROM Account
-                                           WHERE Service_State__c = :clntAcct.Service_State__c
-                                             AND RecordTypeId = :rtProvider.Id
-                                           ORDER BY Name];
+            FROM Account
+            WHERE Service_State__c = :clntAcct.Service_State__c
+            AND RecordTypeId = :rtProvider.Id
+            ORDER BY Name];
 
             for(Account providerAcct : providerAccts) {
                 options.add(new SelectOption(providerAcct.Id, providerAcct.Name));

@@ -1,4 +1,4 @@
-<apex:page id="veyoCallCenterCaseSubmission" controller="veyoCallCenterCaseSubmissionController" showHeader="true" sideBar="false" >
+<apex:page id="veyoCallCenterCaseSubmission" standardController="Case" extensions="veyoCallCenterCaseSubmissionController" showHeader="true" sideBar="false" >
     <head>
     <apex:slds />
     <script src="//code.jquery.com/jquery-1.11.3.js"></script>
@@ -20,7 +20,7 @@
                 <apex:pageBlockSectionItem >
                     <apex:outputLabel value="Account" />
                     <apex:outputPanel >
-                        <apex:inputField value="{!m_case.AccountId}" id="AccountId">
+                        <apex:inputField value="{!m_case.AccountId}" id="AccountId" >
                           <!--  <apex:actionSupport event="onchange"
                                                 rerender="pageMsgsOutputId"
                                                 status="loadAcctCaseTypes" />-->
@@ -32,21 +32,21 @@
                     </apex:outputPanel>
                 </apex:pageBlockSectionItem>
                 <apex:pageBlockSectionItem id="pbsiIncidentType">
-                    <apex:outputLabel value="Incident Type" />
-                    <apex:selectList value="{!caseType}" multiselect="false" size="1" id="caseTypeSL">
+                    <apex:outputLabel value="Incident Type"/>
+                    <apex:selectList value="{!caseType}" multiselect="false" size="1" id="caseTypeSL" >
                         <apex:selectOptions value="{!CaseSubmissionTypes}" />
                     </apex:selectList>
                 </apex:pageBlockSectionItem>
-                <apex:inputField value="{!m_case.Member_Name__c}" />
+                <apex:inputField value="{!m_case.Member_Name__c}"  />
                 <apex:selectList value="{!m_case.Category__c}" multiselect="false" size="1" id="catOptions" label="Category" >
                     <apex:selectOptions value="{!categoryOptions}" />
                 </apex:selectList>
-                <apex:inputField value="{!m_case.Member_ID__c}" />
+                <apex:inputField value="{!m_case.Member_ID__c}"  />
                 <apex:selectList value="{!m_case.Subcategory__c}" multiselect="false" size="1" id="subcatOptions" label="Subcategory"  >
                     <apex:selectOptions value="{!subcategoryOptions}"  />
                 </apex:selectList>
-                <apex:inputField value="{!m_case.Priority}" />
-                <apex:inputField value="{!m_case.Trip_Date__c}" />
+                <apex:inputField value="{!m_case.Priority}"  />
+                <apex:inputField value="{!m_case.Trip_Date__c}"  />
                 <apex:selectList value="{!m_case.Service_Mode__c}" multiselect="false" size="1" id="smOptions" label="Service Mode">
                     <apex:selectOptions value="{!serviceModeOptions}" />
                 </apex:selectList>
@@ -61,7 +61,7 @@
 
             </apex:pageBlockSection>
             <apex:pageBlockSection columns="1">
-                <apex:inputField value="{!m_case.Description}" style="width:500px;height:200px;"/>
+                <apex:inputField value="{!m_case.Description}" style="width:500px;height:200px;" />
             </apex:pageBlockSection>
             <apex:pageBlockButtons location="bottom">
                 <apex:outputLabel for="btnCreateCase" value="" />

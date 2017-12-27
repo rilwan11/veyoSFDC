@@ -118,7 +118,9 @@ public with sharing class veyoCallCenterCaseSubmission_Test {
         PageReference pageRef = Page.veyoCallCenterCaseSubmission;
         Test.setCurrentPage(pageRef);
 
-        veyoCallCenterCaseSubmissionController controller = new veyoCallCenterCaseSubmissionController();
+
+        ApexPages.StandardController stdController = new ApexPages.StandardController(a);
+        veyoCallCenterCaseSubmissionController controller = new veyoCallCenterCaseSubmissionController(stdController);
         PageReference p = controller.save();
 
         controller.m_case.AccountId = a4.Id;
@@ -160,6 +162,7 @@ public with sharing class veyoCallCenterCaseSubmission_Test {
         List<SelectOption> options5 = controller.getCategoryOptions();
         List<SelectOption> options6 = controller.getSubcategoryOptions();
         List<SelectOption> options7 = controller.getServiceModeOptions();
+        List<SelectOption> options8 = controller.getProviders();
 
         system.assertNotEquals(null, options, 'The collection should be instantiated');
         system.assert(!options2.isEmpty(), 'The collection should be populated');

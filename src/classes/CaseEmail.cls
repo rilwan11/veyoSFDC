@@ -17,7 +17,6 @@ global class CaseEmail {
         ID orgWideEmailId = [SELECT Id FROM OrgWideEmailAddress WHERE DisplayName = 'Veyo Case Management' LIMIT 1].Id;
         EmailServicesAddress domainName = [SELECT EmailDomainName FROM EmailServicesAddress WHERE LocalPart = 'caseemailservice'];
         String caseEmailService = 'caseemailservice@' + string.valueOf(domainName.EmailDomainName);
-   //     String caseEmailService = 'caseemailservice@1vh6z3r1ljiho3ljw45ail1ejcn7pqyyn02a6g55b89opq918s.5b-z2auau.cs52.apex.sandbox.salesforce.com';
         Boolean saveAsActivity = true;
         Id whatId = c.Id;
         Attachment[] attachList;
@@ -158,6 +157,7 @@ global class CaseEmail {
             System.debug(e);
             return(false);
         }
+
 
     } //public static Boolean sendEmailFromModalWithAttachments(Case c, String[] toRecipients, Id TargetObjId, String templateString, List<Messaging.EmailFileAttachment> efa)
 

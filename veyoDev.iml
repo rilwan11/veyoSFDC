@@ -216,10 +216,6 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="CaseClientPortalController" />
-                            <option name="selected" value="true" />
-                          </MetadataEntry>
-                          <MetadataEntry>
                             <option name="name" value="uploadAttachmentController" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -475,10 +471,6 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CaseClientPortal" />
-                            <option name="selected" value="true" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="CaseCommunityDetailPage" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>

@@ -8,7 +8,7 @@
         <apex:slds />
         <script src="//code.jquery.com/jquery-1.11.3.js"></script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-   <!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 
         <style>
             body .bPageBlock, body #bodyCell .bResource .secondaryPalette, body .secondaryPalette.bPageBlock, body .individualPalette .secondaryPalette.bPageBlock, body .bodyDiv .genericTable, body .genericPageBlockTable, body .bodyDiv .bSubBlock, body .bComponentBlock .bPageBlock, body .bMyDashboard .bPageBlock, body.rlHoverFrame .bPageBlock, body.subjectSelectionPopup div.choicesBox, body.lookupTab .secondaryPalette.bPageBlock, body.popupTab .secondaryPalette.bPageBlock, body.UserTagStatsPage .secondaryPalette.bPageBlock {
@@ -24,6 +24,14 @@
 
 
 
+
+    </head>
+
+
+    <apex:pageMessages />
+
+    <apex:pageBlock rendered="{!IF((FCR == false), true , false)}" id="chatterFeedPB" >
+
         <script>
             $(document).ready(function(){
                 $("#hide").click(function(){
@@ -34,20 +42,33 @@
                 });
             });
         </script>
-    </head>
 
-
-    <apex:pageMessages />
-
-    <apex:pageBlock rendered="{!IF((FCR == false), true , false)}" id="chatterFeedPB" >
         <button id="hide" >Hide Feed</button>
         <button id="show" >Show Feed</button>
         <div id="chatterFeed">
             <chatter:feed entityId="{!gn.Id}" />
         </div>
-    </apex:pageBlock> 
+    </apex:pageBlock>
 
-    <script>
+
+
+
+
+    <div class="slds-scope">
+
+    <!--    <chatter:feed entityId="{!gn.Id}"/> -->
+
+        <apex:form id="theForm" > <!-- title="Grievance Detail: {!Case.CaseNumber}" -->
+            <apex:pageBlock title="Member Contact Details" id="thePageBlock"  >
+
+                <!-- Button to save picklist selections and rerender this page & the service console (alert('Grievance Updated!'); window.top.location.href = '/{!Case.Id}'; )-->
+                <div style="Text-align:center;" >
+                    <apex:pageBlockButtons location="top">
+                        <apex:commandButton value="Save Changes" status="updatingPicklists" action="{!updatePicklists}" id="saveButton" styleClass="slds-button slds-button--neutral" /> <!-- ******ADD BACK AFTER TESTING selectLists: style="display:none" -->
+                        <apex:actionStatus startText="saving..." stopText="" id="updatingPicklists" />
+                        <apex:commandButton action="{!cancel}" immediate="true" value="Cancel" id="cancelButton" styleClass="slds-button slds-button--neutral" /> <!-- ******ADD BACK AFTER TESTING selectLists: style="display:none" -->
+
+                        <script>
         function emailsModal(){
 
             requireCssFile('/resource/jQuery/jquery-ui/jquery-ui.min.css');
@@ -88,22 +109,6 @@
             }).prev(".ui-dialog-titlebar").css("background","#C0BE71");
         }
     </script>
-
-
-
-    <div class="slds-scope">
-
-    <!--    <chatter:feed entityId="{!gn.Id}"/> -->
-
-        <apex:form id="theForm" > <!-- title="Grievance Detail: {!Case.CaseNumber}" -->
-            <apex:pageBlock title="Member Contact Details" id="thePageBlock"  >
-
-                <!-- Button to save picklist selections and rerender this page & the service console (alert('Grievance Updated!'); window.top.location.href = '/{!Case.Id}'; )-->
-                <div style="Text-align:center;" >
-                    <apex:pageBlockButtons location="top">
-                        <apex:commandButton value="Save Changes" status="updatingPicklists" action="{!updatePicklists}" id="saveButton" styleClass="slds-button slds-button--neutral" /> <!-- ******ADD BACK AFTER TESTING selectLists: style="display:none" -->
-                        <apex:actionStatus startText="saving..." stopText="" id="updatingPicklists" />
-                        <apex:commandButton action="{!cancel}" immediate="true" value="Cancel" id="cancelButton" styleClass="slds-button slds-button--neutral" /> <!-- ******ADD BACK AFTER TESTING selectLists: style="display:none" -->
                         <apex:commandButton value="Send Emails" id="buttonEmail" onclick="javascript:emailsModal()" onComplete="return null;" styleClass="slds-button slds-button--neutral"  rendered="{!IF(AND(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management') , (FCR == false)), true , false)}"  /> <!-- work on this part - hide when editing -->
 
                         <!--     <apex:commandButton action="{!save}" value="Save Grievance" /> -->
@@ -121,9 +126,11 @@
                         </apex:outputField>
                     </apex:pageBlockSectionItem>
 
-                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Date_of_Report__c.inlineHelpText}">
-                    {!$ObjectType.Case.fields.Date_of_Report__c.label}
-                        <apex:outputField value="{!gn.Date_of_Report__c}" >
+                    <apex:outputField value="{!gn.AccountId}" rendered="{!IF($Profile.Name == 'QA Community User', true, false)}" />
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Legacy_TTE_ID__c.inlineHelpText}" rendered="{!IF(AND(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management') , (FCR == false)), true , false)}" >
+                    {!$ObjectType.Case.fields.Legacy_TTE_ID__c.label}
+                        <apex:outputField value="{!gn.Legacy_TTE_ID__c}" >
                             <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
                         </apex:outputField>
                     </apex:pageBlockSectionItem>
@@ -131,6 +138,20 @@
                     <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Member_ID__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Member_ID__c.label}
                         <apex:outputField value="{!gn.Member_ID__c}" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                        </apex:outputField>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Date_of_Report__c.inlineHelpText}">
+                    {!$ObjectType.Case.fields.Date_of_Report__c.label}
+                        <apex:outputField value="{!gn.Date_of_Report__c}" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                        </apex:outputField>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Member_Email__c.inlineHelpText}"  >
+                    {!$ObjectType.Case.fields.Member_Email__c.label}
+                        <apex:outputField value="{!gn.Member_Email__c}" >
                             <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
                         </apex:outputField>
                     </apex:pageBlockSectionItem>
@@ -154,9 +175,9 @@
                         </apex:outputField>
                     </apex:pageBlockSectionItem>
 
-                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Complainant_Name__c.inlineHelpText}">
-                    {!$ObjectType.Case.fields.Complainant_Name__c.label}
-                        <apex:outputField value="{!gn.Complainant_Name__c}" >
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Member_Address__c.inlineHelpText}">
+                    {!$ObjectType.Case.fields.Member_Address__c.label}
+                        <apex:outputField value="{!gn.Member_Address__c}" >
                             <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
                         </apex:outputField>
                     </apex:pageBlockSectionItem>
@@ -166,9 +187,9 @@
                         <apex:outputField value="{!gn.Created__c}" />
                     </apex:pageBlockSectionItem>
 
-                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Contact_Type__c.inlineHelpText}" rendered="{!IF((FCR == false), true , false)}" >
-                    {!$ObjectType.Case.fields.Contact_Type__c.label}
-                        <apex:outputField value="{!gn.Contact_Type__c}" >
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Complainant_Name__c.inlineHelpText}">
+                    {!$ObjectType.Case.fields.Complainant_Name__c.label}
+                        <apex:outputField value="{!gn.Complainant_Name__c}" >
                             <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
                         </apex:outputField>
                     </apex:pageBlockSectionItem>
@@ -178,9 +199,11 @@
                         <apex:outputField value="{!gn.Progress_Date__c}" />
                     </apex:pageBlockSectionItem>
 
-                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.User_Account__c.inlineHelpText}"  rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), true , false)}" >
-                        User's Account
-                        <apex:outputField value="{!gn.User_Account__c}" />
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Contact_Type__c.inlineHelpText}" rendered="{!IF((FCR == false), true , false)}" >
+                    {!$ObjectType.Case.fields.Contact_Type__c.label}
+                        <apex:outputField value="{!gn.Contact_Type__c}" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                        </apex:outputField>
                     </apex:pageBlockSectionItem>
 
                     <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Resolved__c.inlineHelpText}">
@@ -188,11 +211,9 @@
                         <apex:outputField value="{!gn.Resolved__c}" />
                     </apex:pageBlockSectionItem>
 
-                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.AccountId.inlineHelpText}" rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), true , false)}" >
-                    {!$ObjectType.Case.fields.AccountId.label}
-                        <apex:outputField value="{!gn.AccountId}" >
-                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
-                        </apex:outputField>
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.User_Account__c.inlineHelpText}"  rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), true , false)}" >
+                        User's Account
+                        <apex:outputField value="{!gn.User_Account__c}" />
                     </apex:pageBlockSectionItem>
 
                     <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Description.inlineHelpText}" rendered="{!IF((FCR == true), true , false)}">
@@ -207,9 +228,9 @@
                         <apex:outputField value="{!gn.Follow_Up_Requested__c}" />
                     </apex:pageBlockSectionItem>
 
-                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Open_Email_Response__c.inlineHelpText}" rendered="{!IF(AND(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), (FCR == false)), true , false)}" >
-                    {!$ObjectType.Case.fields.Open_Email_Response__c.label}
-                        <apex:outputField value="{!gn.Open_Email_Response__c}" >
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.AccountId.inlineHelpText}" rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), true , false)}" >
+                    {!$ObjectType.Case.fields.AccountId.label}
+                        <apex:outputField value="{!gn.AccountId}" >
                             <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
                         </apex:outputField>
                     </apex:pageBlockSectionItem>
@@ -219,7 +240,12 @@
                         <apex:outputField value="{!gn.Follow_Up_Completed__c}" />
                     </apex:pageBlockSectionItem>
 
-                    <apex:pageBlockSectionItem rendered="{!IF((FCR == false), true , false)}" />
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Open_Email_Response__c.inlineHelpText}" rendered="{!IF(AND(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), (FCR == false)), true , false)}" >
+                    {!$ObjectType.Case.fields.Open_Email_Response__c.label}
+                        <apex:outputField value="{!gn.Open_Email_Response__c}" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                        </apex:outputField>
+                    </apex:pageBlockSectionItem>
 
                     <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Follow_Up_Comments__c.inlineHelpText}" rendered="{!IF((FCR == false), true , false)}" >
                     {!$ObjectType.Case.fields.Follow_Up_Comments__c.label}
@@ -519,7 +545,12 @@
                         </apex:outputField>
                     </apex:pageBlockSectionItem>
 
-                    <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Internal_Review__c.inlineHelpText}">
+                    {!$ObjectType.Case.fields.Internal_Review__c.label}
+                        <apex:outputField value="{!gn.Internal_Review__c}" style="width:90%;" >
+                            <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/>
+                        </apex:outputField>
+                    </apex:pageBlockSectionItem>
 
                     <apex:pageBlockSectionItem HelpText="{!$ObjectType.Case.fields.Blank_Field_4__c.inlineHelpText}">
                     {!$ObjectType.Case.fields.Blank_Field_4__c.label}
@@ -791,9 +822,9 @@
         <apex:relatedList list="Histories" title="Member Assistance History - INTERNAL VEYO" rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), true , false)}" />
         <apex:relatedList list="Case_Aging_Histories__r" title="Status Changes - INTERNAL VEYO" subject="{!gn}"  rendered="{!IF(AND(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management') , (FCR == false)), true , false)}" />
         <apex:relatedList list="Internal_Items__r" title="Internal Items - INTERNAL VEYO" subject="{!gn}" rendered="{!IF(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management'), true , false)}" />
+        <apex:relatedList list="ActivityHistories" title="Outgoing Emails / Closed Email Responses - INTERNAL VEYO" subject="{!gn}" rendered="{!IF(AND(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management') , (FCR == false)), true , false)}" />
+        <apex:relatedList list="OpenActivities" title="Incoming Open Email Responses - INTERNAL VEYO" subject="{!gn}" rendered="{!IF(AND(OR($Profile.Name == 'System Administrator' , $Profile.Name == 'QA Coordinators' , $Profile.Name == 'QA Management') , (FCR == false)), true , false)}" />
 <!-- INTERNAL && EXTERNAL -->
-        <apex:relatedList list="ActivityHistories" title="Outgoing Emails / Closed Email Responses" subject="{!gn}" rendered="{!IF((FCR == false), true , false)}" />
-        <apex:relatedList list="OpenActivities" title="Incoming Open Email Responses" subject="{!gn}" rendered="{!IF((FCR == false), true , false)}" />
         <apex:relatedList list="CombinedAttachments" title="Notes and Attachments" subject="{!gn}"  />
 
     </div>

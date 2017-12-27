@@ -3,7 +3,7 @@
  -->
 
 <apex:page id="CaseClientPortal" standardController="Case" extensions="CaseClientPortalController" showHeader="true" sideBar="false"  >
-    <head>
+  <!--  <head>
         <title>Grievance Note</title>
         <apex:slds />
         <script src="//code.jquery.com/jquery-1.11.3.js"></script>
@@ -16,7 +16,7 @@
         <apex:form id="theForm" title="Grievance Detail: {!Case.CaseNumber}">
             <apex:pageBlock title="Member Contact Details" id="thePageBlock">
 
-                <!-- Button to save picklist selections and rerender this page -->
+
                 <div style="Text-align:center;" >
                     <apex:pageBlockButtons location="top">
                         <apex:commandButton value="Save Changes" status="updatingGrievance" action="{!savePage}" id="saveButton" styleClass="slds-button slds-button--neutral" />
@@ -82,7 +82,6 @@
                     {!$ObjectType.Case.fields.Category__c.label}
                         <apex:selectList value="{!caseCategory}" multiselect="false" size="1" id="catOptions" label="Category" >
                             <apex:selectOptions value="{!categoryOptions}" />
-                            <!--         <apex:inlineEditSupport showOnEdit="saveButton,cancelButton" hideOnEdit="buttonEmail" event="ondblclick"/> -->
                         </apex:selectList>
                     </apex:pageBlockSectionItem>
 
@@ -150,5 +149,5 @@
             </apex:pageBlock>
         </apex:form>
     </div>
-
+-->
 </apex:page>

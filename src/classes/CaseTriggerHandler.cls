@@ -378,10 +378,15 @@ public with sharing class CaseTriggerHandler {
      * @param a
      */
     public static void sendEmail(Case c, Account a) {
-        Contact defaultEmail = [SELECT Id, FirstName, LastName, Email
+        List<Contact> defaultEmailContacts = new List<Contact>();
+        defaultEmailContacts = [SELECT Id, FirstName, LastName, Email
                                     FROM Contact
                                     WHERE Email = :a.Default_Account_Email_Address__c
                                     LIMIT 1];
+        Contact defaultEmail = new Contact();
+        if (defaultEmailContacts.size() > 0) {
+            defaultEmail = defaultEmailContacts[0];
+        }
         List<Contact> staticGroup = [SELECT Id, FirstName, LastName, Email, AccountId
                                         FROM Contact
                                         WHERE AccountId =: a.Id AND Member_of_Static_Account_Email_Group__c = true];

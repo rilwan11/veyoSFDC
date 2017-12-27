@@ -70,7 +70,7 @@ public with sharing class CaseConfiguredPicklistsController {
                 Description, Priority, Provider_Name__c, Trip_Date__c, Agent_Name__c, Driver_Name__c, Vehicle_Number__c,
                 Employee_Name__c, Date_of_Investigation__c, Investigator_Comments__c, Substantiated__c, Action_Taken__c,
                 Complaint_Origin__c, Trip_Number__c, Origin_Name__c, If_Null_Why__c, Additional_Origin_Name__c, Grievance_Detail__c,
-                Trip_Fraud__c, Call_Recordings__c, Fraud_Trip_Number__c, Field_Notes__c, Fraud_Trip_Number_Additional__c,
+                Trip_Fraud__c, Call_Recordings__c, Fraud_Trip_Number__c, Fraud_Trip_Number_Additional__c, Field_Notes__c,
                 Date_When_Reached_Out_to_Provider__c, Blank_Field_1__c, Blank_Field_2__c, Blank_Field_3__c, Blank_Field_4__c,
                 OwnerId, LastModifiedById, Age_in_Days__c, ContactEmail, Case_Age_in_Business_Hours__c, Origin, Time_With_Support__c,
                 ContactPhone, Time_With_Customer__c, Subject, Follow_Up_Period__c, Follow_Up_Age_In_Days__c, Reason,
@@ -79,7 +79,8 @@ public with sharing class CaseConfiguredPicklistsController {
                 Internal_Feed__c, Notes_Attachments_Recordings__c, Provider_Name_audit__c, Subcategory_audit__c, Trip_Date_audit__c,
                 Trip_Number_audit__c, Trip_Details__c, Data_Entry_Score__c, All_Issues_Investigated__c, Clear_Timeline_of_Events__c,
                 Avoids_Jargon_or_Internal_Communication__c, Uses_Spell_Check__c, Proper_Use_of_Grammar__c, Account_Protocol__c,
-                Investigation_Score__c, Substantiation_Accurate__c, Actions_Taken__c, Summary__c, Audited__c
+                Investigation_Score__c, Substantiation_Accurate__c, Actions_Taken__c, Summary__c, Audited__c, Internal_Review__c, Legacy_TTE_ID__c,
+                Member_Address__c, Member_Email__c
                 FROM Case
                 WHERE Id =: recordId //CaseNumber =: recordNumber
                 LIMIT 1];
@@ -359,6 +360,14 @@ public with sharing class CaseConfiguredPicklistsController {
      */
     public pageReference updatePicklists() { //pageReference causes issues with Status
         System.debug('CaseConfiguredPicklistsController::: updatePicklists:: Status: ' + string.valueOf(gn.Status));
+
+    /*    //Status must have a value
+        if (gn.Status == '' || gn.Status == '--None--' || gn.Status == null) {
+            ApexPages.Message errorMessage = new ApexPages.Message(ApexPages.Severity.ERROR, 'Unable to save without a value for Status. Please select a Status, then click Save.');
+            ApexPages.addMessage(errorMessage);
+            System.debug(errorMessage);
+            return null;
+        } */
 
         //Check to be sure that Follow Up Comments entered when trying to change Status to Follow Up Requested
         if (gn.Status == 'Follow Up Requested') {
